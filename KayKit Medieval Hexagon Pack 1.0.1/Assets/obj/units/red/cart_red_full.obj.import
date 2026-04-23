@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://w8x4i32ftajs"
+path="res://.godot/imported/cart_red_full.obj-e5873f225024d4a86074f5e5e5247d99.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cart_red_full.obj-e5873f225024d4a86074f5e5e5247d99.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/units/red/cart_red_full.obj"
+dest_files=["res://.godot/imported/cart_red_full.obj-e5873f225024d4a86074f5e5e5247d99.mesh", "res://.godot/imported/cart_red_full.obj-e5873f225024d4a86074f5e5e5247d99.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

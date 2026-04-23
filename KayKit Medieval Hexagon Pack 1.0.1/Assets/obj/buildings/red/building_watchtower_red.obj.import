@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cybyc3klrns6"
+path="res://.godot/imported/building_watchtower_red.obj-d50c1387a7aaee3fa95ca60085f4e8f0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building_watchtower_red.obj-d50c1387a7aaee3fa95ca60085f4e8f0.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/buildings/red/building_watchtower_red.obj"
+dest_files=["res://.godot/imported/building_watchtower_red.obj-d50c1387a7aaee3fa95ca60085f4e8f0.mesh", "res://.godot/imported/building_watchtower_red.obj-d50c1387a7aaee3fa95ca60085f4e8f0.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

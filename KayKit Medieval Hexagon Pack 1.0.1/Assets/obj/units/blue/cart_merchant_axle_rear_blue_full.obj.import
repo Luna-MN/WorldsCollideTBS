@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://1c3lqd7hqngy"
+path="res://.godot/imported/cart_merchant_axle_rear_blue_full.obj-325970df266a48ce93337c24971f8e1e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cart_merchant_axle_rear_blue_full.obj-325970df266a48ce93337c24971f8e1e.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/units/blue/cart_merchant_axle_rear_blue_full.obj"
+dest_files=["res://.godot/imported/cart_merchant_axle_rear_blue_full.obj-325970df266a48ce93337c24971f8e1e.mesh", "res://.godot/imported/cart_merchant_axle_rear_blue_full.obj-325970df266a48ce93337c24971f8e1e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

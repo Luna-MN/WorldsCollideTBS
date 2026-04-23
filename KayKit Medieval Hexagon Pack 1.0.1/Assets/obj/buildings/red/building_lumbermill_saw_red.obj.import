@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bpup4sae2eosg"
+path="res://.godot/imported/building_lumbermill_saw_red.obj-db62474fc5810d6ee69479a47ab4aefa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building_lumbermill_saw_red.obj-db62474fc5810d6ee69479a47ab4aefa.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/buildings/red/building_lumbermill_saw_red.obj"
+dest_files=["res://.godot/imported/building_lumbermill_saw_red.obj-db62474fc5810d6ee69479a47ab4aefa.mesh", "res://.godot/imported/building_lumbermill_saw_red.obj-db62474fc5810d6ee69479a47ab4aefa.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

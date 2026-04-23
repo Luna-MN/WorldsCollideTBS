@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cohkygy8pel0p"
+path="res://.godot/imported/building_shipyard_green.obj-2220c9851213c2726d8add744892f6bc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building_shipyard_green.obj-2220c9851213c2726d8add744892f6bc.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/buildings/green/building_shipyard_green.obj"
+dest_files=["res://.godot/imported/building_shipyard_green.obj-2220c9851213c2726d8add744892f6bc.mesh", "res://.godot/imported/building_shipyard_green.obj-2220c9851213c2726d8add744892f6bc.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

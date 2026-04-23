@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ctuj0g0jke5cq"
+path="res://.godot/imported/shield_red_accent.obj-2f3ddd8654e5acce5b92bbed2fc9489f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/shield_red_accent.obj-2f3ddd8654e5acce5b92bbed2fc9489f.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/units/red/shield_red_accent.obj"
+dest_files=["res://.godot/imported/shield_red_accent.obj-2f3ddd8654e5acce5b92bbed2fc9489f.mesh", "res://.godot/imported/shield_red_accent.obj-2f3ddd8654e5acce5b92bbed2fc9489f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

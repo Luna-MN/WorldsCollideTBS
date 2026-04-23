@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bsrjvtruwhmpc"
+path="res://.godot/imported/pallet.obj-e0c3800060d0e44c36f39c5b68dd7274.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pallet.obj-e0c3800060d0e44c36f39c5b68dd7274.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/decoration/props/pallet.obj"
+dest_files=["res://.godot/imported/pallet.obj-e0c3800060d0e44c36f39c5b68dd7274.mesh", "res://.godot/imported/pallet.obj-e0c3800060d0e44c36f39c5b68dd7274.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

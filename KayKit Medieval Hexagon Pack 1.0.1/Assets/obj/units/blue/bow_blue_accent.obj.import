@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bjca27vs3q6xy"
+path="res://.godot/imported/bow_blue_accent.obj-285080c338f0bc491bb3e79d2c2520d5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bow_blue_accent.obj-285080c338f0bc491bb3e79d2c2520d5.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/units/blue/bow_blue_accent.obj"
+dest_files=["res://.godot/imported/bow_blue_accent.obj-285080c338f0bc491bb3e79d2c2520d5.mesh", "res://.godot/imported/bow_blue_accent.obj-285080c338f0bc491bb3e79d2c2520d5.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

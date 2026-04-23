@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dwesn8b3yi8wa"]
+
+[ext_resource type="Script" uid="uid://cc68a6xx4w38q" path="res://Objects/Tile/Tile.cs" id="1_rltd0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
+size = Vector3(1.2022461, 0.8927002, 2)
+
+[node name="Tile" type="Node3D" unique_id=405162964 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+script = ExtResource("1_rltd0")
+NodeParent = NodePath("Tiles")
+StaticBody = NodePath("Collision")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1080447204]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=28048712]
+transform = Transform3D(0.8660253, 0, -0.49999997, 0, 0.99999994, 0, 0.49999997, 0, 0.8660253, -0.025106624, -0.5072757, 0.0069084167)
+shape = SubResource("BoxShape3D_a0tk4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=2049618266]
+transform = Transform3D(0.027286083, 0, -0.9996276, 0, 0.99999994, 0, 0.9996276, 0, 0.027286083, -0.025838071, -0.45362583, -0.019888252)
+shape = SubResource("BoxShape3D_a0tk4")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Collision" unique_id=1896475019]
+transform = Transform3D(-0.87451017, 0, -0.48500708, 0, 0.9999999, 0, 0.48500708, 0, -0.87451017, -0.0038417112, -0.45362583, -0.004885195)
+shape = SubResource("BoxShape3D_a0tk4")
+
+[node name="Tiles" type="Node3D" parent="." unique_id=1719346823]

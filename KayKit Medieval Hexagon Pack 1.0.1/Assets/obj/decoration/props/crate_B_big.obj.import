@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://samb2f0bm0nv"
+path="res://.godot/imported/crate_B_big.obj-ec77f7037ec6fc39f36e70eb3d1a89ee.mesh"
+
+[deps]
+
+files=["res://.godot/imported/crate_B_big.obj-ec77f7037ec6fc39f36e70eb3d1a89ee.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/decoration/props/crate_B_big.obj"
+dest_files=["res://.godot/imported/crate_B_big.obj-ec77f7037ec6fc39f36e70eb3d1a89ee.mesh", "res://.godot/imported/crate_B_big.obj-ec77f7037ec6fc39f36e70eb3d1a89ee.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

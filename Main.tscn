@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b3ed2x8hydvgd"]
+
+[ext_resource type="PackedScene" uid="uid://dpj6k736hcvn3" path="res://Objects/TerrainGen/terrain_gen.tscn" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://cdmsp2jh00nj4" path="res://Classes/Input/InputHandler.cs" id="2_uu6xs"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cm0pq"]
+seed = 74
+frequency = 0.183
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r0du0"]
+frequency = 0.2104
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uu6xs"]
+seed = 4
+frequency = 0.16
+
+[node name="Main" type="Node3D" unique_id=1284737066]
+
+[node name="TerrainGen3" parent="." unique_id=314974575 instance=ExtResource("1_glv2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8, 0, 0)
+Radius = 2
+noise = SubResource("FastNoiseLite_cm0pq")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1466483403]
+transform = Transform3D(1, 0, 0, 0, 0.37234473, 0.9280945, 0, -0.9280945, 0.37234473, 0, 15.478721, 8.240786)
+
+[node name="Input" type="Node3D" parent="Camera3D" unique_id=157245926]
+transform = Transform3D(1, 0, 0, 0, 0.49190915, -0.87064654, 0, 0.87064654, 0.49190915, 0, 0, 0)
+script = ExtResource("2_uu6xs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2006036234]
+transform = Transform3D(1, 0, 0, 0, 0.49999994, 0.86602545, 0, -0.86602545, 0.49999994, 0, 12, 9)
+
+[node name="TerrainGen2" parent="." unique_id=283917659 instance=ExtResource("1_glv2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 0, 0)
+Radius = 2
+noise = SubResource("FastNoiseLite_r0du0")
+
+[node name="TerrainGen" parent="." unique_id=116907696 instance=ExtResource("1_glv2v")]
+noise = SubResource("FastNoiseLite_uu6xs")

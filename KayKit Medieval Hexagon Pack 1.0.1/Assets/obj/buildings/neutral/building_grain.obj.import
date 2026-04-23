@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bv4uoo0i2vmg2"
+path="res://.godot/imported/building_grain.obj-c7a17b215064723d0876eee840ef2dce.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building_grain.obj-c7a17b215064723d0876eee840ef2dce.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/buildings/neutral/building_grain.obj"
+dest_files=["res://.godot/imported/building_grain.obj-c7a17b215064723d0876eee840ef2dce.mesh", "res://.godot/imported/building_grain.obj-c7a17b215064723d0876eee840ef2dce.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

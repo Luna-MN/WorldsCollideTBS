@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bsnx7xtngtr3w"
+path="res://.godot/imported/cannon_axle_green_accent.obj-b509a792f517e164c4a12d14ad55d49b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cannon_axle_green_accent.obj-b509a792f517e164c4a12d14ad55d49b.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/units/green/cannon_axle_green_accent.obj"
+dest_files=["res://.godot/imported/cannon_axle_green_accent.obj-b509a792f517e164c4a12d14ad55d49b.mesh", "res://.godot/imported/cannon_axle_green_accent.obj-b509a792f517e164c4a12d14ad55d49b.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

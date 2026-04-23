@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bit77en2ukd2e"
+path="res://.godot/imported/spear_red_full.obj-9cc64d25f836c2011cd1a5bc6e031143.mesh"
+
+[deps]
+
+files=["res://.godot/imported/spear_red_full.obj-9cc64d25f836c2011cd1a5bc6e031143.mesh"]
+
+source_file="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/obj/units/red/spear_red_full.obj"
+dest_files=["res://.godot/imported/spear_red_full.obj-9cc64d25f836c2011cd1a5bc6e031143.mesh", "res://.godot/imported/spear_red_full.obj-9cc64d25f836c2011cd1a5bc6e031143.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
