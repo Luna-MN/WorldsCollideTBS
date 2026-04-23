@@ -18,7 +18,6 @@ public partial class River : Resource, IFeature
         StartTile.TileType = TileUtil.TileType.River;
         var EndTile = worldInfo.EdgeTiles.OrderBy(tile => tile.TileHeight).First();
         EndTile.TileType = TileUtil.TileType.River;
-        EndTile.Connected = true;
         var tile = StartTile;
         while (tile != EndTile)
         {
@@ -36,6 +35,7 @@ public partial class River : Resource, IFeature
             if (nextTile.TileHeight > tile.TileHeight)
             {
                 GD.PrintErr($"next tile is higher than current tile: {nextTile.TileHeight} > {tile.TileHeight}");
+                nextTile.Connected = false;
                 break;
             }
             tile.NextTile = nextTile;
@@ -43,10 +43,8 @@ public partial class River : Resource, IFeature
             tile = nextTile;
             tiles.Add(tile);
         }
-
         if (tile != EndTile)
         {
-            EndTile.Connected = false;
             EndTile.TileType = TileUtil.TileType.Grass;
         }
 
