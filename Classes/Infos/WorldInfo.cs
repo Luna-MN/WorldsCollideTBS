@@ -73,6 +73,10 @@ public class WorldInfo
             {
                 neighbors.Add(neighbor);
             }
+            else
+            {
+                neighbors.Add(null);
+            }
         }
         
         return neighbors;

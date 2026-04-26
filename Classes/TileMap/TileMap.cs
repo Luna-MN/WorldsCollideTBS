@@ -9,12 +9,13 @@ public partial class TileMap : Resource
 {
     public TileInfo this[int i] => TileInfo[i];
     public TileInfo this[TileUtil.TileState i] => TileInfo[(int)i];
+    public TileInfo this[TerrainInfo i, int y] => this[TileUtil.GetState(i, y)];    
     public TileMapController TileMapController;
     public Dictionary<int, TileInfo> TileInfo
     {
         get;
         set;
-    } = new();
+    } = new(); 
     public override Array<Dictionary> _GetPropertyList()
     {
         Array<Dictionary> list = new();

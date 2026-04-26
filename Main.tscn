@@ -2,10 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dpj6k736hcvn3" path="res://Objects/TerrainGen/terrain_gen.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://cdmsp2jh00nj4" path="res://Classes/Input/InputHandler.cs" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://643iva42mly" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_A_curvy.fbx" id="3_r0du0"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cm0pq"]
 seed = 74
-frequency = 0.183
+frequency = 0.693
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_r0du0"]
 frequency = 0.2104
@@ -38,3 +39,9 @@ noise = SubResource("FastNoiseLite_r0du0")
 
 [node name="TerrainGen" parent="." unique_id=116907696 instance=ExtResource("1_glv2v")]
 noise = SubResource("FastNoiseLite_uu6xs")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1893597956]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 4.7254367, 0)
+
+[node name="hex_river_A_curvy" parent="Node3D" unique_id=306478046 instance=ExtResource("3_r0du0")]
+transform = Transform3D(-0.50007564, -0.06223883, 0.86374223, -0.02866275, 0.99805707, 0.05532248, -0.86550736, 0.0029081823, -0.50088793, 0, 0, 0)

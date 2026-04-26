@@ -36,18 +36,12 @@ public partial class Tile : Node3D
         PackedScene PS = null;
         for (int i = 0; i <= TerrainInfo.TileHeight; i++)
         {
-            if (i == TerrainInfo.TileHeight)
-            {
-                PS = TileMap[TileUtil.TileState.floor].TileNode;
-            }
-            else
-            {
-                PS = TileMap[TileUtil.TileState.underground].TileNode;
-            }
+            PS = TileMap[TerrainInfo, i].TileNode;
 
             var node = PS.Instantiate<Node3D> ();
             AddChild(node);
             node.Position = new Vector3(0, i, 0);
+            node.RotationDegrees = new Vector3(0, TileUtil.GetTileRotation(TerrainInfo, TileUtil.GetState(TerrainInfo, i)), 0);
         }
         StaticBody.Position = new Vector3(0, TerrainInfo.TileHeight, 0);
     }

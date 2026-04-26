@@ -22,8 +22,7 @@ public partial class River : Resource, IFeature
         while (tile != EndTile)
         {
             tile.TileType = TileUtil.TileType.River;
-            tile.Connected = true;
-            var availableNeighbours = tile.Neighbours.Where(n => !tiles.Contains(n)).ToList();
+            var availableNeighbours = tile.Neighbours.Where(n => !tiles.Contains(n) && n != null).ToList();
             if (availableNeighbours.Count == 0)
             {
                 GD.PrintErr("River generation stuck - no available path");
@@ -32,6 +31,7 @@ public partial class River : Resource, IFeature
     
             // Choose the neighbor that goes downhill (toward EndTile)
             var nextTile = availableNeighbours.OrderBy(neighbour => neighbour.TileHeight).First();
+            nextTile.Connected = true;
             if (nextTile.TileHeight > tile.TileHeight)
             {
                 GD.PrintErr($"next tile is higher than current tile: {nextTile.TileHeight} > {tile.TileHeight}");

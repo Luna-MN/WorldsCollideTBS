@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TileInfoSaveState" format=3 uid="uid://clt2ac3neha12"]
+
+[ext_resource type="Script" uid="uid://n6mju7ayan2c" path="res://Classes/GDScriptWorldSaveStates/TileInfoSaveState.gd" id="1_7eidq"]
+[ext_resource type="PackedScene" uid="uid://643iva42mly" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_A_curvy.fbx" id="1_1265t"]
+
+[resource]
+script = ExtResource("1_7eidq")
+_tileNode = Array[PackedScene]([ExtResource("1_1265t")])
+metadata/_custom_type_script = "uid://n6mju7ayan2c"

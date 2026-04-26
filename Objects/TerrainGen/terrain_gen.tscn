@@ -9,20 +9,6 @@
 [ext_resource type="Script" uid="uid://dbq8cwnoth0eh" path="res://Classes/TileMapController/TileMapController.cs" id="7_p40e5"]
 [ext_resource type="PackedScene" uid="uid://dwwu0qsib07ew" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_A.fbx" id="7_t76vk"]
 
-[sub_resource type="Resource" id="Resource_t76vk"]
-script = ExtResource("4_p40e5")
-_tileNode = [ExtResource("3_yphj0")]
-
-[sub_resource type="Resource" id="Resource_hv38e"]
-script = ExtResource("4_p40e5")
-_tileNode = [ExtResource("6_hv38e")]
-
-[sub_resource type="Resource" id="Resource_eqor0"]
-resource_name = "Default"
-script = ExtResource("5_t76vk")
-floor = SubResource("Resource_t76vk")
-underground = SubResource("Resource_hv38e")
-
 [sub_resource type="Resource" id="Resource_7jnah"]
 script = ExtResource("4_p40e5")
 _tileNode = [ExtResource("3_yphj0")]
@@ -31,29 +17,58 @@ _tileNode = [ExtResource("3_yphj0")]
 script = ExtResource("4_p40e5")
 _tileNode = [ExtResource("6_hv38e")]
 
-[sub_resource type="Resource" id="Resource_lmfrd"]
+[sub_resource type="Resource" id="Resource_eqor0"]
 resource_name = "Default"
 script = ExtResource("5_t76vk")
 floor = SubResource("Resource_7jnah")
 underground = SubResource("Resource_e7rpu")
 
-[sub_resource type="Resource" id="Resource_mu40u"]
+[sub_resource type="Resource" id="Resource_y5204"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("3_yphj0")]
+
+[sub_resource type="Resource" id="Resource_j2cn8"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("6_hv38e")]
+
+[sub_resource type="Resource" id="Resource_lmfrd"]
+resource_name = "Default"
+script = ExtResource("5_t76vk")
+floor = SubResource("Resource_y5204")
+underground = SubResource("Resource_j2cn8")
+
+[sub_resource type="Resource" id="Resource_fbu53"]
+script = ExtResource("4_p40e5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_dpkrs"]
+script = ExtResource("4_p40e5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_ogald"]
+script = ExtResource("4_p40e5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_6w6uv"]
 script = ExtResource("4_p40e5")
 _tileNode = [ExtResource("7_t76vk")]
 
-[sub_resource type="Resource" id="Resource_2c735"]
+[sub_resource type="Resource" id="Resource_6v3rv"]
 script = ExtResource("4_p40e5")
 _tileNode = [ExtResource("6_hv38e")]
 
 [sub_resource type="Resource" id="Resource_hbp3e"]
 resource_name = "River"
 script = ExtResource("5_t76vk")
-floor = SubResource("Resource_mu40u")
-underground = SubResource("Resource_2c735")
+floor = SubResource("Resource_6w6uv")
+underground = SubResource("Resource_6v3rv")
+connection1 = SubResource("Resource_fbu53")
+connection2 = SubResource("Resource_dpkrs")
+connection3 = SubResource("Resource_ogald")
 
 [sub_resource type="Resource" id="Resource_f83lp"]
 script = ExtResource("7_p40e5")
-TileMaps = Dictionary[int, ExtResource("5_t76vk")]({
+TileMaps = Dictionary[int, Variant]({
 0: SubResource("Resource_eqor0"),
 1: SubResource("Resource_hbp3e"),
 2: SubResource("Resource_lmfrd")
