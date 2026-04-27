@@ -12,7 +12,7 @@ public partial class TerrainGen : Node3D
     private int Radius;
     [Export] 
     private int Amplitude;
-    [Export(PropertyHint.Range, "1,3")] 
+    [Export(PropertyHint.Range, "0,3")] 
     private int Features;
     [Export]
     private TileMapController TileMaps;

@@ -88,7 +88,7 @@ public partial class TileMapController : Resource
                 NotifyPropertyListChanged();
                 return true;
             }
-            TileMaps[(int)name] = (TileMap)((TileInfo)value).Duplicate();
+            TileMaps[(int)name] = (TileMap)((TileMap)value).Duplicate();
             TileMaps[(int)name].TileMapController = this;
             NotifyPropertyListChanged();
             return true;

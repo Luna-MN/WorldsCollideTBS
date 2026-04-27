@@ -2,62 +2,69 @@
 
 [ext_resource type="Script" uid="uid://c43wsiqg2ly6q" path="res://Objects/TerrainGen/TerrainGen.cs" id="1_d4p5m"]
 [ext_resource type="PackedScene" uid="uid://dwesn8b3yi8wa" path="res://Objects/Tile/Tile.tscn" id="2_d4p5m"]
-[ext_resource type="PackedScene" uid="uid://bospqtame6rlf" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/base/hex_grass.fbx" id="3_yphj0"]
 [ext_resource type="Script" uid="uid://cb7iss74ifst" path="res://Classes/TileInfo/TileInfo.cs" id="4_p40e5"]
 [ext_resource type="Script" uid="uid://cog33uck4g1wq" path="res://Classes/TileMap/TileMap.cs" id="5_t76vk"]
-[ext_resource type="PackedScene" uid="uid://lwegxjixcpsc" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/base/hex_grass_bottom.fbx" id="6_hv38e"]
 [ext_resource type="Script" uid="uid://dbq8cwnoth0eh" path="res://Classes/TileMapController/TileMapController.cs" id="7_p40e5"]
-[ext_resource type="PackedScene" uid="uid://dwwu0qsib07ew" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_A.fbx" id="7_t76vk"]
+
+[sub_resource type="Resource" id="Resource_lmfrd"]
+script = ExtResource("4_p40e5")
+_tileNode = null
+
+[sub_resource type="Resource" id="Resource_mu40u"]
+script = ExtResource("4_p40e5")
+_tileNode = null
+
+[sub_resource type="Resource" id="Resource_2c735"]
+script = ExtResource("4_p40e5")
+_tileNode = null
+
+[sub_resource type="Resource" id="Resource_hbp3e"]
+resource_name = "Default"
+script = ExtResource("5_t76vk")
+floor = SubResource("Resource_mu40u")
+underground = SubResource("Resource_2c735")
+connection1 = SubResource("Resource_lmfrd")
 
 [sub_resource type="Resource" id="Resource_7jnah"]
 script = ExtResource("4_p40e5")
-_tileNode = [ExtResource("3_yphj0")]
+_tileNode = null
 
 [sub_resource type="Resource" id="Resource_e7rpu"]
 script = ExtResource("4_p40e5")
-_tileNode = [ExtResource("6_hv38e")]
-
-[sub_resource type="Resource" id="Resource_eqor0"]
-resource_name = "Default"
-script = ExtResource("5_t76vk")
-floor = SubResource("Resource_7jnah")
-underground = SubResource("Resource_e7rpu")
+_tileNode = null
 
 [sub_resource type="Resource" id="Resource_y5204"]
 script = ExtResource("4_p40e5")
-_tileNode = [ExtResource("3_yphj0")]
+_tileNode = null
 
 [sub_resource type="Resource" id="Resource_j2cn8"]
-script = ExtResource("4_p40e5")
-_tileNode = [ExtResource("6_hv38e")]
-
-[sub_resource type="Resource" id="Resource_lmfrd"]
 resource_name = "Default"
 script = ExtResource("5_t76vk")
-floor = SubResource("Resource_y5204")
-underground = SubResource("Resource_j2cn8")
+floor = SubResource("Resource_e7rpu")
+underground = SubResource("Resource_y5204")
+connection1 = SubResource("Resource_7jnah")
 
 [sub_resource type="Resource" id="Resource_fbu53"]
 script = ExtResource("4_p40e5")
-_tileNode = []
+_tileNode = null
 
 [sub_resource type="Resource" id="Resource_dpkrs"]
 script = ExtResource("4_p40e5")
-_tileNode = []
+_tileNode = null
 
 [sub_resource type="Resource" id="Resource_ogald"]
 script = ExtResource("4_p40e5")
-_tileNode = []
+_tileNode = null
 
 [sub_resource type="Resource" id="Resource_6w6uv"]
 script = ExtResource("4_p40e5")
-_tileNode = [ExtResource("7_t76vk")]
+_tileNode = null
 
 [sub_resource type="Resource" id="Resource_6v3rv"]
 script = ExtResource("4_p40e5")
-_tileNode = [ExtResource("6_hv38e")]
+_tileNode = null
 
-[sub_resource type="Resource" id="Resource_hbp3e"]
+[sub_resource type="Resource" id="Resource_0fqob"]
 resource_name = "River"
 script = ExtResource("5_t76vk")
 floor = SubResource("Resource_6w6uv")
@@ -68,17 +75,19 @@ connection3 = SubResource("Resource_ogald")
 
 [sub_resource type="Resource" id="Resource_f83lp"]
 script = ExtResource("7_p40e5")
-TileMaps = Dictionary[int, Variant]({
-0: SubResource("Resource_eqor0"),
-1: SubResource("Resource_hbp3e"),
-2: SubResource("Resource_lmfrd")
+TileMaps = Dictionary[int, ExtResource("5_t76vk")]({
+0: SubResource("Resource_hbp3e"),
+1: SubResource("Resource_0fqob"),
+2: SubResource("Resource_j2cn8")
 })
-Grass = SubResource("Resource_eqor0")
-River = SubResource("Resource_hbp3e")
-Path = SubResource("Resource_lmfrd")
+Grass = SubResource("Resource_hbp3e")
+River = SubResource("Resource_0fqob")
+Path = SubResource("Resource_j2cn8")
 metadata/_custom_type_script = "uid://dbq8cwnoth0eh"
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2c735"]
+seed = 426
+frequency = 0.1268
 
 [node name="TerrainGen" type="Node3D" unique_id=116907696]
 script = ExtResource("1_d4p5m")

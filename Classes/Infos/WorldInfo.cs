@@ -54,7 +54,7 @@ public class WorldInfo
             terrainInfo.Neighbours = neighbors.ToArray();
         }
         EdgeTiles = GetAllEdgeTiles().ToArray();
-        for (int i = 0; i <= Features; i++)
+        for (int i = 1; i <= Features; i++)
         {
             var feature = GetRandomFeature();
             feature.Set(this);
@@ -68,15 +68,7 @@ public class WorldInfo
         foreach (var offset in HexNeighborOffsets)
         {
             Vector2I neighborCoord = new Vector2I(q + offset.X, r + offset.Y);
-            
-            if (TerrainInfo.TryGetValue(neighborCoord, out TerrainInfo neighbor))
-            {
-                neighbors.Add(neighbor);
-            }
-            else
-            {
-                neighbors.Add(null);
-            }
+            neighbors.Add(TerrainInfo.GetValueOrDefault(neighborCoord));
         }
         
         return neighbors;
@@ -88,7 +80,7 @@ public class WorldInfo
         foreach (var offset in HexNeighborOffsets)
         {
             Vector2I neighborCoord = new Vector2I(q + offset.X, r + offset.Y);
-            
+
             if (IsValidHexCoordinate(neighborCoord.X, neighborCoord.Y))
             {
                 neighborCoords.Add(neighborCoord);

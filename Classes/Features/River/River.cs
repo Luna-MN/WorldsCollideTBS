@@ -15,6 +15,10 @@ public partial class River : Resource, IFeature
     public void Generate()
     {
         var StartTile = worldInfo.EdgeTiles.OrderByDescending(tile => tile.TileHeight).First();
+        if (StartTile.TileType != TileUtil.TileType.Grass)
+        {
+            StartTile = worldInfo.EdgeTiles.OrderByDescending(tile => tile.TileHeight).ToList()[1];
+        }
         StartTile.TileType = TileUtil.TileType.River;
         var EndTile = worldInfo.EdgeTiles.OrderBy(tile => tile.TileHeight).First();
         EndTile.TileType = TileUtil.TileType.River;
