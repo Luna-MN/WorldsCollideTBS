@@ -15,7 +15,7 @@ public partial class TopTileMapController : Resource
     public TopTileMap this[TileUtil.TileTopType j] => TileMaps[(int)j];
     public TopTileInfo this[TileUtil.TileTopType j, TileUtil.TileTopState i] => this[j][i];
     [ExportToolButton("GDBackup")] private Callable CallableGDBackup => new Callable(this, nameof(GDBackup));
-    private void GDBackup()
+    public void GDBackup()
     {
         foreach (var map in TileMaps.Values)
         {

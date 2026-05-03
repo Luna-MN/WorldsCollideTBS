@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dpj6k736hcvn3" path="res://Objects/TerrainGen/terrain_gen.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://cdmsp2jh00nj4" path="res://Classes/Input/InputHandler.cs" id="2_uu6xs"]
 [ext_resource type="Script" uid="uid://f0vo74h3lkq6" path="res://Classes/Tiles/TopTile/TopTileInfo/TopTileInfo.cs" id="3_fos0i"]
+[ext_resource type="PackedScene" uid="uid://dcaogmhs0841w" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/rock_single_B.fbx" id="3_wkp8b"]
 [ext_resource type="Script" uid="uid://dq0poljwdwgt7" path="res://Classes/Tiles/TopTile/TopTileMap/TopTileMap.cs" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://blrspcfrv1tjd" path="res://Classes/Tiles/TopTile/TopTileMapController/TopTileMapController.cs" id="5_lgr22"]
 [ext_resource type="PackedScene" uid="uid://bpm3j82pv63ds" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/trees_B_large.fbx" id="5_trn2v"]
@@ -21,52 +22,64 @@ frequency = 0.2104
 seed = 665
 frequency = 0.4296
 
-[sub_resource type="Resource" id="Resource_03owx"]
+[sub_resource type="Resource" id="Resource_20pc6"]
+script = ExtResource("3_fos0i")
+_tileNode = [ExtResource("3_wkp8b")]
+TileTopType = 1
+
+[sub_resource type="Resource" id="Resource_5vvyt"]
 script = ExtResource("3_fos0i")
 _tileNode = [ExtResource("6_c6i3y")]
 
-[sub_resource type="Resource" id="Resource_wkp8b"]
+[sub_resource type="Resource" id="Resource_c6i3y"]
 resource_name = "None"
 script = ExtResource("4_3dxm6")
-Small = SubResource("Resource_03owx")
-
-[sub_resource type="Resource" id="Resource_20pc6"]
-script = ExtResource("3_fos0i")
-_tileNode = []
-
-[sub_resource type="Resource" id="Resource_5vvyt"]
-script = ExtResource("4_3dxm6")
-Small = SubResource("Resource_20pc6")
-
-[sub_resource type="Resource" id="Resource_c6i3y"]
-script = ExtResource("3_fos0i")
-_tileNode = [ExtResource("5_trn2v")]
+Small = SubResource("Resource_5vvyt")
+Medium = SubResource("Resource_20pc6")
 
 [sub_resource type="Resource" id="Resource_c2ibq"]
 script = ExtResource("3_fos0i")
-_tileNode = [ExtResource("6_03owx")]
+_tileNode = []
+TileTopType = 1
 
 [sub_resource type="Resource" id="Resource_j4qnp"]
 script = ExtResource("3_fos0i")
-_tileNode = [ExtResource("7_wkp8b")]
+_tileNode = []
 
 [sub_resource type="Resource" id="Resource_fpfj3"]
-resource_name = "Tree"
 script = ExtResource("4_3dxm6")
 Small = SubResource("Resource_j4qnp")
 Medium = SubResource("Resource_c2ibq")
-Large = SubResource("Resource_c6i3y")
+
+[sub_resource type="Resource" id="Resource_sc1dx"]
+script = ExtResource("3_fos0i")
+_tileNode = [ExtResource("5_trn2v")]
+
+[sub_resource type="Resource" id="Resource_kjvhd"]
+script = ExtResource("3_fos0i")
+_tileNode = [ExtResource("6_03owx")]
+
+[sub_resource type="Resource" id="Resource_5tuhn"]
+script = ExtResource("3_fos0i")
+_tileNode = [ExtResource("7_wkp8b")]
+
+[sub_resource type="Resource" id="Resource_devvj"]
+resource_name = "Tree"
+script = ExtResource("4_3dxm6")
+Small = SubResource("Resource_5tuhn")
+Medium = SubResource("Resource_kjvhd")
+Large = SubResource("Resource_sc1dx")
 
 [sub_resource type="Resource" id="Resource_2gh4u"]
 script = ExtResource("5_lgr22")
 TileMaps = Dictionary[int, ExtResource("4_3dxm6")]({
-0: SubResource("Resource_wkp8b"),
-1: SubResource("Resource_fpfj3"),
-2: SubResource("Resource_5vvyt")
+0: SubResource("Resource_c6i3y"),
+1: SubResource("Resource_devvj"),
+2: SubResource("Resource_fpfj3")
 })
-None = SubResource("Resource_wkp8b")
-Tree = SubResource("Resource_fpfj3")
-Stone = SubResource("Resource_5vvyt")
+None = SubResource("Resource_c6i3y")
+Tree = SubResource("Resource_devvj")
+Stone = SubResource("Resource_fpfj3")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [node name="Main" type="Node3D" unique_id=1284737066]

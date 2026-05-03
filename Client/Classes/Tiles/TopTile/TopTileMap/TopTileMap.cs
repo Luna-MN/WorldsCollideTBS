@@ -81,7 +81,7 @@ public partial class TopTileMap : Resource
                 NotifyPropertyListChanged();
                 return true;
             }
-            TileInfo[(int)name] = (TopTileInfo)((TileInfo)value).Duplicate();
+            TileInfo[(int)name] = (TopTileInfo)((TopTileInfo)value).Duplicate();
             TileInfo[(int)name].Parent = this;
             NotifyPropertyListChanged();
             return true;
