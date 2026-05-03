@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FeatureArgs" format=3 uid="uid://bb608cixkyuop"]
+
+[ext_resource type="Script" uid="uid://2d2qt08pm7aw" path="res://Classes/Features/FeatureArgs.cs" id="1_6fkpt"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6fkpt"]
+
+[resource]
+script = ExtResource("1_6fkpt")
+ForestNoise = SubResource("FastNoiseLite_6fkpt")
+metadata/_custom_type_script = "uid://2d2qt08pm7aw"

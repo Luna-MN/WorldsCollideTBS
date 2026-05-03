@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TileInfoSaveState" format=3 uid="uid://bavqtl0sl3dyd"]
+
+[ext_resource type="Script" uid="uid://n6mju7ayan2c" path="res://Classes/GDScriptWorldSaveStates/TileInfoSaveState.gd" id="1_kh72s"]
+
+[resource]
+script = ExtResource("1_kh72s")
+metadata/_custom_type_script = "uid://n6mju7ayan2c"

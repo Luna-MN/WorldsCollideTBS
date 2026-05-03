@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TileInfoSaveState" format=3 uid="uid://nyps0c7e4fwn"]
+
+[ext_resource type="Script" uid="uid://n6mju7ayan2c" path="res://Classes/GDScriptWorldSaveStates/TileInfoSaveState.gd" id="1_3wg4k"]
+[ext_resource type="PackedScene" uid="uid://dnqfq24tl2eh6" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/trees_B_medium.fbx" id="1_ajdbd"]
+
+[resource]
+script = ExtResource("1_3wg4k")
+_tileNode = Array[PackedScene]([ExtResource("1_ajdbd")])
+metadata/_custom_type_script = "uid://n6mju7ayan2c"

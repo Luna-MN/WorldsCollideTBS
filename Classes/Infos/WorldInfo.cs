@@ -8,9 +8,13 @@ public class WorldInfo
 {
     public Dictionary<Vector2I, TerrainInfo> TerrainInfo = new Dictionary<Vector2I, TerrainInfo>();
     public TerrainInfo[] EdgeTiles;
+    public TileUtil.TileType DefaultTile;
+    public FeatureArgs FeatureArgs;
     public int Radius;
     public int Amplitude;
     public int Features;
+    public List<string> FeaturesArray = [];
+    public List<IFeature> FeaturesList = [];
     private static readonly Random random = new Random();
     public WorldInfo()
     {
@@ -34,8 +38,12 @@ public class WorldInfo
 
             for (int r = r1; r <= r2; r++)
             {
-                var tileInfo = new TerrainInfo();
+                var tileInfo = new TerrainInfo()
+                {
+                    TileType = DefaultTile
+                };
                 tileInfo.Position = HexToWorldPosition(q, r);
+                tileInfo.PositionI = new Vector2I(q, r);
                 Vector2I hexCoord = new Vector2I(q, r);
                 
                 var v = noise.GetNoise2D(tileInfo.Position.X, tileInfo.Position.Z) + 1;
@@ -57,8 +65,9 @@ public class WorldInfo
         for (int i = 1; i <= Features; i++)
         {
             var feature = GetRandomFeature();
-            feature.Set(this);
+            feature.Set(this, FeatureArgs);
             feature.Generate();
+            FeaturesList.Add(feature);
         }
     }
     private List<TerrainInfo> GetHexNeighbors(int q, int r)
@@ -129,14 +138,15 @@ public class WorldInfo
         
         return new Vector3(x, 0, z);
     }
-    public static IFeature GetRandomFeature()
+    public IFeature GetRandomFeature()
     {
         // Get all types that implement IFeature
         var featureTypes = Assembly.GetExecutingAssembly()
             .GetTypes()
             .Where(type => typeof(IFeature).IsAssignableFrom(type) && 
                            !type.IsInterface && 
-                           !type.IsAbstract)
+                           !type.IsAbstract && 
+                           !FeaturesArray.Contains(type.Name))
             .ToList();
         
         if (featureTypes.Count == 0)
@@ -146,7 +156,7 @@ public class WorldInfo
         
         // Select a random type
         var randomType = featureTypes[random.Next(featureTypes.Count)];
-        
+        FeaturesArray.Add(randomType.Name);
         // Create an instance of the random type
         return (IFeature)Activator.CreateInstance(randomType);
     }

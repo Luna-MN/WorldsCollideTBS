@@ -6,10 +6,12 @@ using System.Linq;
 public partial class River : Resource, IFeature
 {
     private WorldInfo worldInfo;
+    private FeatureArgs args;
     private List<TerrainInfo> tiles = [];
-    public void Set(WorldInfo worldInfo)
+    public void Set(WorldInfo worldInfo, FeatureArgs args)
     {
         this.worldInfo = worldInfo;
+        this.args = args;
     }
 
     public void Generate()
@@ -20,7 +22,7 @@ public partial class River : Resource, IFeature
             StartTile = worldInfo.EdgeTiles.OrderByDescending(tile => tile.TileHeight).ToList()[1];
         }
         StartTile.TileType = TileUtil.TileType.River;
-        var EndTile = worldInfo.EdgeTiles.OrderBy(tile => tile.TileHeight).First();
+        var EndTile = worldInfo.EdgeTiles.OrderByDescending(tile => tile.Position.DistanceTo(StartTile.Position)).First();
         EndTile.TileType = TileUtil.TileType.River;
         var tile = StartTile;
         while (tile != EndTile)
@@ -33,8 +35,22 @@ public partial class River : Resource, IFeature
                 break;
             }
     
-            // Choose the neighbor that goes downhill (toward EndTile)
-            var nextTile = availableNeighbours.OrderBy(neighbour => neighbour.TileHeight).First();
+            var allowedNeighbours = availableNeighbours
+                .Where(n => n.TileHeight >= tile.TileHeight - 1) // drop <= 1
+                .Where(n => n.TileHeight <= tile.TileHeight)     // no uphill
+                .ToList();
+
+            if (allowedNeighbours.Count == 0)
+            {
+                GD.PrintErr("River generation stuck - no available path");
+                break;
+            }
+
+            // Prefer flat tiles first, then lower ones
+            var nextTile = allowedNeighbours
+                .OrderByDescending(n => n.TileHeight) // higher first (tileHeight or tileHeight-1)
+                .First();
+
             nextTile.Connected = true;
             if (nextTile.TileHeight > tile.TileHeight)
             {
@@ -56,6 +72,17 @@ public partial class River : Resource, IFeature
         GD.Print($"Edge tiles: {worldInfo.EdgeTiles.Length}");
         GD.Print(tiles.Count);
     }
-    public void Destroy() { }
-    public void Update() { }
+
+    public void Destroy()
+    {
+        foreach (var tile in tiles)
+        {
+            tile.TileType = TileUtil.TileType.Grass;
+        }
+        tiles.Clear();
+    }
+
+    public void Update()
+    {
+    }
 }

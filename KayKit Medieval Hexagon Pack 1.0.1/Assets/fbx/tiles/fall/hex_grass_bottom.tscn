@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cgmyw76q22of"]
+
+[ext_resource type="PackedScene" uid="uid://lwegxjixcpsc" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/base/hex_grass_bottom.fbx" id="1_kxknb"]
+[ext_resource type="Texture2D" uid="uid://72l8rimyvdrd" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/base/hexagons_medieval_Fall.png" id="2_e6xxv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cu1h"]
+albedo_texture = ExtResource("2_e6xxv")
+
+[node name="hex_grass_bottom" unique_id=9981333 instance=ExtResource("1_kxknb")]
+
+[node name="hex_grass_bottom" parent="." index="0" unique_id=396193181]
+surface_material_override/0 = SubResource("StandardMaterial3D_0cu1h")

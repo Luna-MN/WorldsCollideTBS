@@ -18,6 +18,12 @@ public partial class TerrainGen : Node3D
     private TileMapController TileMaps;
     [Export]
     private FastNoiseLite noise;
+    [Export]
+    private TileUtil.TileType DefaultTile;
+    [Export]
+    public FeatureArgs FeatureArgs;
+    [Export]
+    public TopTileMapController TopTileMaps;
     private WorldInfo worldInfo;
     [ExportToolButton("Generate Terrain")] private Callable GenerateTerrainButton => Callable.From(Generate);
     
@@ -33,7 +39,9 @@ public partial class TerrainGen : Node3D
         {
             Radius = Radius,
             Amplitude = Amplitude,
-            Features = Features
+            Features = Features,
+            DefaultTile = DefaultTile,
+            FeatureArgs = FeatureArgs
         };
         worldInfo.GenerateTerrainInfo(noise);
         GenerateTerrain(worldInfo);
@@ -50,39 +58,8 @@ public partial class TerrainGen : Node3D
             AddChild(hexInstance);
             hexInstance.Position = info.Position;
             hexInstance.RotationDegrees = new Vector3(0, 90, 0);
-            hexInstance.Set(TileMaps[info.TileType], info.Position.X, info.Position.Z, info);
-
+            hexInstance.Set(TileMaps[info.TileType], TopTileMaps[info.TileTopType], info.Position.X, info.Position.Z, info);
             hexInstance.GenerateTile();
-        }
-    }
-    
-    private void GenerateTerrain() // legacy, leaving here for a bit
-    {
-        foreach (Node child in GetChildren())
-        {
-            child.QueueFree();
-        }
-        
-        for (int q = -Radius; q <= Radius; q++)
-        {
-            int r1 = Math.Max(-Radius, -q - Radius);
-            int r2 = Math.Min(Radius, -q + Radius);
-            
-            for (int r = r1; r <= r2; r++)
-            {
-                var hexInstance = TerrainScene.Instantiate<Tile>();
-                AddChild(hexInstance);
-                
-                var worldPos = HexToWorldPosition(q, r);
-                hexInstance.Position = worldPos;
-                hexInstance.RotationDegrees = new Vector3(0, 90, 0);
-                hexInstance.Set(TileMaps[TileUtil.TileType.Grass], worldPos.X, worldPos.Z);
-                var v = noise.GetNoise2D(worldPos.X, worldPos.Z) + 1;
-                float scaledValue = v * Amplitude;
-                int val = (int)Math.Round(scaledValue * 2) / 2;
-
-                hexInstance.GenerateTile();
-            }
         }
     }
     

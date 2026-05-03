@@ -2,6 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://dpj6k736hcvn3" path="res://Objects/TerrainGen/terrain_gen.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://cdmsp2jh00nj4" path="res://Classes/Input/InputHandler.cs" id="2_uu6xs"]
+[ext_resource type="Script" uid="uid://f0vo74h3lkq6" path="res://Classes/Tiles/TopTile/TopTileInfo/TopTileInfo.cs" id="3_fos0i"]
+[ext_resource type="Script" uid="uid://dq0poljwdwgt7" path="res://Classes/Tiles/TopTile/TopTileMap/TopTileMap.cs" id="4_3dxm6"]
+[ext_resource type="Script" uid="uid://blrspcfrv1tjd" path="res://Classes/Tiles/TopTile/TopTileMapController/TopTileMapController.cs" id="5_lgr22"]
+[ext_resource type="PackedScene" uid="uid://bpm3j82pv63ds" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/trees_B_large.fbx" id="5_trn2v"]
+[ext_resource type="PackedScene" uid="uid://dnqfq24tl2eh6" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/trees_B_medium.fbx" id="6_03owx"]
+[ext_resource type="PackedScene" uid="uid://c2kumypy816rc" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/rock_single_E.fbx" id="6_c6i3y"]
+[ext_resource type="PackedScene" uid="uid://b6c4gpxn0m8j5" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/trees_B_small.fbx" id="7_wkp8b"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cm0pq"]
 seed = 74
@@ -11,8 +18,56 @@ frequency = 0.693
 frequency = 0.2104
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uu6xs"]
-seed = 432
-frequency = 0.0993
+seed = 665
+frequency = 0.4296
+
+[sub_resource type="Resource" id="Resource_03owx"]
+script = ExtResource("3_fos0i")
+_tileNode = [ExtResource("6_c6i3y")]
+
+[sub_resource type="Resource" id="Resource_wkp8b"]
+resource_name = "None"
+script = ExtResource("4_3dxm6")
+Small = SubResource("Resource_03owx")
+
+[sub_resource type="Resource" id="Resource_20pc6"]
+script = ExtResource("3_fos0i")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_5vvyt"]
+script = ExtResource("4_3dxm6")
+Small = SubResource("Resource_20pc6")
+
+[sub_resource type="Resource" id="Resource_c6i3y"]
+script = ExtResource("3_fos0i")
+_tileNode = [ExtResource("5_trn2v")]
+
+[sub_resource type="Resource" id="Resource_c2ibq"]
+script = ExtResource("3_fos0i")
+_tileNode = [ExtResource("6_03owx")]
+
+[sub_resource type="Resource" id="Resource_j4qnp"]
+script = ExtResource("3_fos0i")
+_tileNode = [ExtResource("7_wkp8b")]
+
+[sub_resource type="Resource" id="Resource_fpfj3"]
+resource_name = "Tree"
+script = ExtResource("4_3dxm6")
+Small = SubResource("Resource_j4qnp")
+Medium = SubResource("Resource_c2ibq")
+Large = SubResource("Resource_c6i3y")
+
+[sub_resource type="Resource" id="Resource_2gh4u"]
+script = ExtResource("5_lgr22")
+TileMaps = Dictionary[int, ExtResource("4_3dxm6")]({
+0: SubResource("Resource_wkp8b"),
+1: SubResource("Resource_fpfj3"),
+2: SubResource("Resource_5vvyt")
+})
+None = SubResource("Resource_wkp8b")
+Tree = SubResource("Resource_fpfj3")
+Stone = SubResource("Resource_5vvyt")
+metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [node name="Main" type="Node3D" unique_id=1284737066]
 
@@ -20,6 +75,7 @@ frequency = 0.0993
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8, 0, 0)
 Radius = 2
 noise = SubResource("FastNoiseLite_cm0pq")
+DefaultTile = 3
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1466483403]
 transform = Transform3D(1, 0, 0, 0, 0.37234473, 0.9280945, 0, -0.9280945, 0.37234473, 0, 15.478721, 8.240786)
@@ -35,7 +91,9 @@ transform = Transform3D(1, 0, 0, 0, 0.49999994, 0.86602545, 0, -0.86602545, 0.49
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 0, 0)
 Radius = 2
 noise = SubResource("FastNoiseLite_r0du0")
+DefaultTile = 3
 
 [node name="TerrainGen" parent="." unique_id=116907696 instance=ExtResource("1_glv2v")]
-Features = 1
+Features = 2
 noise = SubResource("FastNoiseLite_uu6xs")
+TopTileMaps = SubResource("Resource_2gh4u")

@@ -2,87 +2,163 @@
 
 [ext_resource type="Script" uid="uid://c43wsiqg2ly6q" path="res://Objects/TerrainGen/TerrainGen.cs" id="1_d4p5m"]
 [ext_resource type="PackedScene" uid="uid://dwesn8b3yi8wa" path="res://Objects/Tile/Tile.tscn" id="2_d4p5m"]
-[ext_resource type="Script" uid="uid://cb7iss74ifst" path="res://Classes/TileInfo/TileInfo.cs" id="4_p40e5"]
-[ext_resource type="Script" uid="uid://cog33uck4g1wq" path="res://Classes/TileMap/TileMap.cs" id="5_t76vk"]
-[ext_resource type="Script" uid="uid://dbq8cwnoth0eh" path="res://Classes/TileMapController/TileMapController.cs" id="7_p40e5"]
-
-[sub_resource type="Resource" id="Resource_lmfrd"]
-script = ExtResource("4_p40e5")
-_tileNode = null
-
-[sub_resource type="Resource" id="Resource_mu40u"]
-script = ExtResource("4_p40e5")
-_tileNode = null
-
-[sub_resource type="Resource" id="Resource_2c735"]
-script = ExtResource("4_p40e5")
-_tileNode = null
-
-[sub_resource type="Resource" id="Resource_hbp3e"]
-resource_name = "Default"
-script = ExtResource("5_t76vk")
-floor = SubResource("Resource_mu40u")
-underground = SubResource("Resource_2c735")
-connection1 = SubResource("Resource_lmfrd")
+[ext_resource type="PackedScene" uid="uid://dymlud2bpml5t" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/fall/hex_grass.tscn" id="4_hbp3e"]
+[ext_resource type="Script" uid="uid://cb7iss74ifst" path="res://Classes/Tiles/TileInfo/TileInfo.cs" id="4_p40e5"]
+[ext_resource type="Script" uid="uid://cog33uck4g1wq" path="res://Classes/Tiles/TileMap/TileMap.cs" id="5_t76vk"]
+[ext_resource type="PackedScene" uid="uid://cgmyw76q22of" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/fall/hex_grass_bottom.tscn" id="6_f83lp"]
+[ext_resource type="PackedScene" uid="uid://bospqtame6rlf" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/base/hex_grass.fbx" id="7_f83lp"]
+[ext_resource type="Script" uid="uid://dbq8cwnoth0eh" path="res://Classes/Tiles/TileMapController/TileMapController.cs" id="7_p40e5"]
+[ext_resource type="PackedScene" uid="uid://lwegxjixcpsc" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/base/hex_grass_bottom.fbx" id="8_7jnah"]
+[ext_resource type="PackedScene" uid="uid://defl3g3l6rx4h" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_C.fbx" id="9_e7rpu"]
+[ext_resource type="PackedScene" uid="uid://0fv3hnocxjnq" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_B.fbx" id="10_y5204"]
+[ext_resource type="PackedScene" uid="uid://643iva42mly" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_A_curvy.fbx" id="11_j2cn8"]
+[ext_resource type="PackedScene" uid="uid://dwwu0qsib07ew" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_A.fbx" id="12_fbu53"]
+[ext_resource type="Resource" uid="uid://bb608cixkyuop" path="res://Prefabs/Features/FeatureArgs.tres" id="13_2c735"]
 
 [sub_resource type="Resource" id="Resource_7jnah"]
 script = ExtResource("4_p40e5")
-_tileNode = null
+_tileNode = []
+TileState = 2
 
 [sub_resource type="Resource" id="Resource_e7rpu"]
 script = ExtResource("4_p40e5")
-_tileNode = null
+_tileNode = []
+TileState = 3
 
 [sub_resource type="Resource" id="Resource_y5204"]
 script = ExtResource("4_p40e5")
-_tileNode = null
+_tileNode = []
+TileState = 4
 
 [sub_resource type="Resource" id="Resource_j2cn8"]
-resource_name = "Default"
-script = ExtResource("5_t76vk")
-floor = SubResource("Resource_e7rpu")
-underground = SubResource("Resource_y5204")
-connection1 = SubResource("Resource_7jnah")
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("4_hbp3e")]
 
 [sub_resource type="Resource" id="Resource_fbu53"]
 script = ExtResource("4_p40e5")
-_tileNode = null
+_tileNode = [ExtResource("6_f83lp")]
+TileState = 1
 
 [sub_resource type="Resource" id="Resource_dpkrs"]
-script = ExtResource("4_p40e5")
-_tileNode = null
+resource_name = "Fall"
+script = ExtResource("5_t76vk")
+floor = SubResource("Resource_j2cn8")
+underground = SubResource("Resource_fbu53")
+connection1 = SubResource("Resource_7jnah")
+connection2 = SubResource("Resource_e7rpu")
+connection3 = SubResource("Resource_y5204")
 
 [sub_resource type="Resource" id="Resource_ogald"]
 script = ExtResource("4_p40e5")
-_tileNode = null
+_tileNode = []
+TileState = 2
 
 [sub_resource type="Resource" id="Resource_6w6uv"]
 script = ExtResource("4_p40e5")
-_tileNode = null
+_tileNode = []
+TileState = 3
 
 [sub_resource type="Resource" id="Resource_6v3rv"]
 script = ExtResource("4_p40e5")
-_tileNode = null
+_tileNode = []
+TileState = 4
 
 [sub_resource type="Resource" id="Resource_0fqob"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("7_f83lp")]
+
+[sub_resource type="Resource" id="Resource_3l8uh"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("8_7jnah")]
+TileState = 1
+
+[sub_resource type="Resource" id="Resource_43vai"]
+resource_name = "Default"
+script = ExtResource("5_t76vk")
+floor = SubResource("Resource_0fqob")
+underground = SubResource("Resource_3l8uh")
+connection1 = SubResource("Resource_ogald")
+connection2 = SubResource("Resource_6w6uv")
+connection3 = SubResource("Resource_6v3rv")
+
+[sub_resource type="Resource" id="Resource_iq6ls"]
+script = ExtResource("4_p40e5")
+_tileNode = []
+TileState = 2
+
+[sub_resource type="Resource" id="Resource_efw0p"]
+script = ExtResource("4_p40e5")
+_tileNode = []
+TileState = 3
+
+[sub_resource type="Resource" id="Resource_2swrc"]
+script = ExtResource("4_p40e5")
+_tileNode = []
+TileState = 4
+
+[sub_resource type="Resource" id="Resource_wuatr"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("7_f83lp")]
+
+[sub_resource type="Resource" id="Resource_d1s88"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("8_7jnah")]
+TileState = 1
+
+[sub_resource type="Resource" id="Resource_ho1og"]
+resource_name = "Default"
+script = ExtResource("5_t76vk")
+floor = SubResource("Resource_wuatr")
+underground = SubResource("Resource_d1s88")
+connection1 = SubResource("Resource_iq6ls")
+connection2 = SubResource("Resource_efw0p")
+connection3 = SubResource("Resource_2swrc")
+
+[sub_resource type="Resource" id="Resource_n14k7"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("9_e7rpu")]
+TileState = 2
+
+[sub_resource type="Resource" id="Resource_ibj88"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("10_y5204")]
+TileState = 3
+
+[sub_resource type="Resource" id="Resource_e4cgg"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("11_j2cn8")]
+TileState = 4
+
+[sub_resource type="Resource" id="Resource_cxvi4"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("12_fbu53")]
+
+[sub_resource type="Resource" id="Resource_rvlvt"]
+script = ExtResource("4_p40e5")
+_tileNode = [ExtResource("8_7jnah")]
+TileState = 1
+
+[sub_resource type="Resource" id="Resource_mvhcd"]
 resource_name = "River"
 script = ExtResource("5_t76vk")
-floor = SubResource("Resource_6w6uv")
-underground = SubResource("Resource_6v3rv")
-connection1 = SubResource("Resource_fbu53")
-connection2 = SubResource("Resource_dpkrs")
-connection3 = SubResource("Resource_ogald")
+floor = SubResource("Resource_cxvi4")
+underground = SubResource("Resource_rvlvt")
+connection1 = SubResource("Resource_n14k7")
+connection2 = SubResource("Resource_ibj88")
+connection3 = SubResource("Resource_e4cgg")
 
-[sub_resource type="Resource" id="Resource_f83lp"]
+[sub_resource type="Resource" id="Resource_k2ble"]
 script = ExtResource("7_p40e5")
 TileMaps = Dictionary[int, ExtResource("5_t76vk")]({
-0: SubResource("Resource_hbp3e"),
-1: SubResource("Resource_0fqob"),
-2: SubResource("Resource_j2cn8")
+0: SubResource("Resource_43vai"),
+1: SubResource("Resource_mvhcd"),
+2: SubResource("Resource_ho1og"),
+3: SubResource("Resource_dpkrs")
 })
-Grass = SubResource("Resource_hbp3e")
-River = SubResource("Resource_0fqob")
-Path = SubResource("Resource_j2cn8")
+Grass = SubResource("Resource_43vai")
+River = SubResource("Resource_mvhcd")
+Path = SubResource("Resource_ho1og")
+Fall = SubResource("Resource_dpkrs")
 metadata/_custom_type_script = "uid://dbq8cwnoth0eh"
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2c735"]
@@ -94,5 +170,6 @@ script = ExtResource("1_d4p5m")
 TerrainScene = ExtResource("2_d4p5m")
 Radius = 5
 Amplitude = 2
-TileMaps = SubResource("Resource_f83lp")
+TileMaps = SubResource("Resource_k2ble")
 noise = SubResource("FastNoiseLite_2c735")
+FeatureArgs = ExtResource("13_2c735")

@@ -10,22 +10,25 @@ public partial class Tile : Node3D
     [Export]
     private StaticBody3D StaticBody;
     private TileMap TileMap;
+    private TopTileMap TopTileMap;
     private TerrainInfo TerrainInfo;
     private float X;
     private float Z;
     
     public Tile() { }
-    public Tile(TileMap tileMap, float x, float z, TerrainInfo TI = null)
+    public Tile(TileMap tileMap, TopTileMap topTileMap, float x, float z, TerrainInfo TI = null)
     {
         TileMap = tileMap;
+        TopTileMap = topTileMap;
         X = x;
         Z = z;
         TerrainInfo = TI;
     }
 
-    public void Set(TileMap tileMap, float x, float z, TerrainInfo TI = null)
+    public void Set(TileMap tileMap, TopTileMap topTileMap, float x, float z, TerrainInfo TI = null)
     {
         TileMap = tileMap;
+        TopTileMap = topTileMap;
         X = x;
         Z = z;
         TerrainInfo = TI;
@@ -42,6 +45,13 @@ public partial class Tile : Node3D
             AddChild(node);
             node.Position = new Vector3(0, i, 0);
             node.RotationDegrees = new Vector3(0, TileUtil.GetTileRotation(TerrainInfo, TileUtil.GetState(TerrainInfo, i)), 0);
+        }
+        if (TerrainInfo.TileTopType != TileUtil.TileTopType.None && TerrainInfo.TileType == TileUtil.TileType.Grass)
+        {
+            var TPS = TopTileMap[TerrainInfo.TopTileState].TileNode;
+            var topNode = TPS.Instantiate<Node3D>();
+            AddChild(topNode);
+            topNode.Position = new Vector3(0, TerrainInfo.TileHeight, 0);
         }
         StaticBody.Position = new Vector3(0, TerrainInfo.TileHeight, 0);
     }
