@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package packets;
+option go_package = "pkg/packets";
+
+message Vector3Msg { float x = 1; float y = 2; float z = 3; }
+enum ChatType { Nothing = 0; Global = 1; Local = 2; Party = 3; Max = 4; }
+
+
+message ChatMessage { ChatType type = 1; string msg = 2; string Username = 3;}
+message IdMessage { uint64 id = 1; }
+message LoginRequestMessage { string username = 1; string password = 2; }
+message RegisterRequestMessage { string username = 1; string password = 2; }
+message OkResponseMessage { }
+message DenyResponseMessage { string reason = 1; }
+message CommandMessage { string command = 1; repeated string args = 2; }
+// more message types here
+
+
+// protoc -I="shared" --go_out="server" "shared/packets.proto"
+// protoc -I="shared" --csharp_out="worlds-collide-client" "shared/packets.proto"
+
+message Packet {
+  uint64 sender_id = 1;
+  oneof msg {
+    ChatMessage chat = 2;
+    IdMessage id = 3;
+    LoginRequestMessage loginRequest = 4;
+    RegisterRequestMessage registerRequest = 5;
+    OkResponseMessage OK = 6;
+    DenyResponseMessage Deny = 7;
+    CommandMessage command = 12;
+    //...
+  }
+}
