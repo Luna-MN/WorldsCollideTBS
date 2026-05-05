@@ -4,36 +4,26 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="106c3f22-c548-41cb-bc3a-420258256ab5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/go.imports.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/worlds-collide-tbs.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/packets.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/cmd/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/clients/websocket.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/db/config/queries.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/db/config/schema.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/db/config/sqlc.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/hub.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/objects/gameObjects.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/objects/sharedCollection.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/objects/vectors.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/states/login.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/states/services/authService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/server/states/services/chatService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/pkg/packets/util.go" afterDir="false" />
+    <list default="true" id="106c3f22-c548-41cb-bc3a-420258256ab5" name="Changes" comment="backend">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WorldsCollideTBS/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WorldsCollideTBS/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Main.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/WorldsCollideTBS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Client/WorldsCollideTBS.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/Client/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/packets.proto" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/packets.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/server/states/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/internal/server/states/login.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pkg/packets/packets.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/pkg/packets/packets.pb.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="10447" />
+    <option name="cachedIndexableFilesCount" value="10470" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -47,25 +37,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Luna-MN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Luna-MN&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Luna-MN/WorldsCollideTBS",
-    "accountId": "84faae84-b6e1-47e1-9397-38fcadd59598"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Luna-MN/WorldsCollideTBS&quot;,
+    &quot;accountId&quot;: &quot;84faae84-b6e1-47e1-9397-38fcadd59598&quot;
   }
-}]]></component>
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="3DGM2p4m7wrsYnYgYsn7JqftbXr" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -74,32 +67,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultGoTemplateProperty": "Go File",
-    "Go Build.go build main.go.executor": "Run",
-    "RunOnceActivity.GoLinterPluginOnboardingV2": "true",
-    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "go.sdk.automatically.set": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/matt/Documents/worlds-collide-tbs/server/internal/server/states",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Build.go build main.go.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.GoLinterPluginOnboardingV2&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/matt/Documents/worlds-collide-tbs/server/cert&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\matt\Documents\worlds-collide-tbs\server\cert" />
       <recent name="C:\Users\matt\Documents\worlds-collide-tbs\server\internal\server\states" />
       <recent name="C:\Users\matt\Documents\worlds-collide-tbs\server\internal\server\states\services" />
     </key>
@@ -143,5 +142,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="backend" />
   </component>
 </project>

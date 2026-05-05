@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://b3ed2x8hydvgd"]
+
+[ext_resource type="PackedScene" uid="uid://dpj6k736hcvn3" path="res://Objects/TerrainGen/terrain_gen.tscn" id="1_1okw7"]
+[ext_resource type="Script" uid="uid://cdmsp2jh00nj4" path="res://Classes/Input/InputHandler.cs" id="2_bg3qp"]
+[ext_resource type="PackedScene" uid="uid://cuvb0owaundaw" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/rock_single_C.fbx" id="3_hc3n2"]
+[ext_resource type="Script" uid="uid://f0vo74h3lkq6" path="res://Classes/Tiles/TopTile/TopTileInfo/TopTileInfo.cs" id="4_v43kf"]
+[ext_resource type="PackedScene" uid="uid://dcaogmhs0841w" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/rock_single_B.fbx" id="5_8kttb"]
+[ext_resource type="PackedScene" uid="uid://c2kumypy816rc" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/rock_single_E.fbx" id="6_nncol"]
+[ext_resource type="Script" uid="uid://dq0poljwdwgt7" path="res://Classes/Tiles/TopTile/TopTileMap/TopTileMap.cs" id="7_tpv42"]
+[ext_resource type="PackedScene" uid="uid://bpm3j82pv63ds" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/trees_B_large.fbx" id="8_hupsw"]
+[ext_resource type="PackedScene" uid="uid://dnqfq24tl2eh6" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/trees_B_medium.fbx" id="9_rp31r"]
+[ext_resource type="PackedScene" uid="uid://b6c4gpxn0m8j5" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/trees_B_small.fbx" id="10_t3o0p"]
+[ext_resource type="Script" uid="uid://blrspcfrv1tjd" path="res://Classes/Tiles/TopTile/TopTileMapController/TopTileMapController.cs" id="11_14ulb"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cm0pq"]
+seed = 74
+frequency = 0.693
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r0du0"]
+frequency = 0.2104
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uu6xs"]
+seed = 665
+frequency = 0.4296
+
+[sub_resource type="Resource" id="Resource_5vvyt"]
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("3_hc3n2")]
+TileTopType = 2
+
+[sub_resource type="Resource" id="Resource_c6i3y"]
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("5_8kttb")]
+TileTopType = 1
+
+[sub_resource type="Resource" id="Resource_c2ibq"]
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("6_nncol")]
+
+[sub_resource type="Resource" id="Resource_j4qnp"]
+resource_name = "None"
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_c2ibq")
+Medium = SubResource("Resource_c6i3y")
+Large = SubResource("Resource_5vvyt")
+
+[sub_resource type="Resource" id="Resource_fpfj3"]
+script = ExtResource("4_v43kf")
+_tileNode = []
+TileTopType = 2
+
+[sub_resource type="Resource" id="Resource_sc1dx"]
+script = ExtResource("4_v43kf")
+_tileNode = []
+TileTopType = 1
+
+[sub_resource type="Resource" id="Resource_kjvhd"]
+script = ExtResource("4_v43kf")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_5tuhn"]
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_kjvhd")
+Medium = SubResource("Resource_sc1dx")
+Large = SubResource("Resource_fpfj3")
+
+[sub_resource type="Resource" id="Resource_devvj"]
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("8_hupsw")]
+
+[sub_resource type="Resource" id="Resource_3b0ty"]
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("9_rp31r")]
+
+[sub_resource type="Resource" id="Resource_bg4s2"]
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("10_t3o0p")]
+
+[sub_resource type="Resource" id="Resource_hhcpw"]
+resource_name = "Tree"
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_bg4s2")
+Medium = SubResource("Resource_3b0ty")
+Large = SubResource("Resource_devvj")
+
+[sub_resource type="Resource" id="Resource_2gh4u"]
+script = ExtResource("11_14ulb")
+TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
+0: SubResource("Resource_j4qnp"),
+1: SubResource("Resource_hhcpw"),
+2: SubResource("Resource_5tuhn")
+})
+None = SubResource("Resource_j4qnp")
+Tree = SubResource("Resource_hhcpw")
+Stone = SubResource("Resource_5tuhn")
+metadata/_custom_type_script = "uid://blrspcfrv1tjd"
+
+[node name="MainGame" type="Node3D" unique_id=1284737066]
+
+[node name="TerrainGen3" parent="." unique_id=314974575 instance=ExtResource("1_1okw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8, 0, 0)
+Radius = 2
+noise = SubResource("FastNoiseLite_cm0pq")
+DefaultTile = 3
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1466483403]
+transform = Transform3D(1, 0, 0, 0, 0.37234473, 0.9280945, 0, -0.9280945, 0.37234473, 0, 15.478721, 8.240786)
+
+[node name="Input" type="Node3D" parent="Camera3D" unique_id=157245926]
+transform = Transform3D(1, 0, 0, 0, 0.49190915, -0.87064654, 0, 0.87064654, 0.49190915, 0, 0, 0)
+script = ExtResource("2_bg3qp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2006036234]
+transform = Transform3D(1, 0, 0, 0, 0.49999994, 0.86602545, 0, -0.86602545, 0.49999994, 0, 12, 9)
+
+[node name="TerrainGen2" parent="." unique_id=283917659 instance=ExtResource("1_1okw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 0, 0)
+Radius = 2
+noise = SubResource("FastNoiseLite_r0du0")
+DefaultTile = 3
+
+[node name="TerrainGen" parent="." unique_id=116907696 instance=ExtResource("1_1okw7")]
+Features = 2
+noise = SubResource("FastNoiseLite_uu6xs")
+TopTileMaps = SubResource("Resource_2gh4u")

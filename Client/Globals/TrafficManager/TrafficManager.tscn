@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bp24es16iieo6"]
+
+[ext_resource type="Script" uid="uid://dfawd0el4fky1" path="res://Globals/TrafficManager/TrafficManager.cs" id="1_ckh37"]
+
+[node name="TrafficManager" type="Node" unique_id=698042633]
+script = ExtResource("1_ckh37")

@@ -4,6 +4,7 @@ package packets;
 option go_package = "pkg/packets";
 
 message Vector3Msg { float x = 1; float y = 2; float z = 3; }
+message Vector2Msg { float x = 1; float y = 2; }
 enum ChatType { Nothing = 0; Global = 1; Local = 2; Party = 3; Max = 4; }
 
 
@@ -14,11 +15,13 @@ message RegisterRequestMessage { string username = 1; string password = 2; }
 message OkResponseMessage { }
 message DenyResponseMessage { string reason = 1; }
 message CommandMessage { string command = 1; repeated string args = 2; }
+message HexPositionMessage { Vector2Msg position = 1; }
+message HexPositionsMessage { repeated HexPositionMessage positions = 1;}
 // more message types here
 
 
 // protoc -I="shared" --go_out="server" "shared/packets.proto"
-// protoc -I="shared" --csharp_out="worlds-collide-client" "shared/packets.proto"
+// protoc -I="shared" --csharp_out="Client" "shared/packets.proto"
 
 message Packet {
   uint64 sender_id = 1;
@@ -29,7 +32,9 @@ message Packet {
     RegisterRequestMessage registerRequest = 5;
     OkResponseMessage OK = 6;
     DenyResponseMessage Deny = 7;
-    CommandMessage command = 12;
+    CommandMessage command = 8;
+    HexPositionMessage hexPosition = 9;
+    HexPositionsMessage hexPositions = 10;
     //...
   }
 }

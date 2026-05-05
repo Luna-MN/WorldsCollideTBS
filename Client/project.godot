@@ -15,6 +15,12 @@ run/main_scene="uid://b3ed2x8hydvgd"
 config/features=PackedStringArray("4.7", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://4mjc887lhg51"
+TrafficManager="*uid://bp24es16iieo6"
+Websocket="*uid://csvknv7ac0458"
+
 [dotnet]
 
 project/assembly_name="WorldsCollideTBS"

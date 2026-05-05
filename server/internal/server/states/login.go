@@ -58,7 +58,7 @@ func (l *Login) OnExit() {
 
 func (l *Login) HandleLoginRequest(id uint64, message *packets.Packet_LoginRequest) {
 	if id != l.client.Id() {
-		l.logger.Printf("Received login request from differant client, ignoring (ID %d)", id)
+		l.logger.Printf("Received login request from different client, ignoring (ID %d)", id)
 		return
 	}
 
