@@ -26,12 +26,10 @@ frequency = 0.4296
 [sub_resource type="Resource" id="Resource_5vvyt"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("3_hc3n2")]
-TileTopType = 2
 
 [sub_resource type="Resource" id="Resource_c6i3y"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("5_8kttb")]
-TileTopType = 1
 
 [sub_resource type="Resource" id="Resource_c2ibq"]
 script = ExtResource("4_v43kf")
@@ -47,12 +45,10 @@ Large = SubResource("Resource_5vvyt")
 [sub_resource type="Resource" id="Resource_fpfj3"]
 script = ExtResource("4_v43kf")
 _tileNode = []
-TileTopType = 2
 
 [sub_resource type="Resource" id="Resource_sc1dx"]
 script = ExtResource("4_v43kf")
 _tileNode = []
-TileTopType = 1
 
 [sub_resource type="Resource" id="Resource_kjvhd"]
 script = ExtResource("4_v43kf")
