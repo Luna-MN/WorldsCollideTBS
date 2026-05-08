@@ -15,7 +15,7 @@ public partial class Websocket : Node
     {
         var err = socket.ConnectToUrl(url, tlsOptions);
         if (err != Error.Ok) return err;
-
+        
         lastState = socket.GetReadyState();
         return Error.Ok;
     }

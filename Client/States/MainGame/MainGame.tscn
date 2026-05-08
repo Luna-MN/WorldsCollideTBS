@@ -16,79 +16,121 @@
 seed = 74
 frequency = 0.693
 
+[sub_resource type="Resource" id="Resource_1okw7"]
+script = ExtResource("7_tpv42")
+
+[sub_resource type="Resource" id="Resource_bg3qp"]
+script = ExtResource("7_tpv42")
+
+[sub_resource type="Resource" id="Resource_hc3n2"]
+script = ExtResource("7_tpv42")
+
+[sub_resource type="Resource" id="Resource_v43kf"]
+script = ExtResource("11_14ulb")
+TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
+0: SubResource("Resource_1okw7"),
+1: SubResource("Resource_hc3n2"),
+2: SubResource("Resource_bg3qp")
+})
+None = SubResource("Resource_1okw7")
+Tree = SubResource("Resource_hc3n2")
+Stone = SubResource("Resource_bg3qp")
+metadata/_custom_type_script = "uid://blrspcfrv1tjd"
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_r0du0"]
 frequency = 0.2104
+
+[sub_resource type="Resource" id="Resource_8kttb"]
+script = ExtResource("7_tpv42")
+
+[sub_resource type="Resource" id="Resource_nncol"]
+script = ExtResource("7_tpv42")
+
+[sub_resource type="Resource" id="Resource_tpv42"]
+script = ExtResource("7_tpv42")
+
+[sub_resource type="Resource" id="Resource_hupsw"]
+script = ExtResource("11_14ulb")
+TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
+0: SubResource("Resource_8kttb"),
+1: SubResource("Resource_tpv42"),
+2: SubResource("Resource_nncol")
+})
+None = SubResource("Resource_8kttb")
+Tree = SubResource("Resource_tpv42")
+Stone = SubResource("Resource_nncol")
+metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uu6xs"]
 seed = 665
 frequency = 0.4296
 
-[sub_resource type="Resource" id="Resource_5vvyt"]
+[sub_resource type="Resource" id="Resource_rp31r"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("3_hc3n2")]
 
-[sub_resource type="Resource" id="Resource_c6i3y"]
+[sub_resource type="Resource" id="Resource_t3o0p"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("5_8kttb")]
 
-[sub_resource type="Resource" id="Resource_c2ibq"]
+[sub_resource type="Resource" id="Resource_14ulb"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("6_nncol")]
 
-[sub_resource type="Resource" id="Resource_j4qnp"]
+[sub_resource type="Resource" id="Resource_oxfgx"]
 resource_name = "None"
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_c2ibq")
-Medium = SubResource("Resource_c6i3y")
-Large = SubResource("Resource_5vvyt")
+Small = SubResource("Resource_14ulb")
+Medium = SubResource("Resource_t3o0p")
+Large = SubResource("Resource_rp31r")
 
-[sub_resource type="Resource" id="Resource_fpfj3"]
+[sub_resource type="Resource" id="Resource_k7iuc"]
 script = ExtResource("4_v43kf")
 _tileNode = []
 
-[sub_resource type="Resource" id="Resource_sc1dx"]
+[sub_resource type="Resource" id="Resource_eey8p"]
 script = ExtResource("4_v43kf")
 _tileNode = []
 
-[sub_resource type="Resource" id="Resource_kjvhd"]
+[sub_resource type="Resource" id="Resource_b2co8"]
 script = ExtResource("4_v43kf")
 _tileNode = []
 
-[sub_resource type="Resource" id="Resource_5tuhn"]
+[sub_resource type="Resource" id="Resource_25l26"]
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_kjvhd")
-Medium = SubResource("Resource_sc1dx")
-Large = SubResource("Resource_fpfj3")
+Small = SubResource("Resource_b2co8")
+Medium = SubResource("Resource_eey8p")
+Large = SubResource("Resource_k7iuc")
 
-[sub_resource type="Resource" id="Resource_devvj"]
+[sub_resource type="Resource" id="Resource_ysjsb"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("8_hupsw")]
 
-[sub_resource type="Resource" id="Resource_3b0ty"]
+[sub_resource type="Resource" id="Resource_4p42s"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("9_rp31r")]
 
-[sub_resource type="Resource" id="Resource_bg4s2"]
+[sub_resource type="Resource" id="Resource_fevcq"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("10_t3o0p")]
 
-[sub_resource type="Resource" id="Resource_hhcpw"]
+[sub_resource type="Resource" id="Resource_e6thy"]
 resource_name = "Tree"
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_bg4s2")
-Medium = SubResource("Resource_3b0ty")
-Large = SubResource("Resource_devvj")
+Small = SubResource("Resource_fevcq")
+Medium = SubResource("Resource_4p42s")
+Large = SubResource("Resource_ysjsb")
 
 [sub_resource type="Resource" id="Resource_2gh4u"]
 script = ExtResource("11_14ulb")
 TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
-0: SubResource("Resource_j4qnp"),
-1: SubResource("Resource_hhcpw"),
-2: SubResource("Resource_5tuhn")
+0: SubResource("Resource_oxfgx"),
+1: SubResource("Resource_e6thy"),
+2: SubResource("Resource_25l26")
 })
-None = SubResource("Resource_j4qnp")
-Tree = SubResource("Resource_hhcpw")
-Stone = SubResource("Resource_5tuhn")
+None = SubResource("Resource_oxfgx")
+Tree = SubResource("Resource_e6thy")
+Stone = SubResource("Resource_25l26")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [node name="MainGame" type="Node3D" unique_id=1284737066]
@@ -98,6 +140,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8, 0, 0)
 Radius = 2
 noise = SubResource("FastNoiseLite_cm0pq")
 DefaultTile = 3
+TopTileMaps = SubResource("Resource_v43kf")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1466483403]
 transform = Transform3D(1, 0, 0, 0, 0.37234473, 0.9280945, 0, -0.9280945, 0.37234473, 0, 15.478721, 8.240786)
@@ -114,6 +157,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 0, 0)
 Radius = 2
 noise = SubResource("FastNoiseLite_r0du0")
 DefaultTile = 3
+TopTileMaps = SubResource("Resource_hupsw")
 
 [node name="TerrainGen" parent="." unique_id=116907696 instance=ExtResource("1_1okw7")]
 Features = 2

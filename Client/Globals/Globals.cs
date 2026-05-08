@@ -5,4 +5,5 @@ public static class Globals
 {
     public static Websocket WS;
     public static GameManager GM;
+    public static SteamManager SM;
 }

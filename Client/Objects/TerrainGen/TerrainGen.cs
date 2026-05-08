@@ -25,7 +25,7 @@ public partial class TerrainGen : Node3D
     [Export]
     public TopTileMapController TopTileMaps;
     private WorldInfo worldInfo;
-    [ExportToolButton("Generate Terrain")] private Callable GenerateTerrainButton => Callable.From(Generate);
+    [ExportToolButton("Generate Terrain")] private Callable GenerateTerrainButton => Callable.From(_Ready);
     
 
     public override void _Ready()

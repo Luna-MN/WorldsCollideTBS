@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bw0y03va2uel1"]
+
+[ext_resource type="Script" uid="uid://qk23nmyuypu0" path="res://Globals/SteamManager/SteamManager.cs" id="1_qq78e"]
+
+[node name="SteamManager" type="Node" unique_id=97824860]
+script = ExtResource("1_qq78e")

@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="106c3f22-c548-41cb-bc3a-420258256ab5" name="Changes" comment="backend">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WorldsCollideTBS/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WorldsCollideTBS/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/steam_appid.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/internal/steam/steamWebClient.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/internal/steam/util.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WorldsCollideTBS/.idea/libraries/GdSdk_Master.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Main.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Globals/Globals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Globals/Globals.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Globals/Websocket/Websocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Globals/Websocket/Websocket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Objects/TerrainGen/TerrainGen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Objects/TerrainGen/TerrainGen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Scenes/Main/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Scenes/Main/Main.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/States/MainGame/MainGame.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Client/States/MainGame/MainGame.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/WorldsCollideTBS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Client/WorldsCollideTBS.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/Client/project.godot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/packets.proto" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/packets.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/internal/server/states/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/internal/server/states/login.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pkg/packets/packets.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/pkg/packets/packets.pb.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +25,7 @@
   </component>
   <component name="ChangesViewManager" show_ignored="true" />
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="10470" />
+    <option name="cachedIndexableFilesCount" value="15804" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -45,7 +47,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Luna-MN/WorldsCollideTBS&quot;,
+    &quot;url&quot;: &quot;https://github.com/Luna-MN/WorldsCollideTBS.git&quot;,
     &quot;accountId&quot;: &quot;84faae84-b6e1-47e1-9397-38fcadd59598&quot;
   }
 }</component>
@@ -84,7 +86,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/matt/Documents/worlds-collide-tbs/server/cert&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/thema/RiderProjects/WorldsCollideTBS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -103,6 +105,7 @@
       <recent name="C:\Users\matt\Documents\worlds-collide-tbs\server\internal\server\states\services" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thema\RiderProjects\WorldsCollideTBS\server\internal" />
       <recent name="C:\Users\matt\Documents\worlds-collide-tbs\Server\internal" />
       <recent name="C:\Users\matt\Documents\worlds-collide-tbs\Server\internal\server" />
     </key>

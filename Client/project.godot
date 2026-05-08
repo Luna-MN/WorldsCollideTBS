@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameManager="*uid://4mjc887lhg51"
 TrafficManager="*uid://bp24es16iieo6"
 Websocket="*uid://csvknv7ac0458"
+SteamManager="*uid://bw0y03va2uel1"
 
 [dotnet]
 
