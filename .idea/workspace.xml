@@ -5,10 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="106c3f22-c548-41cb-bc3a-420258256ab5" name="Changes" comment="Steam integration">
-      <change afterPath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/Steam/Steam.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/Websocket/Websocket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/packets.proto" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/packets.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/WorldsCollideTBS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Client/WorldsCollideTBS.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/.idea/.idea.CSBridge/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/.idea/.idea.CSBridge/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/.idea/.idea.CSBridge/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/.idea/.idea.CSBridge/.idea/material_theme_project_new.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/.idea/.idea.CSBridge/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/CSBridge.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/Main.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/Packets.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/Steam/Steam.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/Websocket/Websocket.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/bin/Debug/net10.0/CSBridge.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/bin/Debug/net10.0/CSBridge.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/bin/Debug/net10.0/CSBridge.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/bin/Debug/net10.0/CSBridge.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/bin/Debug/net10.0/CSBridge.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/bin/Debug/net10.0/GodotSharp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/bin/Debug/net10.0/Google.Protobuf.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/CSBridge.csproj.nuget.dgspec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/CSBridge.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/CSBridge.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.GlobalUsings.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.csproj.Up2Date" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.genruntimeconfig.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/CSBridge.sourcelink.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/apphost.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/ref/CSBridge.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/Debug/net10.0/refint/CSBridge.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/project.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/project.packagespec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/rider.project.model.nuget.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/obj/rider.project.restore.info" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +57,7 @@
   </component>
   <component name="ChangesViewManager" show_ignored="true" />
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="15804" />
+    <option name="cachedIndexableFilesCount" value="10543" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -37,12 +77,12 @@
     &quot;assignee&quot;: &quot;Luna-MN&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Luna-MN/WorldsCollideTBS.git&quot;,
-    &quot;accountId&quot;: &quot;84faae84-b6e1-47e1-9397-38fcadd59598&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Luna-MN/WorldsCollideTBS",
+    "accountId": "84faae84-b6e1-47e1-9397-38fcadd59598"
   }
-}</component>
+}]]></component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -61,35 +101,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
-    &quot;Go Build.go build main.go.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.GoLinterPluginOnboardingV2&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/thema/RiderProjects/WorldsCollideTBS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultGoTemplateProperty": "Go File",
+    "Go Build.go build main.go.executor": "Debug",
+    "RunOnceActivity.GoLinterPluginOnboardingV2": "true",
+    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "master",
+    "go.sdk.automatically.set": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/matt",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\matt\Documents\worlds-collide-tbs\server\cert" />

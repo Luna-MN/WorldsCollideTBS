@@ -1,0 +1,30 @@
+<Project Sdk="Godot.NET.Sdk/4.7.0-dev.5">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="steam_appid.txt" />
+    <PackageReference Include="Google.Protobuf" Version="3.35.0-rc1" />
+        <!-- Steamworks.NET -->
+        <Reference Include="Steamworks.NET, Version=20.2.0, Culture=neutral, processorArchitecture=MSIL">
+            <SpecificVersion>False</SpecificVersion>
+            <Link>Steamworks.NET.dll</Link>
+            <HintPath Condition=" '$(OS)' == 'Windows_NT' ">Steamworks/Windows-x64/Steamworks.NET.dll</HintPath>
+            <HintPath Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))'">Steamworks/OSX-Linux-x64/Steamworks.NET.dll</HintPath>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Reference>
+        <Content Include="Steamworks/Windows-x64/steam_api64.dll" Condition=" '$(OS)' == 'Windows_NT' ">
+            <Link>steam_api64.dll</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    
+        <Content Include="Steamworks/OSX-Linux-x64/steam_api.bundle/Contents/MacOS/libsteam_api.dylib" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))'">
+            <Link>libsteam_api.dylib</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+      <Content Include="steam_appid.txt" />
+        <!-- /Steamworks.NET -->
+    </ItemGroup>
+</Project>
