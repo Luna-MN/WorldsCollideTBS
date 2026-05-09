@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="106c3f22-c548-41cb-bc3a-420258256ab5" name="Changes" comment="backend">
-      <change afterPath="$PROJECT_DIR$/Client/steam_appid.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/steam/steamWebClient.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/internal/steam/util.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WorldsCollideTBS/.idea/libraries/GdSdk_Master.xml" beforeDir="false" />
+    <list default="true" id="106c3f22-c548-41cb-bc3a-420258256ab5" name="Changes" comment="Steam integration">
+      <change afterPath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/Steam/Steam.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/internal/steam/CSBridge/CSBridge/CSBridge/Websocket/Websocket.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Globals/Globals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Globals/Globals.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Globals/Websocket/Websocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Globals/Websocket/Websocket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Objects/TerrainGen/TerrainGen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Objects/TerrainGen/TerrainGen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Scenes/Main/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Scenes/Main/Main.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/States/MainGame/MainGame.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Client/States/MainGame/MainGame.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/WorldsCollideTBS.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Client/WorldsCollideTBS.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/Client/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/packets.proto" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/packets.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +140,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="backend" />
+    <MESSAGE value="Steam integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Steam integration" />
   </component>
 </project>

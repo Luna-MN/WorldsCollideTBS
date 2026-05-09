@@ -22,6 +22,7 @@ message HexPositionsMessage { repeated HexPositionMessage positions = 1;}
 
 // protoc -I="shared" --go_out="server" "shared/packets.proto"
 // protoc -I="shared" --csharp_out="Client" "shared/packets.proto"
+// protoc -I="shared" --csharp_out="server/internal/steam/CSBridge/CSbridge/CSBridge" "shared/packets.proto"
 
 message Packet {
   uint64 sender_id = 1;

@@ -1,0 +1,57 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "CSBridge/1.0.0": {
+        "dependencies": {
+          "GodotSharp": "4.7.0-dev.5",
+          "Google.Protobuf": "3.35.0-rc2"
+        },
+        "runtime": {
+          "CSBridge.dll": {}
+        }
+      },
+      "GodotSharp/4.7.0-dev.5": {
+        "runtime": {
+          "lib/net8.0/GodotSharp.dll": {
+            "assemblyVersion": "4.7.0.0",
+            "fileVersion": "4.7.0.0"
+          }
+        }
+      },
+      "Google.Protobuf/3.35.0-rc2": {
+        "runtime": {
+          "lib/net5.0/Google.Protobuf.dll": {
+            "assemblyVersion": "3.35.0.0",
+            "fileVersion": "3.35.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CSBridge/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GodotSharp/4.7.0-dev.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e1uzHIFJeHRy+JHKopSMpXDpMWeOskv+VBoiE/314xq0Hor8Q21kr7TVRw4TZkukvryaob0I4ValKRJsSP4yBg==",
+      "path": "godotsharp/4.7.0-dev.5",
+      "hashPath": "godotsharp.4.7.0-dev.5.nupkg.sha512"
+    },
+    "Google.Protobuf/3.35.0-rc2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qWpOo3+V76f4J51M5oJQLB96PHa0+zTx+tzTU9W26Pxlpk8MeAZ0z0G/iurKA2t0bTsnHk/oApnwWOQvCJRKZg==",
+      "path": "google.protobuf/3.35.0-rc2",
+      "hashPath": "google.protobuf.3.35.0-rc2.nupkg.sha512"
+    }
+  }
+}
