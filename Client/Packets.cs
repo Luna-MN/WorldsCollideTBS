@@ -30,25 +30,29 @@ namespace Packets {
             "DjIRLnBhY2tldHMuQ2hhdFR5cGUSCwoDbXNnGAIgASgJEhAKCFVzZXJuYW1l",
             "GAMgASgJIhcKCUlkTWVzc2FnZRIKCgJpZBgBIAEoBCI5ChNMb2dpblJlcXVl",
             "c3RNZXNzYWdlEhAKCHVzZXJuYW1lGAEgASgJEhAKCHBhc3N3b3JkGAIgASgJ",
-            "IjwKFlJlZ2lzdGVyUmVxdWVzdE1lc3NhZ2USEAoIdXNlcm5hbWUYASABKAkS",
-            "EAoIcGFzc3dvcmQYAiABKAkiEwoRT2tSZXNwb25zZU1lc3NhZ2UiJQoTRGVu",
-            "eVJlc3BvbnNlTWVzc2FnZRIOCgZyZWFzb24YASABKAkiLwoOQ29tbWFuZE1l",
-            "c3NhZ2USDwoHY29tbWFuZBgBIAEoCRIMCgRhcmdzGAIgAygJIjsKEkhleFBv",
-            "c2l0aW9uTWVzc2FnZRIlCghwb3NpdGlvbhgBIAEoCzITLnBhY2tldHMuVmVj",
-            "dG9yMk1zZyJFChNIZXhQb3NpdGlvbnNNZXNzYWdlEi4KCXBvc2l0aW9ucxgB",
-            "IAMoCzIbLnBhY2tldHMuSGV4UG9zaXRpb25NZXNzYWdlIsoDCgZQYWNrZXQS",
-            "EQoJc2VuZGVyX2lkGAEgASgEEiQKBGNoYXQYAiABKAsyFC5wYWNrZXRzLkNo",
-            "YXRNZXNzYWdlSAASIAoCaWQYAyABKAsyEi5wYWNrZXRzLklkTWVzc2FnZUgA",
-            "EjQKDGxvZ2luUmVxdWVzdBgEIAEoCzIcLnBhY2tldHMuTG9naW5SZXF1ZXN0",
-            "TWVzc2FnZUgAEjoKD3JlZ2lzdGVyUmVxdWVzdBgFIAEoCzIfLnBhY2tldHMu",
-            "UmVnaXN0ZXJSZXF1ZXN0TWVzc2FnZUgAEigKAk9LGAYgASgLMhoucGFja2V0",
-            "cy5Pa1Jlc3BvbnNlTWVzc2FnZUgAEiwKBERlbnkYByABKAsyHC5wYWNrZXRz",
-            "LkRlbnlSZXNwb25zZU1lc3NhZ2VIABIqCgdjb21tYW5kGAggASgLMhcucGFj",
-            "a2V0cy5Db21tYW5kTWVzc2FnZUgAEjIKC2hleFBvc2l0aW9uGAkgASgLMhsu",
-            "cGFja2V0cy5IZXhQb3NpdGlvbk1lc3NhZ2VIABI0CgxoZXhQb3NpdGlvbnMY",
-            "CiABKAsyHC5wYWNrZXRzLkhleFBvc2l0aW9uc01lc3NhZ2VIAEIFCgNtc2cq",
-            "QgoIQ2hhdFR5cGUSCwoHTm90aGluZxAAEgoKBkdsb2JhbBABEgkKBUxvY2Fs",
-            "EAISCQoFUGFydHkQAxIHCgNNYXgQBEINWgtwa2cvcGFja2V0c2IGcHJvdG8z"));
+            "IlEKFlN0ZWFtQXV0aFRpY2tldE1lc3NhZ2USFQoNc3RlYW1Vc2VybmFtZRgB",
+            "IAEoCRIOCgZ0aWNrZXQYAiABKAwSEAoIaWRlbnRpdHkYAyABKAkiPAoWUmVn",
+            "aXN0ZXJSZXF1ZXN0TWVzc2FnZRIQCgh1c2VybmFtZRgBIAEoCRIQCghwYXNz",
+            "d29yZBgCIAEoCSITChFPa1Jlc3BvbnNlTWVzc2FnZSIlChNEZW55UmVzcG9u",
+            "c2VNZXNzYWdlEg4KBnJlYXNvbhgBIAEoCSIvCg5Db21tYW5kTWVzc2FnZRIP",
+            "Cgdjb21tYW5kGAEgASgJEgwKBGFyZ3MYAiADKAkiOwoSSGV4UG9zaXRpb25N",
+            "ZXNzYWdlEiUKCHBvc2l0aW9uGAEgASgLMhMucGFja2V0cy5WZWN0b3IyTXNn",
+            "IkUKE0hleFBvc2l0aW9uc01lc3NhZ2USLgoJcG9zaXRpb25zGAEgAygLMhsu",
+            "cGFja2V0cy5IZXhQb3NpdGlvbk1lc3NhZ2UiggQKBlBhY2tldBIRCglzZW5k",
+            "ZXJfaWQYASABKAQSJAoEY2hhdBgCIAEoCzIULnBhY2tldHMuQ2hhdE1lc3Nh",
+            "Z2VIABIgCgJpZBgDIAEoCzISLnBhY2tldHMuSWRNZXNzYWdlSAASNAoMbG9n",
+            "aW5SZXF1ZXN0GAQgASgLMhwucGFja2V0cy5Mb2dpblJlcXVlc3RNZXNzYWdl",
+            "SAASOgoPcmVnaXN0ZXJSZXF1ZXN0GAUgASgLMh8ucGFja2V0cy5SZWdpc3Rl",
+            "clJlcXVlc3RNZXNzYWdlSAASKAoCT0sYBiABKAsyGi5wYWNrZXRzLk9rUmVz",
+            "cG9uc2VNZXNzYWdlSAASLAoERGVueRgHIAEoCzIcLnBhY2tldHMuRGVueVJl",
+            "c3BvbnNlTWVzc2FnZUgAEioKB2NvbW1hbmQYCCABKAsyFy5wYWNrZXRzLkNv",
+            "bW1hbmRNZXNzYWdlSAASMgoLaGV4UG9zaXRpb24YCSABKAsyGy5wYWNrZXRz",
+            "LkhleFBvc2l0aW9uTWVzc2FnZUgAEjQKDGhleFBvc2l0aW9ucxgKIAEoCzIc",
+            "LnBhY2tldHMuSGV4UG9zaXRpb25zTWVzc2FnZUgAEjYKC3N0ZWFtVGlja2V0",
+            "GAsgASgLMh8ucGFja2V0cy5TdGVhbUF1dGhUaWNrZXRNZXNzYWdlSABCBQoD",
+            "bXNnKkIKCENoYXRUeXBlEgsKB05vdGhpbmcQABIKCgZHbG9iYWwQARIJCgVM",
+            "b2NhbBACEgkKBVBhcnR5EAMSBwoDTWF4EARCDVoLcGtnL3BhY2tldHNiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Packets.ChatType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -57,13 +61,14 @@ namespace Packets {
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.ChatMessage), global::Packets.ChatMessage.Parser, new[]{ "Type", "Msg", "Username" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.IdMessage), global::Packets.IdMessage.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.LoginRequestMessage), global::Packets.LoginRequestMessage.Parser, new[]{ "Username", "Password" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.SteamAuthTicketMessage), global::Packets.SteamAuthTicketMessage.Parser, new[]{ "SteamUsername", "Ticket", "Identity" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.RegisterRequestMessage), global::Packets.RegisterRequestMessage.Parser, new[]{ "Username", "Password" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.OkResponseMessage), global::Packets.OkResponseMessage.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.DenyResponseMessage), global::Packets.DenyResponseMessage.Parser, new[]{ "Reason" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.CommandMessage), global::Packets.CommandMessage.Parser, new[]{ "Command", "Args" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.HexPositionMessage), global::Packets.HexPositionMessage.Parser, new[]{ "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.HexPositionsMessage), global::Packets.HexPositionsMessage.Parser, new[]{ "Positions" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.Packet), global::Packets.Packet.Parser, new[]{ "SenderId", "Chat", "Id", "LoginRequest", "RegisterRequest", "OK", "Deny", "Command", "HexPosition", "HexPositions" }, new[]{ "Msg" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.Packet), global::Packets.Packet.Parser, new[]{ "SenderId", "Chat", "Id", "LoginRequest", "RegisterRequest", "OK", "Deny", "Command", "HexPosition", "HexPositions", "SteamTicket" }, new[]{ "Msg" }, null, null, null)
           }));
     }
     #endregion
@@ -1294,6 +1299,278 @@ namespace Packets {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class SteamAuthTicketMessage : pb::IMessage<SteamAuthTicketMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<SteamAuthTicketMessage> _parser = new pb::MessageParser<SteamAuthTicketMessage>(() => new SteamAuthTicketMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<SteamAuthTicketMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SteamAuthTicketMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SteamAuthTicketMessage(SteamAuthTicketMessage other) : this() {
+      steamUsername_ = other.steamUsername_;
+      ticket_ = other.ticket_;
+      identity_ = other.identity_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SteamAuthTicketMessage Clone() {
+      return new SteamAuthTicketMessage(this);
+    }
+
+    /// <summary>Field number for the "steamUsername" field.</summary>
+    public const int SteamUsernameFieldNumber = 1;
+    private string steamUsername_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string SteamUsername {
+      get { return steamUsername_; }
+      set {
+        steamUsername_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ticket" field.</summary>
+    public const int TicketFieldNumber = 2;
+    private pb::ByteString ticket_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString Ticket {
+      get { return ticket_; }
+      set {
+        ticket_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "identity" field.</summary>
+    public const int IdentityFieldNumber = 3;
+    private string identity_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Identity {
+      get { return identity_; }
+      set {
+        identity_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as SteamAuthTicketMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(SteamAuthTicketMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (SteamUsername != other.SteamUsername) return false;
+      if (Ticket != other.Ticket) return false;
+      if (Identity != other.Identity) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (SteamUsername.Length != 0) hash ^= SteamUsername.GetHashCode();
+      if (Ticket.Length != 0) hash ^= Ticket.GetHashCode();
+      if (Identity.Length != 0) hash ^= Identity.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (SteamUsername.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(SteamUsername);
+      }
+      if (Ticket.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(Ticket);
+      }
+      if (Identity.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Identity);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (SteamUsername.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(SteamUsername);
+      }
+      if (Ticket.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(Ticket);
+      }
+      if (Identity.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Identity);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (SteamUsername.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SteamUsername);
+      }
+      if (Ticket.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Ticket);
+      }
+      if (Identity.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Identity);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(SteamAuthTicketMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.SteamUsername.Length != 0) {
+        SteamUsername = other.SteamUsername;
+      }
+      if (other.Ticket.Length != 0) {
+        Ticket = other.Ticket;
+      }
+      if (other.Identity.Length != 0) {
+        Identity = other.Identity;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            SteamUsername = input.ReadString();
+            break;
+          }
+          case 18: {
+            Ticket = input.ReadBytes();
+            break;
+          }
+          case 26: {
+            Identity = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            SteamUsername = input.ReadString();
+            break;
+          }
+          case 18: {
+            Ticket = input.ReadBytes();
+            break;
+          }
+          case 26: {
+            Identity = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class RegisterRequestMessage : pb::IMessage<RegisterRequestMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1308,7 +1585,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1543,7 +1820,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1704,7 +1981,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1902,7 +2179,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2126,7 +2403,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2333,7 +2610,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2520,7 +2797,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2568,6 +2845,9 @@ namespace Packets {
           break;
         case MsgOneofCase.HexPositions:
           HexPositions = other.HexPositions.Clone();
+          break;
+        case MsgOneofCase.SteamTicket:
+          SteamTicket = other.SteamTicket.Clone();
           break;
       }
 
@@ -2690,9 +2970,6 @@ namespace Packets {
 
     /// <summary>Field number for the "hexPositions" field.</summary>
     public const int HexPositionsFieldNumber = 10;
-    /// <summary>
-    ///...
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Packets.HexPositionsMessage HexPositions {
@@ -2700,6 +2977,21 @@ namespace Packets {
       set {
         msg_ = value;
         msgCase_ = value == null ? MsgOneofCase.None : MsgOneofCase.HexPositions;
+      }
+    }
+
+    /// <summary>Field number for the "steamTicket" field.</summary>
+    public const int SteamTicketFieldNumber = 11;
+    /// <summary>
+    ///...
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Packets.SteamAuthTicketMessage SteamTicket {
+      get { return msgCase_ == MsgOneofCase.SteamTicket ? (global::Packets.SteamAuthTicketMessage) msg_ : null; }
+      set {
+        msg_ = value;
+        msgCase_ = value == null ? MsgOneofCase.None : MsgOneofCase.SteamTicket;
       }
     }
 
@@ -2716,6 +3008,7 @@ namespace Packets {
       Command = 8,
       HexPosition = 9,
       HexPositions = 10,
+      SteamTicket = 11,
     }
     private MsgOneofCase msgCase_ = MsgOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2756,6 +3049,7 @@ namespace Packets {
       if (!object.Equals(Command, other.Command)) return false;
       if (!object.Equals(HexPosition, other.HexPosition)) return false;
       if (!object.Equals(HexPositions, other.HexPositions)) return false;
+      if (!object.Equals(SteamTicket, other.SteamTicket)) return false;
       if (MsgCase != other.MsgCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2774,6 +3068,7 @@ namespace Packets {
       if (msgCase_ == MsgOneofCase.Command) hash ^= Command.GetHashCode();
       if (msgCase_ == MsgOneofCase.HexPosition) hash ^= HexPosition.GetHashCode();
       if (msgCase_ == MsgOneofCase.HexPositions) hash ^= HexPositions.GetHashCode();
+      if (msgCase_ == MsgOneofCase.SteamTicket) hash ^= SteamTicket.GetHashCode();
       hash ^= (int) msgCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2833,6 +3128,10 @@ namespace Packets {
         output.WriteRawTag(82);
         output.WriteMessage(HexPositions);
       }
+      if (msgCase_ == MsgOneofCase.SteamTicket) {
+        output.WriteRawTag(90);
+        output.WriteMessage(SteamTicket);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2883,6 +3182,10 @@ namespace Packets {
         output.WriteRawTag(82);
         output.WriteMessage(HexPositions);
       }
+      if (msgCase_ == MsgOneofCase.SteamTicket) {
+        output.WriteRawTag(90);
+        output.WriteMessage(SteamTicket);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2922,6 +3225,9 @@ namespace Packets {
       }
       if (msgCase_ == MsgOneofCase.HexPositions) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(HexPositions);
+      }
+      if (msgCase_ == MsgOneofCase.SteamTicket) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SteamTicket);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2992,6 +3298,12 @@ namespace Packets {
             HexPositions = new global::Packets.HexPositionsMessage();
           }
           HexPositions.MergeFrom(other.HexPositions);
+          break;
+        case MsgOneofCase.SteamTicket:
+          if (SteamTicket == null) {
+            SteamTicket = new global::Packets.SteamAuthTicketMessage();
+          }
+          SteamTicket.MergeFrom(other.SteamTicket);
           break;
       }
 
@@ -3099,6 +3411,15 @@ namespace Packets {
             HexPositions = subBuilder;
             break;
           }
+          case 90: {
+            global::Packets.SteamAuthTicketMessage subBuilder = new global::Packets.SteamAuthTicketMessage();
+            if (msgCase_ == MsgOneofCase.SteamTicket) {
+              subBuilder.MergeFrom(SteamTicket);
+            }
+            input.ReadMessage(subBuilder);
+            SteamTicket = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -3201,6 +3522,15 @@ namespace Packets {
             }
             input.ReadMessage(subBuilder);
             HexPositions = subBuilder;
+            break;
+          }
+          case 90: {
+            global::Packets.SteamAuthTicketMessage subBuilder = new global::Packets.SteamAuthTicketMessage();
+            if (msgCase_ == MsgOneofCase.SteamTicket) {
+              subBuilder.MergeFrom(SteamTicket);
+            }
+            input.ReadMessage(subBuilder);
+            SteamTicket = subBuilder;
             break;
           }
         }

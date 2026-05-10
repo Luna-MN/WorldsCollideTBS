@@ -4,3 +4,7 @@
 server/cert/*.key
 server/cert/*.crt
 /db.sqlite
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/shelf/

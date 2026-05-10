@@ -38,6 +38,7 @@ func (l *Login) SetClient(client *server.Client) {
 
 func (l *Login) OnEnter() {
 	l.auth = services.NewAuthService(l.client.DbTx())
+	l.client.SocketSend(packets.NewId(l.client.Id()), server.WebSocket)
 }
 
 func (l *Login) HandleMessage(senderId uint64, message packets.Msg, transfer server.TransferType) {
@@ -50,6 +51,8 @@ func (l *Login) HandleMessage(senderId uint64, message packets.Msg, transfer ser
 		l.HandleLoginRequest(senderId, message)
 	case *packets.Packet_RegisterRequest:
 		l.HandleRegisterRequest(senderId, message)
+	case *packets.Packet_SteamTicket:
+		l.HandleSteamTicket(senderId, message)
 	}
 }
 
@@ -96,4 +99,8 @@ func (l *Login) HandleRegisterRequest(id uint64, message *packets.Packet_Registe
 	}
 
 	l.logger.Printf("User Registered %s", username)
+}
+
+func (l *Login) HandleSteamTicket(id uint64, message *packets.Packet_SteamTicket) {
+
 }

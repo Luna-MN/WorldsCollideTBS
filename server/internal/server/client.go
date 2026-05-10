@@ -4,7 +4,9 @@ import (
 	"crypto/cipher"
 	"fmt"
 	"log"
+	"os"
 	"server/internal/server/objects"
+	"server/internal/steam"
 	"server/pkg/packets"
 )
 
@@ -28,9 +30,14 @@ type Client struct {
 	broadcastChan chan packets.Msg
 	player        *objects.Player
 	Cyph          cipher.AEAD
+	Steam         *steam.SteamWebClient
 }
 
 func NewClient(WS ClientInterfacer, h *Hub) *Client {
+	steamAPIKey, exists := os.LookupEnv("STEAM_API_KEY")
+	if !exists {
+		fmt.Println("STEAM_API_KEY not set")
+	}
 	c := &Client{
 		id:            0,
 		ENet:          nil,
@@ -39,6 +46,7 @@ func NewClient(WS ClientInterfacer, h *Hub) *Client {
 		logger:        log.New(log.Writer(), "Undefined Client: ", log.LstdFlags),
 		hub:           h,
 		broadcastChan: make(chan packets.Msg, 256),
+		Steam:         steam.NewClient(steamAPIKey), // TODO: Get SteamAPI key
 	}
 	WS.SetClient(c)
 	return c

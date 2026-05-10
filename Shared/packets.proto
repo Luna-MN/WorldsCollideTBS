@@ -11,6 +11,7 @@ enum ChatType { Nothing = 0; Global = 1; Local = 2; Party = 3; Max = 4; }
 message ChatMessage { ChatType type = 1; string msg = 2; string Username = 3;}
 message IdMessage { uint64 id = 1; }
 message LoginRequestMessage { string username = 1; string password = 2; }
+message SteamAuthTicketMessage { string steamUsername = 1; bytes ticket = 2; string identity = 3;}
 message RegisterRequestMessage { string username = 1; string password = 2; }
 message OkResponseMessage { }
 message DenyResponseMessage { string reason = 1; }
@@ -22,7 +23,6 @@ message HexPositionsMessage { repeated HexPositionMessage positions = 1;}
 
 // protoc -I="shared" --go_out="server" "shared/packets.proto"
 // protoc -I="shared" --csharp_out="Client" "shared/packets.proto"
-// protoc -I="shared" --csharp_out="server/internal/steam/CSBridge/CSbridge/CSBridge" "shared/packets.proto"
 
 message Packet {
   uint64 sender_id = 1;
@@ -36,6 +36,7 @@ message Packet {
     CommandMessage command = 8;
     HexPositionMessage hexPosition = 9;
     HexPositionsMessage hexPositions = 10;
+    SteamAuthTicketMessage steamTicket = 11;
     //...
   }
 }

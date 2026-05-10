@@ -7,17 +7,17 @@ public partial class GameManager : Node
 {
     public enum state
     {
-        Entered,
+        Connect,
         MainMenu,
         Login,
         Settings,
     }
     public Dictionary<state, string> stateScenes = new Dictionary<state, string>()
     {
-        { state.Entered, "res://states/entered/entered.tscn" },
-        { state.MainMenu, "res://states/MainMenu/mainMenu.tscn" },
-        { state.Settings, "res://states/settings/settings.tscn" },
-        { state.Login, "res://states/login/login.tscn" }
+        { state.Connect, "res://States/Connect/Connect.tscn" },
+        { state.MainMenu, "res://States/MainMenu/MainMenu.tscn" },
+        { state.Settings, "res://States/settings/settings.tscn" },
+        { state.Login, "res://States/login/login.tscn" }
     };
     public ulong clientId;
     public string username;
@@ -29,7 +29,7 @@ public partial class GameManager : Node
         var scene = (PackedScene)ResourceLoader.Load(stateScenes[newState]);
 
         CurrentSceneRoot = scene.Instantiate();
-        AddChild(CurrentSceneRoot);
+        GetTree().Root.GetNode("Main").AddChild(CurrentSceneRoot);
     }
 
 }

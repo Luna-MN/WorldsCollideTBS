@@ -126,7 +126,38 @@ public partial class SteamManager : Node
         SteamAPI.Shutdown();
         _initialized = false;
     }
+
+    public byte[] GetSteamAuthTicket(SteamNetworkingIdentity identity)
+    {
+        if (!Initialized)
+        {
+            GD.PushError("SteamManager is not initialized");
+            return null;
+        }
+
+        byte[] ticket = new byte[1024];
+        uint ticketSize = 0;
+
     
+        HAuthTicket authTicket = SteamUser.GetAuthSessionTicket(
+            ticket, 
+            ticket.Length, 
+            out ticketSize,
+            ref identity
+        );
+    
+        if (authTicket == HAuthTicket.Invalid || ticketSize == 0)
+        {
+            GD.PushError("Failed to get Steam authentication ticket");
+            return null;
+        }
+
+        // Trim the ticket to actual size
+        System.Array.Resize(ref ticket, (int)ticketSize);
+        return ticket;
+    }
+
+
     public string ClientName => SteamFriends.GetPersonaName();
 #else
     public static bool Initialized => false;

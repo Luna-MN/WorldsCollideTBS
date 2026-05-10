@@ -13,7 +13,7 @@ public partial class MainMenu : Control
 
     private void _on_Login_pressed()
     {
-        
+        Globals.GM.SetState(GameManager.state.Connect);
     }
 
     private void _on_Quit_pressed()

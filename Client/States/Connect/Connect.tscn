@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d06opa2lkdqia"]
+
+[ext_resource type="Script" uid="uid://chwft1m85b68l" path="res://States/Connect/Connect.cs" id="1_n307f"]
+[ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="2_p6be5"]
+
+[node name="Connect" type="Control" unique_id=1374776259 node_paths=PackedStringArray("log")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n307f")
+log = NodePath("Log")
+
+[node name="Log" parent="." unique_id=453124276 instance=ExtResource("2_p6be5")]
+layout_mode = 1

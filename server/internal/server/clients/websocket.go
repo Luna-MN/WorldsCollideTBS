@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"server/internal/server"
+	"server/internal/server/states"
 	"server/pkg/packets"
 
 	"github.com/gorilla/websocket"
@@ -72,6 +73,7 @@ func (c *WebSocketClient) ProcessMessage(senderId uint64, message packets.Msg, e
 func (c *WebSocketClient) Initialize(id uint64) {
 	c.id = id
 	c.logger.SetPrefix(fmt.Sprintf("Client %d: ", c.id))
+	c.SetState(&states.Login{})
 }
 
 func (c *WebSocketClient) SocketSend(message packets.Msg, enetChannel ...int) {
