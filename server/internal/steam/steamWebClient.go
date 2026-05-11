@@ -54,7 +54,7 @@ func (c *SteamWebClient) GetPlayerSummaries(ctx context.Context, steamIDs string
 	return &out, nil
 }
 
-func (c *SteamWebClient) AuthUser(ctx context.Context, ticket string, identity string) (*AuthenticateUserTicketParams, error) {
+func (c *SteamWebClient) AuthUser(ctx context.Context, ticket string) (*AuthenticateUserTicketParams, error) {
 	endpoint := "https://partner.steam-api.com/ISteamUserAuth/AuthenticateUserTicket/v1/"
 	ticketHex := hex.EncodeToString([]byte(ticket))
 	query := url.Values{}

@@ -25,15 +25,12 @@ public partial class Login : Control, IState
         identity.SetSteamID(steamId); 
 
         var ticket = Globals.SM.GetSteamAuthTicket(identity);
-        var strId = identity.GetSteamID64().ToString();
-        log.info(strId);
         var packet = new Packet()
         {
             SteamTicket = new SteamAuthTicketMessage()
             {
                 SteamUsername = Globals.SM.ClientName,
                 Ticket = Google.Protobuf.ByteString.CopyFrom(ticket),
-                Identity = strId
             }
         };
         Globals.WS.Send(packet);

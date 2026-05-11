@@ -90,10 +90,10 @@ func validateUsername(username string) error {
 	return nil
 }
 
-func (a *AuthService) SteamLogin(ticket, identity string, steam *steam.SteamWebClient) (packets.Msg, db.User, error) {
+func (a *AuthService) SteamLogin(ticket string, steam *steam.SteamWebClient) (packets.Msg, db.User, error) {
 	user := db.User{}
 
-	id, err := steam.AuthUser(a.dbCtx, ticket, identity)
+	id, err := steam.AuthUser(a.dbCtx, ticket)
 	if err != nil {
 		return packets.NewDeny("Error authenticating Steam user"), user, err
 	}

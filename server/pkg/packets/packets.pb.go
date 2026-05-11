@@ -348,7 +348,6 @@ type SteamAuthTicketMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SteamUsername string                 `protobuf:"bytes,1,opt,name=steamUsername,proto3" json:"steamUsername,omitempty"`
 	Ticket        []byte                 `protobuf:"bytes,2,opt,name=ticket,proto3" json:"ticket,omitempty"`
-	Identity      string                 `protobuf:"bytes,3,opt,name=identity,proto3" json:"identity,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -395,13 +394,6 @@ func (x *SteamAuthTicketMessage) GetTicket() []byte {
 		return x.Ticket
 	}
 	return nil
-}
-
-func (x *SteamAuthTicketMessage) GetIdentity() string {
-	if x != nil {
-		return x.Identity
-	}
-	return ""
 }
 
 type RegisterRequestMessage struct {
@@ -916,11 +908,10 @@ const file_packets_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\"M\n" +
 	"\x13LoginRequestMessage\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"r\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"V\n" +
 	"\x16SteamAuthTicketMessage\x12$\n" +
 	"\rsteamUsername\x18\x01 \x01(\tR\rsteamUsername\x12\x16\n" +
-	"\x06ticket\x18\x02 \x01(\fR\x06ticket\x12\x1a\n" +
-	"\bidentity\x18\x03 \x01(\tR\bidentity\"P\n" +
+	"\x06ticket\x18\x02 \x01(\fR\x06ticket\"P\n" +
 	"\x16RegisterRequestMessage\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"\x13\n" +

@@ -102,7 +102,7 @@ func (l *Login) HandleRegisterRequest(id uint64, message *packets.Packet_Registe
 }
 
 func (l *Login) HandleSteamTicket(id uint64, message *packets.Packet_SteamTicket) {
-	p, user, err := l.auth.SteamLogin(string(message.SteamTicket.Ticket), message.SteamTicket.Identity, l.client.Steam)
+	p, user, err := l.auth.SteamLogin(string(message.SteamTicket.Ticket), l.client.Steam)
 	if err != nil {
 		l.logger.Printf("Error logging in with steam: %v", err)
 	}

@@ -30,29 +30,28 @@ namespace Packets {
             "DjIRLnBhY2tldHMuQ2hhdFR5cGUSCwoDbXNnGAIgASgJEhAKCFVzZXJuYW1l",
             "GAMgASgJIhcKCUlkTWVzc2FnZRIKCgJpZBgBIAEoBCI5ChNMb2dpblJlcXVl",
             "c3RNZXNzYWdlEhAKCHVzZXJuYW1lGAEgASgJEhAKCHBhc3N3b3JkGAIgASgJ",
-            "IlEKFlN0ZWFtQXV0aFRpY2tldE1lc3NhZ2USFQoNc3RlYW1Vc2VybmFtZRgB",
-            "IAEoCRIOCgZ0aWNrZXQYAiABKAwSEAoIaWRlbnRpdHkYAyABKAkiPAoWUmVn",
-            "aXN0ZXJSZXF1ZXN0TWVzc2FnZRIQCgh1c2VybmFtZRgBIAEoCRIQCghwYXNz",
-            "d29yZBgCIAEoCSITChFPa1Jlc3BvbnNlTWVzc2FnZSIlChNEZW55UmVzcG9u",
-            "c2VNZXNzYWdlEg4KBnJlYXNvbhgBIAEoCSIvCg5Db21tYW5kTWVzc2FnZRIP",
-            "Cgdjb21tYW5kGAEgASgJEgwKBGFyZ3MYAiADKAkiOwoSSGV4UG9zaXRpb25N",
-            "ZXNzYWdlEiUKCHBvc2l0aW9uGAEgASgLMhMucGFja2V0cy5WZWN0b3IyTXNn",
-            "IkUKE0hleFBvc2l0aW9uc01lc3NhZ2USLgoJcG9zaXRpb25zGAEgAygLMhsu",
-            "cGFja2V0cy5IZXhQb3NpdGlvbk1lc3NhZ2UiggQKBlBhY2tldBIRCglzZW5k",
-            "ZXJfaWQYASABKAQSJAoEY2hhdBgCIAEoCzIULnBhY2tldHMuQ2hhdE1lc3Nh",
-            "Z2VIABIgCgJpZBgDIAEoCzISLnBhY2tldHMuSWRNZXNzYWdlSAASNAoMbG9n",
-            "aW5SZXF1ZXN0GAQgASgLMhwucGFja2V0cy5Mb2dpblJlcXVlc3RNZXNzYWdl",
-            "SAASOgoPcmVnaXN0ZXJSZXF1ZXN0GAUgASgLMh8ucGFja2V0cy5SZWdpc3Rl",
-            "clJlcXVlc3RNZXNzYWdlSAASKAoCT0sYBiABKAsyGi5wYWNrZXRzLk9rUmVz",
-            "cG9uc2VNZXNzYWdlSAASLAoERGVueRgHIAEoCzIcLnBhY2tldHMuRGVueVJl",
-            "c3BvbnNlTWVzc2FnZUgAEioKB2NvbW1hbmQYCCABKAsyFy5wYWNrZXRzLkNv",
-            "bW1hbmRNZXNzYWdlSAASMgoLaGV4UG9zaXRpb24YCSABKAsyGy5wYWNrZXRz",
-            "LkhleFBvc2l0aW9uTWVzc2FnZUgAEjQKDGhleFBvc2l0aW9ucxgKIAEoCzIc",
-            "LnBhY2tldHMuSGV4UG9zaXRpb25zTWVzc2FnZUgAEjYKC3N0ZWFtVGlja2V0",
-            "GAsgASgLMh8ucGFja2V0cy5TdGVhbUF1dGhUaWNrZXRNZXNzYWdlSABCBQoD",
-            "bXNnKkIKCENoYXRUeXBlEgsKB05vdGhpbmcQABIKCgZHbG9iYWwQARIJCgVM",
-            "b2NhbBACEgkKBVBhcnR5EAMSBwoDTWF4EARCDVoLcGtnL3BhY2tldHNiBnBy",
-            "b3RvMw=="));
+            "Ij8KFlN0ZWFtQXV0aFRpY2tldE1lc3NhZ2USFQoNc3RlYW1Vc2VybmFtZRgB",
+            "IAEoCRIOCgZ0aWNrZXQYAiABKAwiPAoWUmVnaXN0ZXJSZXF1ZXN0TWVzc2Fn",
+            "ZRIQCgh1c2VybmFtZRgBIAEoCRIQCghwYXNzd29yZBgCIAEoCSITChFPa1Jl",
+            "c3BvbnNlTWVzc2FnZSIlChNEZW55UmVzcG9uc2VNZXNzYWdlEg4KBnJlYXNv",
+            "bhgBIAEoCSIvCg5Db21tYW5kTWVzc2FnZRIPCgdjb21tYW5kGAEgASgJEgwK",
+            "BGFyZ3MYAiADKAkiOwoSSGV4UG9zaXRpb25NZXNzYWdlEiUKCHBvc2l0aW9u",
+            "GAEgASgLMhMucGFja2V0cy5WZWN0b3IyTXNnIkUKE0hleFBvc2l0aW9uc01l",
+            "c3NhZ2USLgoJcG9zaXRpb25zGAEgAygLMhsucGFja2V0cy5IZXhQb3NpdGlv",
+            "bk1lc3NhZ2UiggQKBlBhY2tldBIRCglzZW5kZXJfaWQYASABKAQSJAoEY2hh",
+            "dBgCIAEoCzIULnBhY2tldHMuQ2hhdE1lc3NhZ2VIABIgCgJpZBgDIAEoCzIS",
+            "LnBhY2tldHMuSWRNZXNzYWdlSAASNAoMbG9naW5SZXF1ZXN0GAQgASgLMhwu",
+            "cGFja2V0cy5Mb2dpblJlcXVlc3RNZXNzYWdlSAASOgoPcmVnaXN0ZXJSZXF1",
+            "ZXN0GAUgASgLMh8ucGFja2V0cy5SZWdpc3RlclJlcXVlc3RNZXNzYWdlSAAS",
+            "KAoCT0sYBiABKAsyGi5wYWNrZXRzLk9rUmVzcG9uc2VNZXNzYWdlSAASLAoE",
+            "RGVueRgHIAEoCzIcLnBhY2tldHMuRGVueVJlc3BvbnNlTWVzc2FnZUgAEioK",
+            "B2NvbW1hbmQYCCABKAsyFy5wYWNrZXRzLkNvbW1hbmRNZXNzYWdlSAASMgoL",
+            "aGV4UG9zaXRpb24YCSABKAsyGy5wYWNrZXRzLkhleFBvc2l0aW9uTWVzc2Fn",
+            "ZUgAEjQKDGhleFBvc2l0aW9ucxgKIAEoCzIcLnBhY2tldHMuSGV4UG9zaXRp",
+            "b25zTWVzc2FnZUgAEjYKC3N0ZWFtVGlja2V0GAsgASgLMh8ucGFja2V0cy5T",
+            "dGVhbUF1dGhUaWNrZXRNZXNzYWdlSABCBQoDbXNnKkIKCENoYXRUeXBlEgsK",
+            "B05vdGhpbmcQABIKCgZHbG9iYWwQARIJCgVMb2NhbBACEgkKBVBhcnR5EAMS",
+            "BwoDTWF4EARCDVoLcGtnL3BhY2tldHNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Packets.ChatType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -61,7 +60,7 @@ namespace Packets {
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.ChatMessage), global::Packets.ChatMessage.Parser, new[]{ "Type", "Msg", "Username" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.IdMessage), global::Packets.IdMessage.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.LoginRequestMessage), global::Packets.LoginRequestMessage.Parser, new[]{ "Username", "Password" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.SteamAuthTicketMessage), global::Packets.SteamAuthTicketMessage.Parser, new[]{ "SteamUsername", "Ticket", "Identity" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.SteamAuthTicketMessage), global::Packets.SteamAuthTicketMessage.Parser, new[]{ "SteamUsername", "Ticket" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.RegisterRequestMessage), global::Packets.RegisterRequestMessage.Parser, new[]{ "Username", "Password" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.OkResponseMessage), global::Packets.OkResponseMessage.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.DenyResponseMessage), global::Packets.DenyResponseMessage.Parser, new[]{ "Reason" }, null, null, null, null),
@@ -1335,7 +1334,6 @@ namespace Packets {
     public SteamAuthTicketMessage(SteamAuthTicketMessage other) : this() {
       steamUsername_ = other.steamUsername_;
       ticket_ = other.ticket_;
-      identity_ = other.identity_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1369,18 +1367,6 @@ namespace Packets {
       }
     }
 
-    /// <summary>Field number for the "identity" field.</summary>
-    public const int IdentityFieldNumber = 3;
-    private string identity_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Identity {
-      get { return identity_; }
-      set {
-        identity_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1398,7 +1384,6 @@ namespace Packets {
       }
       if (SteamUsername != other.SteamUsername) return false;
       if (Ticket != other.Ticket) return false;
-      if (Identity != other.Identity) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1408,7 +1393,6 @@ namespace Packets {
       int hash = 1;
       if (SteamUsername.Length != 0) hash ^= SteamUsername.GetHashCode();
       if (Ticket.Length != 0) hash ^= Ticket.GetHashCode();
-      if (Identity.Length != 0) hash ^= Identity.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1435,10 +1419,6 @@ namespace Packets {
         output.WriteRawTag(18);
         output.WriteBytes(Ticket);
       }
-      if (Identity.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Identity);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1457,10 +1437,6 @@ namespace Packets {
         output.WriteRawTag(18);
         output.WriteBytes(Ticket);
       }
-      if (Identity.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Identity);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1476,9 +1452,6 @@ namespace Packets {
       }
       if (Ticket.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Ticket);
-      }
-      if (Identity.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Identity);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1497,9 +1470,6 @@ namespace Packets {
       }
       if (other.Ticket.Length != 0) {
         Ticket = other.Ticket;
-      }
-      if (other.Identity.Length != 0) {
-        Identity = other.Identity;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1528,10 +1498,6 @@ namespace Packets {
             Ticket = input.ReadBytes();
             break;
           }
-          case 26: {
-            Identity = input.ReadString();
-            break;
-          }
         }
       }
     #endif
@@ -1557,10 +1523,6 @@ namespace Packets {
           }
           case 18: {
             Ticket = input.ReadBytes();
-            break;
-          }
-          case 26: {
-            Identity = input.ReadString();
             break;
           }
         }

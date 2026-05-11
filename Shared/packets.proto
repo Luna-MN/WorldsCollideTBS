@@ -11,7 +11,7 @@ enum ChatType { Nothing = 0; Global = 1; Local = 2; Party = 3; Max = 4; }
 message ChatMessage { ChatType type = 1; string msg = 2; string Username = 3;}
 message IdMessage { uint64 id = 1; }
 message LoginRequestMessage { string username = 1; string password = 2; }
-message SteamAuthTicketMessage { string steamUsername = 1; bytes ticket = 2; string identity = 3;}
+message SteamAuthTicketMessage { string steamUsername = 1; bytes ticket = 2;}
 message RegisterRequestMessage { string username = 1; string password = 2; }
 message OkResponseMessage { }
 message DenyResponseMessage { string reason = 1; }
