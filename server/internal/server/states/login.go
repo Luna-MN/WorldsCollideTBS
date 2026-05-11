@@ -102,5 +102,18 @@ func (l *Login) HandleRegisterRequest(id uint64, message *packets.Packet_Registe
 }
 
 func (l *Login) HandleSteamTicket(id uint64, message *packets.Packet_SteamTicket) {
-
+	p, user, err := l.auth.SteamLogin(string(message.SteamTicket.Ticket), message.SteamTicket.Identity, l.client.Steam)
+	if err != nil {
+		l.logger.Printf("Error logging in with steam: %v", err)
+	}
+	l.client.SteamID = user.Steamid.String
+	summ, err := l.client.Steam.GetPlayerSummaries(l.dbCtx, user.Steamid.String)
+	if err != nil {
+		l.logger.Printf("Error getting steam user info: %v", err)
+	}
+	if summ.Response.Players[0].PersonaName != user.Username {
+		l.client.SetUsername(summ.Response.Players[0].PersonaName)
+	}
+	l.client.SetUsername(user.Username)
+	l.client.SocketSend(p, server.WebSocket)
 }

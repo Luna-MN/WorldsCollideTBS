@@ -21,6 +21,7 @@ const (
 type Client struct {
 	id            uint64
 	username      string
+	SteamID       string
 	ENet          ClientInterfacer
 	WS            ClientInterfacer
 	state         ClientStateHandler
@@ -46,7 +47,7 @@ func NewClient(WS ClientInterfacer, h *Hub) *Client {
 		logger:        log.New(log.Writer(), "Undefined Client: ", log.LstdFlags),
 		hub:           h,
 		broadcastChan: make(chan packets.Msg, 256),
-		Steam:         steam.NewClient(steamAPIKey), // TODO: Get SteamAPI key
+		Steam:         steam.NewClient(steamAPIKey),
 	}
 	WS.SetClient(c)
 	return c

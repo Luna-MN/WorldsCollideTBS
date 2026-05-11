@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cjoy8ytehldlc" path="res://States/Login/Login.cs" id="1_m5g03"]
 [ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="2_kjcep"]
 
-[node name="Login" type="Control" unique_id=1646277905]
+[node name="Login" type="Control" unique_id=1646277905 node_paths=PackedStringArray("log")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m5g03")
+log = NodePath("Log")
 
 [node name="Log" parent="." unique_id=553717686 instance=ExtResource("2_kjcep")]
 layout_mode = 1

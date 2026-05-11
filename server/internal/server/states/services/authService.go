@@ -2,9 +2,12 @@ package services
 
 import (
 	"context"
+	"database/sql"
+	"errors"
 	"fmt"
 	"server/internal/server"
 	"server/internal/server/db"
+	"server/internal/steam"
 	"server/pkg/packets"
 	"strings"
 
@@ -39,7 +42,7 @@ func (a *AuthService) Login(username, password string) (packets.Msg, error) {
 	if err != nil {
 		return genericFailMessage, err
 	}
-	err = bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(password))
+	err = bcrypt.CompareHashAndPassword([]byte(user.PasswordHash.String), []byte(password))
 	if err != nil {
 		return genericFailMessage, err
 	}
@@ -66,8 +69,11 @@ func (a *AuthService) Register(username, password string) (packets.Msg, error) {
 	}
 
 	_, err = a.queries.CreateUser(a.dbCtx, db.CreateUserParams{
-		Username:     strings.ToLower(username),
-		PasswordHash: string(hash),
+		Username: strings.ToLower(username),
+		PasswordHash: sql.NullString{
+			String: string(hash),
+			Valid:  true,
+		},
 	})
 	if err != nil {
 		return genericFailMessage, err
@@ -82,4 +88,43 @@ func validateUsername(username string) error {
 	}
 
 	return nil
+}
+
+func (a *AuthService) SteamLogin(ticket, identity string, steam *steam.SteamWebClient) (packets.Msg, db.User, error) {
+	user := db.User{}
+
+	id, err := steam.AuthUser(a.dbCtx, ticket, identity)
+	if err != nil {
+		return packets.NewDeny("Error authenticating Steam user"), user, err
+	}
+
+	user, err = a.queries.GetSteamUser(a.dbCtx, db.NewNullString(id.OwnerSteamID))
+	if err == nil {
+		return packets.NewOK(), user, nil
+	}
+
+	if !errors.Is(err, sql.ErrNoRows) {
+		return packets.NewDeny("Error loading Steam user"), user, err
+	}
+
+	summ, err := steam.GetPlayerSummaries(a.dbCtx, id.SteamID)
+	if err != nil {
+		return packets.NewDeny("Error getting Steam user info"), user, err
+	}
+
+	if len(summ.Response.Players) == 0 {
+		return packets.NewDeny("Steam user info not found"), user, fmt.Errorf("no Steam player summary returned for steam id %s", id.SteamID)
+	}
+
+	player := summ.Response.Players[0]
+
+	user, err = a.queries.CreateSteamUser(a.dbCtx, db.CreateSteamUserParams{
+		Username: player.PersonaName,
+		Steamid:  db.NewNullString(player.SteamID),
+	})
+	if err != nil {
+		return packets.NewDeny("Error creating Steam user"), user, err
+	}
+
+	return packets.NewOK(), user, nil
 }

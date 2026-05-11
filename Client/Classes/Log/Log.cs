@@ -6,6 +6,18 @@ public partial class Log : RichTextLabel
     private void message(string msg, Color color)
     {
         AppendText($"[color={color.ToHtml(false)}]{msg}[/color] \n");
+        if (color == Colors.OrangeRed)
+        {
+            GD.PrintErr($"[Log] {msg}");
+        }
+        else if (color == Colors.Yellow)
+        {
+            GD.PushWarning($"[Log] {msg}");
+        }
+        else
+        {
+            GD.Print($"[Log] {msg}");
+        }
     }
     public void info(string msg) => message(msg, Colors.White);
     public void warning(string msg) => message(msg, Colors.Yellow);

@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Packets;
 
-public partial class Connect : Node, State
+public partial class Connect : Node, IState
 {
     [Export] public Log log { get; set; }
     public bool idSet;
@@ -32,6 +32,11 @@ public partial class Connect : Node, State
         Globals.GM.clientId = msg.Id;
         log.info($"Client ID: {Globals.GM.clientId} sender ID: {senderId}");
         idSet = true;
+        if (Input.IsKeyPressed(Key.Ctrl) && Input.IsKeyPressed(Key.Alt) && Input.IsKeyPressed(Key.Shift))
+        {
+            Globals.GM.SetState(GameManager.state.LoginAdmin);
+            return; 
+        }
         Globals.GM.SetState(GameManager.state.Login);
     }
     public void OnWSConnectedToServer()
@@ -48,6 +53,10 @@ public partial class Connect : Node, State
         Globals.WS.connectedToServer -= OnWSConnectedToServer;
         Globals.WS.connectionClosed -= OnWSConnectionClosed;
         TrafficManager.packetRecived -= OnPacketReceived;
-        ((State)this).ExitTree();
+    }
+
+    public override void _ExitTree()
+    {
+        ExitTree();
     }
 }

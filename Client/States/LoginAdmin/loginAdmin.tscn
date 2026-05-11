@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://4p5tgst2qmtg"]
+
+[ext_resource type="Script" uid="uid://26sjpv1e5rji" path="res://States/LoginAdmin/LoginAdmin.cs" id="1_ulhsu"]
+[ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="2_abwbw"]
+
+[node name="Login" type="Node" unique_id=917759710 node_paths=PackedStringArray("log", "Username", "Password", "LoginButton", "RegisterButton")]
+script = ExtResource("1_ulhsu")
+log = NodePath("UI/Log")
+Username = NodePath("UI/VBoxContainer/Username")
+Password = NodePath("UI/VBoxContainer/Password")
+LoginButton = NodePath("UI/VBoxContainer/HBoxContainer/Login")
+RegisterButton = NodePath("UI/VBoxContainer/HBoxContainer/Register")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1195514279]
+
+[node name="Log" parent="UI" unique_id=701056555 instance=ExtResource("2_abwbw")]
+custom_minimum_size = Vector2(0, 210.45)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 263.3475
+offset_top = 63.0
+offset_right = 888.34753
+offset_bottom = 273.45
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=461305211]
+custom_minimum_size = Vector2(625.3, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_right = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Username" type="LineEdit" parent="UI/VBoxContainer" unique_id=1788794272]
+layout_mode = 2
+
+[node name="Password" type="LineEdit" parent="UI/VBoxContainer" unique_id=273009397]
+layout_mode = 2
+secret = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer" unique_id=1900372520]
+layout_mode = 2
+alignment = 1
+
+[node name="Login" type="Button" parent="UI/VBoxContainer/HBoxContainer" unique_id=1420588223]
+layout_mode = 2
+text = "Login"
+
+[node name="Register" type="Button" parent="UI/VBoxContainer/HBoxContainer" unique_id=1439791209]
+layout_mode = 2
+text = "Register"

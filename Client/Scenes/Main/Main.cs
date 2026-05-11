@@ -9,6 +9,5 @@ public partial class Main : Control
         Globals.GM = GetTree().Root.GetNode<GameManager>("GameManager");
         Globals.SM = GetTree().Root.GetNode<SteamManager>("SteamManager");
         Globals.GM.SetState(GameManager.state.MainMenu);
-        GD.Print(Globals.SM.ClientName);
     }
 }

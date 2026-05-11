@@ -568,7 +568,7 @@
     </routine>
     <schema id="214" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2026-05-04.16:50:32</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-05-11.19:53:25</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="215" parent="14">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1850,20 +1850,23 @@
       <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="639" parent="629" name="password_hash">
-      <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <index id="640" parent="629" name="sqlite_autoindex_users_1">
+    <column id="640" parent="629" name="steamId">
+      <Position>4</Position>
+      <StoredType>TEXT|0s</StoredType>
+    </column>
+    <index id="641" parent="629" name="sqlite_autoindex_users_1">
       <ColNames>username</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="641" parent="629">
+    <key id="642" parent="629">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="642" parent="629">
+    <key id="643" parent="629">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_users_1</UnderlyingIndexName>
     </key>

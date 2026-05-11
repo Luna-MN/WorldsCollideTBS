@@ -7,31 +7,84 @@ package db
 
 import (
 	"context"
+	"database/sql"
 )
+
+const createSteamUser = `-- name: CreateSteamUser :one
+INSERT INTO
+    users (username, steamId)
+VALUES
+    (?, ?)
+RETURNING id, username, password_hash, steamid
+`
+
+type CreateSteamUserParams struct {
+	Username string
+	Steamid  sql.NullString
+}
+
+func (q *Queries) CreateSteamUser(ctx context.Context, arg CreateSteamUserParams) (User, error) {
+	row := q.db.QueryRowContext(ctx, createSteamUser, arg.Username, arg.Steamid)
+	var i User
+	err := row.Scan(
+		&i.ID,
+		&i.Username,
+		&i.PasswordHash,
+		&i.Steamid,
+	)
+	return i, err
+}
 
 const createUser = `-- name: CreateUser :one
 INSERT INTO
     users (username, password_hash)
 VALUES
     (?, ?)
-RETURNING id, username, password_hash
+RETURNING id, username, password_hash, steamid
 `
 
 type CreateUserParams struct {
 	Username     string
-	PasswordHash string
+	PasswordHash sql.NullString
 }
 
 func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (User, error) {
 	row := q.db.QueryRowContext(ctx, createUser, arg.Username, arg.PasswordHash)
 	var i User
-	err := row.Scan(&i.ID, &i.Username, &i.PasswordHash)
+	err := row.Scan(
+		&i.ID,
+		&i.Username,
+		&i.PasswordHash,
+		&i.Steamid,
+	)
+	return i, err
+}
+
+const getSteamUser = `-- name: GetSteamUser :one
+SELECT
+    id, username, password_hash, steamid
+FROM
+    users
+WHERE
+    steamId = ?
+LIMIT 1
+`
+
+func (q *Queries) GetSteamUser(ctx context.Context, steamid sql.NullString) (User, error) {
+	row := q.db.QueryRowContext(ctx, getSteamUser, steamid)
+	var i User
+	err := row.Scan(
+		&i.ID,
+		&i.Username,
+		&i.PasswordHash,
+		&i.Steamid,
+	)
 	return i, err
 }
 
 const getUserByUsername = `-- name: GetUserByUsername :one
 SELECT
-    id, username, password_hash
+    id, username, password_hash, steamid
 FROM
     users
 WHERE
@@ -42,7 +95,12 @@ LIMIT 1
 func (q *Queries) GetUserByUsername(ctx context.Context, username string) (User, error) {
 	row := q.db.QueryRowContext(ctx, getUserByUsername, username)
 	var i User
-	err := row.Scan(&i.ID, &i.Username, &i.PasswordHash)
+	err := row.Scan(
+		&i.ID,
+		&i.Username,
+		&i.PasswordHash,
+		&i.Steamid,
+	)
 	return i, err
 }
 
@@ -60,4 +118,31 @@ func (q *Queries) GetUserId(ctx context.Context, lower string) (int64, error) {
 	var id int64
 	err := row.Scan(&id)
 	return id, err
+}
+
+const updateUsername = `-- name: UpdateUsername :one
+UPDATE
+    users
+SET
+    username = ?
+WHERE
+    id = ?
+RETURNING id, username, password_hash, steamid
+`
+
+type UpdateUsernameParams struct {
+	Username string
+	ID       int64
+}
+
+func (q *Queries) UpdateUsername(ctx context.Context, arg UpdateUsernameParams) (User, error) {
+	row := q.db.QueryRowContext(ctx, updateUsername, arg.Username, arg.ID)
+	var i User
+	err := row.Scan(
+		&i.ID,
+		&i.Username,
+		&i.PasswordHash,
+		&i.Steamid,
+	)
+	return i, err
 }

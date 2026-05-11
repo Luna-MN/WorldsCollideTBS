@@ -10,6 +10,7 @@ public partial class GameManager : Node
         Connect,
         MainMenu,
         Login,
+        LoginAdmin,
         Settings,
     }
     public Dictionary<state, string> stateScenes = new Dictionary<state, string>()
@@ -17,7 +18,8 @@ public partial class GameManager : Node
         { state.Connect, "res://States/Connect/Connect.tscn" },
         { state.MainMenu, "res://States/MainMenu/MainMenu.tscn" },
         { state.Settings, "res://States/settings/settings.tscn" },
-        { state.Login, "res://States/login/login.tscn" }
+        { state.Login, "res://States/login/login.tscn" },
+        { state.LoginAdmin, "res://States/LoginAdmin/LoginAdmin.tscn" },
     };
     public ulong clientId;
     public string username;
@@ -27,6 +29,7 @@ public partial class GameManager : Node
         if(CurrentSceneRoot != null) CurrentSceneRoot.QueueFree();
         
         var scene = (PackedScene)ResourceLoader.Load(stateScenes[newState]);
+        GD.Print($"[State] {newState} {scene.ResourcePath}");
 
         CurrentSceneRoot = scene.Instantiate();
         GetTree().Root.GetNode("Main").AddChild(CurrentSceneRoot);

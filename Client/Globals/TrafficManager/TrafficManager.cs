@@ -13,7 +13,6 @@ public partial class TrafficManager : Node
     }
     public static void Recieve(Packet packet)
     {
-        GD.Print("hello");
         packetRecived?.Invoke(packet);
     }
 

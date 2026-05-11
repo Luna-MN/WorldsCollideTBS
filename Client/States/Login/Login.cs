@@ -4,9 +4,9 @@ using System.Linq;
 using Packets;
 using Steamworks;
 
-public partial class Login : Control, State
+public partial class Login : Control, IState
 {
-    [Export] private Log log;
+    [Export] public Log log { get; set; }
     public override void _Ready()
     {
         base._Ready();
@@ -19,10 +19,14 @@ public partial class Login : Control, State
 
     private void GetSteamAuth()
     {
+        CSteamID steamId = SteamUser.GetSteamID();
+
         var identity = new SteamNetworkingIdentity();
+        identity.SetSteamID(steamId); 
+
         var ticket = Globals.SM.GetSteamAuthTicket(identity);
-        var strId = identity.GetSteamID().ToString();
-        
+        var strId = identity.GetSteamID64().ToString();
+        log.info(strId);
         var packet = new Packet()
         {
             SteamTicket = new SteamAuthTicketMessage()
@@ -36,6 +40,7 @@ public partial class Login : Control, State
     }
     public void OnPacketReceived(Packet packet)
     {
+        log.info($"Received packet from {packet.SenderId}: {packet.MsgCase}");
         if (packet.SenderId != Globals.GM.clientId)
         {
             log.error($"Received packet from wrong client. Expected {Globals.GM.clientId} got {packet.SenderId}");
@@ -72,6 +77,9 @@ public partial class Login : Control, State
     {
         Globals.WS.connectionClosed -= OnWSConnectionClosed;
         TrafficManager.packetRecived -= OnPacketReceived;
-        ((State)this).ExitTree();
+    }
+    public override void _ExitTree()
+    {
+        ExitTree();
     }
 }
