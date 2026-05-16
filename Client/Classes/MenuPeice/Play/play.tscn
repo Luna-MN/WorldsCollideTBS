@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://v68283evyohh"]
+
+[ext_resource type="PackedScene" uid="uid://cqxvyxuo277fh" path="res://Classes/MenuPeice/MenuPeice.tscn" id="1_6ky56"]
+
+[node name="Play" unique_id=1807446151 instance=ExtResource("1_6ky56")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="0" unique_id=1183735185]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -54.0
+offset_right = 99.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Find Match" type="Button" parent="VBoxContainer" index="0" unique_id=1942548302]
+layout_mode = 2
+text = "Quick Play"
+
+[node name="Ranked" type="Button" parent="VBoxContainer" index="1" unique_id=1532364281]
+layout_mode = 2
+text = "Find Ranked"
+
+[node name="Custom Match" type="Button" parent="VBoxContainer" index="2" unique_id=54725865]
+layout_mode = 2
+text = "Make Lobby"

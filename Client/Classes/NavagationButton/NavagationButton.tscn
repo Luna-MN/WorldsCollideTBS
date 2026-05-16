@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://na1j14837yvl"]
+
+[ext_resource type="Script" uid="uid://di6thkls0evfy" path="res://Classes/NavagationButton/NavagationButton.cs" id="1_5ncce"]
+
+[node name="NavagationButton" type="Button" unique_id=583575437]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ncce")

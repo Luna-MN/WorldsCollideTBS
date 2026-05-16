@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dg2jjt5pkph8p"]
+
+[ext_resource type="Script" uid="uid://cu7pxcym0x28h" path="res://States/Menus/MainLoggedInMenu/MainLoggedInMenu.cs" id="1_1vxxh"]
+[ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="2_mqa3g"]
+[ext_resource type="PackedScene" uid="uid://na1j14837yvl" path="res://Classes/NavagationButton/NavagationButton.tscn" id="3_mqa3g"]
+[ext_resource type="PackedScene" uid="uid://v68283evyohh" path="res://Classes/MenuPeice/Play/play.tscn" id="4_e1eb6"]
+
+[node name="MainLoggedInMenu" type="Control" unique_id=25636211 node_paths=PackedStringArray("log", "navButtons")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1vxxh")
+log = NodePath("Log")
+navButtons = [NodePath("Navs/Play"), NodePath("Navs/Factions"), NodePath("Navs/Profile"), NodePath("Navs/History")]
+
+[node name="Log" parent="." unique_id=553717686 instance=ExtResource("2_mqa3g")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+offset_top = -189.0
+grow_vertical = 0
+
+[node name="Navs" type="HBoxContainer" parent="." unique_id=564767703]
+custom_minimum_size = Vector2(0, 48.215)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Play" parent="Navs" unique_id=583575437 instance=ExtResource("3_mqa3g")]
+layout_mode = 2
+text = "Play"
+Scene = ExtResource("4_e1eb6")
+
+[node name="Factions" parent="Navs" unique_id=487843492 instance=ExtResource("3_mqa3g")]
+layout_mode = 2
+text = "Factions"
+
+[node name="Profile" parent="Navs" unique_id=533619807 instance=ExtResource("3_mqa3g")]
+layout_mode = 2
+text = "Profile"
+
+[node name="History" parent="Navs" unique_id=2111892989 instance=ExtResource("3_mqa3g")]
+layout_mode = 2
+text = "History"

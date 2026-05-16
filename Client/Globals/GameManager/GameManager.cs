@@ -12,6 +12,7 @@ public partial class GameManager : Node
         Login,
         LoginAdmin,
         Settings,
+        MainLoggedInMenu
     }
     public Dictionary<state, string> stateScenes = new Dictionary<state, string>()
     {
@@ -20,6 +21,7 @@ public partial class GameManager : Node
         { state.Settings, "res://States/settings/settings.tscn" },
         { state.Login, "res://States/login/login.tscn" },
         { state.LoginAdmin, "res://States/LoginAdmin/LoginAdmin.tscn" },
+        { state.MainLoggedInMenu, "res://States/Menus/MainLoggedInMenu/MainLoggedInMenu.tscn"}
     };
     public ulong clientId;
     public string username;

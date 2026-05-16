@@ -61,6 +61,7 @@ public partial class Login : Control, IState
     private void HandleOKMessage()
     {
         log.success("Login successful.");
+        Globals.GM.SetState(GameManager.state.MainLoggedInMenu);
     }
     private void HandleDenyMessage(DenyResponseMessage msg)
     {

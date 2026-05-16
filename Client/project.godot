@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="WorldsCollideTBS"
-run/main_scene="uid://b3ed2x8hydvgd"
+run/main_scene="uid://bgngbsflwmcqc"
 config/features=PackedStringArray("4.7", "C#", "Mobile")
 config/icon="res://icon.svg"
 
