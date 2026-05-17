@@ -116,4 +116,7 @@ func (l *Login) HandleSteamTicket(id uint64, message *packets.Packet_SteamTicket
 	}
 	l.client.SetUsername(user.Username)
 	l.client.SocketSend(p, server.WebSocket)
+	if l.client.Username() != "" {
+		l.client.SetState(&Menu{})
+	}
 }

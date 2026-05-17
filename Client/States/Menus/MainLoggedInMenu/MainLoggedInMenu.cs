@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Packets;
+using Packets.Util;
 
 public partial class MainLoggedInMenu : Control, IState
 {
@@ -43,7 +44,18 @@ public partial class MainLoggedInMenu : Control, IState
     {
         Globals.GM.SetState(GameManager.state.MainMenu);
     }
-
+    public void QueueUnranked()
+    {
+        Queue("unranked");
+    }
+    public void QueueRanked()
+    {
+        Queue("ranked");
+    }
+    private void Queue(string queue)
+    {
+        Globals.WS.Send(PacketUtil.NewQueuePacket(queue));
+    }
     private void ChangeScene(PackedScene scene)
     {
         if (CurrentScene != null)
@@ -51,6 +63,7 @@ public partial class MainLoggedInMenu : Control, IState
             CurrentScene.QueueFree();
         }
         CurrentScene = scene.Instantiate<MenuPeice>();
+        CurrentScene.log = log;
         AddChild(CurrentScene);
     }
 }

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://v68283evyohh"]
 
 [ext_resource type="PackedScene" uid="uid://cqxvyxuo277fh" path="res://Classes/MenuPeice/MenuPeice.tscn" id="1_6ky56"]
+[ext_resource type="Script" uid="uid://cio2w2ip7ix6e" path="res://Classes/MenuPeice/Play/CustomMatch.cs" id="2_oedjt"]
 
 [node name="Play" unique_id=1807446151 instance=ExtResource("1_6ky56")]
 
@@ -29,3 +30,4 @@ text = "Find Ranked"
 [node name="Custom Match" type="Button" parent="VBoxContainer" index="2" unique_id=54725865]
 layout_mode = 2
 text = "Make Lobby"
+script = ExtResource("2_oedjt")

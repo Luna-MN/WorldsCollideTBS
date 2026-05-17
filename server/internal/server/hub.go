@@ -38,7 +38,7 @@ type SharedGameObjects struct {
 type ClientStateHandler interface {
 	Name() string
 
-	// SetClient Inject thje client into the state machine
+	// SetClient Inject the client into the state machine
 	SetClient(client *Client)
 	CanReceiveGlobalChat() bool
 	OnEnter()

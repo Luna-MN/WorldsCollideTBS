@@ -16,6 +16,8 @@ message RegisterRequestMessage { string username = 1; string password = 2; }
 message OkResponseMessage { }
 message DenyResponseMessage { string reason = 1; }
 message CommandMessage { string command = 1; repeated string args = 2; }
+message ChangeStateMessage { string stateName = 1; }
+message QueueMessage { string QueueType = 1; }
 message HexPositionMessage { Vector2Msg position = 1; }
 message HexPositionsMessage { repeated HexPositionMessage positions = 1;}
 // more message types here
@@ -37,6 +39,8 @@ message Packet {
     HexPositionMessage hexPosition = 9;
     HexPositionsMessage hexPositions = 10;
     SteamAuthTicketMessage steamTicket = 11;
+    ChangeStateMessage changeState = 12;
+    QueueMessage queue = 13;
     //...
   }
 }
