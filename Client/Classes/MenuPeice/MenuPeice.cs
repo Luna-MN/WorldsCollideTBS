@@ -3,5 +3,6 @@ using System;
 
 public partial class MenuPeice : Control
 {
+    public MainLoggedInMenu mainLoggedInMenu;
     public Log log;
 }

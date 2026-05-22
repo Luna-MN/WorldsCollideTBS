@@ -26,6 +26,7 @@ public partial class LoginAdmin : Node, IState
         {
             log.success("Logged in successfully.");
             Globals.GM.username = Username.Text;
+            Globals.GM.SetState(GameManager.state.MainLoggedInMenu);
         };
 
         TrafficManager.Send(packet);

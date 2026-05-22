@@ -5,7 +5,7 @@ public partial class Log : RichTextLabel
 {
     private void message(string msg, Color color)
     {
-        AppendText($"[color={color.ToHtml(false)}]{msg}[/color] \n");
+        AppendText($"[Log] [color={color.ToHtml(false)}]{msg}[/color] \n");
         if (color == Colors.OrangeRed)
         {
             GD.PrintErr($"[Log] {msg}");

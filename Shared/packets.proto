@@ -20,6 +20,8 @@ message ChangeStateMessage { string stateName = 1; }
 message QueueMessage { string QueueType = 1; }
 message HexPositionMessage { Vector2Msg position = 1; }
 message HexPositionsMessage { repeated HexPositionMessage positions = 1;}
+message OpponentMessage { string id = 1; bool steam = 2; }
+message StartGameMessage {}
 // more message types here
 
 
@@ -41,6 +43,8 @@ message Packet {
     SteamAuthTicketMessage steamTicket = 11;
     ChangeStateMessage changeState = 12;
     QueueMessage queue = 13;
+    OpponentMessage opponent = 14;
+    StartGameMessage startGame = 15;
     //...
   }
 }

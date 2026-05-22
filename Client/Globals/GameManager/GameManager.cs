@@ -13,7 +13,8 @@ public partial class GameManager : Node
         LoginAdmin,
         Settings,
         MainLoggedInMenu,
-        Lobby
+        Lobby,
+        Game
     }
     public Dictionary<state, string> stateScenes = new Dictionary<state, string>()
     {
@@ -23,7 +24,8 @@ public partial class GameManager : Node
         { state.Login, "res://States/login/login.tscn" },
         { state.LoginAdmin, "res://States/LoginAdmin/LoginAdmin.tscn" },
         { state.MainLoggedInMenu, "res://States/Menus/MainLoggedInMenu/MainLoggedInMenu.tscn"},
-        { state.Lobby, "res://States/Lobby/Lobby.tscn"}
+        { state.Lobby, "res://States/Lobby/Lobby.tscn"},
+        { state.Game, "res://States/MainGame/MainGame.tscn" }
     };
     public ulong clientId;
     public string username;
@@ -38,5 +40,9 @@ public partial class GameManager : Node
         CurrentSceneRoot = scene.Instantiate();
         GetTree().Root.GetNode("Main").AddChild(CurrentSceneRoot);
     }
-
+    
+    // Opponent Data
+    public ulong opponentId;
+    public string opponentUserString;
+    public bool opponentIsSteamClient;
 }

@@ -756,6 +756,94 @@ func (x *HexPositionsMessage) GetPositions() []*HexPositionMessage {
 	return nil
 }
 
+type OpponentMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Steam         bool                   `protobuf:"varint,2,opt,name=steam,proto3" json:"steam,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OpponentMessage) Reset() {
+	*x = OpponentMessage{}
+	mi := &file_packets_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OpponentMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OpponentMessage) ProtoMessage() {}
+
+func (x *OpponentMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_packets_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OpponentMessage.ProtoReflect.Descriptor instead.
+func (*OpponentMessage) Descriptor() ([]byte, []int) {
+	return file_packets_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *OpponentMessage) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *OpponentMessage) GetSteam() bool {
+	if x != nil {
+		return x.Steam
+	}
+	return false
+}
+
+type StartGameMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartGameMessage) Reset() {
+	*x = StartGameMessage{}
+	mi := &file_packets_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartGameMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartGameMessage) ProtoMessage() {}
+
+func (x *StartGameMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_packets_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartGameMessage.ProtoReflect.Descriptor instead.
+func (*StartGameMessage) Descriptor() ([]byte, []int) {
+	return file_packets_proto_rawDescGZIP(), []int{15}
+}
+
 type Packet struct {
 	state    protoimpl.MessageState `protogen:"open.v1"`
 	SenderId uint64                 `protobuf:"varint,1,opt,name=sender_id,json=senderId,proto3" json:"sender_id,omitempty"`
@@ -773,6 +861,8 @@ type Packet struct {
 	//	*Packet_SteamTicket
 	//	*Packet_ChangeState
 	//	*Packet_Queue
+	//	*Packet_Opponent
+	//	*Packet_StartGame
 	Msg           isPacket_Msg `protobuf_oneof:"msg"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -780,7 +870,7 @@ type Packet struct {
 
 func (x *Packet) Reset() {
 	*x = Packet{}
-	mi := &file_packets_proto_msgTypes[14]
+	mi := &file_packets_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -792,7 +882,7 @@ func (x *Packet) String() string {
 func (*Packet) ProtoMessage() {}
 
 func (x *Packet) ProtoReflect() protoreflect.Message {
-	mi := &file_packets_proto_msgTypes[14]
+	mi := &file_packets_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -805,7 +895,7 @@ func (x *Packet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Packet.ProtoReflect.Descriptor instead.
 func (*Packet) Descriptor() ([]byte, []int) {
-	return file_packets_proto_rawDescGZIP(), []int{14}
+	return file_packets_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *Packet) GetSenderId() uint64 {
@@ -930,6 +1020,24 @@ func (x *Packet) GetQueue() *QueueMessage {
 	return nil
 }
 
+func (x *Packet) GetOpponent() *OpponentMessage {
+	if x != nil {
+		if x, ok := x.Msg.(*Packet_Opponent); ok {
+			return x.Opponent
+		}
+	}
+	return nil
+}
+
+func (x *Packet) GetStartGame() *StartGameMessage {
+	if x != nil {
+		if x, ok := x.Msg.(*Packet_StartGame); ok {
+			return x.StartGame
+		}
+	}
+	return nil
+}
+
 type isPacket_Msg interface {
 	isPacket_Msg()
 }
@@ -979,7 +1087,15 @@ type Packet_ChangeState struct {
 }
 
 type Packet_Queue struct {
-	Queue *QueueMessage `protobuf:"bytes,13,opt,name=queue,proto3,oneof"` //...
+	Queue *QueueMessage `protobuf:"bytes,13,opt,name=queue,proto3,oneof"`
+}
+
+type Packet_Opponent struct {
+	Opponent *OpponentMessage `protobuf:"bytes,14,opt,name=opponent,proto3,oneof"`
+}
+
+type Packet_StartGame struct {
+	StartGame *StartGameMessage `protobuf:"bytes,15,opt,name=startGame,proto3,oneof"` //...
 }
 
 func (*Packet_Chat) isPacket_Msg() {}
@@ -1005,6 +1121,10 @@ func (*Packet_SteamTicket) isPacket_Msg() {}
 func (*Packet_ChangeState) isPacket_Msg() {}
 
 func (*Packet_Queue) isPacket_Msg() {}
+
+func (*Packet_Opponent) isPacket_Msg() {}
+
+func (*Packet_StartGame) isPacket_Msg() {}
 
 var File_packets_proto protoreflect.FileDescriptor
 
@@ -1048,7 +1168,11 @@ const file_packets_proto_rawDesc = "" +
 	"\x12HexPositionMessage\x12/\n" +
 	"\bposition\x18\x01 \x01(\v2\x13.packets.Vector2MsgR\bposition\"P\n" +
 	"\x13HexPositionsMessage\x129\n" +
-	"\tpositions\x18\x01 \x03(\v2\x1b.packets.HexPositionMessageR\tpositions\"\xe0\x05\n" +
+	"\tpositions\x18\x01 \x03(\v2\x1b.packets.HexPositionMessageR\tpositions\"7\n" +
+	"\x0fOpponentMessage\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
+	"\x05steam\x18\x02 \x01(\bR\x05steam\"\x12\n" +
+	"\x10StartGameMessage\"\xd3\x06\n" +
 	"\x06Packet\x12\x1b\n" +
 	"\tsender_id\x18\x01 \x01(\x04R\bsenderId\x12*\n" +
 	"\x04chat\x18\x02 \x01(\v2\x14.packets.ChatMessageH\x00R\x04chat\x12$\n" +
@@ -1063,7 +1187,9 @@ const file_packets_proto_rawDesc = "" +
 	" \x01(\v2\x1c.packets.HexPositionsMessageH\x00R\fhexPositions\x12C\n" +
 	"\vsteamTicket\x18\v \x01(\v2\x1f.packets.SteamAuthTicketMessageH\x00R\vsteamTicket\x12?\n" +
 	"\vchangeState\x18\f \x01(\v2\x1b.packets.ChangeStateMessageH\x00R\vchangeState\x12-\n" +
-	"\x05queue\x18\r \x01(\v2\x15.packets.QueueMessageH\x00R\x05queueB\x05\n" +
+	"\x05queue\x18\r \x01(\v2\x15.packets.QueueMessageH\x00R\x05queue\x126\n" +
+	"\bopponent\x18\x0e \x01(\v2\x18.packets.OpponentMessageH\x00R\bopponent\x129\n" +
+	"\tstartGame\x18\x0f \x01(\v2\x19.packets.StartGameMessageH\x00R\tstartGameB\x05\n" +
 	"\x03msg*B\n" +
 	"\bChatType\x12\v\n" +
 	"\aNothing\x10\x00\x12\n" +
@@ -1086,7 +1212,7 @@ func file_packets_proto_rawDescGZIP() []byte {
 }
 
 var file_packets_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_packets_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_packets_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_packets_proto_goTypes = []any{
 	(ChatType)(0),                  // 0: packets.ChatType
 	(*Vector3Msg)(nil),             // 1: packets.Vector3Msg
@@ -1103,7 +1229,9 @@ var file_packets_proto_goTypes = []any{
 	(*QueueMessage)(nil),           // 12: packets.QueueMessage
 	(*HexPositionMessage)(nil),     // 13: packets.HexPositionMessage
 	(*HexPositionsMessage)(nil),    // 14: packets.HexPositionsMessage
-	(*Packet)(nil),                 // 15: packets.Packet
+	(*OpponentMessage)(nil),        // 15: packets.OpponentMessage
+	(*StartGameMessage)(nil),       // 16: packets.StartGameMessage
+	(*Packet)(nil),                 // 17: packets.Packet
 }
 var file_packets_proto_depIdxs = []int32{
 	0,  // 0: packets.ChatMessage.type:type_name -> packets.ChatType
@@ -1121,11 +1249,13 @@ var file_packets_proto_depIdxs = []int32{
 	6,  // 12: packets.Packet.steamTicket:type_name -> packets.SteamAuthTicketMessage
 	11, // 13: packets.Packet.changeState:type_name -> packets.ChangeStateMessage
 	12, // 14: packets.Packet.queue:type_name -> packets.QueueMessage
-	15, // [15:15] is the sub-list for method output_type
-	15, // [15:15] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	15, // 15: packets.Packet.opponent:type_name -> packets.OpponentMessage
+	16, // 16: packets.Packet.startGame:type_name -> packets.StartGameMessage
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_packets_proto_init() }
@@ -1133,7 +1263,7 @@ func file_packets_proto_init() {
 	if File_packets_proto != nil {
 		return
 	}
-	file_packets_proto_msgTypes[14].OneofWrappers = []any{
+	file_packets_proto_msgTypes[16].OneofWrappers = []any{
 		(*Packet_Chat)(nil),
 		(*Packet_Id)(nil),
 		(*Packet_LoginRequest)(nil),
@@ -1146,6 +1276,8 @@ func file_packets_proto_init() {
 		(*Packet_SteamTicket)(nil),
 		(*Packet_ChangeState)(nil),
 		(*Packet_Queue)(nil),
+		(*Packet_Opponent)(nil),
+		(*Packet_StartGame)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1153,7 +1285,7 @@ func file_packets_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_packets_proto_rawDesc), len(file_packets_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   15,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

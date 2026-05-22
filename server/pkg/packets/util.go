@@ -36,6 +36,27 @@ func NewDeny(reason string) Msg {
 		},
 	}
 }
+
+func NewQueue(queue string) Msg {
+	return &Packet_Queue{Queue: &QueueMessage{
+		QueueType: queue,
+	}}
+}
+
+func NewOpponent(id string, steam bool) Msg {
+	return &Packet_Opponent{
+		Opponent: &OpponentMessage{
+			Id:    id,
+			Steam: steam,
+		},
+	}
+}
+
+func NewStartGame() Msg {
+	return &Packet_StartGame{
+		StartGame: &StartGameMessage{},
+	}
+}
 func NewVector3(x, y, z float32) *Vector3Msg {
 	return &Vector3Msg{X: x, Y: y, Z: z}
 }

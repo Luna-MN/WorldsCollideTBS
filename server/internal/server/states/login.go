@@ -81,11 +81,12 @@ func (l *Login) HandleLoginRequest(id uint64, message *packets.Packet_LoginReque
 		Owner: id,
 	})
 	// change state to in game
+	l.client.SetState(&Menu{})
 }
 
 func (l *Login) HandleRegisterRequest(id uint64, message *packets.Packet_RegisterRequest) {
 	if id != l.client.Id() {
-		l.logger.Printf("Received register request from differant client, ignoring (ID %d)", id)
+		l.logger.Printf("Received register request from different client, ignoring (ID %d)", id)
 		return
 	}
 
@@ -107,6 +108,7 @@ func (l *Login) HandleSteamTicket(id uint64, message *packets.Packet_SteamTicket
 		l.logger.Printf("Error logging in with steam: %v", err)
 	}
 	l.client.SteamID = user.Steamid.String
+	l.client.IsSteamClient = true
 	summ, err := l.client.Steam.GetPlayerSummaries(l.dbCtx, user.Steamid.String)
 	if err != nil {
 		l.logger.Printf("Error getting steam user info: %v", err)

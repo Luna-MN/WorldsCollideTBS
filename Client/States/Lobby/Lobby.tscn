@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bwxwa4gn5e0ft"]
 
 [ext_resource type="Script" uid="uid://cddag3xrpppy" path="res://States/Lobby/Lobby.cs" id="1_ysf48"]
+[ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="2_f0aqx"]
 
-[node name="Lobby" type="Control" unique_id=719568955]
+[node name="Lobby" type="Control" unique_id=719568955 node_paths=PackedStringArray("log", "Play", "Quit", "Invite", "Player1", "Player2")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,3 +11,84 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ysf48")
+log = NodePath("Log")
+Play = NodePath("VBoxContainer/HBoxContainer2/Play")
+Quit = NodePath("VBoxContainer/HBoxContainer2/Quit")
+Invite = NodePath("VBoxContainer/HBoxContainer2/Invite")
+Player1 = NodePath("VBoxContainer/HBoxContainer/Panel/Player1")
+Player2 = NodePath("VBoxContainer/HBoxContainer/Panel2/Player2")
+
+[node name="Log" parent="." unique_id=553717686 instance=ExtResource("2_f0aqx")]
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1793429553]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2055851115]
+custom_minimum_size = Vector2(0, 213.085)
+layout_mode = 2
+alignment = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=902403860]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Player1" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Panel" unique_id=732244986]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.911255
+offset_top = -20.0
+offset_right = 69.911255
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=1329173170]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Player2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Panel2" unique_id=1846947573]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.911255
+offset_top = -20.0
+offset_right = 69.911255
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1750613749]
+layout_mode = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=1744556242]
+layout_mode = 2
+text = "Start"
+
+[node name="Invite" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=91616105]
+layout_mode = 2
+text = "Invite"
+
+[node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=1886009042]
+layout_mode = 2
+text = "Quit"

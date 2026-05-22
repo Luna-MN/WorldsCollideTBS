@@ -22,6 +22,7 @@ type Client struct {
 	id            uint64
 	username      string
 	SteamID       string
+	IsSteamClient bool
 	ENet          ClientInterfacer
 	WS            ClientInterfacer
 	state         ClientStateHandler
@@ -75,6 +76,9 @@ func (c *Client) State() ClientStateHandler {
 func (c *Client) Player() *objects.Player {
 	return c.player
 }
+func (c *Client) Hub() *Hub {
+	return c.hub
+}
 func (c *Client) SetState(newState ClientStateHandler, sync ...bool) {
 	previousStateName := "None"
 	if c.state != nil {
@@ -124,7 +128,13 @@ func (c *Client) Broadcast(message *packets.Packet, enet bool, ToAll bool) {
 		Enet:   enet,
 	}
 }
+func (c *Client) RankedMMR() uint64 {
+	return 0
+}
 
+func (c *Client) UnrankedMMR() uint64 {
+	return 0
+}
 func (c *Client) SharedGameObjects() *SharedGameObjects {
 	return c.hub.SharedGameObjects
 }

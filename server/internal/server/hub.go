@@ -93,6 +93,9 @@ type BroadcastItem struct {
 // Hub is the central point of communication for the server, managing connections and broadcasting messages to clients.
 type Hub struct {
 	Clients *objects.SharedCollection[*Client]
+	// Queue of clients waiting for matches
+	RankedQueue   *objects.QueueCollection[objects.QueueClient]
+	UnrankedQueue *objects.QueueCollection[objects.QueueClient]
 	//Clients *objects.SharedCollection[ClientInterfacer]
 	PeerToClient map[uint]*Client
 
@@ -119,6 +122,8 @@ func NewHub() *Hub {
 	}
 	return &Hub{
 		Clients:        objects.NewSharedCollection[*Client](),
+		RankedQueue:    objects.NewQueueCollection[objects.QueueClient](),
+		UnrankedQueue:  objects.NewQueueCollection[objects.QueueClient](),
 		PeerToClient:   make(map[uint]*Client),
 		BroadcastChan:  make(chan *BroadcastItem),
 		RegisterChan:   make(chan ClientInterfacer),

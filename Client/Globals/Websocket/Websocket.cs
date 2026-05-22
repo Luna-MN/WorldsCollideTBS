@@ -24,8 +24,6 @@ public partial class Websocket : Node
     {
         packet.SenderId = 0;
         var data = packet.ToByteArray();
-        GD.Print("packet Sent " + packet.MsgCase);
-        GD.Print(data);
         return socket.Send(data);
     }
 
