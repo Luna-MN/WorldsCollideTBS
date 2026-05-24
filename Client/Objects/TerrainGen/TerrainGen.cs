@@ -31,7 +31,10 @@ public partial class TerrainGen : Node3D
     public override void _Ready()
     {
         TileMaps.GDBackup();
-        TopTileMaps.GDBackup();
+        if (Features != 0)
+        {
+            TopTileMaps.GDBackup();
+        }
         Generate();
     }
 

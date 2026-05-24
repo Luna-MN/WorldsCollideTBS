@@ -9,6 +9,7 @@ import (
 	"server/internal/server/objects"
 	"server/internal/server/states/services"
 	"server/pkg/packets"
+	"time"
 )
 
 type Login struct {
@@ -18,6 +19,9 @@ type Login struct {
 	dbCtx   context.Context
 	auth    *services.AuthService
 	hub     *server.Hub
+}
+
+func (l *Login) HandleStateMessage(s string, v ...any) {
 }
 
 func (l *Login) CanReceiveGlobalChat() bool {
@@ -115,6 +119,22 @@ func (l *Login) HandleSteamTicket(id uint64, message *packets.Packet_SteamTicket
 	}
 	if summ.Response.Players[0].PersonaName != user.Username {
 		l.client.SetUsername(summ.Response.Players[0].PersonaName)
+	}
+	if db.NewNullString(summ.Response.Players[0].Avatar) != user.Avatar {
+		_, err = l.queries.UpdateAvatar(l.dbCtx, db.UpdateAvatarParams{
+			Avatar: db.NewNullString(summ.Response.Players[0].Avatar),
+			ID:     user.ID,
+		})
+		if err != nil {
+			return
+		}
+	}
+	_, err = l.queries.UpdateLastLoggedIn(l.dbCtx, db.UpdateLastLoggedInParams{
+		ID:           user.ID,
+		Lastloggedin: db.NewNullTime(time.Now()),
+	})
+	if err != nil {
+		return
 	}
 	l.client.SetUsername(user.Username)
 	l.client.SocketSend(p, server.WebSocket)

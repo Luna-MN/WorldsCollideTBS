@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dpc84utn7ail5"]
+
+[ext_resource type="Script" uid="uid://bkvy7784tggjy" path="res://States/StartGame/StartGame.cs" id="1_8ltj8"]
+[ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="1_fncua"]
+[ext_resource type="PackedScene" uid="uid://dpj6k736hcvn3" path="res://Objects/TerrainGen/terrain_gen.tscn" id="2_8ltj8"]
+
+[node name="StartGame" type="Node3D" unique_id=341148836]
+script = ExtResource("1_8ltj8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=991551011]
+
+[node name="Log" parent="CanvasLayer" unique_id=553717686 instance=ExtResource("1_fncua")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=851265967]
+transform = Transform3D(1, 0, 0, 0, 0.5362146, 0.8440817, 0, -0.8440817, 0.5362146, -0.007952452, 17.374634, 11.622343)
+
+[node name="TerrainGen" parent="." unique_id=116907696 instance=ExtResource("2_8ltj8")]
+Radius = 2
+
+[node name="TerrainGen2" parent="." unique_id=20943194 instance=ExtResource("2_8ltj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.031076, 0, 0)
+Radius = 2
+
+[node name="TerrainGen3" parent="." unique_id=765626791 instance=ExtResource("2_8ltj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.129242, 0, 0)
+Radius = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1650520879]
+transform = Transform3D(1, 0, 0, 0, 0.7425576, 0.6697823, 0, -0.6697823, 0.7425576, 0, 14.22217, 8.484977)

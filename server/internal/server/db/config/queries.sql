@@ -24,9 +24,9 @@ WHERE
 
 -- name: CreateSteamUser :one
 INSERT INTO
-    users (username, steamId)
+    users (username, steamId, Avatar, LastLoggedIn)
 VALUES
-    (?, ?)
+    (?, ?, ?, ?)
 RETURNING *;
 
 -- name: GetSteamUser :one
@@ -45,4 +45,38 @@ SET
     username = ?
 WHERE
     id = ?
+RETURNING *;
+
+-- name: UpdateAvatar :one
+UPDATE
+    users
+SET
+    Avatar = ?
+WHERE
+    id = ?
+RETURNING *;
+
+-- name: UpdateLastLoggedIn :one
+UPDATE
+    users
+SET
+    LastLoggedIn = ?
+WHERE
+    id = ?
+RETURNING *;
+
+-- name: GetSteamAvatarImage :one
+SELECT
+    Avatar
+FROM
+    users
+WHERE
+    steamId = ?
+LIMIT 1;
+
+-- name: NewGame :one
+INSERT INTO
+    games(player1Id, player2Id, player1Score, player2Score, winnerId, MatchTime)
+VALUES
+    (?, ?, ?, ?, ?, ?)
 RETURNING *;

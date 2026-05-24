@@ -10,6 +10,7 @@ import (
 	"server/internal/steam"
 	"server/pkg/packets"
 	"strings"
+	"time"
 
 	"golang.org/x/crypto/bcrypt"
 )
@@ -18,6 +19,14 @@ type AuthService struct {
 	dbCtx   context.Context
 	dbTx    *server.DbTx
 	queries db.Queries
+}
+
+func (a *AuthService) Name() string {
+	return "AuthService"
+}
+
+func (a *AuthService) Id() uint64 {
+	return 0
 }
 
 func NewAuthService(tx *server.DbTx) *AuthService {
@@ -46,6 +55,10 @@ func (a *AuthService) Login(username, password string) (packets.Msg, error) {
 	if err != nil {
 		return genericFailMessage, err
 	}
+	a.queries.UpdateLastLoggedIn(a.dbCtx, db.UpdateLastLoggedInParams{
+		Lastloggedin: db.NewNullTime(time.Now()),
+		ID:           user.ID,
+	})
 	return packets.NewOK(), nil
 }
 func (a *AuthService) Register(username, password string) (packets.Msg, error) {
@@ -119,8 +132,10 @@ func (a *AuthService) SteamLogin(ticket string, steam *steam.SteamWebClient) (pa
 	player := summ.Response.Players[0]
 
 	user, err = a.queries.CreateSteamUser(a.dbCtx, db.CreateSteamUserParams{
-		Username: player.PersonaName,
-		Steamid:  db.NewNullString(player.SteamID),
+		Username:     player.PersonaName,
+		Steamid:      db.NewNullString(player.SteamID),
+		Avatar:       db.NewNullString(player.AvatarFull),
+		Lastloggedin: db.NewNullTime(time.Now()),
 	})
 	if err != nil {
 		return packets.NewDeny("Error creating Steam user"), user, err

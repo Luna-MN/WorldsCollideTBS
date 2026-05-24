@@ -8,9 +8,21 @@ import (
 	"database/sql"
 )
 
+type Game struct {
+	ID           int64
+	Player1id    sql.NullInt64
+	Player2id    sql.NullInt64
+	Player1score sql.NullInt64
+	Player2score sql.NullInt64
+	Winnerid     sql.NullInt64
+	Matchtime    sql.NullTime
+}
+
 type User struct {
 	ID           int64
 	Username     string
 	PasswordHash sql.NullString
 	Steamid      sql.NullString
+	Lastloggedin sql.NullTime
+	Avatar       sql.NullString
 }

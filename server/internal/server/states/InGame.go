@@ -17,36 +17,39 @@ type InGame struct {
 	dbCtx       context.Context
 	auth        *services.AuthService
 	hub         *server.Hub
-	OtherClient *server.Client
+	enemyClient *server.Client
+	gameService *services.GameService
 }
 
-func (i InGame) Name() string {
+func (i *InGame) HandleStateMessage(s string, v ...any) {
+}
+func (i *InGame) Name() string {
 	return "InGame"
 }
 
-func (i InGame) SetClient(client *server.Client) {
+func (i *InGame) SetClient(client *server.Client) {
 	if i.client != nil {
-		i.OtherClient = client
+		i.enemyClient = client
+	} else {
+		i.client = client
 	}
-	i.client = client
-	loginPrefix := fmt.Sprintf("Client %d [%s]: ", client.Id(), i.Name())
+	loginPrefix := fmt.Sprintf("%s, %s with %s", i.client.Username(), i.Name(), i.enemyClient.Username())
 	i.logger = log.New(log.Writer(), loginPrefix, log.LstdFlags)
-	i.queries = client.DbTx().Queries
-	i.dbCtx = client.DbTx().Ctx
+	i.queries = i.client.DbTx().Queries
+	i.dbCtx = i.client.DbTx().Ctx
 }
-
-func (i InGame) CanReceiveGlobalChat() bool {
+func (i *InGame) CanReceiveGlobalChat() bool {
 	return true
 }
 
-func (i InGame) OnEnter() {
-
+func (i *InGame) OnEnter() {
+	i.gameService.OnEnter()
 }
 
-func (i InGame) HandleMessage(senderId uint64, message packets.Msg, transfer server.TransferType) {
+func (i *InGame) HandleMessage(senderId uint64, message packets.Msg, transfer server.TransferType) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (i InGame) OnExit() {
+func (i *InGame) OnExit() {
 }

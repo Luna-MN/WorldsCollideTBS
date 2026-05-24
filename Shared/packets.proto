@@ -20,7 +20,7 @@ message ChangeStateMessage { string stateName = 1; }
 message QueueMessage { string QueueType = 1; }
 message HexPositionMessage { Vector2Msg position = 1; }
 message HexPositionsMessage { repeated HexPositionMessage positions = 1;}
-message OpponentMessage { string id = 1; bool steam = 2; }
+message OpponentMessage { string id = 1; bool steam = 2; string AvatarImage = 3; }
 message StartGameMessage {}
 // more message types here
 

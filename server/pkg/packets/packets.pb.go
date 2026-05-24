@@ -760,6 +760,7 @@ type OpponentMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Steam         bool                   `protobuf:"varint,2,opt,name=steam,proto3" json:"steam,omitempty"`
+	AvatarImage   string                 `protobuf:"bytes,3,opt,name=AvatarImage,proto3" json:"AvatarImage,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -806,6 +807,13 @@ func (x *OpponentMessage) GetSteam() bool {
 		return x.Steam
 	}
 	return false
+}
+
+func (x *OpponentMessage) GetAvatarImage() string {
+	if x != nil {
+		return x.AvatarImage
+	}
+	return ""
 }
 
 type StartGameMessage struct {
@@ -1168,10 +1176,11 @@ const file_packets_proto_rawDesc = "" +
 	"\x12HexPositionMessage\x12/\n" +
 	"\bposition\x18\x01 \x01(\v2\x13.packets.Vector2MsgR\bposition\"P\n" +
 	"\x13HexPositionsMessage\x129\n" +
-	"\tpositions\x18\x01 \x03(\v2\x1b.packets.HexPositionMessageR\tpositions\"7\n" +
+	"\tpositions\x18\x01 \x03(\v2\x1b.packets.HexPositionMessageR\tpositions\"Y\n" +
 	"\x0fOpponentMessage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05steam\x18\x02 \x01(\bR\x05steam\"\x12\n" +
+	"\x05steam\x18\x02 \x01(\bR\x05steam\x12 \n" +
+	"\vAvatarImage\x18\x03 \x01(\tR\vAvatarImage\"\x12\n" +
 	"\x10StartGameMessage\"\xd3\x06\n" +
 	"\x06Packet\x12\x1b\n" +
 	"\tsender_id\x18\x01 \x01(\x04R\bsenderId\x12*\n" +

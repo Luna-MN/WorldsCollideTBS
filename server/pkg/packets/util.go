@@ -43,11 +43,12 @@ func NewQueue(queue string) Msg {
 	}}
 }
 
-func NewOpponent(id string, steam bool) Msg {
+func NewOpponent(id string, steam bool, avatarImage string) Msg {
 	return &Packet_Opponent{
 		Opponent: &OpponentMessage{
-			Id:    id,
-			Steam: steam,
+			Id:          id,
+			Steam:       steam,
+			AvatarImage: avatarImage,
 		},
 	}
 }

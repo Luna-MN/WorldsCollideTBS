@@ -39,26 +39,27 @@ namespace Packets {
             "ZRgBIAEoCSIhCgxRdWV1ZU1lc3NhZ2USEQoJUXVldWVUeXBlGAEgASgJIjsK",
             "EkhleFBvc2l0aW9uTWVzc2FnZRIlCghwb3NpdGlvbhgBIAEoCzITLnBhY2tl",
             "dHMuVmVjdG9yMk1zZyJFChNIZXhQb3NpdGlvbnNNZXNzYWdlEi4KCXBvc2l0",
-            "aW9ucxgBIAMoCzIbLnBhY2tldHMuSGV4UG9zaXRpb25NZXNzYWdlIiwKD09w",
-            "cG9uZW50TWVzc2FnZRIKCgJpZBgBIAEoCRINCgVzdGVhbRgCIAEoCCISChBT",
-            "dGFydEdhbWVNZXNzYWdlIrwFCgZQYWNrZXQSEQoJc2VuZGVyX2lkGAEgASgE",
-            "EiQKBGNoYXQYAiABKAsyFC5wYWNrZXRzLkNoYXRNZXNzYWdlSAASIAoCaWQY",
-            "AyABKAsyEi5wYWNrZXRzLklkTWVzc2FnZUgAEjQKDGxvZ2luUmVxdWVzdBgE",
-            "IAEoCzIcLnBhY2tldHMuTG9naW5SZXF1ZXN0TWVzc2FnZUgAEjoKD3JlZ2lz",
-            "dGVyUmVxdWVzdBgFIAEoCzIfLnBhY2tldHMuUmVnaXN0ZXJSZXF1ZXN0TWVz",
-            "c2FnZUgAEigKAk9LGAYgASgLMhoucGFja2V0cy5Pa1Jlc3BvbnNlTWVzc2Fn",
-            "ZUgAEiwKBERlbnkYByABKAsyHC5wYWNrZXRzLkRlbnlSZXNwb25zZU1lc3Nh",
-            "Z2VIABIqCgdjb21tYW5kGAggASgLMhcucGFja2V0cy5Db21tYW5kTWVzc2Fn",
-            "ZUgAEjIKC2hleFBvc2l0aW9uGAkgASgLMhsucGFja2V0cy5IZXhQb3NpdGlv",
-            "bk1lc3NhZ2VIABI0CgxoZXhQb3NpdGlvbnMYCiABKAsyHC5wYWNrZXRzLkhl",
-            "eFBvc2l0aW9uc01lc3NhZ2VIABI2CgtzdGVhbVRpY2tldBgLIAEoCzIfLnBh",
-            "Y2tldHMuU3RlYW1BdXRoVGlja2V0TWVzc2FnZUgAEjIKC2NoYW5nZVN0YXRl",
-            "GAwgASgLMhsucGFja2V0cy5DaGFuZ2VTdGF0ZU1lc3NhZ2VIABImCgVxdWV1",
-            "ZRgNIAEoCzIVLnBhY2tldHMuUXVldWVNZXNzYWdlSAASLAoIb3Bwb25lbnQY",
-            "DiABKAsyGC5wYWNrZXRzLk9wcG9uZW50TWVzc2FnZUgAEi4KCXN0YXJ0R2Ft",
-            "ZRgPIAEoCzIZLnBhY2tldHMuU3RhcnRHYW1lTWVzc2FnZUgAQgUKA21zZypC",
-            "CghDaGF0VHlwZRILCgdOb3RoaW5nEAASCgoGR2xvYmFsEAESCQoFTG9jYWwQ",
-            "AhIJCgVQYXJ0eRADEgcKA01heBAEQg1aC3BrZy9wYWNrZXRzYgZwcm90bzM="));
+            "aW9ucxgBIAMoCzIbLnBhY2tldHMuSGV4UG9zaXRpb25NZXNzYWdlIkEKD09w",
+            "cG9uZW50TWVzc2FnZRIKCgJpZBgBIAEoCRINCgVzdGVhbRgCIAEoCBITCgtB",
+            "dmF0YXJJbWFnZRgDIAEoCSISChBTdGFydEdhbWVNZXNzYWdlIrwFCgZQYWNr",
+            "ZXQSEQoJc2VuZGVyX2lkGAEgASgEEiQKBGNoYXQYAiABKAsyFC5wYWNrZXRz",
+            "LkNoYXRNZXNzYWdlSAASIAoCaWQYAyABKAsyEi5wYWNrZXRzLklkTWVzc2Fn",
+            "ZUgAEjQKDGxvZ2luUmVxdWVzdBgEIAEoCzIcLnBhY2tldHMuTG9naW5SZXF1",
+            "ZXN0TWVzc2FnZUgAEjoKD3JlZ2lzdGVyUmVxdWVzdBgFIAEoCzIfLnBhY2tl",
+            "dHMuUmVnaXN0ZXJSZXF1ZXN0TWVzc2FnZUgAEigKAk9LGAYgASgLMhoucGFj",
+            "a2V0cy5Pa1Jlc3BvbnNlTWVzc2FnZUgAEiwKBERlbnkYByABKAsyHC5wYWNr",
+            "ZXRzLkRlbnlSZXNwb25zZU1lc3NhZ2VIABIqCgdjb21tYW5kGAggASgLMhcu",
+            "cGFja2V0cy5Db21tYW5kTWVzc2FnZUgAEjIKC2hleFBvc2l0aW9uGAkgASgL",
+            "MhsucGFja2V0cy5IZXhQb3NpdGlvbk1lc3NhZ2VIABI0CgxoZXhQb3NpdGlv",
+            "bnMYCiABKAsyHC5wYWNrZXRzLkhleFBvc2l0aW9uc01lc3NhZ2VIABI2Cgtz",
+            "dGVhbVRpY2tldBgLIAEoCzIfLnBhY2tldHMuU3RlYW1BdXRoVGlja2V0TWVz",
+            "c2FnZUgAEjIKC2NoYW5nZVN0YXRlGAwgASgLMhsucGFja2V0cy5DaGFuZ2VT",
+            "dGF0ZU1lc3NhZ2VIABImCgVxdWV1ZRgNIAEoCzIVLnBhY2tldHMuUXVldWVN",
+            "ZXNzYWdlSAASLAoIb3Bwb25lbnQYDiABKAsyGC5wYWNrZXRzLk9wcG9uZW50",
+            "TWVzc2FnZUgAEi4KCXN0YXJ0R2FtZRgPIAEoCzIZLnBhY2tldHMuU3RhcnRH",
+            "YW1lTWVzc2FnZUgAQgUKA21zZypCCghDaGF0VHlwZRILCgdOb3RoaW5nEAAS",
+            "CgoGR2xvYmFsEAESCQoFTG9jYWwQAhIJCgVQYXJ0eRADEgcKA01heBAEQg1a",
+            "C3BrZy9wYWNrZXRzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Packets.ChatType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -76,7 +77,7 @@ namespace Packets {
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.QueueMessage), global::Packets.QueueMessage.Parser, new[]{ "QueueType" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.HexPositionMessage), global::Packets.HexPositionMessage.Parser, new[]{ "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.HexPositionsMessage), global::Packets.HexPositionsMessage.Parser, new[]{ "Positions" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.OpponentMessage), global::Packets.OpponentMessage.Parser, new[]{ "Id", "Steam" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.OpponentMessage), global::Packets.OpponentMessage.Parser, new[]{ "Id", "Steam", "AvatarImage" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.StartGameMessage), global::Packets.StartGameMessage.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.Packet), global::Packets.Packet.Parser, new[]{ "SenderId", "Chat", "Id", "LoginRequest", "RegisterRequest", "OK", "Deny", "Command", "HexPosition", "HexPositions", "SteamTicket", "ChangeState", "Queue", "Opponent", "StartGame" }, new[]{ "Msg" }, null, null, null)
           }));
@@ -3188,6 +3189,7 @@ namespace Packets {
     public OpponentMessage(OpponentMessage other) : this() {
       id_ = other.id_;
       steam_ = other.steam_;
+      avatarImage_ = other.avatarImage_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3221,6 +3223,18 @@ namespace Packets {
       }
     }
 
+    /// <summary>Field number for the "AvatarImage" field.</summary>
+    public const int AvatarImageFieldNumber = 3;
+    private string avatarImage_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string AvatarImage {
+      get { return avatarImage_; }
+      set {
+        avatarImage_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -3238,6 +3252,7 @@ namespace Packets {
       }
       if (Id != other.Id) return false;
       if (Steam != other.Steam) return false;
+      if (AvatarImage != other.AvatarImage) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3247,6 +3262,7 @@ namespace Packets {
       int hash = 1;
       if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Steam != false) hash ^= Steam.GetHashCode();
+      if (AvatarImage.Length != 0) hash ^= AvatarImage.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3273,6 +3289,10 @@ namespace Packets {
         output.WriteRawTag(16);
         output.WriteBool(Steam);
       }
+      if (AvatarImage.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(AvatarImage);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3291,6 +3311,10 @@ namespace Packets {
         output.WriteRawTag(16);
         output.WriteBool(Steam);
       }
+      if (AvatarImage.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(AvatarImage);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3306,6 +3330,9 @@ namespace Packets {
       }
       if (Steam != false) {
         size += 1 + 1;
+      }
+      if (AvatarImage.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AvatarImage);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3324,6 +3351,9 @@ namespace Packets {
       }
       if (other.Steam != false) {
         Steam = other.Steam;
+      }
+      if (other.AvatarImage.Length != 0) {
+        AvatarImage = other.AvatarImage;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3352,6 +3382,10 @@ namespace Packets {
             Steam = input.ReadBool();
             break;
           }
+          case 26: {
+            AvatarImage = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -3377,6 +3411,10 @@ namespace Packets {
           }
           case 16: {
             Steam = input.ReadBool();
+            break;
+          }
+          case 26: {
+            AvatarImage = input.ReadString();
             break;
           }
         }

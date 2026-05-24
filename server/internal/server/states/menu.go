@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"math/rand"
 	"server/internal/server"
 	"server/internal/server/db"
 	"server/internal/server/objects"
@@ -21,6 +20,9 @@ type Menu struct {
 	hub     *server.Hub
 	inQueue bool
 	queue   *objects.QueueCollection[objects.QueueClient]
+}
+
+func (m *Menu) HandleStateMessage(s string, v ...any) {
 }
 
 func (m *Menu) Name() string {
@@ -59,65 +61,25 @@ func (m *Menu) HandleQueueMessage(senderId uint64, message *packets.QueueMessage
 	m.QueueHandler(message.QueueType)
 }
 func (m *Menu) QueueHandler(QueueType string) {
-	if m.inQueue {
-		m.logger.Printf("Already in queue, ignoring")
+	qs := services.NewQueueService(m.client, m.hub, m.queries, m.logger, m.dbCtx)
+	ls, oc := qs.QueueHandler(QueueType)
+	if !ls.Init {
+		m.UpdateLoggerPrefix(QueueType)
 		return
 	}
-	var mmr uint64
-	if QueueType == "ranked" {
-		m.queue = m.hub.RankedQueue
-		mmr = m.client.RankedMMR()
-	} else {
-		m.queue = m.hub.UnrankedQueue
-		mmr = m.client.UnrankedMMR()
-	}
-	var queueWithinBounds = m.queue.WithinMMRBounds(mmr)
-	if len(queueWithinBounds) > 0 {
-		m.logger.Printf("Queue within bounds: %v", queueWithinBounds)
-		// get random player from queue
-		var p objects.QueueClient
-		for _, queuedPlayer := range queueWithinBounds {
-			p = queuedPlayer
-			break
-		}
+	oc.SetState(&Lobby{
+		hub:          m.hub,
+		OtherClient:  m.client,
+		Queue:        true,
+		LobbyService: ls,
+	})
+	m.client.SetState(&Lobby{
+		hub:          m.hub,
+		OtherClient:  m.client,
+		Queue:        true,
+		LobbyService: ls,
+	})
 
-		m.queue.Remove(p.Id)
-		if len(queueWithinBounds) > 1 {
-			p = queueWithinBounds[uint64(rand.Intn(len(queueWithinBounds)))]
-		}
-
-		if p.ClientId == m.client.Id() {
-			m.logger.Printf("Client is Me")
-		}
-		oc, _ := m.hub.Clients.Get(p.ClientId)
-		if oc == nil {
-			m.logger.Printf("Client not found")
-			return
-		}
-		if oc.State().Name() == "Lobby" {
-			oc.State().SetClient(m.client)
-		}
-		oc.SocketSend(packets.NewQueue("found"), server.WebSocket)
-		oc.SetState(&Lobby{
-			hub:         m.hub,
-			OtherClient: m.client,
-			Queue:       true,
-		})
-		m.logger.Printf("Client %d is in queue, joining lobby", oc.Id())
-		m.client.SocketSend(packets.NewQueue("found"), server.WebSocket)
-		m.client.SetState(&Lobby{
-			hub:         m.hub,
-			OtherClient: oc,
-			Queue:       true,
-		})
-		return
-	}
-	m.logger.Printf("Queue not within bounds, adding to queue: %v", QueueType)
-	// if no queue within bounds, add to queue
-	m.queue.Add(objects.NewQueueClient(m.queue.GetNextId(), m.client.Id(), mmr), m.client.Id())
-	m.inQueue = true
-	m.UpdateLoggerPrefix(fmt.Sprintf("Queueing for %s", QueueType))
-	m.client.SocketSend(packets.NewQueue(QueueType), server.WebSocket)
 }
 func (m *Menu) OnExit() {
 	if m.inQueue {

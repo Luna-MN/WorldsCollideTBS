@@ -45,6 +45,8 @@ type ClientStateHandler interface {
 	HandleMessage(senderId uint64, message packets.Msg, transfer TransferType)
 	// OnExit clean up the state machine
 	OnExit()
+	// HandleStateMessage
+	HandleStateMessage(s string, v ...any)
 }
 
 type ClientInterfacer interface {
@@ -83,6 +85,11 @@ type ClientInterfacer interface {
 	// Close closes the connection
 	Close(reason string)
 }
+
+type Service interface {
+	Name() string
+	Id() uint64
+}
 type BroadcastItem struct {
 	Packet *packets.Packet
 	State  string
@@ -96,6 +103,10 @@ type Hub struct {
 	// Queue of clients waiting for matches
 	RankedQueue   *objects.QueueCollection[objects.QueueClient]
 	UnrankedQueue *objects.QueueCollection[objects.QueueClient]
+	// Currently running games
+	Games *objects.SharedCollection[Service]
+	// Lobbies currently waiting for players
+	Lobbies *objects.SharedCollection[Service]
 	//Clients *objects.SharedCollection[ClientInterfacer]
 	PeerToClient map[uint]*Client
 
@@ -124,6 +135,8 @@ func NewHub() *Hub {
 		Clients:        objects.NewSharedCollection[*Client](),
 		RankedQueue:    objects.NewQueueCollection[objects.QueueClient](),
 		UnrankedQueue:  objects.NewQueueCollection[objects.QueueClient](),
+		Games:          objects.NewSharedCollection[Service](),
+		Lobbies:        objects.NewSharedCollection[Service](),
 		PeerToClient:   make(map[uint]*Client),
 		BroadcastChan:  make(chan *BroadcastItem),
 		RegisterChan:   make(chan ClientInterfacer),

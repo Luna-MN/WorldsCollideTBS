@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"server/internal/server/db"
 	"server/internal/server/objects"
 	"server/internal/steam"
 	"server/pkg/packets"
@@ -141,4 +142,16 @@ func (c *Client) SharedGameObjects() *SharedGameObjects {
 
 func (c *Client) ProcessMessage(senderId uint64, message packets.Msg, transferType TransferType) {
 	c.state.HandleMessage(senderId, message, transferType)
+}
+
+func (c *Client) GetAvatarImage() string {
+	if c.IsSteamClient {
+		image, err := c.dbTx.Queries.GetSteamAvatarImage(c.dbTx.Ctx, db.NewNullString(c.SteamID))
+		if err != nil {
+			c.logger.Printf("Failed to get steam avatar image: %v", err)
+			return ""
+		}
+		return image.String
+	}
+	return ""
 }
