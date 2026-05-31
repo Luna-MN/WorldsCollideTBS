@@ -26,7 +26,7 @@ public partial class TerrainGen : Node3D
     public TopTileMapController TopTileMaps;
     private WorldInfo worldInfo;
     [ExportToolButton("Generate Terrain")] private Callable GenerateTerrainButton => Callable.From(_Ready);
-    
+    public int seed;
 
     public override void _Ready()
     {
@@ -40,6 +40,10 @@ public partial class TerrainGen : Node3D
 
     private void Generate()
     {
+        if (seed != 0)
+        {
+            noise.SetSeed(seed);
+        }
         worldInfo = new WorldInfo()
         {
             Radius = Radius,
@@ -48,7 +52,7 @@ public partial class TerrainGen : Node3D
             DefaultTile = DefaultTile,
             FeatureArgs = FeatureArgs
         };
-        worldInfo.GenerateTerrainInfo(noise);
+        worldInfo.GenerateTerrainInfo(noise, seed);
         GenerateTerrain(worldInfo);
     }
     private void GenerateTerrain(WorldInfo worldInfo)

@@ -852,6 +852,94 @@ func (*StartGameMessage) Descriptor() ([]byte, []int) {
 	return file_packets_proto_rawDescGZIP(), []int{15}
 }
 
+type SeedMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Seed          []int64                `protobuf:"varint,1,rep,packed,name=seed,proto3" json:"seed,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SeedMessage) Reset() {
+	*x = SeedMessage{}
+	mi := &file_packets_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeedMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeedMessage) ProtoMessage() {}
+
+func (x *SeedMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_packets_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeedMessage.ProtoReflect.Descriptor instead.
+func (*SeedMessage) Descriptor() ([]byte, []int) {
+	return file_packets_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *SeedMessage) GetSeed() []int64 {
+	if x != nil {
+		return x.Seed
+	}
+	return nil
+}
+
+type IDsMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IDs           []*IdMessage           `protobuf:"bytes,1,rep,name=IDs,proto3" json:"IDs,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *IDsMessage) Reset() {
+	*x = IDsMessage{}
+	mi := &file_packets_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *IDsMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IDsMessage) ProtoMessage() {}
+
+func (x *IDsMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_packets_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IDsMessage.ProtoReflect.Descriptor instead.
+func (*IDsMessage) Descriptor() ([]byte, []int) {
+	return file_packets_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *IDsMessage) GetIDs() []*IdMessage {
+	if x != nil {
+		return x.IDs
+	}
+	return nil
+}
+
 type Packet struct {
 	state    protoimpl.MessageState `protogen:"open.v1"`
 	SenderId uint64                 `protobuf:"varint,1,opt,name=sender_id,json=senderId,proto3" json:"sender_id,omitempty"`
@@ -871,6 +959,8 @@ type Packet struct {
 	//	*Packet_Queue
 	//	*Packet_Opponent
 	//	*Packet_StartGame
+	//	*Packet_Seed
+	//	*Packet_IDs
 	Msg           isPacket_Msg `protobuf_oneof:"msg"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -878,7 +968,7 @@ type Packet struct {
 
 func (x *Packet) Reset() {
 	*x = Packet{}
-	mi := &file_packets_proto_msgTypes[16]
+	mi := &file_packets_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -890,7 +980,7 @@ func (x *Packet) String() string {
 func (*Packet) ProtoMessage() {}
 
 func (x *Packet) ProtoReflect() protoreflect.Message {
-	mi := &file_packets_proto_msgTypes[16]
+	mi := &file_packets_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -903,7 +993,7 @@ func (x *Packet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Packet.ProtoReflect.Descriptor instead.
 func (*Packet) Descriptor() ([]byte, []int) {
-	return file_packets_proto_rawDescGZIP(), []int{16}
+	return file_packets_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *Packet) GetSenderId() uint64 {
@@ -1046,6 +1136,24 @@ func (x *Packet) GetStartGame() *StartGameMessage {
 	return nil
 }
 
+func (x *Packet) GetSeed() *SeedMessage {
+	if x != nil {
+		if x, ok := x.Msg.(*Packet_Seed); ok {
+			return x.Seed
+		}
+	}
+	return nil
+}
+
+func (x *Packet) GetIDs() *IDsMessage {
+	if x != nil {
+		if x, ok := x.Msg.(*Packet_IDs); ok {
+			return x.IDs
+		}
+	}
+	return nil
+}
+
 type isPacket_Msg interface {
 	isPacket_Msg()
 }
@@ -1103,7 +1211,15 @@ type Packet_Opponent struct {
 }
 
 type Packet_StartGame struct {
-	StartGame *StartGameMessage `protobuf:"bytes,15,opt,name=startGame,proto3,oneof"` //...
+	StartGame *StartGameMessage `protobuf:"bytes,15,opt,name=startGame,proto3,oneof"`
+}
+
+type Packet_Seed struct {
+	Seed *SeedMessage `protobuf:"bytes,16,opt,name=seed,proto3,oneof"`
+}
+
+type Packet_IDs struct {
+	IDs *IDsMessage `protobuf:"bytes,17,opt,name=IDs,proto3,oneof"` //...
 }
 
 func (*Packet_Chat) isPacket_Msg() {}
@@ -1133,6 +1249,10 @@ func (*Packet_Queue) isPacket_Msg() {}
 func (*Packet_Opponent) isPacket_Msg() {}
 
 func (*Packet_StartGame) isPacket_Msg() {}
+
+func (*Packet_Seed) isPacket_Msg() {}
+
+func (*Packet_IDs) isPacket_Msg() {}
 
 var File_packets_proto protoreflect.FileDescriptor
 
@@ -1181,7 +1301,12 @@ const file_packets_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05steam\x18\x02 \x01(\bR\x05steam\x12 \n" +
 	"\vAvatarImage\x18\x03 \x01(\tR\vAvatarImage\"\x12\n" +
-	"\x10StartGameMessage\"\xd3\x06\n" +
+	"\x10StartGameMessage\"!\n" +
+	"\vSeedMessage\x12\x12\n" +
+	"\x04seed\x18\x01 \x03(\x03R\x04seed\"2\n" +
+	"\n" +
+	"IDsMessage\x12$\n" +
+	"\x03IDs\x18\x01 \x03(\v2\x12.packets.IdMessageR\x03IDs\"\xa8\a\n" +
 	"\x06Packet\x12\x1b\n" +
 	"\tsender_id\x18\x01 \x01(\x04R\bsenderId\x12*\n" +
 	"\x04chat\x18\x02 \x01(\v2\x14.packets.ChatMessageH\x00R\x04chat\x12$\n" +
@@ -1198,7 +1323,9 @@ const file_packets_proto_rawDesc = "" +
 	"\vchangeState\x18\f \x01(\v2\x1b.packets.ChangeStateMessageH\x00R\vchangeState\x12-\n" +
 	"\x05queue\x18\r \x01(\v2\x15.packets.QueueMessageH\x00R\x05queue\x126\n" +
 	"\bopponent\x18\x0e \x01(\v2\x18.packets.OpponentMessageH\x00R\bopponent\x129\n" +
-	"\tstartGame\x18\x0f \x01(\v2\x19.packets.StartGameMessageH\x00R\tstartGameB\x05\n" +
+	"\tstartGame\x18\x0f \x01(\v2\x19.packets.StartGameMessageH\x00R\tstartGame\x12*\n" +
+	"\x04seed\x18\x10 \x01(\v2\x14.packets.SeedMessageH\x00R\x04seed\x12'\n" +
+	"\x03IDs\x18\x11 \x01(\v2\x13.packets.IDsMessageH\x00R\x03IDsB\x05\n" +
 	"\x03msg*B\n" +
 	"\bChatType\x12\v\n" +
 	"\aNothing\x10\x00\x12\n" +
@@ -1221,7 +1348,7 @@ func file_packets_proto_rawDescGZIP() []byte {
 }
 
 var file_packets_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_packets_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_packets_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_packets_proto_goTypes = []any{
 	(ChatType)(0),                  // 0: packets.ChatType
 	(*Vector3Msg)(nil),             // 1: packets.Vector3Msg
@@ -1240,31 +1367,36 @@ var file_packets_proto_goTypes = []any{
 	(*HexPositionsMessage)(nil),    // 14: packets.HexPositionsMessage
 	(*OpponentMessage)(nil),        // 15: packets.OpponentMessage
 	(*StartGameMessage)(nil),       // 16: packets.StartGameMessage
-	(*Packet)(nil),                 // 17: packets.Packet
+	(*SeedMessage)(nil),            // 17: packets.SeedMessage
+	(*IDsMessage)(nil),             // 18: packets.IDsMessage
+	(*Packet)(nil),                 // 19: packets.Packet
 }
 var file_packets_proto_depIdxs = []int32{
 	0,  // 0: packets.ChatMessage.type:type_name -> packets.ChatType
 	2,  // 1: packets.HexPositionMessage.position:type_name -> packets.Vector2Msg
 	13, // 2: packets.HexPositionsMessage.positions:type_name -> packets.HexPositionMessage
-	3,  // 3: packets.Packet.chat:type_name -> packets.ChatMessage
-	4,  // 4: packets.Packet.id:type_name -> packets.IdMessage
-	5,  // 5: packets.Packet.loginRequest:type_name -> packets.LoginRequestMessage
-	7,  // 6: packets.Packet.registerRequest:type_name -> packets.RegisterRequestMessage
-	8,  // 7: packets.Packet.OK:type_name -> packets.OkResponseMessage
-	9,  // 8: packets.Packet.Deny:type_name -> packets.DenyResponseMessage
-	10, // 9: packets.Packet.command:type_name -> packets.CommandMessage
-	13, // 10: packets.Packet.hexPosition:type_name -> packets.HexPositionMessage
-	14, // 11: packets.Packet.hexPositions:type_name -> packets.HexPositionsMessage
-	6,  // 12: packets.Packet.steamTicket:type_name -> packets.SteamAuthTicketMessage
-	11, // 13: packets.Packet.changeState:type_name -> packets.ChangeStateMessage
-	12, // 14: packets.Packet.queue:type_name -> packets.QueueMessage
-	15, // 15: packets.Packet.opponent:type_name -> packets.OpponentMessage
-	16, // 16: packets.Packet.startGame:type_name -> packets.StartGameMessage
-	17, // [17:17] is the sub-list for method output_type
-	17, // [17:17] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	4,  // 3: packets.IDsMessage.IDs:type_name -> packets.IdMessage
+	3,  // 4: packets.Packet.chat:type_name -> packets.ChatMessage
+	4,  // 5: packets.Packet.id:type_name -> packets.IdMessage
+	5,  // 6: packets.Packet.loginRequest:type_name -> packets.LoginRequestMessage
+	7,  // 7: packets.Packet.registerRequest:type_name -> packets.RegisterRequestMessage
+	8,  // 8: packets.Packet.OK:type_name -> packets.OkResponseMessage
+	9,  // 9: packets.Packet.Deny:type_name -> packets.DenyResponseMessage
+	10, // 10: packets.Packet.command:type_name -> packets.CommandMessage
+	13, // 11: packets.Packet.hexPosition:type_name -> packets.HexPositionMessage
+	14, // 12: packets.Packet.hexPositions:type_name -> packets.HexPositionsMessage
+	6,  // 13: packets.Packet.steamTicket:type_name -> packets.SteamAuthTicketMessage
+	11, // 14: packets.Packet.changeState:type_name -> packets.ChangeStateMessage
+	12, // 15: packets.Packet.queue:type_name -> packets.QueueMessage
+	15, // 16: packets.Packet.opponent:type_name -> packets.OpponentMessage
+	16, // 17: packets.Packet.startGame:type_name -> packets.StartGameMessage
+	17, // 18: packets.Packet.seed:type_name -> packets.SeedMessage
+	18, // 19: packets.Packet.IDs:type_name -> packets.IDsMessage
+	20, // [20:20] is the sub-list for method output_type
+	20, // [20:20] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_packets_proto_init() }
@@ -1272,7 +1404,7 @@ func file_packets_proto_init() {
 	if File_packets_proto != nil {
 		return
 	}
-	file_packets_proto_msgTypes[16].OneofWrappers = []any{
+	file_packets_proto_msgTypes[18].OneofWrappers = []any{
 		(*Packet_Chat)(nil),
 		(*Packet_Id)(nil),
 		(*Packet_LoginRequest)(nil),
@@ -1287,6 +1419,8 @@ func file_packets_proto_init() {
 		(*Packet_Queue)(nil),
 		(*Packet_Opponent)(nil),
 		(*Packet_StartGame)(nil),
+		(*Packet_Seed)(nil),
+		(*Packet_IDs)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1294,7 +1428,7 @@ func file_packets_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_packets_proto_rawDesc), len(file_packets_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   17,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

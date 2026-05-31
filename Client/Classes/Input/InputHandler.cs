@@ -5,7 +5,8 @@ using Util;
 public partial class InputHandler : Node3D
 {
     private Vector3 MousePosition;
-    private Node3D CurrentMouseNode;
+    public Node3D CurrentMouseNode;
+    [Export] private bool StoreNode;
     public override void _Ready()
     {
         RayCast.Set(GetTree(), GetViewport(), GetWorld3D());
@@ -23,6 +24,13 @@ public partial class InputHandler : Node3D
         
         if (obj == null)
         {
+            if (!StoreNode)
+            {
+                if (CurrentMouseNode == null) return;
+                CurrentMouseNode.Position = new Vector3(CurrentMouseNode.Position.X, 0, CurrentMouseNode.Position.Z);
+                CurrentMouseNode = null;
+                return;
+            }
             if (CurrentMouseNode != null)
             {
                 CurrentMouseNode.Position = new Vector3(CurrentMouseNode.Position.X, 0, CurrentMouseNode.Position.Z);

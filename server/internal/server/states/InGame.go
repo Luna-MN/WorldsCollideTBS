@@ -47,8 +47,7 @@ func (i *InGame) OnEnter() {
 }
 
 func (i *InGame) HandleMessage(senderId uint64, message packets.Msg, transfer server.TransferType) {
-	//TODO implement me
-	panic("implement me")
+	i.gameService.HandleMessage(i.client, message)
 }
 
 func (i *InGame) OnExit() {

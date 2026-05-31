@@ -5,12 +5,13 @@ using Packets;
 public partial class Connect : Node, IState
 {
     [Export] public Log log { get; set; }
+    public bool IsSmoothState => false;
+    public Node[] TransitionNodes { get; set; }
     public bool idSet;
     public override void _Ready()
     {
         Globals.WS.connectedToServer += OnWSConnectedToServer;
-        Globals.WS.connectionClosed += OnWSConnectionClosed;
-        TrafficManager.packetRecived += OnPacketReceived;
+        Globals.GM.Subscribe(OnPacketReceived, OnWSConnectionClosed);
         
         Globals.WS.connectToUrl("wss://localhost:8080/ws", TlsOptions.ClientUnsafe());
     }
@@ -47,16 +48,9 @@ public partial class Connect : Node, IState
     {
         log.warning("Connection closed.");
     }
-    
-    public void ExitTree()
-    {
-        Globals.WS.connectedToServer -= OnWSConnectedToServer;
-        Globals.WS.connectionClosed -= OnWSConnectionClosed;
-        TrafficManager.packetRecived -= OnPacketReceived;
-    }
-
     public override void _ExitTree()
     {
-        ExitTree();
+        Globals.WS.connectedToServer -= OnWSConnectedToServer;
+        Globals.GM.Unsubscribe(OnPacketReceived, OnWSConnectionClosed);
     }
 }

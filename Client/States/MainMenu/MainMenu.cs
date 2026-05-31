@@ -1,9 +1,21 @@
 using Godot;
 using System;
+using Packets;
 
-public partial class MainMenu : Control
+public partial class MainMenu : Control, IState
 {
     [Export] private Button Login, Quit;
+    public Log log { get; set; }
+    public bool IsSmoothState => false;
+    public Node[] TransitionNodes { get; set; }
+    public void OnPacketReceived(Packet packet)
+    {
+    }
+
+    public void OnWSConnectionClosed()
+    {
+    }
+
     public override void _Ready()
     {
         base._Ready();

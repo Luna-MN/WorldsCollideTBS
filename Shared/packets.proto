@@ -22,6 +22,8 @@ message HexPositionMessage { Vector2Msg position = 1; }
 message HexPositionsMessage { repeated HexPositionMessage positions = 1;}
 message OpponentMessage { string id = 1; bool steam = 2; string AvatarImage = 3; }
 message StartGameMessage {}
+message SeedMessage { repeated int64 seed = 1; }
+message IDsMessage { repeated IdMessage IDs = 1; }
 // more message types here
 
 
@@ -45,6 +47,8 @@ message Packet {
     QueueMessage queue = 13;
     OpponentMessage opponent = 14;
     StartGameMessage startGame = 15;
+    SeedMessage seed = 16;
+    IDsMessage IDs = 17;
     //...
   }
 }

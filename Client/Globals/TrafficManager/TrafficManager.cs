@@ -4,16 +4,16 @@ using Packets;
 
 public partial class TrafficManager : Node
 {
-    public static Action<Packet> packetRecived;
+    public static Action<Packet> packetReceived;
     
     public static Error Send(Packet packet)
     {
         var err= Globals.WS.Send(packet);
         return err;
     }
-    public static void Recieve(Packet packet)
+    public static void Receive(Packet packet)
     {
-        packetRecived?.Invoke(packet);
+        packetReceived?.Invoke(packet);
     }
 
     public static Packet NewChat(string message)

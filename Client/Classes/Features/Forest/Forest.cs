@@ -18,17 +18,19 @@ public partial class Forest : Resource, IFeature
         threshold = args.Threshold;
     }
 
-    public void Generate()
+    public void Generate(int seed)
     {
+        noise.SetSeed(seed);
         foreach (var tile in worldInfo.TerrainInfo.Values)
         {
             var v = noise.GetNoise2D(tile.PositionI.X, tile.PositionI.Y);
             if (v > threshold)
             {
                 tile.TileTopType = TileUtil.TileTopType.Tree;
+                tiles.Add(tile);
             }
         }
-        foreach (var tile in worldInfo.TerrainInfo.Values)
+        foreach (var tile in tiles)
         {
             if (tile.TileTopType == TileUtil.TileTopType.Tree)
             {

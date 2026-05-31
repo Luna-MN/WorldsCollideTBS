@@ -7,14 +7,15 @@ public partial class MainLoggedInMenu : Control, IState
 {
     [Export]
     public Log log { get; set; }
+    public bool IsSmoothState => false;
+    public Node[] TransitionNodes { get; set; }
     [Export]
     private NavagationButton[] navButtons;
     private NavagationButton currentButton;
     private MenuPeice CurrentScene;
     public override void _Ready()
     {
-        TrafficManager.packetRecived += OnPacketReceived;
-        Globals.WS.connectionClosed += OnWSConnectionClosed;
+        Globals.GM.Subscribe(OnPacketReceived, OnWSConnectionClosed);
         foreach (NavagationButton button in navButtons)
         {
             button.ButtonUp += () =>
@@ -69,7 +70,7 @@ public partial class MainLoggedInMenu : Control, IState
     }
     private void Queue(string queue)
     {
-        Globals.WS.Send(PacketUtil.NewQueuePacket(queue));
+        TrafficManager.Send(PacketUtil.NewQueuePacket(queue));
     }
 
     private void ChangeScene(PackedScene scene)
@@ -84,13 +85,8 @@ public partial class MainLoggedInMenu : Control, IState
         CurrentScene.mainLoggedInMenu = this;
         AddChild(CurrentScene);
     }
-    public void ExitTree()
-    {
-        Globals.WS.connectionClosed -= OnWSConnectionClosed;
-        TrafficManager.packetRecived -= OnPacketReceived;
-    }
     public override void _ExitTree()
     {
-        ExitTree();
+        Globals.GM.Unsubscribe(OnPacketReceived, OnWSConnectionClosed);
     }
 }

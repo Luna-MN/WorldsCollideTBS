@@ -7,13 +7,14 @@ public partial class LoginAdmin : Node, IState
     private Action ActionOnOkReceived;
 
     [Export] public Log log { get; set; }
+    public bool IsSmoothState => false;
+    public Node[] TransitionNodes { get; set; }
     [Export] private LineEdit Username, Password;
     [Export] private Button LoginButton, RegisterButton;
 
     public override void _Ready()
     {
-        TrafficManager.packetRecived += OnPacketReceived;
-        Globals.WS.connectionClosed += OnWSConnectionClosed;
+        Globals.GM.Subscribe(OnPacketReceived, OnWSConnectionClosed);
 
         LoginButton.Pressed += OnLoginPressed;
         RegisterButton.Pressed += OnRegisterPressed;
@@ -60,5 +61,8 @@ public partial class LoginAdmin : Node, IState
     {
         log.warning("Connection closed.");
     }
-
+    public override void _ExitTree()
+    {
+        Globals.GM.Unsubscribe(OnPacketReceived, OnWSConnectionClosed);
+    }
 }

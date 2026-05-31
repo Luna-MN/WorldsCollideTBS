@@ -1,4 +1,6 @@
-﻿namespace Packets.Util;
+﻿using Google.Protobuf.Collections;
+
+namespace Packets.Util;
 
 public static class PacketUtil
 {
@@ -20,6 +22,17 @@ public static class PacketUtil
             ChangeState = new ChangeStateMessage()
             {
                 StateName = state
+            }
+        };
+    }
+    
+    public static Packet NewSeedPacket(long seed)
+    {
+        return new Packet()
+        {
+            Seed = new SeedMessage()
+            {
+                Seed = { seed }
             }
         };
     }

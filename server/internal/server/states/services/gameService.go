@@ -2,8 +2,10 @@ package services
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
 	"server/internal/server"
+	"server/pkg/packets"
 	"sync"
 )
 
@@ -16,17 +18,36 @@ const (
 	Finished
 )
 
+type PlayerGameData struct {
+	Player *server.Client
+	Seeds  []int64
+	Seed   int64
+}
+
+func NewPlayerGameData(player *server.Client) *PlayerGameData {
+	return &PlayerGameData{Player: player, Seeds: make([]int64, 3)}
+}
+
 type GameService struct {
 	gameId       int64
 	player1      *server.Client
 	player2      *server.Client
 	gameState    gameState
 	ConfirmStart bool
+	logger       *log.Logger
 	Mux          sync.RWMutex
+
+	Player1GameData *PlayerGameData
+	Player2GameData *PlayerGameData
+
+	seed          int64
+	seedsReceived bool
 }
 
 func NewGameService(gameId int64) *GameService {
-	return &GameService{gameId: gameId, gameState: Created}
+	logger := log.New(log.Writer(), "Game unknown: ", log.LstdFlags)
+	logger.SetPrefix(fmt.Sprintf("Game %d: ", gameId))
+	return &GameService{gameId: gameId, gameState: Created, logger: logger}
 
 }
 func (g *GameService) Name() string {
@@ -39,7 +60,17 @@ func (g *GameService) Id() uint64 {
 
 func (g *GameService) SetClients(client1 *server.Client, client2 *server.Client) {
 	g.player1 = client1
+	g.Player1GameData = NewPlayerGameData(client1)
 	g.player2 = client2
+	g.Player2GameData = NewPlayerGameData(client2)
+
+	g.logger.SetPrefix(fmt.Sprintf("Game %d: %s, %s", g.Id(), client1.Username(), client2.Username()))
+}
+func (g *GameService) GetClientData(client *server.Client) *PlayerGameData {
+	if client == g.player1 {
+		return g.Player1GameData
+	}
+	return g.Player2GameData
 }
 func (g *GameService) OnEnter() {
 	g.Mux.Lock()
@@ -49,9 +80,48 @@ func (g *GameService) OnEnter() {
 		return
 	}
 	g.gameState = StartGame
-	fmt.Println("Game started")
+	g.logger.Println("Game started")
+	g.GenerateGameSeeds()
 }
-
+func (g *GameService) GenerateGameSeeds() {
+	g.GenerateSeeds(g.Player1GameData.Seeds)
+	g.GenerateSeeds(g.Player2GameData.Seeds)
+	g.seed = g.GenerateSeed()
+	g.player1.SocketSend(packets.NewSeed(g.Player1GameData.Seeds), server.WebSocket)
+	g.player2.SocketSend(packets.NewSeed(g.Player2GameData.Seeds), server.WebSocket)
+}
 func (g *GameService) GenerateSeed() int64 {
 	return rand.Int63()
+}
+
+func (g *GameService) GenerateSeeds(seeds []int64) {
+	for i := range seeds {
+		seeds[i] = g.GenerateSeed()
+	}
+}
+
+func (g *GameService) HandleMessage(player *server.Client, msg packets.Msg) {
+	pd := g.GetClientData(player)
+	switch msg.(type) {
+	case *packets.Packet_Seed:
+		g.HandleSeedMessage(pd, msg.(*packets.Packet_Seed))
+	}
+}
+
+func (g *GameService) HandleSeedMessage(playerData *PlayerGameData, msg *packets.Packet_Seed) {
+	g.Mux.Lock()
+	defer g.Mux.Unlock()
+	if g.gameState != StartGame {
+		return
+	}
+	playerData.Seed = msg.Seed.Seed[0]
+	playerData.Player.SocketSend(packets.NewStartGame(), server.WebSocket)
+	if !g.seedsReceived {
+		g.seedsReceived = true
+		return
+	}
+	g.gameState = InProgress
+	g.logger.Println("Seeds Selected, Starting Game")
+	g.player1.SocketSend(packets.NewSeed([]int64{g.Player2GameData.Seed, g.seed}), server.WebSocket)
+	g.player2.SocketSend(packets.NewSeed([]int64{g.Player1GameData.Seed, g.seed}), server.WebSocket)
 }

@@ -68,7 +68,6 @@ func (c *Client) SetUsername(username string) {
 	c.username = username
 }
 func (c *Client) Username() string {
-	fmt.Println(c.username)
 	return c.username
 }
 func (c *Client) State() ClientStateHandler {

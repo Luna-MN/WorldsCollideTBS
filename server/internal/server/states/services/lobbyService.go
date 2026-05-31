@@ -64,6 +64,8 @@ func (l *LobbyService) OnJoin(client *server.Client) {
 	if l.client1.SteamID != "" {
 		clientId = l.client1.SteamID
 	}
+	l.client1.SocketSend(packets.NewIds([]uint64{l.client1.Id(), l.client2.Id()}), server.WebSocket)
+	l.client2.SocketSend(packets.NewIds([]uint64{l.client1.Id(), l.client2.Id()}), server.WebSocket)
 	l.client1.SocketSendAs(packets.NewOpponent(otherId, l.client2.IsSteamClient, l.client2.GetAvatarImage()), l.client2.Id(), server.WebSocket)
 	l.client2.SocketSendAs(packets.NewOpponent(clientId, l.client1.IsSteamClient, l.client1.GetAvatarImage()), l.client1.Id(), server.WebSocket)
 	if l.queueLobby {

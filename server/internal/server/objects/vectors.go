@@ -62,3 +62,35 @@ func (v *Vector3) DistanceSquaredTo(v2 *Vector3) float32 {
 func (v *Vector3) DistanceTo(v2 *Vector3) float32 {
 	return float32(math.Sqrt(float64(v.DistanceSquaredTo(v2))))
 }
+
+type Vector2I struct {
+	X, Y int
+}
+
+func NewVector2I(x, y int) *Vector2I {
+	return &Vector2I{x, y}
+}
+
+func (v *Vector2I) Add(v2 *Vector2I) *Vector2I {
+	return &Vector2I{v.X + v2.X, v.Y + v2.Y}
+}
+
+func (v *Vector2I) Sub(v2 *Vector2I) *Vector2I {
+	return &Vector2I{v.X - v2.X, v.Y - v2.Y}
+}
+
+func (v *Vector2I) DistanceSquaredTo(v2 *Vector2I) int {
+	return (v.X-v2.X)*(v.X-v2.X) + (v.Y-v2.Y)*(v.Y-v2.Y)
+}
+
+func (v *Vector2I) DistanceTo(v2 *Vector2I) float32 {
+	return float32(math.Sqrt(float64(v.DistanceSquaredTo(v2))))
+}
+
+func (v *Vector2I) Normalize() *Vector2I {
+	return &Vector2I{v.X / 2, v.Y / 2}
+}
+
+func (v *Vector2I) Scale(factor int) *Vector2I {
+	return &Vector2I{v.X * factor, v.Y * factor}
+}

@@ -80,7 +80,7 @@ public partial class Websocket : Node
         }
         while (socket.GetReadyState() == WebSocketPeer.State.Open && socket.GetAvailablePacketCount() > 0)
         {
-            TrafficManager.Recieve(GetPacket());
+            TrafficManager.Receive(GetPacket());
         }
     }
 

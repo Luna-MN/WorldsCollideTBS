@@ -9,7 +9,7 @@ public partial class CustomMatch : Button
         ButtonUp += () =>
         {
             Globals.GM.SetState(GameManager.state.Lobby);
-            Globals.WS.Send(PacketUtil.NewChangeStatePacket("Lobby"));
+            TrafficManager.Send(PacketUtil.NewChangeStatePacket("Lobby"));
         };
     }
 }

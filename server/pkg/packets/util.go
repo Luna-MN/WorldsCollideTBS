@@ -58,6 +58,26 @@ func NewStartGame() Msg {
 		StartGame: &StartGameMessage{},
 	}
 }
+
+func NewSeed(seeds []int64) *Packet_Seed {
+	return &Packet_Seed{
+		Seed: &SeedMessage{
+			Seed: seeds,
+		},
+	}
+}
+
+func NewIds(Ids []uint64) *Packet_IDs {
+	var ids []*IdMessage
+	for _, id := range Ids {
+		ids = append(ids, &IdMessage{Id: id})
+	}
+	return &Packet_IDs{
+		IDs: &IDsMessage{
+			IDs: ids,
+		},
+	}
+}
 func NewVector3(x, y, z float32) *Vector3Msg {
 	return &Vector3Msg{X: x, Y: y, Z: z}
 }

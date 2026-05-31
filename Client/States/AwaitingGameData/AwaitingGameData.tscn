@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cftgn1a87pf8i"]
+
+[ext_resource type="Script" uid="uid://fmdms4sc48a1" path="res://States/AwaitingGameData/AwaitingGameData.cs" id="1_4wpmv"]
+[ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="2_dhf3h"]
+
+[node name="AwaitingGameData" type="Node3D" unique_id=1224743152 node_paths=PackedStringArray("log")]
+script = ExtResource("1_4wpmv")
+log = NodePath("CanvasLayer/AwaitingGameData/Log")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1097935508]
+
+[node name="AwaitingGameData" type="Control" parent="CanvasLayer" unique_id=1717768324]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/AwaitingGameData" unique_id=514649788]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Waiting For Other Player..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Log" parent="CanvasLayer/AwaitingGameData" unique_id=553717686 instance=ExtResource("2_dhf3h")]
+layout_mode = 1

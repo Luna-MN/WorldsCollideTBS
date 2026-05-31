@@ -14,7 +14,7 @@ public partial class River : Resource, IFeature
         this.args = args;
     }
 
-    public void Generate()
+    public void Generate(int seed)
     {
         var StartTile = worldInfo.EdgeTiles.OrderByDescending(tile => tile.TileHeight).First();
         if (StartTile.TileType != TileUtil.TileType.Grass)

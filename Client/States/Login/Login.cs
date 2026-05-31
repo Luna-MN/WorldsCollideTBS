@@ -7,12 +7,13 @@ using Steamworks;
 public partial class Login : Control, IState
 {
     [Export] public Log log { get; set; }
+    public bool IsSmoothState => false;
+    public Node[] TransitionNodes { get; set; }
     public override void _Ready()
     {
         base._Ready();
         
-        Globals.WS.connectionClosed += OnWSConnectionClosed;
-        TrafficManager.packetRecived += OnPacketReceived;
+        Globals.GM.Subscribe(OnPacketReceived, OnWSConnectionClosed);
         
         GetSteamAuth();
     }
@@ -33,7 +34,7 @@ public partial class Login : Control, IState
                 Ticket = Google.Protobuf.ByteString.CopyFrom(ticket),
             }
         };
-        Globals.WS.Send(packet);
+        TrafficManager.Send(packet);
     }
     public void OnPacketReceived(Packet packet)
     {
@@ -71,13 +72,8 @@ public partial class Login : Control, IState
     {
         Globals.GM.SetState(GameManager.state.MainMenu);
     }
-    public void ExitTree()
-    {
-        Globals.WS.connectionClosed -= OnWSConnectionClosed;
-        TrafficManager.packetRecived -= OnPacketReceived;
-    }
     public override void _ExitTree()
     {
-        ExitTree();
+        Globals.GM.Unsubscribe(OnPacketReceived, OnWSConnectionClosed);
     }
 }

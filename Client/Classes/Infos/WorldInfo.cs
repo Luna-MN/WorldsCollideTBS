@@ -15,7 +15,7 @@ public class WorldInfo
     public int Features;
     public List<string> FeaturesArray = [];
     public List<IFeature> FeaturesList = [];
-    private static readonly Random random = new Random();
+    private static SplitMix64 random;
     public WorldInfo()
     {
     }
@@ -29,8 +29,9 @@ public class WorldInfo
         new Vector2I(0, 1)    
     };
     
-    public void GenerateTerrainInfo(FastNoiseLite noise)
+    public void GenerateTerrainInfo(FastNoiseLite noise, int seed)
     {
+        random = new SplitMix64((ulong)seed);
         for (int q = -Radius; q <= Radius; q++)
         {
             int r1 = Math.Max(-Radius, -q - Radius);
@@ -66,7 +67,7 @@ public class WorldInfo
         {
             var feature = GetRandomFeature();
             feature.Set(this, FeatureArgs);
-            feature.Generate();
+            feature.Generate(seed);
             FeaturesList.Add(feature);
         }
     }
@@ -155,7 +156,7 @@ public class WorldInfo
         }
         
         // Select a random type
-        var randomType = featureTypes[random.Next(featureTypes.Count)];
+        var randomType = featureTypes[random.NextInt(featureTypes.Count)];
         FeaturesArray.Add(randomType.Name);
         // Create an instance of the random type
         return (IFeature)Activator.CreateInstance(randomType);

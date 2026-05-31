@@ -34,7 +34,7 @@ type SharedGameObjects struct {
 	Players *objects.SharedCollection[*objects.Player]
 }
 
-// ClientStateHandler A structure for a state macgine to process the client's messages
+// ClientStateHandler A structure for a state management to process the client's messages
 type ClientStateHandler interface {
 	Name() string
 
