@@ -6,7 +6,6 @@ import (
 	"log"
 	"server/internal/server"
 	"server/internal/server/db"
-	"server/internal/server/objects"
 	"server/internal/server/states/services"
 	"server/pkg/packets"
 	"time"
@@ -80,10 +79,6 @@ func (l *Login) HandleLoginRequest(id uint64, message *packets.Packet_LoginReque
 
 	l.logger.Printf("Login successful for user %s", username)
 	l.client.SetUsername(username)
-	l.client.NewPlayer(&objects.Player{
-		Name:  username,
-		Owner: id,
-	})
 	// change state to in game
 	l.client.SetState(&Menu{})
 }

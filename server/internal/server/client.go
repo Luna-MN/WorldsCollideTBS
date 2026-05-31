@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 	"server/internal/server/db"
-	"server/internal/server/objects"
 	"server/internal/steam"
 	"server/pkg/packets"
 )
@@ -31,7 +30,6 @@ type Client struct {
 	logger        *log.Logger
 	dbTx          *DbTx
 	broadcastChan chan packets.Msg
-	player        *objects.Player
 	Cyph          cipher.AEAD
 	Steam         *steam.SteamWebClient
 }
@@ -61,9 +59,6 @@ func (c *Client) Initialize(id uint64) {
 func (c *Client) SetCyph(cyph cipher.AEAD) {
 	c.Cyph = cyph
 }
-func (c *Client) NewPlayer(player *objects.Player) {
-	c.player = player
-}
 func (c *Client) SetUsername(username string) {
 	c.username = username
 }
@@ -72,9 +67,6 @@ func (c *Client) Username() string {
 }
 func (c *Client) State() ClientStateHandler {
 	return c.state
-}
-func (c *Client) Player() *objects.Player {
-	return c.player
 }
 func (c *Client) Hub() *Hub {
 	return c.hub

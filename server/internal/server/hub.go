@@ -31,7 +31,6 @@ func (h *Hub) NewDbTx() *DbTx {
 
 type SharedGameObjects struct {
 	// ID of the player is the ID of the client
-	Players *objects.SharedCollection[*objects.Player]
 }
 
 // ClientStateHandler A structure for a state management to process the client's messages
@@ -142,9 +141,6 @@ func NewHub() *Hub {
 		RegisterChan:   make(chan ClientInterfacer),
 		UnregisterChan: make(chan ClientInterfacer),
 		dbPool:         dbPool,
-		SharedGameObjects: &SharedGameObjects{
-			Players: objects.NewSharedCollection[*objects.Player](),
-		},
 	}
 }
 
