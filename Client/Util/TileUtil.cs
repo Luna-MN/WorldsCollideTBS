@@ -79,10 +79,17 @@ public static class TileUtil
                 {
                     return TileState.connection3;
                 }
+                GD.Print(dif + " " + PT + " " + NT);
             }
             else if (terrainInfo.Connected == false && terrainInfo.NextTile != null)
             {
+                GD.Print("Tile Not Connected");
                 return TileState.connection3;
+            }
+
+            if (terrainInfo.TileType == TileType.River)
+            {
+                GD.Print(terrainInfo.NextTile.Position + " " + terrainInfo.PreviousTile.Position + " " + terrainInfo.Connected);
             }
             return TileState.floor;
         }

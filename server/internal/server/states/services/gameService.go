@@ -5,6 +5,7 @@ import (
 	"log"
 	"math/rand"
 	"server/internal/server"
+	_ "server/internal/server/objects/features"
 	"server/pkg/packets"
 	"sync"
 )
@@ -42,6 +43,8 @@ type GameService struct {
 
 	seed          int64
 	seedsReceived bool
+
+	gameTerrainService *GameTerrainService
 }
 
 func NewGameService(gameId int64) *GameService {
@@ -122,6 +125,8 @@ func (g *GameService) HandleSeedMessage(playerData *PlayerGameData, msg *packets
 	}
 	g.gameState = InProgress
 	g.logger.Println("Seeds Selected, Starting Game")
+	g.gameTerrainService = NewGameTerrainService(uint64(g.Player1GameData.Seed), uint64(g.Player2GameData.Seed), uint64(g.seed))
+	g.gameTerrainService.GenerateTerrain()
 	g.player1.SocketSend(packets.NewSeed([]int64{g.Player2GameData.Seed, g.seed}), server.WebSocket)
 	g.player2.SocketSend(packets.NewSeed([]int64{g.Player1GameData.Seed, g.seed}), server.WebSocket)
 }

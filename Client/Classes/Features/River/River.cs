@@ -38,6 +38,7 @@ public partial class River : Resource, IFeature
             var allowedNeighbours = availableNeighbours
                 .Where(n => n.TileHeight >= tile.TileHeight - 1) // drop <= 1
                 .Where(n => n.TileHeight <= tile.TileHeight)     // no uphill
+                .Where(n => n.TileType != TileUtil.TileType.River) // must be grass
                 .ToList();
 
             if (allowedNeighbours.Count == 0)
@@ -55,7 +56,7 @@ public partial class River : Resource, IFeature
             if (nextTile.TileHeight > tile.TileHeight)
             {
                 GD.PrintErr($"next tile is higher than current tile: {nextTile.TileHeight} > {tile.TileHeight}");
-                nextTile.Connected = false;
+                nextTile.Connected = true;
                 break;
             }
             tile.NextTile = nextTile;

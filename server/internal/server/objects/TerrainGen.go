@@ -29,3 +29,11 @@ func NewTerrainGen(radius, amplitude, features int, DefaultTile TileType, noise 
 func (t *TerrainGen) GenerateTerrainInfo(seed uint64) {
 	t.world.GenerateTerrainInfo(t.noise, seed)
 }
+
+func (t *TerrainGen) GetWorldInfo() *WorldInfo {
+	return t.world
+}
+
+func (t *TerrainGen) GetTileAt(pos Vector2I) *TerrainInfo {
+	return t.world.TerrainInfo[pos]
+}

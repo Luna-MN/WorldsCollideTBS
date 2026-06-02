@@ -70,7 +70,7 @@ func (r *River) Generate(seed uint64) {
 		allowedNeighbours := make([]*objects.TerrainInfo, 0)
 
 		for _, neighbour := range availableNeighbours {
-			if neighbour.TileHeight >= tile.TileHeight-1 && neighbour.TileHeight <= tile.TileHeight {
+			if neighbour.TileHeight >= tile.TileHeight-1 && neighbour.TileHeight <= tile.TileHeight && neighbour.TileType != objects.River {
 				allowedNeighbours = append(allowedNeighbours, neighbour)
 			}
 		}
@@ -106,16 +106,6 @@ func (r *River) Generate(seed uint64) {
 		endTile.TileType = objects.Grass
 		r.setTerrainTile(endTile)
 	}
-
-	fmt.Printf(
-		"River generated from %+v %d to %+v %d\n",
-		startTile.Position,
-		startTile.TileHeight,
-		endTile.Position,
-		endTile.TileHeight,
-	)
-	fmt.Printf("Edge tiles: %d\n", len(r.WorldInfo.EdgeTiles))
-	fmt.Println(len(r.tiles))
 }
 
 func (r *River) furthestEdgeTileFrom(startTile *objects.TerrainInfo) *objects.TerrainInfo {

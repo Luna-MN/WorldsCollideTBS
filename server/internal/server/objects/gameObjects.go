@@ -3,6 +3,7 @@ package objects
 import (
 	"fmt"
 	"math"
+	noise2 "server/internal/server/objects/noise"
 	"server/internal/server/objects/rng"
 
 	"github.com/furui/fastnoiselite-go"
@@ -60,6 +61,7 @@ type WorldInfo struct {
 
 func NewWorldInfo(radius, amplitude, features int, DefaultTile TileType) *WorldInfo {
 	return &WorldInfo{
+		TerrainInfo: make(map[Vector2I]*TerrainInfo),
 		DefaultTile: DefaultTile,
 		Radius:      radius,
 		Amplitude:   amplitude,
@@ -68,7 +70,12 @@ func NewWorldInfo(radius, amplitude, features int, DefaultTile TileType) *WorldI
 }
 
 func (w *WorldInfo) GenerateTerrainInfo(noise fastnoiselite.FastNoiseLite, seed uint64) {
+	// Initialize the terrain args
 	w.Random = rng.NewSplitMix64(seed)
+	w.FeatureArgs = &FeatureArgs{
+		Threshold:   0.5,
+		ForestNoise: noise2.ForestNoise,
+	}
 	for q := -w.Radius; q <= w.Radius; q++ {
 		r1 := int(math.Max(float64(-w.Radius), float64(-q-w.Radius)))
 		r2 := int(math.Min(float64(w.Radius), float64(-q+w.Radius)))
@@ -108,18 +115,53 @@ func HexToWorldPosition(q, r int) Vector3 {
 	return Vector3{float32(x), 0, float32(z)}
 }
 
-func (w *WorldInfo) GetHexNeighbors(q, r int) []*TerrainInfo {
-	neighbors := make([]*TerrainInfo, 6)
+func WorldToHexPosition(x, z float32) Vector2I {
+	hexSize := 1.15
 
-	for _, neighborCoord := range HexNeighborOffsets {
-		neighborCoord = Vector2I{q + neighborCoord.X, r + neighborCoord.Y}
-		if w.IsValidHexCoord(neighborCoord.X, neighborCoord.Y) {
-			neighbors[neighborCoord.X+neighborCoord.Y] = w.TerrainInfo[neighborCoord]
-		}
-	}
-	return neighbors
+	worldX := float64(x)
+	worldZ := float64(z)
+
+	qf := (2.0 / 3.0 * worldX) / hexSize
+	rf := (-1.0/3.0*worldX + math.Sqrt(3.0)/3.0*worldZ) / hexSize
+
+	q, r := HexRound(qf, rf)
+
+	return Vector2I{q, r}
 }
 
+func HexRound(qf, rf float64) (int, int) {
+	sf := -qf - rf
+
+	q := math.Round(qf)
+	r := math.Round(rf)
+	s := math.Round(sf)
+
+	qDiff := math.Abs(q - qf)
+	rDiff := math.Abs(r - rf)
+	sDiff := math.Abs(s - sf)
+
+	if qDiff > rDiff && qDiff > sDiff {
+		q = -r - s
+	} else if rDiff > sDiff {
+		r = -q - s
+	}
+
+	return int(q), int(r)
+}
+func (w *WorldInfo) GetHexNeighbors(q, r int) []*TerrainInfo {
+	neighbors := make([]*TerrainInfo, 0, 6)
+
+	for _, offset := range HexNeighborOffsets {
+		neighborCoord := Vector2I{q + offset.X, r + offset.Y}
+		if w.IsValidHexCoord(neighborCoord.X, neighborCoord.Y) {
+			if neighbor := w.TerrainInfo[neighborCoord]; neighbor != nil {
+				neighbors = append(neighbors, neighbor)
+			}
+		}
+	}
+
+	return neighbors
+}
 func (w *WorldInfo) IsValidHexCoord(q, r int) bool {
 	return absInt(q) <= w.Radius && absInt(r) <= w.Radius && absInt(q+r) <= w.Radius
 }
