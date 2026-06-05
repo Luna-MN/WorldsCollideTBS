@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dte6l4g7d58qv"]
+
+[ext_resource type="Script" uid="uid://c8qt0mxt5xk5" path="res://Objects/Units/Units/DefaultUnit/DefaultUnit.cs" id="1_ygnl1"]
+[ext_resource type="PackedScene" uid="uid://sy3b34a2ikpp" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/units/neutral/unit.fbx" id="2_odskb"]
+
+[node name="DefaultUnit" type="Node3D" unique_id=644221207]
+script = ExtResource("1_ygnl1")
+
+[node name="Mesh" parent="." unique_id=1839850710 instance=ExtResource("2_odskb")]

@@ -13,4 +13,10 @@ public class TerrainInfo
     public TerrainInfo NextTile;
     public TerrainInfo PreviousTile;
     public int TileHeight;
+    public IUnit Unit;
+    public int MovementCost;
+    public void CalculatedMovementCost()
+    {
+        MovementCost = 1;
+    }
 }

@@ -70,6 +70,14 @@ public class WorldInfo
             feature.Generate(seed);
             FeaturesList.Add(feature);
         }
+        CalculateMovementCosts();
+    }
+    private void CalculateMovementCosts()
+    {
+        foreach (var terrainInfo in TerrainInfo.Values)
+        {
+            terrainInfo.CalculatedMovementCost();
+        }
     }
     private List<TerrainInfo> GetHexNeighbors(int q, int r)
     {
@@ -82,6 +90,24 @@ public class WorldInfo
         }
         
         return neighbors;
+    }
+
+    public void UpdateNeighbors()
+    {
+        foreach (var hex in TerrainInfo.Values)
+        {
+            List<TerrainInfo> neighbors = new List<TerrainInfo>();
+            foreach (var offset in HexNeighborOffsets)
+            {
+                Vector2I neighborCoord = new Vector2I(hex.PositionI.X + offset.X, hex.PositionI.Y + offset.Y);
+                var tile = Globals.GM.gameData.GetTileAt(neighborCoord);
+                if (tile != null)
+                {
+                    neighbors.Add(tile);
+                }
+            }
+            hex.Neighbours = neighbors.ToArray();
+        }
     }
     public List<Vector2I> GetHexNeighborCoords(int q, int r)
     {

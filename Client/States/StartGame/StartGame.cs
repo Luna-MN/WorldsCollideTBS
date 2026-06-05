@@ -62,9 +62,9 @@ public partial class StartGame : Node3D, IState
             log.error("Seed is too short.");
             return;
         }
-        terrainGen1.seed = (int)msg.Seed[0];
-        terrainGen2.seed = (int)msg.Seed[1];
-        terrainGen3.seed = (int)msg.Seed[2];
+        terrainGen1.seed = msg.Seed[0];
+        terrainGen2.seed = msg.Seed[1];
+        terrainGen3.seed = msg.Seed[2];
         terrainGen1._Ready();
         terrainGen2._Ready();
         terrainGen3._Ready();

@@ -9,7 +9,7 @@ public partial class TerrainGen : Node3D
     [Export]
     private PackedScene TerrainScene;
     [Export] 
-    private int Radius;
+    public int Radius;
     [Export] 
     private int Amplitude;
     [Export(PropertyHint.Range, "0,3")] 
@@ -24,7 +24,7 @@ public partial class TerrainGen : Node3D
     public FeatureArgs FeatureArgs;
     [Export]
     public TopTileMapController TopTileMaps;
-    private WorldInfo worldInfo;
+    public WorldInfo worldInfo;
     [ExportToolButton("Generate Terrain")] private Callable GenerateTerrainButton => Callable.From(_Ready);
     public int seed;
 
@@ -80,5 +80,30 @@ public partial class TerrainGen : Node3D
         float z = hexSize * (Mathf.Sqrt(3.0f) / 2.0f * q + Mathf.Sqrt(3.0f) * r);
         
         return new Vector3(x, 0, z);
+    }
+    private Vector2I WorldPositionToHex(Vector3 worldPos)
+    {
+        float hexSize = 1.15f;
+    
+        float x = worldPos.X / hexSize;
+        float z = worldPos.Z / hexSize;
+    
+        float q = (2.0f / 3.0f) * x;
+        float r = (-1.0f / 3.0f) * x + (Mathf.Sqrt(3.0f) / 3.0f) * z;
+    
+        // Round to nearest hex coordinates
+        int hexQ = Mathf.RoundToInt(q);
+        int hexR = Mathf.RoundToInt(r);
+    
+        return new Vector2I(hexQ, hexR);
+    }
+    public TerrainInfo GetTileAt(Vector3 pos)
+    {
+        var pos2i = WorldPositionToHex(pos);
+        return worldInfo.TerrainInfo[pos2i];
+    }
+    public TerrainInfo GetTileAt(Vector2I pos)
+    {
+        return worldInfo.TerrainInfo.GetValueOrDefault(pos);
     }
 }

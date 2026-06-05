@@ -42,7 +42,7 @@ namespace Packets {
             "aW9ucxgBIAMoCzIbLnBhY2tldHMuSGV4UG9zaXRpb25NZXNzYWdlIkEKD09w",
             "cG9uZW50TWVzc2FnZRIKCgJpZBgBIAEoCRINCgVzdGVhbRgCIAEoCBITCgtB",
             "dmF0YXJJbWFnZRgDIAEoCSISChBTdGFydEdhbWVNZXNzYWdlIhsKC1NlZWRN",
-            "ZXNzYWdlEgwKBHNlZWQYASADKAMiLQoKSURzTWVzc2FnZRIfCgNJRHMYASAD",
+            "ZXNzYWdlEgwKBHNlZWQYASADKAUiLQoKSURzTWVzc2FnZRIfCgNJRHMYASAD",
             "KAsyEi5wYWNrZXRzLklkTWVzc2FnZSKGBgoGUGFja2V0EhEKCXNlbmRlcl9p",
             "ZBgBIAEoBBIkCgRjaGF0GAIgASgLMhQucGFja2V0cy5DaGF0TWVzc2FnZUgA",
             "EiAKAmlkGAMgASgLMhIucGFja2V0cy5JZE1lc3NhZ2VIABI0Cgxsb2dpblJl",
@@ -3637,12 +3637,12 @@ namespace Packets {
 
     /// <summary>Field number for the "seed" field.</summary>
     public const int SeedFieldNumber = 1;
-    private static readonly pb::FieldCodec<long> _repeated_seed_codec
-        = pb::FieldCodec.ForInt64(10);
-    private readonly pbc::RepeatedField<long> seed_ = new pbc::RepeatedField<long>();
+    private static readonly pb::FieldCodec<int> _repeated_seed_codec
+        = pb::FieldCodec.ForInt32(10);
+    private readonly pbc::RepeatedField<int> seed_ = new pbc::RepeatedField<int>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<long> Seed {
+    public pbc::RepeatedField<int> Seed {
       get { return seed_; }
     }
 

@@ -11,7 +11,7 @@ public partial class Tile : Node3D
     private StaticBody3D StaticBody;
     private TileMap TileMap;
     private TopTileMap TopTileMap;
-    private TerrainInfo TerrainInfo;
+    public TerrainInfo TerrainInfo;
     private float X;
     private float Z;
     

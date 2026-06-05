@@ -6,6 +6,8 @@ public partial class MainGame : Node3D, IState
 {
     [Export]
     public Log log { get; set; }
+
+    [Export] public PackedScene unitScene;
     public bool IsSmoothState => false;
     public Node[] TransitionNodes { get; set; }
     [Export] private TerrainGen TerrainGen1, MainGameTerrainGen, TerrainGen2;
@@ -18,6 +20,11 @@ public partial class MainGame : Node3D, IState
         TerrainGen1._Ready();
         TerrainGen2._Ready();
         MainGameTerrainGen._Ready();
+        Globals.GM.gameData.TerrainGen = MainGameTerrainGen;
+        Globals.GM.gameData.TerrainGen1 = TerrainGen1;
+        Globals.GM.gameData.TerrainGen2 = TerrainGen2;
+        Globals.GM.gameData.UpdateTileNeighbours();
+        UnitTesting();
     }
     public void OnPacketReceived(Packet packet)
     {
@@ -31,5 +38,15 @@ public partial class MainGame : Node3D, IState
     public override void _ExitTree()
     {
         Globals.GM.Unsubscribe(OnPacketReceived, OnWSConnectionClosed);
+    }
+
+    private void UnitTesting()
+    {
+        var unit = unitScene.Instantiate<DefaultUnit>();
+        var pTile = MainGameTerrainGen.worldInfo.TerrainInfo[new Vector2I(0, 0)];
+        unit.Position = pTile.Position;
+        unit.Position += new Vector3(0, pTile.TileHeight, 0);
+        pTile.Unit = unit;
+        AddChild(unit);
     }
 }

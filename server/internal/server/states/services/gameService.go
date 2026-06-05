@@ -21,12 +21,12 @@ const (
 
 type PlayerGameData struct {
 	Player *server.Client
-	Seeds  []int64
-	Seed   int64
+	Seeds  []int32
+	Seed   int32
 }
 
 func NewPlayerGameData(player *server.Client) *PlayerGameData {
-	return &PlayerGameData{Player: player, Seeds: make([]int64, 3)}
+	return &PlayerGameData{Player: player, Seeds: make([]int32, 3)}
 }
 
 type GameService struct {
@@ -41,7 +41,7 @@ type GameService struct {
 	Player1GameData *PlayerGameData
 	Player2GameData *PlayerGameData
 
-	seed          int64
+	seed          int32
 	seedsReceived bool
 
 	gameTerrainService *GameTerrainService
@@ -93,11 +93,11 @@ func (g *GameService) GenerateGameSeeds() {
 	g.player1.SocketSend(packets.NewSeed(g.Player1GameData.Seeds), server.WebSocket)
 	g.player2.SocketSend(packets.NewSeed(g.Player2GameData.Seeds), server.WebSocket)
 }
-func (g *GameService) GenerateSeed() int64 {
-	return rand.Int63()
+func (g *GameService) GenerateSeed() int32 {
+	return rand.Int31()
 }
 
-func (g *GameService) GenerateSeeds(seeds []int64) {
+func (g *GameService) GenerateSeeds(seeds []int32) {
 	for i := range seeds {
 		seeds[i] = g.GenerateSeed()
 	}
@@ -127,6 +127,6 @@ func (g *GameService) HandleSeedMessage(playerData *PlayerGameData, msg *packets
 	g.logger.Println("Seeds Selected, Starting Game")
 	g.gameTerrainService = NewGameTerrainService(uint64(g.Player1GameData.Seed), uint64(g.Player2GameData.Seed), uint64(g.seed))
 	g.gameTerrainService.GenerateTerrain()
-	g.player1.SocketSend(packets.NewSeed([]int64{g.Player2GameData.Seed, g.seed}), server.WebSocket)
-	g.player2.SocketSend(packets.NewSeed([]int64{g.Player1GameData.Seed, g.seed}), server.WebSocket)
+	g.player1.SocketSend(packets.NewSeed([]int32{g.Player2GameData.Seed, g.seed}), server.WebSocket)
+	g.player2.SocketSend(packets.NewSeed([]int32{g.Player1GameData.Seed, g.seed}), server.WebSocket)
 }

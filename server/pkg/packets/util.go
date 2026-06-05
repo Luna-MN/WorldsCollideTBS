@@ -59,7 +59,7 @@ func NewStartGame() Msg {
 	}
 }
 
-func NewSeed(seeds []int64) *Packet_Seed {
+func NewSeed(seeds []int32) *Packet_Seed {
 	return &Packet_Seed{
 		Seed: &SeedMessage{
 			Seed: seeds,

@@ -854,7 +854,7 @@ func (*StartGameMessage) Descriptor() ([]byte, []int) {
 
 type SeedMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seed          []int64                `protobuf:"varint,1,rep,packed,name=seed,proto3" json:"seed,omitempty"`
+	Seed          []int32                `protobuf:"varint,1,rep,packed,name=seed,proto3" json:"seed,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -889,7 +889,7 @@ func (*SeedMessage) Descriptor() ([]byte, []int) {
 	return file_packets_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *SeedMessage) GetSeed() []int64 {
+func (x *SeedMessage) GetSeed() []int32 {
 	if x != nil {
 		return x.Seed
 	}
@@ -1303,7 +1303,7 @@ const file_packets_proto_rawDesc = "" +
 	"\vAvatarImage\x18\x03 \x01(\tR\vAvatarImage\"\x12\n" +
 	"\x10StartGameMessage\"!\n" +
 	"\vSeedMessage\x12\x12\n" +
-	"\x04seed\x18\x01 \x03(\x03R\x04seed\"2\n" +
+	"\x04seed\x18\x01 \x03(\x05R\x04seed\"2\n" +
 	"\n" +
 	"IDsMessage\x12$\n" +
 	"\x03IDs\x18\x01 \x03(\v2\x12.packets.IdMessageR\x03IDs\"\xa8\a\n" +

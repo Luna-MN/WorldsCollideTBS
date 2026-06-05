@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="1_fncua"]
 [ext_resource type="PackedScene" uid="uid://dpj6k736hcvn3" path="res://Objects/TerrainGen/terrain_gen.tscn" id="2_8ltj8"]
 [ext_resource type="Script" uid="uid://cdmsp2jh00nj4" path="res://Classes/Input/InputHandler.cs" id="4_m5vh7"]
+[ext_resource type="FastNoiseLite" uid="uid://ba5qt6qlj6qqf" path="res://player.tres" id="5_v8l31"]
 
 [node name="StartGame" type="Node3D" unique_id=341148836 node_paths=PackedStringArray("log", "terrainGen1", "terrainGen2", "terrainGen3", "inputHandler", "confirm")]
 script = ExtResource("1_8ltj8")
@@ -41,16 +42,19 @@ script = ExtResource("4_m5vh7")
 
 [node name="TerrainGen" parent="." unique_id=116907696 instance=ExtResource("2_8ltj8")]
 Radius = 2
+noise = ExtResource("5_v8l31")
 DefaultTile = 3
 
 [node name="TerrainGen2" parent="." unique_id=20943194 instance=ExtResource("2_8ltj8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.031076, 0, 0)
 Radius = 2
+noise = ExtResource("5_v8l31")
 DefaultTile = 3
 
 [node name="TerrainGen3" parent="." unique_id=765626791 instance=ExtResource("2_8ltj8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.129242, 0, 0)
 Radius = 2
+noise = ExtResource("5_v8l31")
 DefaultTile = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1650520879]

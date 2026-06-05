@@ -26,7 +26,7 @@ public static class PacketUtil
         };
     }
     
-    public static Packet NewSeedPacket(long seed)
+    public static Packet NewSeedPacket(int seed)
     {
         return new Packet()
         {
