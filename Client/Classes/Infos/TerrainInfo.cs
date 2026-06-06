@@ -8,6 +8,7 @@ public class TerrainInfo
     public TileUtil.TileTopState TopTileState = TileUtil.TileTopState.Small;
     public Vector3 Position;
     public Vector2I PositionI;
+    public Vector2I PositionL;
     public TerrainInfo[] Neighbours;
     public bool Connected;
     public TerrainInfo NextTile;

@@ -72,7 +72,7 @@ public partial class TerrainGen : Node3D
         }
     }
     
-    private Vector3 HexToWorldPosition(int q, int r)
+    public Vector3 HexToWorldPosition(int q, int r)
     {
         float hexSize = 1.15f;
         
@@ -81,7 +81,7 @@ public partial class TerrainGen : Node3D
         
         return new Vector3(x, 0, z);
     }
-    private Vector2I WorldPositionToHex(Vector3 worldPos)
+    public Vector2I WorldPositionToHex(Vector3 worldPos)
     {
         float hexSize = 1.15f;
     

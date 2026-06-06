@@ -5,6 +5,7 @@ option go_package = "pkg/packets";
 
 message Vector3Msg { float x = 1; float y = 2; float z = 3; }
 message Vector2Msg { float x = 1; float y = 2; }
+message Vector2IMsg { int32 x = 1; int32 y = 2; }
 enum ChatType { Nothing = 0; Global = 1; Local = 2; Party = 3; Max = 4; }
 
 

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using Util;
 
 public partial class InputHandler : Node3D
@@ -58,6 +59,7 @@ public partial class InputHandler : Node3D
     }
     private void HandleLeftClick()
     {
+        GD.Print(CurrentMouseNode.Position.ToString());
         if (CurrentMouseNode == null) return;
         var nodeInfo = CurrentMouseNode.TerrainInfo;
         if (nodeInfo == null) return;

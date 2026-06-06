@@ -25,6 +25,17 @@ public partial class MainGame : Node3D, IState
         Globals.GM.gameData.TerrainGen2 = TerrainGen2;
         Globals.GM.gameData.UpdateTileNeighbours();
         UnitTesting();
+        test();
+    }
+
+    public void test()
+    {
+        GD.Print(MainGameTerrainGen.worldInfo.TerrainInfo[new Vector2I(0, 0)].Position);
+        GD.Print(MainGameTerrainGen.worldInfo.TerrainInfo[new Vector2I(1, 0)].Position);
+        GD.Print(MainGameTerrainGen.worldInfo.TerrainInfo[new Vector2I(2, 0)].Position);
+        GD.Print(MainGameTerrainGen.worldInfo.TerrainInfo[new Vector2I(3, 0)].Position);
+        GD.Print(MainGameTerrainGen.worldInfo.TerrainInfo[new Vector2I(4, 0)].Position);
+        GD.Print(MainGameTerrainGen.worldInfo.TerrainInfo[new Vector2I(5, 0)].Position);
     }
     public void OnPacketReceived(Packet packet)
     {

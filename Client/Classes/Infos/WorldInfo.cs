@@ -106,6 +106,7 @@ public class WorldInfo
                     neighbors.Add(tile);
                 }
             }
+            
             hex.Neighbours = neighbors.ToArray();
         }
     }

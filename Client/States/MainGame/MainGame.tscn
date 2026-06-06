@@ -239,7 +239,7 @@ MainGame = true
 transform = Transform3D(1, 0, 0, 0, 0.49999994, 0.86602545, 0, -0.86602545, 0.49999994, 0, 12, 9)
 
 [node name="TerrainGen2" parent="." unique_id=283917659 instance=ExtResource("1_1okw7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.710118, 0, 0)
 Radius = 2
 noise = ExtResource("3_8kttb")
 DefaultTile = 3
@@ -254,3 +254,6 @@ TopTileMaps = SubResource("Resource_2gh4u")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=967979073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2550187, 0, -6.179596)
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=716945378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.363755, 0, 1.9459624)
