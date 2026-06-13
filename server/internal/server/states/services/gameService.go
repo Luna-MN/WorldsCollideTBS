@@ -118,7 +118,6 @@ func (g *GameService) HandleSeedMessage(playerData *PlayerGameData, msg *packets
 		return
 	}
 	playerData.Seed = msg.Seed.Seed[0]
-	playerData.Player.SocketSend(packets.NewStartGame(), server.WebSocket)
 	if !g.seedsReceived {
 		g.seedsReceived = true
 		return

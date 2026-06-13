@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 public partial class DefaultUnit : Node3D, IUnit
 {
+    public UnitData Data { get; set; }
+    public List<IAttack> Attacks { get; set; }
     public IMovement Movement { get; set; }
-    public IAttack Attacks { get; set; }
 
     public override void _Ready()
     {
@@ -26,7 +27,6 @@ public partial class DefaultUnit : Node3D, IUnit
     }
     public virtual void Attack(IUnit unit)
     {
-        Attacks.Attack(unit);
     }
-
+    
 }

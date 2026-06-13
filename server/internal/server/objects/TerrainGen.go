@@ -8,6 +8,7 @@ type TerrainGen struct {
 	Radius      int
 	Amplitude   int
 	Features    int
+	GlobalPos   Vector3
 	noise       fastnoiselite.FastNoiseLite
 	DefaultTile TileType
 	FeatureArgs *FeatureArgs

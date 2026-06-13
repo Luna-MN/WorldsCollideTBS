@@ -24,6 +24,7 @@ type TerrainInfo struct {
 	TopTileType  TopTileType
 	TileTopState TileTopState
 	PositionI    Vector2I
+	PositionL    Vector2I
 	Position     Vector3
 	Neighbors    []*TerrainInfo
 }

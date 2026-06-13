@@ -1,0 +1,143 @@
+[gd_resource type="Resource" script_class="TileMapController" format=3 uid="uid://ctot0lb4d8ppr"]
+
+[ext_resource type="Script" uid="uid://cb7iss74ifst" path="res://Classes/Tiles/TileInfo/TileInfo.cs" id="1_8qwq5"]
+[ext_resource type="PackedScene" uid="uid://dymlud2bpml5t" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/fall/hex_grass.tscn" id="2_37p84"]
+[ext_resource type="Script" uid="uid://cog33uck4g1wq" path="res://Classes/Tiles/TileMap/TileMap.cs" id="3_dsh7t"]
+[ext_resource type="PackedScene" uid="uid://cgmyw76q22of" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/fall/hex_grass_bottom.tscn" id="4_qjtek"]
+[ext_resource type="PackedScene" uid="uid://bospqtame6rlf" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/base/hex_grass.fbx" id="5_vnj7d"]
+[ext_resource type="PackedScene" uid="uid://lwegxjixcpsc" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/base/hex_grass_bottom.fbx" id="6_nb62r"]
+[ext_resource type="PackedScene" uid="uid://defl3g3l6rx4h" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_C.fbx" id="7_vugfp"]
+[ext_resource type="PackedScene" uid="uid://0fv3hnocxjnq" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_B.fbx" id="8_r82e8"]
+[ext_resource type="PackedScene" uid="uid://643iva42mly" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_A_curvy.fbx" id="9_1jpbq"]
+[ext_resource type="PackedScene" uid="uid://dwwu0qsib07ew" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/rivers/hex_river_A.fbx" id="10_vash4"]
+[ext_resource type="Script" uid="uid://dbq8cwnoth0eh" path="res://Classes/Tiles/TileMapController/TileMapController.cs" id="11_cdr3t"]
+
+[sub_resource type="Resource" id="Resource_8qwq5"]
+script = ExtResource("1_8qwq5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_37p84"]
+script = ExtResource("1_8qwq5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_dsh7t"]
+script = ExtResource("1_8qwq5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_qjtek"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("2_37p84")]
+
+[sub_resource type="Resource" id="Resource_vnj7d"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("4_qjtek")]
+
+[sub_resource type="Resource" id="Resource_nb62r"]
+resource_name = "Fall"
+script = ExtResource("3_dsh7t")
+floor = SubResource("Resource_qjtek")
+underground = SubResource("Resource_vnj7d")
+connection1 = SubResource("Resource_8qwq5")
+connection2 = SubResource("Resource_37p84")
+connection3 = SubResource("Resource_dsh7t")
+
+[sub_resource type="Resource" id="Resource_vugfp"]
+script = ExtResource("1_8qwq5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_r82e8"]
+script = ExtResource("1_8qwq5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_1jpbq"]
+script = ExtResource("1_8qwq5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_vash4"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("5_vnj7d")]
+
+[sub_resource type="Resource" id="Resource_cdr3t"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("6_nb62r")]
+
+[sub_resource type="Resource" id="Resource_ib24m"]
+resource_name = "Default"
+script = ExtResource("3_dsh7t")
+floor = SubResource("Resource_vash4")
+underground = SubResource("Resource_cdr3t")
+connection1 = SubResource("Resource_vugfp")
+connection2 = SubResource("Resource_r82e8")
+connection3 = SubResource("Resource_1jpbq")
+
+[sub_resource type="Resource" id="Resource_ruswd"]
+script = ExtResource("1_8qwq5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_g13y4"]
+script = ExtResource("1_8qwq5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_enp1q"]
+script = ExtResource("1_8qwq5")
+_tileNode = []
+
+[sub_resource type="Resource" id="Resource_m4bid"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("5_vnj7d")]
+
+[sub_resource type="Resource" id="Resource_2771d"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("6_nb62r")]
+
+[sub_resource type="Resource" id="Resource_sss3r"]
+resource_name = "Default"
+script = ExtResource("3_dsh7t")
+floor = SubResource("Resource_m4bid")
+underground = SubResource("Resource_2771d")
+connection1 = SubResource("Resource_ruswd")
+connection2 = SubResource("Resource_g13y4")
+connection3 = SubResource("Resource_enp1q")
+
+[sub_resource type="Resource" id="Resource_at2lg"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("7_vugfp")]
+
+[sub_resource type="Resource" id="Resource_vb72l"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("8_r82e8")]
+
+[sub_resource type="Resource" id="Resource_ua871"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("9_1jpbq")]
+
+[sub_resource type="Resource" id="Resource_d4ims"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("10_vash4")]
+
+[sub_resource type="Resource" id="Resource_t340d"]
+script = ExtResource("1_8qwq5")
+_tileNode = [ExtResource("6_nb62r")]
+
+[sub_resource type="Resource" id="Resource_cu7im"]
+resource_name = "River"
+script = ExtResource("3_dsh7t")
+floor = SubResource("Resource_d4ims")
+underground = SubResource("Resource_t340d")
+connection1 = SubResource("Resource_at2lg")
+connection2 = SubResource("Resource_vb72l")
+connection3 = SubResource("Resource_ua871")
+
+[resource]
+script = ExtResource("11_cdr3t")
+TileMaps = Dictionary[int, ExtResource("3_dsh7t")]({
+0: SubResource("Resource_ib24m"),
+1: SubResource("Resource_cu7im"),
+2: SubResource("Resource_sss3r"),
+3: SubResource("Resource_nb62r")
+})
+Grass = SubResource("Resource_ib24m")
+River = SubResource("Resource_cu7im")
+Path = SubResource("Resource_sss3r")
+Fall = SubResource("Resource_nb62r")
+metadata/_custom_type_script = "uid://dbq8cwnoth0eh"

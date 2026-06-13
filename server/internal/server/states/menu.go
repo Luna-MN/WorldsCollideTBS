@@ -31,7 +31,7 @@ func (m *Menu) Name() string {
 
 func (m *Menu) SetClient(client *server.Client) {
 	m.client = client
-	loginPrefix := fmt.Sprintf("Client %d [%s]: ", client.Id(), m.Name())
+	loginPrefix := fmt.Sprintf("%s : %d [%s]: ", client.Username(), client.Id(), m.Name())
 	m.logger = log.New(log.Writer(), loginPrefix, log.LstdFlags)
 	m.queries = client.DbTx().Queries
 	m.dbCtx = client.DbTx().Ctx

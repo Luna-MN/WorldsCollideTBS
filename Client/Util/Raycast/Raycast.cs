@@ -54,12 +54,15 @@ public static class RayCast
         
         return result;
     }
-    public static Node3D CastObject()
+    public static T CastObject<T>() where T : Node3D
     {
         Dictionary result = Cast();
         if (result == null) return null;
+
         if (result.TryGetValue("collider", out var colliderVariant))
-            return (Node3D)colliderVariant;
+            return colliderVariant.AsGodotObject() as T;
+
         return null;
     }
+
 }

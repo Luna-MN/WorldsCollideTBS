@@ -24,7 +24,7 @@ public class GameData
         TerrainGen2.worldInfo.UpdateNeighbors();
     }
 
-    public void PopulateTiles()
+    private void PopulateTiles()
     {
         foreach (var tileKVP in TerrainGen.worldInfo.TerrainInfo)
         {

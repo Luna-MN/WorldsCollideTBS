@@ -7,7 +7,7 @@ message Vector3Msg { float x = 1; float y = 2; float z = 3; }
 message Vector2Msg { float x = 1; float y = 2; }
 message Vector2IMsg { int32 x = 1; int32 y = 2; }
 enum ChatType { Nothing = 0; Global = 1; Local = 2; Party = 3; Max = 4; }
-
+enum Speeds { Normal = 0; Slow = 1; Fast = 2;}
 
 message ChatMessage { ChatType type = 1; string msg = 2; string Username = 3;}
 message IdMessage { uint64 id = 1; }
@@ -20,11 +20,12 @@ message CommandMessage { string command = 1; repeated string args = 2; }
 message ChangeStateMessage { string stateName = 1; }
 message QueueMessage { string QueueType = 1; }
 message HexPositionMessage { Vector2Msg position = 1; }
-message HexPositionsMessage { repeated HexPositionMessage positions = 1;}
+message HexPositionsMessage { uint64 id = 1; repeated HexPositionMessage positions = 2;}
 message OpponentMessage { string id = 1; bool steam = 2; string AvatarImage = 3; }
 message StartGameMessage {}
 message SeedMessage { repeated int32 seed = 1; }
 message IDsMessage { repeated IdMessage IDs = 1; }
+message UnitMessage { uint64 OwnerId = 1; uint64 UnitId = 2; repeated string Attacks = 3; string Movement = 4; int32 AP = 5; int32 HP = 6; int32 MaxHP = 7; Speeds speed = 8; string UnitName = 9; Vector3Msg Pos = 10;}
 // more message types here
 
 
@@ -50,6 +51,7 @@ message Packet {
     StartGameMessage startGame = 15;
     SeedMessage seed = 16;
     IDsMessage IDs = 17;
+    UnitMessage Unit = 18;
     //...
   }
 }

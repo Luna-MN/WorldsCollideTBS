@@ -3,12 +3,26 @@
 [ext_resource type="Script" uid="uid://bkvy7784tggjy" path="res://States/StartGame/StartGame.cs" id="1_8ltj8"]
 [ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="1_fncua"]
 [ext_resource type="PackedScene" uid="uid://dpj6k736hcvn3" path="res://Objects/TerrainGen/terrain_gen.tscn" id="2_8ltj8"]
+[ext_resource type="PackedScene" uid="uid://dte6l4g7d58qv" path="res://Objects/Units/Units/DefaultUnit/DefaultUnit.tscn" id="2_ine34"]
 [ext_resource type="Script" uid="uid://cdmsp2jh00nj4" path="res://Classes/Input/InputHandler.cs" id="4_m5vh7"]
 [ext_resource type="FastNoiseLite" uid="uid://ba5qt6qlj6qqf" path="res://player.tres" id="5_v8l31"]
+[ext_resource type="PackedScene" uid="uid://cu3o8617lux7i" path="res://Objects/Camera/Camera.tscn" id="6_wq6jh"]
+[ext_resource type="PackedScene" uid="uid://c0xwnx7lwkvf6" path="res://Classes/HNode3D/HNode3D.tscn" id="7_w43px"]
+[ext_resource type="PackedScene" uid="uid://bkus0sc0dnr6" path="res://Objects/CustomTerrainInfo/CustomTerrainInfo.tscn" id="8_ine34"]
 
-[node name="StartGame" type="Node3D" unique_id=341148836 node_paths=PackedStringArray("log", "terrainGen1", "terrainGen2", "terrainGen3", "inputHandler", "confirm")]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wq6jh"]
+seed = 207
+frequency = 0.693
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s6kuv"]
+seed = 178
+frequency = 0.693
+
+[node name="StartGame" type="Node3D" unique_id=341148836 node_paths=PackedStringArray("log", "tile", "terrainGen1", "terrainGen2", "terrainGen3", "inputHandler", "confirm")]
 script = ExtResource("1_8ltj8")
 log = NodePath("CanvasLayer/Log")
+unitScene = ExtResource("2_ine34")
+tile = NodePath("HNode3D/CustomTerrainInfo")
 terrainGen1 = NodePath("TerrainGen")
 terrainGen2 = NodePath("TerrainGen2")
 terrainGen3 = NodePath("TerrainGen3")
@@ -34,21 +48,18 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Confirm"
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=851265967]
-transform = Transform3D(1, 0, 0, 0, 0.5362146, 0.8440817, 0, -0.8440817, 0.5362146, -0.007952452, 17.374634, 11.622343)
-
 [node name="Input" type="Node3D" parent="." unique_id=994854221]
 script = ExtResource("4_m5vh7")
 
 [node name="TerrainGen" parent="." unique_id=116907696 instance=ExtResource("2_8ltj8")]
 Radius = 2
-noise = ExtResource("5_v8l31")
+noise = SubResource("FastNoiseLite_wq6jh")
 DefaultTile = 3
 
 [node name="TerrainGen2" parent="." unique_id=20943194 instance=ExtResource("2_8ltj8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.031076, 0, 0)
 Radius = 2
-noise = ExtResource("5_v8l31")
+noise = SubResource("FastNoiseLite_s6kuv")
 DefaultTile = 3
 
 [node name="TerrainGen3" parent="." unique_id=765626791 instance=ExtResource("2_8ltj8")]
@@ -59,3 +70,38 @@ DefaultTile = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1650520879]
 transform = Transform3D(1, 0, 0, 0, 0.7425576, 0.6697823, 0, -0.6697823, 0.7425576, 0, 14.22217, 8.484977)
+
+[node name="Camera" parent="." unique_id=1675463847 instance=ExtResource("6_wq6jh")]
+transform = Transform3D(1, 0, 0, 0, 0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, 0, 18, 6.5)
+
+[node name="Input" parent="Camera" index="0" unique_id=1912598540 node_paths=PackedStringArray("startGame")]
+StoreNode = false
+MainGame = false
+StartGame = true
+startGame = NodePath("../..")
+
+[node name="HNode3D" parent="." unique_id=1432245861 instance=ExtResource("7_w43px")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.9528837)
+FullSize = 30.0
+
+[node name="CustomTerrainInfo" parent="HNode3D" unique_id=1388308053 instance=ExtResource("8_ine34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+
+[node name="CustomTerrainInfo2" parent="HNode3D" unique_id=1950580886 instance=ExtResource("8_ine34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="CustomTerrainInfo3" parent="HNode3D" unique_id=267551113 instance=ExtResource("8_ine34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="CustomTerrainInfo4" parent="HNode3D" unique_id=1624799796 instance=ExtResource("8_ine34")]
+
+[node name="CustomTerrainInfo5" parent="HNode3D" unique_id=65412017 instance=ExtResource("8_ine34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="CustomTerrainInfo6" parent="HNode3D" unique_id=931445361 instance=ExtResource("8_ine34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="CustomTerrainInfo7" parent="HNode3D" unique_id=2084414302 instance=ExtResource("8_ine34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[editable path="Camera"]

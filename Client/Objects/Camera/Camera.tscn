@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cu3o8617lux7i"]
+
+[ext_resource type="Script" uid="uid://bhly5ur4hw7pt" path="res://Objects/Camera/Camera.cs" id="1_daqxd"]
+[ext_resource type="Script" uid="uid://cdmsp2jh00nj4" path="res://Classes/Input/InputHandler.cs" id="1_htsek"]
+
+[node name="Camera" type="Camera3D" unique_id=1675463847]
+transform = Transform3D(1, 0, 0, 0, 0.37234473, 0.9280945, 0, -0.9280945, 0.37234473, 0, 18, 9)
+projection = 1
+size = 24.0
+script = ExtResource("1_daqxd")
+
+[node name="Input" type="Node3D" parent="." unique_id=1912598540 node_paths=PackedStringArray("Camera")]
+transform = Transform3D(1, 0, 0, 0, 0.49190915, -0.87064654, 0, 0.87064654, 0.49190915, 0, 0, 0)
+script = ExtResource("1_htsek")
+StoreNode = true
+MainGame = true
+CamMove = true
+Camera = NodePath("..")
+camSpeed = 0.25

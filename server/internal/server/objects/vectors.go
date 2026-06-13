@@ -44,8 +44,8 @@ func NewVector3(X float32, Y float32, Z float32) Vector3 {
 }
 
 // Add two vector 3's together and return a new vector
-func (v *Vector3) Add(v2 *Vector3) *Vector3 {
-	return &Vector3{v.X + v2.X, v.Y + v2.Y, v.Z + v2.Z}
+func (v *Vector3) Add(v2 Vector3) Vector3 {
+	return Vector3{v.X + v2.X, v.Y + v2.Y, v.Z + v2.Z}
 }
 
 // Sub two vector 3's together and return a new vector

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bkus0sc0dnr6"]
+
+[ext_resource type="Script" uid="uid://bq6k6x0kys5nc" path="res://Objects/CustomTerrainInfo/CustomTerrainInfo.cs" id="1_dj57u"]
+[ext_resource type="PackedScene" uid="uid://dwesn8b3yi8wa" path="res://Objects/Tile/Tile.tscn" id="2_b0t3j"]
+[ext_resource type="Resource" uid="uid://ctot0lb4d8ppr" path="res://TileMapsDefault.tres" id="3_qe8aj"]
+[ext_resource type="Resource" uid="uid://hmohq840a4p6" path="res://TopTileMapsDefault.tres" id="4_1wsjm"]
+
+[node name="CustomTerrainInfo" type="Node3D" unique_id=1388308053]
+script = ExtResource("1_dj57u")
+TerrainScene = ExtResource("2_b0t3j")
+TileMaps = ExtResource("3_qe8aj")
+TopTileMaps = ExtResource("4_1wsjm")
+TileHeight = 1
