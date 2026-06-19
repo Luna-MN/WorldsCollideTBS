@@ -1,6 +1,7 @@
 package packets
 
 import (
+	"server/internal/server/db"
 	"server/internal/server/objects"
 	"server/internal/server/objects/units/units/util"
 )
@@ -117,6 +118,69 @@ func NewUnitData(data util.UnitData) *UnitMessage {
 func UnwrapUnitData(UnitPacket *UnitMessage) *util.UnitData {
 	return util.NewUnitData(UnitPacket.UnitName, UnitPacket.GetOwnerId(), UnitPacket.GetUnitId(), UnitPacket.Attacks, UnitPacket.Movement, UnitPacket.AP, UnitPacket.HP, UnitPacket.MaxHP, util.Speed(UnitPacket.Speed), UnwrapVector3(UnitPacket.Pos))
 }
+
+func NewUnitDataFromPacket(UnitPacket *UnitMessage) *util.UnitData {
+	return util.NewUnitData(UnitPacket.UnitName, UnitPacket.GetOwnerId(), UnitPacket.GetUnitId(), UnitPacket.Attacks, UnitPacket.Movement, UnitPacket.AP, UnitPacket.HP, UnitPacket.MaxHP, util.Speed(UnitPacket.Speed), UnwrapVector3(UnitPacket.Pos))
+}
+
+func NewFactionDataFromDB(f db.Faction, armies []int64) *FactionData {
+	return &FactionData{
+		Id:          f.ID,
+		Name:        f.Name,
+		Description: f.Description.String,
+		ArmyIds:     armies,
+	}
+}
+
+func NewArmyDataFromDB(a db.Army, units []int64) *ArmyData {
+	return &ArmyData{
+		Id:          a.ID,
+		Name:        a.Name,
+		Description: a.Description.String,
+		UnitIds:     units,
+	}
+}
+
+func NewUnitDataFromDB(u db.Unit, factionID int64) *UnitData {
+	return &UnitData{
+		Id:        u.ID,
+		Name:      u.Name,
+		Attacks:   u.Attacks.String,
+		Movement:  u.Movement.String,
+		MaxHP:     u.Maxhp.Int64,
+		AP:        u.Ap.Int64,
+		Speed:     Speeds(u.Speed.Int64),
+		FactionId: factionID,
+	}
+}
+
+func NewVersionMessage(version string) *GameDataVersion {
+	return &GameDataVersion{
+		Version: version,
+	}
+}
+
+func NewVersionPacket(version string) *Packet_GameVersion {
+	return &Packet_GameVersion{
+		GameVersion: NewVersionMessage(version),
+	}
+}
+
+func NewData(version string, fs []*FactionData, as []*ArmyData, us []*UnitData) *Packet_GameData {
+	return &Packet_GameData{
+		GameData: &GameDataMessage{
+			Version:  NewVersionMessage(version),
+			Factions: fs,
+			Armies:   as,
+			Units:    us,
+		},
+	}
+}
+
+func NewArmyId(id int64) *Packet_ArmyId {
+	return &Packet_ArmyId{ArmyId: &ArmyIDMessage{Id: id}}
+}
+
 func NewVector3(x, y, z float32) *Vector3Msg {
 	return &Vector3Msg{X: x, Y: y, Z: z}
 }

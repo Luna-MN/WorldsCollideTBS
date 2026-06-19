@@ -11,14 +11,21 @@ public partial class LoginAdmin : Node, IState
     public Node[] TransitionNodes { get; set; }
     [Export] private LineEdit Username, Password;
     [Export] private Button LoginButton, RegisterButton;
-
+    private GameDataUpdater gameDataUpdater;
+    
     public override void _Ready()
     {
         Globals.GM.Subscribe(OnPacketReceived, OnWSConnectionClosed);
-
+        SendVersion();
         LoginButton.Pressed += OnLoginPressed;
         RegisterButton.Pressed += OnRegisterPressed;
     }
+    private void SendVersion()
+    {
+        gameDataUpdater = new GameDataUpdater();
+        TrafficManager.Send(Packets.Util.PacketUtil.NewGameVersionPacket(gameDataUpdater.GetVersion()));
+    }
+
     private void OnLoginPressed()
     {
         var packet = new Packet();
@@ -43,19 +50,27 @@ public partial class LoginAdmin : Node, IState
 
     }
 
-    public void OnPacketReceived(Packet obj)
+    public void OnPacketReceived(Packet packet)
     {
-        GD.Print(obj);
-        var senderId = obj.SenderId;
-        if (obj.MsgCase == Packet.MsgOneofCase.Deny)
+        GD.Print(packet);
+        var senderId = packet.SenderId;
+        switch (packet.MsgCase)
         {
-            log.error("Login failed." + obj.Deny.Reason);
+            case Packet.MsgOneofCase.Deny:
+                log.error("Login failed." + packet.Deny.Reason);
+                break;
+            case Packet.MsgOneofCase.GameData:
+                HandleGameData(packet.GameData);
+                break;
+            case Packet.MsgOneofCase.OK:
+                ActionOnOkReceived?.Invoke();
+                ActionOnOkReceived = null;
+                break;
         }
-        else if (obj.MsgCase == Packet.MsgOneofCase.OK)
-        {
-            ActionOnOkReceived?.Invoke();
-            ActionOnOkReceived = null;
-        }
+    }
+    private void HandleGameData(GameDataMessage msg)
+    {
+        gameDataUpdater.UpdateVersion(msg.Version.Version, msg);
     }
     public void OnWSConnectionClosed()
     {

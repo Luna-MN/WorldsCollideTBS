@@ -14,15 +14,12 @@
 
 [sub_resource type="Resource" id="Resource_8qwq5"]
 script = ExtResource("1_8qwq5")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_37p84"]
 script = ExtResource("1_8qwq5")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_dsh7t"]
 script = ExtResource("1_8qwq5")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_qjtek"]
 script = ExtResource("1_8qwq5")
@@ -43,15 +40,12 @@ connection3 = SubResource("Resource_dsh7t")
 
 [sub_resource type="Resource" id="Resource_vugfp"]
 script = ExtResource("1_8qwq5")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_r82e8"]
 script = ExtResource("1_8qwq5")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_1jpbq"]
 script = ExtResource("1_8qwq5")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_vash4"]
 script = ExtResource("1_8qwq5")
@@ -72,15 +66,12 @@ connection3 = SubResource("Resource_1jpbq")
 
 [sub_resource type="Resource" id="Resource_ruswd"]
 script = ExtResource("1_8qwq5")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_g13y4"]
 script = ExtResource("1_8qwq5")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_enp1q"]
 script = ExtResource("1_8qwq5")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_m4bid"]
 script = ExtResource("1_8qwq5")

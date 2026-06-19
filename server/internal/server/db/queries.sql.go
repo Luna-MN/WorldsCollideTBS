@@ -71,6 +71,190 @@ func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (User, e
 	return i, err
 }
 
+const getAllArmies = `-- name: GetAllArmies :many
+SELECT
+    id, name, description
+FROM
+    army
+`
+
+func (q *Queries) GetAllArmies(ctx context.Context) ([]Army, error) {
+	rows, err := q.db.QueryContext(ctx, getAllArmies)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Army
+	for rows.Next() {
+		var i Army
+		if err := rows.Scan(&i.ID, &i.Name, &i.Description); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getAllFactions = `-- name: GetAllFactions :many
+SELECT
+    id, name, description
+FROM
+    faction
+`
+
+func (q *Queries) GetAllFactions(ctx context.Context) ([]Faction, error) {
+	rows, err := q.db.QueryContext(ctx, getAllFactions)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Faction
+	for rows.Next() {
+		var i Faction
+		if err := rows.Scan(&i.ID, &i.Name, &i.Description); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getAllUnits = `-- name: GetAllUnits :many
+SELECT
+    id, name, attacks, movement, maxhp, ap, speed, armies
+FROM
+    units
+`
+
+func (q *Queries) GetAllUnits(ctx context.Context) ([]Unit, error) {
+	rows, err := q.db.QueryContext(ctx, getAllUnits)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Unit
+	for rows.Next() {
+		var i Unit
+		if err := rows.Scan(
+			&i.ID,
+			&i.Name,
+			&i.Attacks,
+			&i.Movement,
+			&i.Maxhp,
+			&i.Ap,
+			&i.Speed,
+			&i.Armies,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getArmy = `-- name: GetArmy :one
+SELECT
+    id, name, description
+FROM
+    army
+WHERE
+    name = ?
+`
+
+func (q *Queries) GetArmy(ctx context.Context, name string) (Army, error) {
+	row := q.db.QueryRowContext(ctx, getArmy, name)
+	var i Army
+	err := row.Scan(&i.ID, &i.Name, &i.Description)
+	return i, err
+}
+
+const getArmyFaction = `-- name: GetArmyFaction :one
+SELECT
+    id, factionid, armyid
+FROM
+    army_faction
+WHERE
+    armyId = ? AND factionId = ?
+`
+
+type GetArmyFactionParams struct {
+	Armyid    int64
+	Factionid int64
+}
+
+func (q *Queries) GetArmyFaction(ctx context.Context, arg GetArmyFactionParams) (ArmyFaction, error) {
+	row := q.db.QueryRowContext(ctx, getArmyFaction, arg.Armyid, arg.Factionid)
+	var i ArmyFaction
+	err := row.Scan(&i.ID, &i.Factionid, &i.Armyid)
+	return i, err
+}
+
+const getArmyIdsForFaction = `-- name: GetArmyIdsForFaction :many
+SELECT
+    armyId
+FROM
+    army_faction
+WHERE
+    factionId = ?
+`
+
+func (q *Queries) GetArmyIdsForFaction(ctx context.Context, factionid int64) ([]int64, error) {
+	rows, err := q.db.QueryContext(ctx, getArmyIdsForFaction, factionid)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []int64
+	for rows.Next() {
+		var armyid int64
+		if err := rows.Scan(&armyid); err != nil {
+			return nil, err
+		}
+		items = append(items, armyid)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getFaction = `-- name: GetFaction :one
+SELECT
+    id, name, description
+FROM
+    faction
+WHERE
+    name = ?
+`
+
+func (q *Queries) GetFaction(ctx context.Context, name string) (Faction, error) {
+	row := q.db.QueryRowContext(ctx, getFaction, name)
+	var i Faction
+	err := row.Scan(&i.ID, &i.Name, &i.Description)
+	return i, err
+}
+
 const getSteamAvatarImage = `-- name: GetSteamAvatarImage :one
 SELECT
     Avatar
@@ -110,6 +294,102 @@ func (q *Queries) GetSteamUser(ctx context.Context, steamid sql.NullString) (Use
 		&i.Avatar,
 	)
 	return i, err
+}
+
+const getUnit = `-- name: GetUnit :one
+SELECT
+    id, name, attacks, movement, maxhp, ap, speed, armies
+FROM
+    units
+WHERE
+    name = ?
+`
+
+func (q *Queries) GetUnit(ctx context.Context, name string) (Unit, error) {
+	row := q.db.QueryRowContext(ctx, getUnit, name)
+	var i Unit
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Attacks,
+		&i.Movement,
+		&i.Maxhp,
+		&i.Ap,
+		&i.Speed,
+		&i.Armies,
+	)
+	return i, err
+}
+
+const getUnitArmy = `-- name: GetUnitArmy :one
+SELECT
+    armyid, unitid
+FROM
+    army_units
+WHERE
+    armyId = ? AND unitId = ?
+`
+
+type GetUnitArmyParams struct {
+	Armyid int64
+	Unitid int64
+}
+
+func (q *Queries) GetUnitArmy(ctx context.Context, arg GetUnitArmyParams) (ArmyUnit, error) {
+	row := q.db.QueryRowContext(ctx, getUnitArmy, arg.Armyid, arg.Unitid)
+	var i ArmyUnit
+	err := row.Scan(&i.Armyid, &i.Unitid)
+	return i, err
+}
+
+const getUnitIdsForArmy = `-- name: GetUnitIdsForArmy :many
+SELECT
+    unitId
+FROM
+    army_units
+WHERE
+    armyId = ?
+`
+
+func (q *Queries) GetUnitIdsForArmy(ctx context.Context, armyid int64) ([]int64, error) {
+	rows, err := q.db.QueryContext(ctx, getUnitIdsForArmy, armyid)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []int64
+	for rows.Next() {
+		var unitid int64
+		if err := rows.Scan(&unitid); err != nil {
+			return nil, err
+		}
+		items = append(items, unitid)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getUnitsFaction = `-- name: GetUnitsFaction :one
+SELECT
+    af.factionId
+FROM
+    army_units au
+        JOIN
+    army_faction af ON au.armyId = af.armyId
+WHERE
+    au.unitId = ?
+`
+
+func (q *Queries) GetUnitsFaction(ctx context.Context, unitid int64) (int64, error) {
+	row := q.db.QueryRowContext(ctx, getUnitsFaction, unitid)
+	var factionid int64
+	err := row.Scan(&factionid)
+	return factionid, err
 }
 
 const getUserByUsername = `-- name: GetUserByUsername :one
@@ -152,6 +432,66 @@ func (q *Queries) GetUserId(ctx context.Context, lower string) (int64, error) {
 	return id, err
 }
 
+const newArmy = `-- name: NewArmy :one
+INSERT INTO
+    army(name, description)
+VALUES
+    (?, ?)
+RETURNING id, name, description
+`
+
+type NewArmyParams struct {
+	Name        string
+	Description sql.NullString
+}
+
+func (q *Queries) NewArmy(ctx context.Context, arg NewArmyParams) (Army, error) {
+	row := q.db.QueryRowContext(ctx, newArmy, arg.Name, arg.Description)
+	var i Army
+	err := row.Scan(&i.ID, &i.Name, &i.Description)
+	return i, err
+}
+
+const newArmyFaction = `-- name: NewArmyFaction :one
+INSERT INTO
+    army_faction(armyId, factionId)
+VALUES
+    (?, ?)
+RETURNING id, factionid, armyid
+`
+
+type NewArmyFactionParams struct {
+	Armyid    int64
+	Factionid int64
+}
+
+func (q *Queries) NewArmyFaction(ctx context.Context, arg NewArmyFactionParams) (ArmyFaction, error) {
+	row := q.db.QueryRowContext(ctx, newArmyFaction, arg.Armyid, arg.Factionid)
+	var i ArmyFaction
+	err := row.Scan(&i.ID, &i.Factionid, &i.Armyid)
+	return i, err
+}
+
+const newFaction = `-- name: NewFaction :one
+INSERT INTO
+    faction(name, description)
+VALUES
+    (?, ?)
+RETURNING id, name, description
+`
+
+type NewFactionParams struct {
+	Name        string
+	Description sql.NullString
+}
+
+func (q *Queries) NewFaction(ctx context.Context, arg NewFactionParams) (Faction, error) {
+	row := q.db.QueryRowContext(ctx, newFaction, arg.Name, arg.Description)
+	var i Faction
+	err := row.Scan(&i.ID, &i.Name, &i.Description)
+	return i, err
+}
+
 const newGame = `-- name: NewGame :one
 INSERT INTO
     games(player1Id, player2Id, player1Score, player2Score, winnerId, MatchTime)
@@ -191,6 +531,87 @@ func (q *Queries) NewGame(ctx context.Context, arg NewGameParams) (Game, error) 
 	return i, err
 }
 
+const newUnit = `-- name: NewUnit :one
+INSERT INTO
+    units(name, attacks, movement, maxHP, AP, Speed, Armies)
+VALUES
+    (?, ?, ?, ?, ?, ?, ?)
+RETURNING id, name, attacks, movement, maxhp, ap, speed, armies
+`
+
+type NewUnitParams struct {
+	Name     string
+	Attacks  sql.NullString
+	Movement sql.NullString
+	Maxhp    sql.NullInt64
+	Ap       sql.NullInt64
+	Speed    sql.NullInt64
+	Armies   sql.NullString
+}
+
+func (q *Queries) NewUnit(ctx context.Context, arg NewUnitParams) (Unit, error) {
+	row := q.db.QueryRowContext(ctx, newUnit,
+		arg.Name,
+		arg.Attacks,
+		arg.Movement,
+		arg.Maxhp,
+		arg.Ap,
+		arg.Speed,
+		arg.Armies,
+	)
+	var i Unit
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Attacks,
+		&i.Movement,
+		&i.Maxhp,
+		&i.Ap,
+		&i.Speed,
+		&i.Armies,
+	)
+	return i, err
+}
+
+const newUnitArmy = `-- name: NewUnitArmy :one
+INSERT INTO
+    army_units(armyId, unitId)
+VALUES
+    (?, ?)
+RETURNING armyid, unitid
+`
+
+type NewUnitArmyParams struct {
+	Armyid int64
+	Unitid int64
+}
+
+func (q *Queries) NewUnitArmy(ctx context.Context, arg NewUnitArmyParams) (ArmyUnit, error) {
+	row := q.db.QueryRowContext(ctx, newUnitArmy, arg.Armyid, arg.Unitid)
+	var i ArmyUnit
+	err := row.Scan(&i.Armyid, &i.Unitid)
+	return i, err
+}
+
+const updateArmy = `-- name: UpdateArmy :exec
+UPDATE
+    army
+SET
+    description = ?
+WHERE
+    name = ?
+`
+
+type UpdateArmyParams struct {
+	Description sql.NullString
+	Name        string
+}
+
+func (q *Queries) UpdateArmy(ctx context.Context, arg UpdateArmyParams) error {
+	_, err := q.db.ExecContext(ctx, updateArmy, arg.Description, arg.Name)
+	return err
+}
+
 const updateAvatar = `-- name: UpdateAvatar :one
 UPDATE
     users
@@ -220,6 +641,25 @@ func (q *Queries) UpdateAvatar(ctx context.Context, arg UpdateAvatarParams) (Use
 	return i, err
 }
 
+const updateFaction = `-- name: UpdateFaction :exec
+UPDATE
+    faction
+SET
+    description = ?
+WHERE
+    name = ?
+`
+
+type UpdateFactionParams struct {
+	Description sql.NullString
+	Name        string
+}
+
+func (q *Queries) UpdateFaction(ctx context.Context, arg UpdateFactionParams) error {
+	_, err := q.db.ExecContext(ctx, updateFaction, arg.Description, arg.Name)
+	return err
+}
+
 const updateLastLoggedIn = `-- name: UpdateLastLoggedIn :one
 UPDATE
     users
@@ -247,6 +687,42 @@ func (q *Queries) UpdateLastLoggedIn(ctx context.Context, arg UpdateLastLoggedIn
 		&i.Avatar,
 	)
 	return i, err
+}
+
+const updateUnit = `-- name: UpdateUnit :exec
+UPDATE units
+SET
+    attacks = ?,
+    movement = ?,
+    maxHP = ?,
+    AP = ?,
+    Speed = ?,
+    Armies = ?
+WHERE
+    name = ?
+`
+
+type UpdateUnitParams struct {
+	Attacks  sql.NullString
+	Movement sql.NullString
+	Maxhp    sql.NullInt64
+	Ap       sql.NullInt64
+	Speed    sql.NullInt64
+	Armies   sql.NullString
+	Name     string
+}
+
+func (q *Queries) UpdateUnit(ctx context.Context, arg UpdateUnitParams) error {
+	_, err := q.db.ExecContext(ctx, updateUnit,
+		arg.Attacks,
+		arg.Movement,
+		arg.Maxhp,
+		arg.Ap,
+		arg.Speed,
+		arg.Armies,
+		arg.Name,
+	)
+	return err
 }
 
 const updateUsername = `-- name: UpdateUsername :one

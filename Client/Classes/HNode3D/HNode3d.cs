@@ -23,7 +23,6 @@ public partial class HNode3d : Node3D
 
     public override void _EnterTree()
     {
-        ChildEnteredTree -= OnChildEnteredTree;
         ChildEnteredTree += OnChildEnteredTree;
 
         RebuildChildrenList();

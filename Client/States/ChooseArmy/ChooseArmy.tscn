@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://julkxdpnq6va"]
+
+[ext_resource type="Script" uid="uid://qobkapga7kay" path="res://States/ChooseArmy/ChooseArmy.cs" id="1_nwqmu"]
+[ext_resource type="PackedScene" uid="uid://cj0wuaa8xj7vx" path="res://Objects/ArmyButton/ArmyButton.tscn" id="2_8pcgd"]
+[ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="2_62f57"]
+
+[node name="ChooseArmy" type="Control" unique_id=1839532097 node_paths=PackedStringArray("armyGrid", "armyScroll", "waitPlease")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nwqmu")
+armyScene = ExtResource("2_8pcgd")
+armyGrid = NodePath("ScrollContainer/GridContainer")
+armyScroll = NodePath("ScrollContainer")
+waitPlease = NodePath("RichTextLabel")
+
+[node name="Log" parent="." unique_id=553717686 instance=ExtResource("2_62f57")]
+layout_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1242731783]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1302.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1441079965]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=602596285]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Waiting For Other Player..."
+horizontal_alignment = 1
+vertical_alignment = 1

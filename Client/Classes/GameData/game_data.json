@@ -1,0 +1,82 @@
+{
+  "factions": [
+    {
+      "ID": 3,
+      "Name": "Test",
+      "Description": "",
+      "armyIds": [
+        3
+      ]
+    },
+    {
+      "ID": 4,
+      "Name": "Plague Rats",
+      "Description": "We\u0027re The Rats!",
+      "armyIds": [
+        4
+      ]
+    }
+  ],
+  "armies": [
+    {
+      "ID": 3,
+      "Name": "Default",
+      "Description": "Test Army",
+      "unitIds": [
+        3,
+        5,
+        6
+      ]
+    },
+    {
+      "ID": 4,
+      "Name": "Plague Spreaders",
+      "Description": "Spread Plague!",
+      "unitIds": [
+        4
+      ]
+    }
+  ],
+  "units": [
+    {
+      "ID": 3,
+      "Name": "Default",
+      "Attacks": "",
+      "Movement": "Default Movement",
+      "MaxHP": 5,
+      "AP": 5,
+      "speed": 0,
+      "factionId": 3
+    },
+    {
+      "ID": 4,
+      "Name": "Plague Rat",
+      "Attacks": "",
+      "Movement": "Default Movement",
+      "MaxHP": 3,
+      "AP": 4,
+      "speed": 1,
+      "factionId": 4
+    },
+    {
+      "ID": 5,
+      "Name": "Fast",
+      "Attacks": "",
+      "Movement": "Default Movement",
+      "MaxHP": 5,
+      "AP": 5,
+      "speed": 1,
+      "factionId": 3
+    },
+    {
+      "ID": 6,
+      "Name": "Slow",
+      "Attacks": "",
+      "Movement": "Default Movement",
+      "MaxHP": 5,
+      "AP": 5,
+      "speed": 2,
+      "factionId": 3
+    }
+  ]
+}

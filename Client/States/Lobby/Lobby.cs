@@ -16,7 +16,7 @@ public partial class Lobby : Control, IState
         Play.ButtonUp += StartGame;
         Quit.ButtonUp += () => Globals.GM.SetState(GameManager.state.MainLoggedInMenu);
         Invite.ButtonUp += InvitePlayer;
-        Globals.GM.gameData = new GameData();
+        Globals.GM.CurrentGameData = new CurrentGameData();
     }
 
     public void OnPacketReceived(Packet packet)
@@ -45,12 +45,21 @@ public partial class Lobby : Control, IState
 
     private void SetPlayerIds(IDsMessage ids)
     {
-        Globals.GM.gameData.ID1 = ids.IDs[0].Id;
-        Globals.GM.gameData.ID2 = ids.IDs[1].Id;
+        if (ids.IDs[0].Id == Globals.GM.clientId)
+        {
+            Globals.GM.CurrentGameData.MySide = CurrentGameData.Side.left;
+            Globals.GM.CurrentGameData.EnemyID = ids.IDs[1].Id;
+        }
+        else
+        {
+            Globals.GM.CurrentGameData.MySide = CurrentGameData.Side.right;
+            Globals.GM.CurrentGameData.EnemyID = ids.IDs[0].Id;
+        }
+        GD.Print($"MyID {Globals.GM.clientId} Player1 {ids.IDs[0].Id} Player2 {ids.IDs[1].Id}, My Side {Globals.GM.CurrentGameData.MySide}");
     }
     private void StartGame()
     {
-        Globals.GM.SetState(GameManager.state.StartGame);
+        Globals.GM.SetState(GameManager.state.ChooseArmy);
     }
     public void OnWSConnectionClosed()
     {

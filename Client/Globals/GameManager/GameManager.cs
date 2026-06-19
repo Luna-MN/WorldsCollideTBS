@@ -15,6 +15,7 @@ public partial class GameManager : Node
         Settings,
         MainLoggedInMenu,
         Lobby,
+        ChooseArmy,
         StartGame,
         AwaitingGameData,
         Game
@@ -28,6 +29,7 @@ public partial class GameManager : Node
         { state.LoginAdmin, "res://States/LoginAdmin/LoginAdmin.tscn" },
         { state.MainLoggedInMenu, "res://States/Menus/MainLoggedInMenu/MainLoggedInMenu.tscn"},
         { state.Lobby, "res://States/Lobby/Lobby.tscn"},
+        { state.ChooseArmy, "res://States/ChooseArmy/ChooseArmy.tscn"},
         { state.StartGame, "res://States/StartGame/StartGame.tscn"},
         { state.AwaitingGameData, "res://States/AwaitingGameData/AwaitingGameData.tscn"},
         { state.Game, "res://States/MainGame/MainGame.tscn" }
@@ -35,7 +37,7 @@ public partial class GameManager : Node
     public ulong clientId;
     public string username;
     private Node CurrentSceneRoot;
-    public GameData gameData;
+    public CurrentGameData CurrentGameData;
     public void SetState(state newState)
     {
         var scene = (PackedScene)ResourceLoader.Load(stateScenes[newState]);

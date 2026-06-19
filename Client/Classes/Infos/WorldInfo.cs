@@ -100,7 +100,7 @@ public class WorldInfo
             foreach (var offset in HexNeighborOffsets)
             {
                 Vector2I neighborCoord = new Vector2I(hex.PositionI.X + offset.X, hex.PositionI.Y + offset.Y);
-                var tile = Globals.GM.gameData.GetTileAt(neighborCoord);
+                var tile = Globals.GM.CurrentGameData.GetTileAt(neighborCoord);
                 if (tile != null)
                 {
                     neighbors.Add(tile);

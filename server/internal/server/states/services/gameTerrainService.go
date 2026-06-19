@@ -56,27 +56,8 @@ func (g *GameTerrainService) GenerateTerrain() {
 	g.PopulateTiles()
 }
 
-// GetTileAt WRONG q is not sraight is sideways, use Vec3 pos as default instead, make a shared tiles dict in here for all and ref that
 func (g *GameTerrainService) GetTileAt(pos objects.Vector2I) *objects.TerrainInfo {
-	mainGen := g.terrainGen
-
-	if pos.X < -mainGen.Radius {
-		leftCenterX := -(mainGen.Radius + g.terrainGen1.Radius + 1)
-
-		pos.X -= leftCenterX
-
-		return g.terrainGen1.GetTileAt(pos)
-	}
-
-	if pos.X > mainGen.Radius {
-		rightCenterX := mainGen.Radius + g.terrainGen2.Radius + 1
-
-		pos.X -= rightCenterX
-
-		return g.terrainGen2.GetTileAt(pos)
-	}
-
-	return mainGen.GetTileAt(pos)
+	return g.Tiles[pos]
 }
 
 func (g *GameTerrainService) GetTiles(positions []objects.Vector2I) []*objects.TerrainInfo {
@@ -99,20 +80,14 @@ func (g *GameTerrainService) GetGlobalTilesAt(positions []objects.Vector3) []*ob
 }
 
 func (g *GameTerrainService) PopulateTiles() {
-	for _, info := range g.terrainGen.GetWorldInfo().TerrainInfo {
-		info.Position = info.Position.Add(g.terrainGen.GlobalPos)
-		info.PositionL = info.PositionI
-		info.PositionI = objects.WorldToHexPosition(info.Position.X, info.Position.Z)
-		g.Tiles[info.PositionI] = info
-	}
-	for _, info := range g.terrainGen1.GetWorldInfo().TerrainInfo {
-		info.Position = info.Position.Add(g.terrainGen1.GlobalPos)
-		info.PositionL = info.PositionI
-		info.PositionI = objects.WorldToHexPosition(info.Position.X, info.Position.Z)
-		g.Tiles[info.PositionI] = info
-	}
-	for _, info := range g.terrainGen2.GetWorldInfo().TerrainInfo {
-		info.Position = info.Position.Add(g.terrainGen2.GlobalPos)
+	g.PopulateTilesFrom(g.terrainGen)
+	g.PopulateTilesFrom(g.terrainGen1)
+	g.PopulateTilesFrom(g.terrainGen2)
+}
+
+func (g *GameTerrainService) PopulateTilesFrom(terrainGen *objects.TerrainGen) {
+	for _, info := range terrainGen.GetWorldInfo().TerrainInfo {
+		info.Position = info.Position.Add(terrainGen.GlobalPos)
 		info.PositionL = info.PositionI
 		info.PositionI = objects.WorldToHexPosition(info.Position.X, info.Position.Z)
 		g.Tiles[info.PositionI] = info

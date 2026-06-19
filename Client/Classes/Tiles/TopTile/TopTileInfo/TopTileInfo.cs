@@ -9,7 +9,7 @@ public partial class TopTileInfo : Resource
         set => setTileNode(value);
     }
     [Export]
-    private PackedScene[] _tileNode;
+    private PackedScene[] _tileNode = [];
     private void setTileNode(PackedScene scene)
     {
         var tiles = _tileNode;
@@ -47,13 +47,6 @@ public partial class TopTileInfo : Resource
         get => _parent;
         set => _parent = value;
     }
-    public TopTileInfo(TileUtil.TileTopState tileTopType, TopTileMap parent)
-    {
-        TileTopType = tileTopType;
-        
-        this._parent = parent;
-    }
-    public TopTileInfo() {}    
     private GDBackup backup;
     private string templatePath = "res://Prefabs/TileMaps/Template/Template.tres";
     public void LoadFromGDBackup(string ResourceSavePath)

@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"server/internal"
 	"server/internal/server"
 	"server/internal/server/db"
 	"server/internal/server/states/services"
@@ -12,12 +13,13 @@ import (
 )
 
 type Login struct {
-	client  *server.Client
-	logger  *log.Logger
-	queries *db.Queries
-	dbCtx   context.Context
-	auth    *services.AuthService
-	hub     *server.Hub
+	client   *server.Client
+	logger   *log.Logger
+	queries  *db.Queries
+	dbCtx    context.Context
+	gameData *services.GameDataService
+	auth     *services.AuthService
+	hub      *server.Hub
 }
 
 func (l *Login) HandleStateMessage(s string, v ...any) {
@@ -37,6 +39,7 @@ func (l *Login) SetClient(client *server.Client) {
 	l.logger = log.New(log.Writer(), loginPrefix, log.LstdFlags)
 	l.queries = client.DbTx().Queries
 	l.dbCtx = client.DbTx().Ctx
+	l.gameData = services.NewGameDataService(client, l.client.Hub(), l.queries, l.dbCtx)
 }
 
 func (l *Login) OnEnter() {
@@ -50,6 +53,8 @@ func (l *Login) HandleMessage(senderId uint64, message packets.Msg, transfer ser
 		return
 	}
 	switch message := message.(type) {
+	case *packets.Packet_GameVersion:
+		l.HandleGameDataVersion(senderId, message)
 	case *packets.Packet_LoginRequest:
 		l.HandleLoginRequest(senderId, message)
 	case *packets.Packet_RegisterRequest:
@@ -60,6 +65,13 @@ func (l *Login) HandleMessage(senderId uint64, message packets.Msg, transfer ser
 }
 
 func (l *Login) OnExit() {
+}
+
+func (l *Login) HandleGameDataVersion(id uint64, message *packets.Packet_GameVersion) {
+	if message.GameVersion.Version == internal.GameDataVersion {
+		return
+	}
+	l.gameData.HandleGameVersionUpdate()
 }
 
 func (l *Login) HandleLoginRequest(id uint64, message *packets.Packet_LoginRequest) {

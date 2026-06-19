@@ -36,4 +36,37 @@ public static class PacketUtil
             }
         };
     }
+
+    public static Packet NewGameVersionPacket(string version)
+    {
+        return new Packet()
+        {
+            GameVersion = new GameDataVersion()
+            {
+                Version = version
+            }
+        };
+    }
+    
+    public static Packet NewIDPacket(ulong id)
+    {
+        return new Packet()
+        {
+            Id = new IdMessage()
+            {
+                Id = id
+            }
+        };
+    }
+
+    public static Packet NewArmyIdPacket(long id)
+    {
+        return new Packet()
+        {
+            ArmyId = new ArmyIDMessage()
+            {
+                Id = id
+            }
+        };
+    }
 }

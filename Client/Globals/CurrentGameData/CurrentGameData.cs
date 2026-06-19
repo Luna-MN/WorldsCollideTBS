@@ -1,15 +1,22 @@
 ﻿using System.Collections.Generic;
 using Godot;
 
-public class GameData
+public class CurrentGameData
 {
-    public long Seed1;
+    public enum Side
+    {
+        left,
+        right
+    }
+    public long LeftSeed;
     public long GameSeed;
-    public long Seed2;
-    public ulong ID1;
-    public ulong ID2;
+    public long RightSeed;
+    public ulong EnemyID;
+    public long MyArmyID;
+    public long EnemyArmyID;
     public Dictionary<Vector2I, TerrainInfo> Tiles = new Dictionary<Vector2I, TerrainInfo>();
     public TerrainGen TerrainGen, TerrainGen1, TerrainGen2;
+    public Side MySide;
 
     public TerrainInfo GetTileAt(Vector2I pos)
     {
@@ -55,6 +62,26 @@ public class GameData
 
         GD.Print(TerrainGen.worldInfo.TerrainInfo.Count + TerrainGen1.worldInfo.TerrainInfo.Count +  TerrainGen2.worldInfo.TerrainInfo.Count);
         GD.Print(Tiles.Count);
+    }
+
+    public ArmyDataJSON GetMyArmy()
+    {
+        return Globals.GDH.GetArmy(MyArmyID);
+    }
+
+    public ArmyDataJSON GetOpponentArmy()
+    {
+        return Globals.GDH.GetArmy(EnemyArmyID);
+    }
+
+    public Dictionary<long, UnitDataJSON> GetMyUnits()
+    {
+        return Globals.GDH.GetUnitsForArmy(MyArmyID);
+    }
+    
+    public Dictionary<long, UnitDataJSON> GetOpponentUnits()
+    {
+        return Globals.GDH.GetUnitsForArmy(EnemyArmyID);
     }
 
 }

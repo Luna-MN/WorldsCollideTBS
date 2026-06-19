@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"server/internal/server/db"
+	"server/internal/server/db/excel"
 	"server/internal/server/objects"
 	"server/pkg/packets"
 
@@ -150,6 +151,8 @@ func (h *Hub) Run() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fi := excel.NewFactionInput("C:\\Users\\matt\\Documents\\worlds-collide-tbs\\Shared\\Faction Data.xlsx", h.NewDbTx().Queries, h.NewDbTx().Ctx)
+	fi.InputData()
 	log.Println("Awaiting clients registration")
 	for {
 		select {

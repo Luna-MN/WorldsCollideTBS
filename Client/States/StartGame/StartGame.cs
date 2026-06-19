@@ -81,29 +81,29 @@ public partial class StartGame : Node3D, IState
     private void TwoSeedMessageReceived(SeedMessage seedMessage)
     {
         log.info("Seed received.");
-        if (Globals.GM.gameData.ID1 == Globals.GM.clientId)
+        if (Globals.GM.CurrentGameData.MySide == CurrentGameData.Side.left)
         {
-            Globals.GM.gameData.Seed2 = seedMessage.Seed[0];
+            Globals.GM.CurrentGameData.RightSeed = seedMessage.Seed[0];
         }
         else
         {
-            Globals.GM.gameData.Seed1 = seedMessage.Seed[0];
+            Globals.GM.CurrentGameData.LeftSeed = seedMessage.Seed[0];
         }
         
-        log.info($"Seeds: {Globals.GM.gameData.Seed1} {Globals.GM.gameData.Seed2}");
-        Globals.GM.gameData.GameSeed = seedMessage.Seed[1];
+        log.info($"Seeds: {Globals.GM.CurrentGameData.LeftSeed} {Globals.GM.CurrentGameData.RightSeed}");
+        Globals.GM.CurrentGameData.GameSeed = seedMessage.Seed[1];
     }
     private void confirmClicked()
     {
         if (selectedSeed == 0) return;
         
-        if (Globals.GM.gameData.ID1 == Globals.GM.clientId)
+        if (Globals.GM.CurrentGameData.MySide == CurrentGameData.Side.left)
         {
-            Globals.GM.gameData.Seed1 = selectedSeed;
+            Globals.GM.CurrentGameData.LeftSeed = selectedSeed;
         }
         else
         {
-            Globals.GM.gameData.Seed2 = selectedSeed;
+            Globals.GM.CurrentGameData.RightSeed = selectedSeed;
         }
         seedSelected = true;
         TrafficManager.Send(PacketUtil.NewSeedPacket(selectedSeed));

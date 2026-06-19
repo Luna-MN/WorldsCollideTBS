@@ -14,16 +14,16 @@ public partial class MainGame : Node3D, IState
     public override void _Ready()
     {
         Globals.GM.Subscribe(OnPacketReceived, OnWSConnectionClosed);
-        TerrainGen1.seed = (int)Globals.GM.gameData.Seed1;
-        TerrainGen2.seed = (int)Globals.GM.gameData.Seed2;
-        MainGameTerrainGen.seed = (int)Globals.GM.gameData.GameSeed;
+        TerrainGen1.seed = (int)Globals.GM.CurrentGameData.LeftSeed;
+        TerrainGen2.seed = (int)Globals.GM.CurrentGameData.RightSeed;
+        MainGameTerrainGen.seed = (int)Globals.GM.CurrentGameData.GameSeed;
         TerrainGen1._Ready();
         TerrainGen2._Ready();
         MainGameTerrainGen._Ready();
-        Globals.GM.gameData.TerrainGen = MainGameTerrainGen;
-        Globals.GM.gameData.TerrainGen1 = TerrainGen1;
-        Globals.GM.gameData.TerrainGen2 = TerrainGen2;
-        Globals.GM.gameData.UpdateTileNeighbours();
+        Globals.GM.CurrentGameData.TerrainGen = MainGameTerrainGen;
+        Globals.GM.CurrentGameData.TerrainGen1 = TerrainGen1;
+        Globals.GM.CurrentGameData.TerrainGen2 = TerrainGen2;
+        Globals.GM.CurrentGameData.UpdateTileNeighbours();
         UnitTesting();
     }
     

@@ -8,6 +8,29 @@ import (
 	"database/sql"
 )
 
+type Army struct {
+	ID          int64
+	Name        string
+	Description sql.NullString
+}
+
+type ArmyFaction struct {
+	ID        int64
+	Factionid int64
+	Armyid    int64
+}
+
+type ArmyUnit struct {
+	Armyid int64
+	Unitid int64
+}
+
+type Faction struct {
+	ID          int64
+	Name        string
+	Description sql.NullString
+}
+
 type Game struct {
 	ID           int64
 	Player1id    sql.NullInt64
@@ -18,6 +41,17 @@ type Game struct {
 	Matchtime    sql.NullTime
 }
 
+type Unit struct {
+	ID       int64
+	Name     string
+	Attacks  sql.NullString
+	Movement sql.NullString
+	Maxhp    sql.NullInt64
+	Ap       sql.NullInt64
+	Speed    sql.NullInt64
+	Armies   sql.NullString
+}
+
 type User struct {
 	ID           int64
 	Username     string
@@ -25,4 +59,9 @@ type User struct {
 	Steamid      sql.NullString
 	Lastloggedin sql.NullTime
 	Avatar       sql.NullString
+}
+
+type UsersArmy struct {
+	Userid int64
+	Armyid int64
 }

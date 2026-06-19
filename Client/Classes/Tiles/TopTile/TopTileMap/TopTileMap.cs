@@ -69,7 +69,9 @@ public partial class TopTileMap : Resource
                 }
             }
 
-            TileInfo[i] = new TopTileInfo((TileUtil.TileTopState)i, this);
+            TileInfo[i] = new TopTileInfo();
+            TileInfo[i].Parent = this;
+            TileInfo[i].TileTopType = (TileUtil.TileTopState)i;
             NotifyPropertyListChanged();
         }
         if (Enum.TryParse<TileUtil.TileTopState>(property.ToString(), out var name))

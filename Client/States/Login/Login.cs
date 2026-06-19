@@ -9,13 +9,20 @@ public partial class Login : Control, IState
     [Export] public Log log { get; set; }
     public bool IsSmoothState => false;
     public Node[] TransitionNodes { get; set; }
+    private GameDataUpdater gameDataUpdater;
     public override void _Ready()
     {
         base._Ready();
         
         Globals.GM.Subscribe(OnPacketReceived, OnWSConnectionClosed);
-        
+        SendVersion();
         GetSteamAuth();
+    }
+
+    private void SendVersion()
+    {
+        gameDataUpdater = new GameDataUpdater();
+        TrafficManager.Send(Packets.Util.PacketUtil.NewGameVersionPacket(gameDataUpdater.GetVersion()));
     }
 
     private void GetSteamAuth()
@@ -53,6 +60,9 @@ public partial class Login : Control, IState
             case Packet.MsgOneofCase.Deny:
                 HandleDenyMessage(packet.Deny);
                 break;
+            case Packet.MsgOneofCase.GameData:
+                HandleGameData(packet.GameData);
+                break;
             default:
                 GD.Print($"Unknown packet received: {packet.MsgCase}");
                 break;
@@ -67,6 +77,10 @@ public partial class Login : Control, IState
     private void HandleDenyMessage(DenyResponseMessage msg)
     {
         log.error($"Login failed. {msg.Reason}");
+    }
+    private void HandleGameData(GameDataMessage msg)
+    {
+        gameDataUpdater.UpdateVersion(msg.Version.Version, msg);
     }
     public void OnWSConnectionClosed()
     {

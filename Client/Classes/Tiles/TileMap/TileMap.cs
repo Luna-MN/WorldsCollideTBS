@@ -71,7 +71,9 @@ public partial class TileMap : Resource
                 }
             }
 
-            TileInfo[i] = new TileInfo((TileUtil.TileState)i, this);
+            TileInfo[i] = new TileInfo();
+            TileInfo[i].Parent = this;
+            TileInfo[i].TileState = (TileUtil.TileState)i;
             NotifyPropertyListChanged();
         }
         if (Enum.TryParse<TileUtil.TileState>(property.ToString(), out var name))

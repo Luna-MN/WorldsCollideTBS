@@ -19,15 +19,12 @@
 
 [sub_resource type="Resource" id="Resource_nncol"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_tpv42"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_rp31r"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_t3o0p"]
 script = ExtResource("7_tpv42")
@@ -37,15 +34,12 @@ Large = SubResource("Resource_nncol")
 
 [sub_resource type="Resource" id="Resource_14ulb"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_oxfgx"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_k7iuc"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_eey8p"]
 script = ExtResource("7_tpv42")
@@ -55,15 +49,12 @@ Large = SubResource("Resource_14ulb")
 
 [sub_resource type="Resource" id="Resource_b2co8"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_25l26"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_ysjsb"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_4p42s"]
 script = ExtResource("7_tpv42")
@@ -85,15 +76,12 @@ metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [sub_resource type="Resource" id="Resource_fevcq"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_e6thy"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_snmgp"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_x1k1j"]
 script = ExtResource("7_tpv42")
@@ -103,15 +91,12 @@ Large = SubResource("Resource_fevcq")
 
 [sub_resource type="Resource" id="Resource_7cdwx"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_txgfy"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_4yw43"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_7uu1x"]
 script = ExtResource("7_tpv42")
@@ -121,15 +106,12 @@ Large = SubResource("Resource_7cdwx")
 
 [sub_resource type="Resource" id="Resource_8he5e"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_yq3qt"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_0ui2a"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_v07hf"]
 script = ExtResource("7_tpv42")
@@ -170,15 +152,12 @@ Large = SubResource("Resource_gesv8")
 
 [sub_resource type="Resource" id="Resource_yfdlo"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_nwnq7"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_1kmlu"]
 script = ExtResource("4_v43kf")
-_tileNode = []
 
 [sub_resource type="Resource" id="Resource_ojto5"]
 script = ExtResource("7_tpv42")

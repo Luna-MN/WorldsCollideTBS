@@ -26,17 +26,17 @@ public partial class AwaitingGameData : Node3D, ISmoothState
     private void SeedMessageReceived(SeedMessage seedMessage)
     {
         log.info("Seed received.");
-        if (Globals.GM.gameData.ID1 == Globals.GM.clientId)
+        if (Globals.GM.CurrentGameData.MySide == CurrentGameData.Side.left)
         {
-            Globals.GM.gameData.Seed2 = seedMessage.Seed[0];
+            Globals.GM.CurrentGameData.RightSeed = seedMessage.Seed[0];
         }
         else
         {
-            Globals.GM.gameData.Seed1 = seedMessage.Seed[0];
+            Globals.GM.CurrentGameData.LeftSeed = seedMessage.Seed[0];
         }
         
-        log.info($"Seeds: {Globals.GM.gameData.Seed1} {Globals.GM.gameData.Seed2}");
-        Globals.GM.gameData.GameSeed = seedMessage.Seed[1];
+        log.info($"Seeds: {Globals.GM.CurrentGameData.LeftSeed} {Globals.GM.CurrentGameData.RightSeed}");
+        Globals.GM.CurrentGameData.GameSeed = seedMessage.Seed[1];
         Globals.GM.SetState(GameManager.state.Game);
     }
     public void OnWSConnectionClosed()
