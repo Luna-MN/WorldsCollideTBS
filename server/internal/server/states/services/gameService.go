@@ -21,6 +21,7 @@ const (
 
 type PlayerGameData struct {
 	Player *server.Client
+	ArmyId int64
 	Seeds  []int32
 	Seed   int32
 }
@@ -40,6 +41,8 @@ type GameService struct {
 
 	Player1GameData *PlayerGameData
 	Player2GameData *PlayerGameData
+
+	ArmyIdsReceived bool
 
 	seed          int32
 	seedsReceived bool
@@ -90,8 +93,6 @@ func (g *GameService) GenerateGameSeeds() {
 	g.GenerateSeeds(g.Player1GameData.Seeds)
 	g.GenerateSeeds(g.Player2GameData.Seeds)
 	g.seed = g.GenerateSeed()
-	g.player1.SocketSend(packets.NewSeed(g.Player1GameData.Seeds), server.WebSocket)
-	g.player2.SocketSend(packets.NewSeed(g.Player2GameData.Seeds), server.WebSocket)
 }
 func (g *GameService) GenerateSeed() int32 {
 	return rand.Int31()
@@ -108,7 +109,30 @@ func (g *GameService) HandleMessage(player *server.Client, msg packets.Msg) {
 	switch msg.(type) {
 	case *packets.Packet_Seed:
 		g.HandleSeedMessage(pd, msg.(*packets.Packet_Seed))
+	case *packets.Packet_ArmyId:
+		g.HandleArmyIdMessage(pd, msg.(*packets.Packet_ArmyId))
 	}
+}
+
+func (g *GameService) HandleArmyIdMessage(pd *PlayerGameData, id *packets.Packet_ArmyId) {
+	pd.ArmyId = id.ArmyId.Id
+	if !g.ArmyIdsReceived {
+		g.ArmyIdsReceived = true
+		return
+	}
+	g.SendArmyIDs(g.player1)
+	g.SendArmyIDs(g.player2)
+
+	g.player1.SocketSend(packets.NewOK(), server.WebSocket)
+	g.player2.SocketSend(packets.NewOK(), server.WebSocket)
+
+	g.player1.SocketSend(packets.NewSeed(g.Player1GameData.Seeds), server.WebSocket)
+	g.player2.SocketSend(packets.NewSeed(g.Player2GameData.Seeds), server.WebSocket)
+}
+
+func (g *GameService) SendArmyIDs(player *server.Client) {
+	player.SocketSendAs(packets.NewArmyId(g.GetClientData(g.player1).ArmyId), g.player1.Id(), server.WebSocket)
+	player.SocketSendAs(packets.NewArmyId(g.GetClientData(g.player2).ArmyId), g.player2.Id(), server.WebSocket)
 }
 
 func (g *GameService) HandleSeedMessage(playerData *PlayerGameData, msg *packets.Packet_Seed) {
