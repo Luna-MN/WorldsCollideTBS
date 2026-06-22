@@ -13,10 +13,8 @@ public static class UnitFactory
             AP = unit.AP,
             HP = unit.HP,
             MaxHP = unit.MaxHP,
-            Movement = unit.Movement,
             OwnerId = unit.OwnerId,
             UnitId = unit.UnitId,
-            Attacks = unit.Attacks.ToList(),
             Speed = (UnitData.Speeds)unit.Speed
         };
         return UD;
@@ -30,13 +28,10 @@ public static class UnitFactory
             AP = unit.AP,
             HP = unit.HP,
             MaxHP = unit.MaxHP,
-            Movement = unit.Movement,
             OwnerId = unit.OwnerId,
             UnitId = unit.UnitId,
             Speed = (Packets.Speeds)unit.Speed
         };
-
-        unitPacket.Attacks.AddRange(unit.Attacks ?? Enumerable.Empty<string>());
         
         return unitPacket;
     }

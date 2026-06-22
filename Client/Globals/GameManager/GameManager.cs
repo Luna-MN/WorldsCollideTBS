@@ -17,7 +17,6 @@ public partial class GameManager : Node
         Lobby,
         ChooseArmy,
         StartGame,
-        AwaitingGameData,
         Game
     }
     public Dictionary<state, string> stateScenes = new Dictionary<state, string>()
@@ -31,7 +30,6 @@ public partial class GameManager : Node
         { state.Lobby, "res://States/Lobby/Lobby.tscn"},
         { state.ChooseArmy, "res://States/ChooseArmy/ChooseArmy.tscn"},
         { state.StartGame, "res://States/StartGame/StartGame.tscn"},
-        { state.AwaitingGameData, "res://States/AwaitingGameData/AwaitingGameData.tscn"},
         { state.Game, "res://States/MainGame/MainGame.tscn" }
     };
     public ulong clientId;

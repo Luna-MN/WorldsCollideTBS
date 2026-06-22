@@ -61,6 +61,7 @@ func (c *Client) SetCyph(cyph cipher.AEAD) {
 }
 func (c *Client) SetUsername(username string) {
 	c.username = username
+	c.logger.SetPrefix(fmt.Sprintf("%s [%d]: ", c.username, c.id))
 }
 func (c *Client) Username() string {
 	return c.username

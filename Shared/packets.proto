@@ -32,7 +32,9 @@ message OpponentMessage { string id = 1; bool steam = 2; string AvatarImage = 3;
 message StartGameMessage {}
 message SeedMessage { repeated int32 seed = 1; }
 message IDsMessage { repeated IdMessage IDs = 1; }
-message UnitMessage { uint64 OwnerId = 1; uint64 UnitId = 2; repeated string Attacks = 3; string Movement = 4; int32 AP = 5; int32 HP = 6; int32 MaxHP = 7; Speeds speed = 8; string UnitName = 9; Vector3Msg Pos = 10;}
+message UnitMessage { uint64 OwnerId = 1; int64 UnitId = 2; int64 AP = 5; int64 HP = 6; int64 MaxHP = 7; Speeds speed = 8; string UnitName = 9; Vector3Msg Pos = 10;}
+message UnitPositionMessage { int64 unitId = 1; Vector2IMsg Position = 2; }
+message UnitPositionsMessage { repeated UnitPositionMessage units = 1; }
 message GameDataMessage { GameDataVersion version = 1; repeated FactionData factions = 2; repeated ArmyData armies = 3; repeated UnitData units = 4; }
 message GameDataVersion { string Version = 1; }
 message ArmyIDMessage { int64 Id = 1; }
@@ -65,6 +67,8 @@ message Packet {
     GameDataMessage GameData = 19;
     GameDataVersion GameVersion = 20;
     ArmyIDMessage ArmyId = 21;
+    UnitPositionMessage UnitPosition = 22;
+    UnitPositionsMessage UnitPositions = 23;
     //...
   }
 }

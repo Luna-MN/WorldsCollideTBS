@@ -80,7 +80,7 @@ func (w *WorldInfo) GenerateTerrainInfo(noise fastnoiselite.FastNoiseLite, seed 
 	for q := -w.Radius; q <= w.Radius; q++ {
 		r1 := int(math.Max(float64(-w.Radius), float64(-q-w.Radius)))
 		r2 := int(math.Min(float64(w.Radius), float64(-q+w.Radius)))
-		for r := -r1; r <= r2; r++ {
+		for r := r1; r <= r2; r++ {
 			tileInfo := NewTerrainInfo(w.DefaultTile)
 			tileInfo.PositionI = Vector2I{r, q}
 			tileInfo.Position = HexToWorldPosition(q, r)
@@ -111,23 +111,19 @@ func (w *WorldInfo) GenerateTerrainInfo(noise fastnoiselite.FastNoiseLite, seed 
 func HexToWorldPosition(q, r int) Vector3 {
 	hexSize := 1.15
 
-	x := hexSize * (3 / 2 * float64(q))
+	x := hexSize * (3.0 / 2.0 * float64(q))
 	z := hexSize * (math.Sqrt(3)/2*float64(q) + math.Sqrt(3)*float64(r))
 	return Vector3{float32(x), 0, float32(z)}
 }
 
-func WorldToHexPosition(x, z float32) Vector2I {
-	hexSize := 1.15
+func WorldToHexPosition(worldPos Vector3) Vector2I {
+	hexSize := float32(1.15)
 
-	worldX := float64(x)
-	worldZ := float64(z)
+	q := worldPos.X * 2.0 / 3.0 / hexSize
+	r := (worldPos.Z / hexSize / float32(math.Sqrt(3.0))) - (q / 2.0)
 
-	qf := (2.0 / 3.0 * worldX) / hexSize
-	rf := (-1.0/3.0*worldX + math.Sqrt(3.0)/3.0*worldZ) / hexSize
-
-	q, r := HexRound(qf, rf)
-
-	return Vector2I{q, r}
+	qRounded, rRounded := HexRound(float64(q), float64(r))
+	return Vector2I{qRounded, rRounded}
 }
 
 func HexRound(qf, rf float64) (int, int) {

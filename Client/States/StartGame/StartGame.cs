@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Packets;
 using Packets.Util;
 
@@ -9,32 +10,24 @@ public partial class StartGame : Node3D, IState
     [Export]
     public Log log { get; set; }
     [Export]
-    private PackedScene unitScene;
-    [Export]
-    private CustomTerrainInfo tile;
+    private PackedScene unitScene, terrainScene;
+    [Export] private HNode3d unitTerrainNodes;
     public bool IsSmoothState => false;
     public Node[] TransitionNodes { get; set; }
     public int selectedSeed;
     [Export]
-    private TerrainGen terrainGen1, terrainGen2, terrainGen3;
+    private TerrainGen terrainGen1, terrainGen2, terrainGen3, selectedGen;
     [Export] private InputHandler inputHandler;
     [Export] public Button confirm;
+    private List<CustomTerrainInfo> terrainList;
     public bool seedSelected;
     public override void _Ready()
     {
         Globals.GM.Subscribe(OnPacketReceived, OnWSConnectionClosed);
         confirm.Visible = false;
         confirm.ButtonUp += confirmClicked;
-        test();   
     }
-
-    private void test()
-    {
-        var u = unitScene.Instantiate<DefaultUnit>();
-        AddChild(u);
-        u.Position = new Vector3(tile.GlobalPosition.X, tile.TerrainInfo.TileHeight, tile.GlobalPosition.Z);
-        tile.TerrainInfo.Unit = u;
-    }
+    
 
     public override void _Process(double delta)
     {
@@ -59,11 +52,12 @@ public partial class StartGame : Node3D, IState
                         break;
                 }
                 break;
-            case Packet.MsgOneofCase.StartGame:
-                HandleStartGameMessage(packet.StartGame);
+            case Packet.MsgOneofCase.UnitPositions:
+                HandleUnitPositionsMessage(packet.SenderId, packet.UnitPositions);
                 break;
         }
     }
+
     private void ThreeSeedMessageReceived(SeedMessage msg)
     {
         if (msg.Seed.Count < 3)
@@ -93,30 +87,107 @@ public partial class StartGame : Node3D, IState
         log.info($"Seeds: {Globals.GM.CurrentGameData.LeftSeed} {Globals.GM.CurrentGameData.RightSeed}");
         Globals.GM.CurrentGameData.GameSeed = seedMessage.Seed[1];
     }
+    private void HandleUnitPositionsMessage(ulong senderId, UnitPositionsMessage packetUnitPositions)
+    {
+        log.info(senderId + " sent unit positions");
+        if (senderId != Globals.GM.clientId)
+        {
+            Globals.GM.CurrentGameData.InitEnemyArmy(unitScene);
+            GD.Print(Globals.GM.CurrentGameData.EnemyUnits.Count);
+            foreach (var unit in packetUnitPositions.Units)
+            {
+                Globals.GM.CurrentGameData.EnemyUnits[unit.UnitId].PositionI = new Vector2I(unit.Position.X, unit.Position.Y);
+            }
+            log.info("Units received");
+            Globals.GM.SetState(GameManager.state.Game);
+        }
+    }
     private void confirmClicked()
     {
         if (selectedSeed == 0) return;
-        
-        if (Globals.GM.CurrentGameData.MySide == CurrentGameData.Side.left)
+        if (!seedSelected)
         {
-            Globals.GM.CurrentGameData.LeftSeed = selectedSeed;
+            if (Globals.GM.CurrentGameData.MySide == CurrentGameData.Side.left)
+            {
+                Globals.GM.CurrentGameData.LeftSeed = selectedSeed;
+            }
+            else
+            {
+                Globals.GM.CurrentGameData.RightSeed = selectedSeed;
+            }
+
+            seedSelected = true;
+            TrafficManager.Send(PacketUtil.NewSeedPacket(selectedSeed));
+            HideSeeds();
+            CreateUnits();
+            confirm.Visible = false;
         }
         else
         {
-            Globals.GM.CurrentGameData.RightSeed = selectedSeed;
-        }
-        seedSelected = true;
-        TrafficManager.Send(PacketUtil.NewSeedPacket(selectedSeed));
-        HideSeeds();
-    }
-    
+            var unitsMessages = new List<UnitPositionMessage>();
+            foreach (var unit in Globals.GM.CurrentGameData.MyUnits)
+            {
+                var message = PacketUtil.NewUnitPositionMessage(unit.Value.Data.UnitId, unit.Value.PositionI);
+                unitsMessages.Add(message);
+            }
 
+            var n = new Node3D();
+            AddChild(n);
+            TransitionNodes = [n];
+            selectedGen.GetParent().RemoveChild(selectedGen);
+            n.CallDeferred("add_child", selectedGen);
+            foreach (var unit in Globals.GM.CurrentGameData.MyUnits.Values)
+            {
+                (unit as Node3D).GetParent().RemoveChild(unit as Node3D);
+                n.CallDeferred("add_child", unit as Node3D);
+                
+            }
+
+            log.info("Sending unit positions");
+            TrafficManager.Send(PacketUtil.NewUnitPositionsPacket(unitsMessages));
+        }
+    }
+    // after hide seeds create a unit for each unit in my units, and then add them to HNode3D, use universalUnit
+    private void CreateUnits()
+    {
+        var data = Globals.GM.CurrentGameData.InitUnitData(Globals.GM.CurrentGameData.GetMyUnits().Values.ToList(), Globals.GM.clientId);
+        // create the terrains before creating the units
+        terrainList = [];
+        for (int i = 0; i < data.Count; i++)
+        {
+            var terrain = terrainScene.Instantiate<CustomTerrainInfo>();
+            unitTerrainNodes.AddChild(terrain);
+            terrainList.Add(terrain);
+        }
+        foreach (var unitData in data)
+        {
+            var unit = unitScene.Instantiate<UniversalUnit>();
+            var unitIndex = data.IndexOf(unitData);
+            unit.Data = unitData;
+            AddChild(unit);
+            var terrain = terrainList[unitIndex];
+            unit.Position = new Vector3(terrain.GlobalPosition.X, terrain.TerrainInfo.TileHeight, terrain.GlobalPosition.Z);
+            Globals.GM.CurrentGameData.MyUnits.Add(unit.Data.UnitId, unit);
+            terrain.TerrainInfo.Unit = unit;
+        }
+        
+    }
+    public bool UnassignedUnits()
+    {
+        foreach (var terrain in terrainList)
+        {
+            if (terrain.TerrainInfo.Unit != null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     
     private async void HideSeeds()
     {
         TerrainGen[] gens = [terrainGen1, terrainGen2, terrainGen3];
         Tween tween = null;
-        TerrainGen selectedGen = null;
         List<TerrainGen> toDestroy = [];
         foreach (var gen in gens)
         {

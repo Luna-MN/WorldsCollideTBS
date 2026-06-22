@@ -142,6 +142,14 @@ VALUES
     (?, ?, ?, ?, ?, ?, ?)
 RETURNING *;
 
+-- name: GetUnitById :one
+SELECT
+    *
+FROM
+    units
+WHERE
+    id = ?;
+
 -- name: UpdateUnit :exec
 UPDATE units
 SET

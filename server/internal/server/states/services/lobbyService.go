@@ -85,7 +85,7 @@ func (l *LobbyService) StartGame() {
 	if err != nil {
 		return
 	}
-	gameService := NewGameService(game.ID)
+	gameService := NewGameService(game.ID, l.queries, l.dbCtx)
 	gameService.SetClients(l.client1, l.client2)
 	l.hub.Games.Add(gameService)
 	l.SendToClients(packets.NewStartGame())

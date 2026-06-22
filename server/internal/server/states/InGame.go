@@ -33,7 +33,7 @@ func (i *InGame) SetClient(client *server.Client) {
 	} else {
 		i.client = client
 	}
-	loginPrefix := fmt.Sprintf("%s, %s with %s", i.client.Username(), i.Name(), i.enemyClient.Username())
+	loginPrefix := fmt.Sprintf("%s, %s with %s ", i.client.Username(), i.Name(), i.enemyClient.Username())
 	i.logger = log.New(log.Writer(), loginPrefix, log.LstdFlags)
 	i.queries = i.client.DbTx().Queries
 	i.dbCtx = i.client.DbTx().Ctx

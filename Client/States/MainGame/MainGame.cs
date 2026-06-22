@@ -2,13 +2,13 @@ using Godot;
 using System;
 using Packets;
 
-public partial class MainGame : Node3D, IState
+public partial class MainGame : Node3D, ISmoothState
 {
     [Export]
     public Log log { get; set; }
-
+    public Node[] PrevObjects { get; set; }
     [Export] public PackedScene unitScene;
-    public bool IsSmoothState => false;
+    public bool IsSmoothState => true;
     public Node[] TransitionNodes { get; set; }
     [Export] private TerrainGen TerrainGen1, MainGameTerrainGen, TerrainGen2;
     public override void _Ready()
@@ -50,4 +50,6 @@ public partial class MainGame : Node3D, IState
         pTile.Unit = unit;
         AddChild(unit);
     }
+
+
 }

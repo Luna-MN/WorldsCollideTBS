@@ -35,7 +35,7 @@ func (l *Login) Name() string {
 
 func (l *Login) SetClient(client *server.Client) {
 	l.client = client
-	loginPrefix := fmt.Sprintf("Client %d [%s]: ", client.Id(), l.Name())
+	loginPrefix := fmt.Sprintf("%s [%d]: [%s] ", client.Username(), client.Id(), l.Name())
 	l.logger = log.New(log.Writer(), loginPrefix, log.LstdFlags)
 	l.queries = client.DbTx().Queries
 	l.dbCtx = client.DbTx().Ctx

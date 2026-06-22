@@ -7,6 +7,7 @@ public partial class DefaultUnit : Node3D, IUnit
     public UnitData Data { get; set; }
     public List<IAttack> Attacks { get; set; }
     public IMovement Movement { get; set; }
+    public Vector2I PositionI { get; set; }
 
     public override void _Ready()
     {
@@ -14,7 +15,7 @@ public partial class DefaultUnit : Node3D, IUnit
     }
     public virtual void InitUnit()
     {
-        Movement = new BasicMovement();
+        Movement = new DefaultMovement();
         Movement.InitMovement(this, this);
         // Attacks.InitAttack(this, this);
     }

@@ -51,41 +51,46 @@ namespace Packets {
             "bnRNZXNzYWdlEgoKAmlkGAEgASgJEg0KBXN0ZWFtGAIgASgIEhMKC0F2YXRh",
             "ckltYWdlGAMgASgJIhIKEFN0YXJ0R2FtZU1lc3NhZ2UiGwoLU2VlZE1lc3Nh",
             "Z2USDAoEc2VlZBgBIAMoBSItCgpJRHNNZXNzYWdlEh8KA0lEcxgBIAMoCzIS",
-            "LnBhY2tldHMuSWRNZXNzYWdlIswBCgtVbml0TWVzc2FnZRIPCgdPd25lcklk",
-            "GAEgASgEEg4KBlVuaXRJZBgCIAEoBBIPCgdBdHRhY2tzGAMgAygJEhAKCE1v",
-            "dmVtZW50GAQgASgJEgoKAkFQGAUgASgFEgoKAkhQGAYgASgFEg0KBU1heEhQ",
-            "GAcgASgFEh4KBXNwZWVkGAggASgOMg8ucGFja2V0cy5TcGVlZHMSEAoIVW5p",
-            "dE5hbWUYCSABKAkSIAoDUG9zGAogASgLMhMucGFja2V0cy5WZWN0b3IzTXNn",
-            "IqkBCg9HYW1lRGF0YU1lc3NhZ2USKQoHdmVyc2lvbhgBIAEoCzIYLnBhY2tl",
-            "dHMuR2FtZURhdGFWZXJzaW9uEiYKCGZhY3Rpb25zGAIgAygLMhQucGFja2V0",
-            "cy5GYWN0aW9uRGF0YRIhCgZhcm1pZXMYAyADKAsyES5wYWNrZXRzLkFybXlE",
-            "YXRhEiAKBXVuaXRzGAQgAygLMhEucGFja2V0cy5Vbml0RGF0YSIiCg9HYW1l",
-            "RGF0YVZlcnNpb24SDwoHVmVyc2lvbhgBIAEoCSIbCg1Bcm15SURNZXNzYWdl",
-            "EgoKAklkGAEgASgDIrUHCgZQYWNrZXQSEQoJc2VuZGVyX2lkGAEgASgEEiQK",
-            "BGNoYXQYAiABKAsyFC5wYWNrZXRzLkNoYXRNZXNzYWdlSAASIAoCaWQYAyAB",
-            "KAsyEi5wYWNrZXRzLklkTWVzc2FnZUgAEjQKDGxvZ2luUmVxdWVzdBgEIAEo",
-            "CzIcLnBhY2tldHMuTG9naW5SZXF1ZXN0TWVzc2FnZUgAEjoKD3JlZ2lzdGVy",
-            "UmVxdWVzdBgFIAEoCzIfLnBhY2tldHMuUmVnaXN0ZXJSZXF1ZXN0TWVzc2Fn",
-            "ZUgAEigKAk9LGAYgASgLMhoucGFja2V0cy5Pa1Jlc3BvbnNlTWVzc2FnZUgA",
-            "EiwKBERlbnkYByABKAsyHC5wYWNrZXRzLkRlbnlSZXNwb25zZU1lc3NhZ2VI",
-            "ABIqCgdjb21tYW5kGAggASgLMhcucGFja2V0cy5Db21tYW5kTWVzc2FnZUgA",
-            "EjIKC2hleFBvc2l0aW9uGAkgASgLMhsucGFja2V0cy5IZXhQb3NpdGlvbk1l",
-            "c3NhZ2VIABI0CgxoZXhQb3NpdGlvbnMYCiABKAsyHC5wYWNrZXRzLkhleFBv",
-            "c2l0aW9uc01lc3NhZ2VIABI2CgtzdGVhbVRpY2tldBgLIAEoCzIfLnBhY2tl",
-            "dHMuU3RlYW1BdXRoVGlja2V0TWVzc2FnZUgAEjIKC2NoYW5nZVN0YXRlGAwg",
-            "ASgLMhsucGFja2V0cy5DaGFuZ2VTdGF0ZU1lc3NhZ2VIABImCgVxdWV1ZRgN",
-            "IAEoCzIVLnBhY2tldHMuUXVldWVNZXNzYWdlSAASLAoIb3Bwb25lbnQYDiAB",
-            "KAsyGC5wYWNrZXRzLk9wcG9uZW50TWVzc2FnZUgAEi4KCXN0YXJ0R2FtZRgP",
-            "IAEoCzIZLnBhY2tldHMuU3RhcnRHYW1lTWVzc2FnZUgAEiQKBHNlZWQYECAB",
-            "KAsyFC5wYWNrZXRzLlNlZWRNZXNzYWdlSAASIgoDSURzGBEgASgLMhMucGFj",
-            "a2V0cy5JRHNNZXNzYWdlSAASJAoEVW5pdBgSIAEoCzIULnBhY2tldHMuVW5p",
-            "dE1lc3NhZ2VIABIsCghHYW1lRGF0YRgTIAEoCzIYLnBhY2tldHMuR2FtZURh",
-            "dGFNZXNzYWdlSAASLwoLR2FtZVZlcnNpb24YFCABKAsyGC5wYWNrZXRzLkdh",
-            "bWVEYXRhVmVyc2lvbkgAEigKBkFybXlJZBgVIAEoCzIWLnBhY2tldHMuQXJt",
-            "eUlETWVzc2FnZUgAQgUKA21zZypCCghDaGF0VHlwZRILCgdOb3RoaW5nEAAS",
-            "CgoGR2xvYmFsEAESCQoFTG9jYWwQAhIJCgVQYXJ0eRADEgcKA01heBAEKigK",
-            "BlNwZWVkcxIKCgZOb3JtYWwQABIICgRTbG93EAESCAoERmFzdBACQg1aC3Br",
-            "Zy9wYWNrZXRzYgZwcm90bzM="));
+            "LnBhY2tldHMuSWRNZXNzYWdlIqkBCgtVbml0TWVzc2FnZRIPCgdPd25lcklk",
+            "GAEgASgEEg4KBlVuaXRJZBgCIAEoAxIKCgJBUBgFIAEoAxIKCgJIUBgGIAEo",
+            "AxINCgVNYXhIUBgHIAEoAxIeCgVzcGVlZBgIIAEoDjIPLnBhY2tldHMuU3Bl",
+            "ZWRzEhAKCFVuaXROYW1lGAkgASgJEiAKA1BvcxgKIAEoCzITLnBhY2tldHMu",
+            "VmVjdG9yM01zZyJNChNVbml0UG9zaXRpb25NZXNzYWdlEg4KBnVuaXRJZBgB",
+            "IAEoAxImCghQb3NpdGlvbhgCIAEoCzIULnBhY2tldHMuVmVjdG9yMklNc2ci",
+            "QwoUVW5pdFBvc2l0aW9uc01lc3NhZ2USKwoFdW5pdHMYASADKAsyHC5wYWNr",
+            "ZXRzLlVuaXRQb3NpdGlvbk1lc3NhZ2UiqQEKD0dhbWVEYXRhTWVzc2FnZRIp",
+            "Cgd2ZXJzaW9uGAEgASgLMhgucGFja2V0cy5HYW1lRGF0YVZlcnNpb24SJgoI",
+            "ZmFjdGlvbnMYAiADKAsyFC5wYWNrZXRzLkZhY3Rpb25EYXRhEiEKBmFybWll",
+            "cxgDIAMoCzIRLnBhY2tldHMuQXJteURhdGESIAoFdW5pdHMYBCADKAsyES5w",
+            "YWNrZXRzLlVuaXREYXRhIiIKD0dhbWVEYXRhVmVyc2lvbhIPCgdWZXJzaW9u",
+            "GAEgASgJIhsKDUFybXlJRE1lc3NhZ2USCgoCSWQYASABKAMiowgKBlBhY2tl",
+            "dBIRCglzZW5kZXJfaWQYASABKAQSJAoEY2hhdBgCIAEoCzIULnBhY2tldHMu",
+            "Q2hhdE1lc3NhZ2VIABIgCgJpZBgDIAEoCzISLnBhY2tldHMuSWRNZXNzYWdl",
+            "SAASNAoMbG9naW5SZXF1ZXN0GAQgASgLMhwucGFja2V0cy5Mb2dpblJlcXVl",
+            "c3RNZXNzYWdlSAASOgoPcmVnaXN0ZXJSZXF1ZXN0GAUgASgLMh8ucGFja2V0",
+            "cy5SZWdpc3RlclJlcXVlc3RNZXNzYWdlSAASKAoCT0sYBiABKAsyGi5wYWNr",
+            "ZXRzLk9rUmVzcG9uc2VNZXNzYWdlSAASLAoERGVueRgHIAEoCzIcLnBhY2tl",
+            "dHMuRGVueVJlc3BvbnNlTWVzc2FnZUgAEioKB2NvbW1hbmQYCCABKAsyFy5w",
+            "YWNrZXRzLkNvbW1hbmRNZXNzYWdlSAASMgoLaGV4UG9zaXRpb24YCSABKAsy",
+            "Gy5wYWNrZXRzLkhleFBvc2l0aW9uTWVzc2FnZUgAEjQKDGhleFBvc2l0aW9u",
+            "cxgKIAEoCzIcLnBhY2tldHMuSGV4UG9zaXRpb25zTWVzc2FnZUgAEjYKC3N0",
+            "ZWFtVGlja2V0GAsgASgLMh8ucGFja2V0cy5TdGVhbUF1dGhUaWNrZXRNZXNz",
+            "YWdlSAASMgoLY2hhbmdlU3RhdGUYDCABKAsyGy5wYWNrZXRzLkNoYW5nZVN0",
+            "YXRlTWVzc2FnZUgAEiYKBXF1ZXVlGA0gASgLMhUucGFja2V0cy5RdWV1ZU1l",
+            "c3NhZ2VIABIsCghvcHBvbmVudBgOIAEoCzIYLnBhY2tldHMuT3Bwb25lbnRN",
+            "ZXNzYWdlSAASLgoJc3RhcnRHYW1lGA8gASgLMhkucGFja2V0cy5TdGFydEdh",
+            "bWVNZXNzYWdlSAASJAoEc2VlZBgQIAEoCzIULnBhY2tldHMuU2VlZE1lc3Nh",
+            "Z2VIABIiCgNJRHMYESABKAsyEy5wYWNrZXRzLklEc01lc3NhZ2VIABIkCgRV",
+            "bml0GBIgASgLMhQucGFja2V0cy5Vbml0TWVzc2FnZUgAEiwKCEdhbWVEYXRh",
+            "GBMgASgLMhgucGFja2V0cy5HYW1lRGF0YU1lc3NhZ2VIABIvCgtHYW1lVmVy",
+            "c2lvbhgUIAEoCzIYLnBhY2tldHMuR2FtZURhdGFWZXJzaW9uSAASKAoGQXJt",
+            "eUlkGBUgASgLMhYucGFja2V0cy5Bcm15SURNZXNzYWdlSAASNAoMVW5pdFBv",
+            "c2l0aW9uGBYgASgLMhwucGFja2V0cy5Vbml0UG9zaXRpb25NZXNzYWdlSAAS",
+            "NgoNVW5pdFBvc2l0aW9ucxgXIAEoCzIdLnBhY2tldHMuVW5pdFBvc2l0aW9u",
+            "c01lc3NhZ2VIAEIFCgNtc2cqQgoIQ2hhdFR5cGUSCwoHTm90aGluZxAAEgoK",
+            "Bkdsb2JhbBABEgkKBUxvY2FsEAISCQoFUGFydHkQAxIHCgNNYXgQBCooCgZT",
+            "cGVlZHMSCgoGTm9ybWFsEAASCAoEU2xvdxABEggKBEZhc3QQAkINWgtwa2cv",
+            "cGFja2V0c2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Packets.ChatType), typeof(global::Packets.Speeds), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -111,11 +116,13 @@ namespace Packets {
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.StartGameMessage), global::Packets.StartGameMessage.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.SeedMessage), global::Packets.SeedMessage.Parser, new[]{ "Seed" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.IDsMessage), global::Packets.IDsMessage.Parser, new[]{ "IDs" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.UnitMessage), global::Packets.UnitMessage.Parser, new[]{ "OwnerId", "UnitId", "Attacks", "Movement", "AP", "HP", "MaxHP", "Speed", "UnitName", "Pos" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.UnitMessage), global::Packets.UnitMessage.Parser, new[]{ "OwnerId", "UnitId", "AP", "HP", "MaxHP", "Speed", "UnitName", "Pos" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.UnitPositionMessage), global::Packets.UnitPositionMessage.Parser, new[]{ "UnitId", "Position" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.UnitPositionsMessage), global::Packets.UnitPositionsMessage.Parser, new[]{ "Units" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.GameDataMessage), global::Packets.GameDataMessage.Parser, new[]{ "Version", "Factions", "Armies", "Units" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.GameDataVersion), global::Packets.GameDataVersion.Parser, new[]{ "Version" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.ArmyIDMessage), global::Packets.ArmyIDMessage.Parser, new[]{ "Id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.Packet), global::Packets.Packet.Parser, new[]{ "SenderId", "Chat", "Id", "LoginRequest", "RegisterRequest", "OK", "Deny", "Command", "HexPosition", "HexPositions", "SteamTicket", "ChangeState", "Queue", "Opponent", "StartGame", "Seed", "IDs", "Unit", "GameData", "GameVersion", "ArmyId" }, new[]{ "Msg" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.Packet), global::Packets.Packet.Parser, new[]{ "SenderId", "Chat", "Id", "LoginRequest", "RegisterRequest", "OK", "Deny", "Command", "HexPosition", "HexPositions", "SteamTicket", "ChangeState", "Queue", "Opponent", "StartGame", "Seed", "IDs", "Unit", "GameData", "GameVersion", "ArmyId", "UnitPosition", "UnitPositions" }, new[]{ "Msg" }, null, null, null)
           }));
     }
     #endregion
@@ -5372,8 +5379,6 @@ namespace Packets {
     public UnitMessage(UnitMessage other) : this() {
       ownerId_ = other.ownerId_;
       unitId_ = other.unitId_;
-      attacks_ = other.attacks_.Clone();
-      movement_ = other.movement_;
       aP_ = other.aP_;
       hP_ = other.hP_;
       maxHP_ = other.maxHP_;
@@ -5403,45 +5408,22 @@ namespace Packets {
 
     /// <summary>Field number for the "UnitId" field.</summary>
     public const int UnitIdFieldNumber = 2;
-    private ulong unitId_;
+    private long unitId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong UnitId {
+    public long UnitId {
       get { return unitId_; }
       set {
         unitId_ = value;
       }
     }
 
-    /// <summary>Field number for the "Attacks" field.</summary>
-    public const int AttacksFieldNumber = 3;
-    private static readonly pb::FieldCodec<string> _repeated_attacks_codec
-        = pb::FieldCodec.ForString(26);
-    private readonly pbc::RepeatedField<string> attacks_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Attacks {
-      get { return attacks_; }
-    }
-
-    /// <summary>Field number for the "Movement" field.</summary>
-    public const int MovementFieldNumber = 4;
-    private string movement_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Movement {
-      get { return movement_; }
-      set {
-        movement_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "AP" field.</summary>
     public const int APFieldNumber = 5;
-    private int aP_;
+    private long aP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int AP {
+    public long AP {
       get { return aP_; }
       set {
         aP_ = value;
@@ -5450,10 +5432,10 @@ namespace Packets {
 
     /// <summary>Field number for the "HP" field.</summary>
     public const int HPFieldNumber = 6;
-    private int hP_;
+    private long hP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int HP {
+    public long HP {
       get { return hP_; }
       set {
         hP_ = value;
@@ -5462,10 +5444,10 @@ namespace Packets {
 
     /// <summary>Field number for the "MaxHP" field.</summary>
     public const int MaxHPFieldNumber = 7;
-    private int maxHP_;
+    private long maxHP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int MaxHP {
+    public long MaxHP {
       get { return maxHP_; }
       set {
         maxHP_ = value;
@@ -5525,8 +5507,6 @@ namespace Packets {
       }
       if (OwnerId != other.OwnerId) return false;
       if (UnitId != other.UnitId) return false;
-      if(!attacks_.Equals(other.attacks_)) return false;
-      if (Movement != other.Movement) return false;
       if (AP != other.AP) return false;
       if (HP != other.HP) return false;
       if (MaxHP != other.MaxHP) return false;
@@ -5541,12 +5521,10 @@ namespace Packets {
     public override int GetHashCode() {
       int hash = 1;
       if (OwnerId != 0UL) hash ^= OwnerId.GetHashCode();
-      if (UnitId != 0UL) hash ^= UnitId.GetHashCode();
-      hash ^= attacks_.GetHashCode();
-      if (Movement.Length != 0) hash ^= Movement.GetHashCode();
-      if (AP != 0) hash ^= AP.GetHashCode();
-      if (HP != 0) hash ^= HP.GetHashCode();
-      if (MaxHP != 0) hash ^= MaxHP.GetHashCode();
+      if (UnitId != 0L) hash ^= UnitId.GetHashCode();
+      if (AP != 0L) hash ^= AP.GetHashCode();
+      if (HP != 0L) hash ^= HP.GetHashCode();
+      if (MaxHP != 0L) hash ^= MaxHP.GetHashCode();
       if (Speed != global::Packets.Speeds.Normal) hash ^= Speed.GetHashCode();
       if (UnitName.Length != 0) hash ^= UnitName.GetHashCode();
       if (pos_ != null) hash ^= Pos.GetHashCode();
@@ -5572,26 +5550,21 @@ namespace Packets {
         output.WriteRawTag(8);
         output.WriteUInt64(OwnerId);
       }
-      if (UnitId != 0UL) {
+      if (UnitId != 0L) {
         output.WriteRawTag(16);
-        output.WriteUInt64(UnitId);
+        output.WriteInt64(UnitId);
       }
-      attacks_.WriteTo(output, _repeated_attacks_codec);
-      if (Movement.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Movement);
-      }
-      if (AP != 0) {
+      if (AP != 0L) {
         output.WriteRawTag(40);
-        output.WriteInt32(AP);
+        output.WriteInt64(AP);
       }
-      if (HP != 0) {
+      if (HP != 0L) {
         output.WriteRawTag(48);
-        output.WriteInt32(HP);
+        output.WriteInt64(HP);
       }
-      if (MaxHP != 0) {
+      if (MaxHP != 0L) {
         output.WriteRawTag(56);
-        output.WriteInt32(MaxHP);
+        output.WriteInt64(MaxHP);
       }
       if (Speed != global::Packets.Speeds.Normal) {
         output.WriteRawTag(64);
@@ -5619,26 +5592,21 @@ namespace Packets {
         output.WriteRawTag(8);
         output.WriteUInt64(OwnerId);
       }
-      if (UnitId != 0UL) {
+      if (UnitId != 0L) {
         output.WriteRawTag(16);
-        output.WriteUInt64(UnitId);
+        output.WriteInt64(UnitId);
       }
-      attacks_.WriteTo(ref output, _repeated_attacks_codec);
-      if (Movement.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Movement);
-      }
-      if (AP != 0) {
+      if (AP != 0L) {
         output.WriteRawTag(40);
-        output.WriteInt32(AP);
+        output.WriteInt64(AP);
       }
-      if (HP != 0) {
+      if (HP != 0L) {
         output.WriteRawTag(48);
-        output.WriteInt32(HP);
+        output.WriteInt64(HP);
       }
-      if (MaxHP != 0) {
+      if (MaxHP != 0L) {
         output.WriteRawTag(56);
-        output.WriteInt32(MaxHP);
+        output.WriteInt64(MaxHP);
       }
       if (Speed != global::Packets.Speeds.Normal) {
         output.WriteRawTag(64);
@@ -5665,21 +5633,17 @@ namespace Packets {
       if (OwnerId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(OwnerId);
       }
-      if (UnitId != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(UnitId);
+      if (UnitId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnitId);
       }
-      size += attacks_.CalculateSize(_repeated_attacks_codec);
-      if (Movement.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Movement);
+      if (AP != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(AP);
       }
-      if (AP != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(AP);
+      if (HP != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(HP);
       }
-      if (HP != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(HP);
-      }
-      if (MaxHP != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHP);
+      if (MaxHP != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxHP);
       }
       if (Speed != global::Packets.Speeds.Normal) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Speed);
@@ -5705,20 +5669,16 @@ namespace Packets {
       if (other.OwnerId != 0UL) {
         OwnerId = other.OwnerId;
       }
-      if (other.UnitId != 0UL) {
+      if (other.UnitId != 0L) {
         UnitId = other.UnitId;
       }
-      attacks_.Add(other.attacks_);
-      if (other.Movement.Length != 0) {
-        Movement = other.Movement;
-      }
-      if (other.AP != 0) {
+      if (other.AP != 0L) {
         AP = other.AP;
       }
-      if (other.HP != 0) {
+      if (other.HP != 0L) {
         HP = other.HP;
       }
-      if (other.MaxHP != 0) {
+      if (other.MaxHP != 0L) {
         MaxHP = other.MaxHP;
       }
       if (other.Speed != global::Packets.Speeds.Normal) {
@@ -5757,27 +5717,19 @@ namespace Packets {
             break;
           }
           case 16: {
-            UnitId = input.ReadUInt64();
-            break;
-          }
-          case 26: {
-            attacks_.AddEntriesFrom(input, _repeated_attacks_codec);
-            break;
-          }
-          case 34: {
-            Movement = input.ReadString();
+            UnitId = input.ReadInt64();
             break;
           }
           case 40: {
-            AP = input.ReadInt32();
+            AP = input.ReadInt64();
             break;
           }
           case 48: {
-            HP = input.ReadInt32();
+            HP = input.ReadInt64();
             break;
           }
           case 56: {
-            MaxHP = input.ReadInt32();
+            MaxHP = input.ReadInt64();
             break;
           }
           case 64: {
@@ -5819,27 +5771,19 @@ namespace Packets {
             break;
           }
           case 16: {
-            UnitId = input.ReadUInt64();
-            break;
-          }
-          case 26: {
-            attacks_.AddEntriesFrom(ref input, _repeated_attacks_codec);
-            break;
-          }
-          case 34: {
-            Movement = input.ReadString();
+            UnitId = input.ReadInt64();
             break;
           }
           case 40: {
-            AP = input.ReadInt32();
+            AP = input.ReadInt64();
             break;
           }
           case 48: {
-            HP = input.ReadInt32();
+            HP = input.ReadInt64();
             break;
           }
           case 56: {
-            MaxHP = input.ReadInt32();
+            MaxHP = input.ReadInt64();
             break;
           }
           case 64: {
@@ -5865,6 +5809,437 @@ namespace Packets {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class UnitPositionMessage : pb::IMessage<UnitPositionMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<UnitPositionMessage> _parser = new pb::MessageParser<UnitPositionMessage>(() => new UnitPositionMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<UnitPositionMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[23]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UnitPositionMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UnitPositionMessage(UnitPositionMessage other) : this() {
+      unitId_ = other.unitId_;
+      position_ = other.position_ != null ? other.position_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UnitPositionMessage Clone() {
+      return new UnitPositionMessage(this);
+    }
+
+    /// <summary>Field number for the "unitId" field.</summary>
+    public const int UnitIdFieldNumber = 1;
+    private long unitId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long UnitId {
+      get { return unitId_; }
+      set {
+        unitId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Position" field.</summary>
+    public const int PositionFieldNumber = 2;
+    private global::Packets.Vector2IMsg position_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Packets.Vector2IMsg Position {
+      get { return position_; }
+      set {
+        position_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as UnitPositionMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(UnitPositionMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (UnitId != other.UnitId) return false;
+      if (!object.Equals(Position, other.Position)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (UnitId != 0L) hash ^= UnitId.GetHashCode();
+      if (position_ != null) hash ^= Position.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (UnitId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(UnitId);
+      }
+      if (position_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Position);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (UnitId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(UnitId);
+      }
+      if (position_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Position);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (UnitId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnitId);
+      }
+      if (position_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(UnitPositionMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.UnitId != 0L) {
+        UnitId = other.UnitId;
+      }
+      if (other.position_ != null) {
+        if (position_ == null) {
+          Position = new global::Packets.Vector2IMsg();
+        }
+        Position.MergeFrom(other.Position);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            UnitId = input.ReadInt64();
+            break;
+          }
+          case 18: {
+            if (position_ == null) {
+              Position = new global::Packets.Vector2IMsg();
+            }
+            input.ReadMessage(Position);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            UnitId = input.ReadInt64();
+            break;
+          }
+          case 18: {
+            if (position_ == null) {
+              Position = new global::Packets.Vector2IMsg();
+            }
+            input.ReadMessage(Position);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class UnitPositionsMessage : pb::IMessage<UnitPositionsMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<UnitPositionsMessage> _parser = new pb::MessageParser<UnitPositionsMessage>(() => new UnitPositionsMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<UnitPositionsMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[24]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UnitPositionsMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UnitPositionsMessage(UnitPositionsMessage other) : this() {
+      units_ = other.units_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UnitPositionsMessage Clone() {
+      return new UnitPositionsMessage(this);
+    }
+
+    /// <summary>Field number for the "units" field.</summary>
+    public const int UnitsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Packets.UnitPositionMessage> _repeated_units_codec
+        = pb::FieldCodec.ForMessage(10, global::Packets.UnitPositionMessage.Parser);
+    private readonly pbc::RepeatedField<global::Packets.UnitPositionMessage> units_ = new pbc::RepeatedField<global::Packets.UnitPositionMessage>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Packets.UnitPositionMessage> Units {
+      get { return units_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as UnitPositionsMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(UnitPositionsMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!units_.Equals(other.units_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= units_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      units_.WriteTo(output, _repeated_units_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      units_.WriteTo(ref output, _repeated_units_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += units_.CalculateSize(_repeated_units_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(UnitPositionsMessage other) {
+      if (other == null) {
+        return;
+      }
+      units_.Add(other.units_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            units_.AddEntriesFrom(input, _repeated_units_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            units_.AddEntriesFrom(ref input, _repeated_units_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class GameDataMessage : pb::IMessage<GameDataMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -5879,7 +6254,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[23]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[25]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6164,7 +6539,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[24]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6362,7 +6737,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[25]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[27]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6560,7 +6935,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[26]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[28]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6641,6 +7016,12 @@ namespace Packets {
           break;
         case MsgOneofCase.ArmyId:
           ArmyId = other.ArmyId.Clone();
+          break;
+        case MsgOneofCase.UnitPosition:
+          UnitPosition = other.UnitPosition.Clone();
+          break;
+        case MsgOneofCase.UnitPositions:
+          UnitPositions = other.UnitPositions.Clone();
           break;
       }
 
@@ -6895,9 +7276,6 @@ namespace Packets {
 
     /// <summary>Field number for the "ArmyId" field.</summary>
     public const int ArmyIdFieldNumber = 21;
-    /// <summary>
-    ///...
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Packets.ArmyIDMessage ArmyId {
@@ -6905,6 +7283,33 @@ namespace Packets {
       set {
         msg_ = value;
         msgCase_ = value == null ? MsgOneofCase.None : MsgOneofCase.ArmyId;
+      }
+    }
+
+    /// <summary>Field number for the "UnitPosition" field.</summary>
+    public const int UnitPositionFieldNumber = 22;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Packets.UnitPositionMessage UnitPosition {
+      get { return msgCase_ == MsgOneofCase.UnitPosition ? (global::Packets.UnitPositionMessage) msg_ : null; }
+      set {
+        msg_ = value;
+        msgCase_ = value == null ? MsgOneofCase.None : MsgOneofCase.UnitPosition;
+      }
+    }
+
+    /// <summary>Field number for the "UnitPositions" field.</summary>
+    public const int UnitPositionsFieldNumber = 23;
+    /// <summary>
+    ///...
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Packets.UnitPositionsMessage UnitPositions {
+      get { return msgCase_ == MsgOneofCase.UnitPositions ? (global::Packets.UnitPositionsMessage) msg_ : null; }
+      set {
+        msg_ = value;
+        msgCase_ = value == null ? MsgOneofCase.None : MsgOneofCase.UnitPositions;
       }
     }
 
@@ -6932,6 +7337,8 @@ namespace Packets {
       GameData = 19,
       GameVersion = 20,
       ArmyId = 21,
+      UnitPosition = 22,
+      UnitPositions = 23,
     }
     private MsgOneofCase msgCase_ = MsgOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6983,6 +7390,8 @@ namespace Packets {
       if (!object.Equals(GameData, other.GameData)) return false;
       if (!object.Equals(GameVersion, other.GameVersion)) return false;
       if (!object.Equals(ArmyId, other.ArmyId)) return false;
+      if (!object.Equals(UnitPosition, other.UnitPosition)) return false;
+      if (!object.Equals(UnitPositions, other.UnitPositions)) return false;
       if (MsgCase != other.MsgCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -7012,6 +7421,8 @@ namespace Packets {
       if (msgCase_ == MsgOneofCase.GameData) hash ^= GameData.GetHashCode();
       if (msgCase_ == MsgOneofCase.GameVersion) hash ^= GameVersion.GetHashCode();
       if (msgCase_ == MsgOneofCase.ArmyId) hash ^= ArmyId.GetHashCode();
+      if (msgCase_ == MsgOneofCase.UnitPosition) hash ^= UnitPosition.GetHashCode();
+      if (msgCase_ == MsgOneofCase.UnitPositions) hash ^= UnitPositions.GetHashCode();
       hash ^= (int) msgCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -7115,6 +7526,14 @@ namespace Packets {
         output.WriteRawTag(170, 1);
         output.WriteMessage(ArmyId);
       }
+      if (msgCase_ == MsgOneofCase.UnitPosition) {
+        output.WriteRawTag(178, 1);
+        output.WriteMessage(UnitPosition);
+      }
+      if (msgCase_ == MsgOneofCase.UnitPositions) {
+        output.WriteRawTag(186, 1);
+        output.WriteMessage(UnitPositions);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -7209,6 +7628,14 @@ namespace Packets {
         output.WriteRawTag(170, 1);
         output.WriteMessage(ArmyId);
       }
+      if (msgCase_ == MsgOneofCase.UnitPosition) {
+        output.WriteRawTag(178, 1);
+        output.WriteMessage(UnitPosition);
+      }
+      if (msgCase_ == MsgOneofCase.UnitPositions) {
+        output.WriteRawTag(186, 1);
+        output.WriteMessage(UnitPositions);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -7281,6 +7708,12 @@ namespace Packets {
       }
       if (msgCase_ == MsgOneofCase.ArmyId) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(ArmyId);
+      }
+      if (msgCase_ == MsgOneofCase.UnitPosition) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UnitPosition);
+      }
+      if (msgCase_ == MsgOneofCase.UnitPositions) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UnitPositions);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -7417,6 +7850,18 @@ namespace Packets {
             ArmyId = new global::Packets.ArmyIDMessage();
           }
           ArmyId.MergeFrom(other.ArmyId);
+          break;
+        case MsgOneofCase.UnitPosition:
+          if (UnitPosition == null) {
+            UnitPosition = new global::Packets.UnitPositionMessage();
+          }
+          UnitPosition.MergeFrom(other.UnitPosition);
+          break;
+        case MsgOneofCase.UnitPositions:
+          if (UnitPositions == null) {
+            UnitPositions = new global::Packets.UnitPositionsMessage();
+          }
+          UnitPositions.MergeFrom(other.UnitPositions);
           break;
       }
 
@@ -7623,6 +8068,24 @@ namespace Packets {
             ArmyId = subBuilder;
             break;
           }
+          case 178: {
+            global::Packets.UnitPositionMessage subBuilder = new global::Packets.UnitPositionMessage();
+            if (msgCase_ == MsgOneofCase.UnitPosition) {
+              subBuilder.MergeFrom(UnitPosition);
+            }
+            input.ReadMessage(subBuilder);
+            UnitPosition = subBuilder;
+            break;
+          }
+          case 186: {
+            global::Packets.UnitPositionsMessage subBuilder = new global::Packets.UnitPositionsMessage();
+            if (msgCase_ == MsgOneofCase.UnitPositions) {
+              subBuilder.MergeFrom(UnitPositions);
+            }
+            input.ReadMessage(subBuilder);
+            UnitPositions = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -7824,6 +8287,24 @@ namespace Packets {
             }
             input.ReadMessage(subBuilder);
             ArmyId = subBuilder;
+            break;
+          }
+          case 178: {
+            global::Packets.UnitPositionMessage subBuilder = new global::Packets.UnitPositionMessage();
+            if (msgCase_ == MsgOneofCase.UnitPosition) {
+              subBuilder.MergeFrom(UnitPosition);
+            }
+            input.ReadMessage(subBuilder);
+            UnitPosition = subBuilder;
+            break;
+          }
+          case 186: {
+            global::Packets.UnitPositionsMessage subBuilder = new global::Packets.UnitPositionsMessage();
+            if (msgCase_ == MsgOneofCase.UnitPositions) {
+              subBuilder.MergeFrom(UnitPositions);
+            }
+            input.ReadMessage(subBuilder);
+            UnitPositions = subBuilder;
             break;
           }
         }

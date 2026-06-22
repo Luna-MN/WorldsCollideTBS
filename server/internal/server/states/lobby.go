@@ -42,7 +42,7 @@ func (l *Lobby) SetClient(client *server.Client) {
 		return
 	}
 	l.client = client
-	loginPrefix := fmt.Sprintf("%s : %d [%s]: ", client.Username(), client.Id(), l.Name())
+	loginPrefix := fmt.Sprintf("%s [%d]:  [%s] ", client.Username(), client.Id(), l.Name())
 	l.logger = log.New(log.Writer(), loginPrefix, log.LstdFlags)
 	l.queries = client.DbTx().Queries
 	l.dbCtx = client.DbTx().Ctx
@@ -52,10 +52,10 @@ func (l *Lobby) UpdateOtherClient(client *server.Client) {
 }
 func (l *Lobby) UpdateLoggerPrefix(s string) {
 	if s == "" {
-		l.logger.SetPrefix(fmt.Sprintf("Client %d [%s]: ", l.client.Id(), l.Name()))
+		l.logger.SetPrefix(fmt.Sprintf("%s [%d]: [%s] ", l.client.Username(), l.client.Id(), l.Name()))
 		return
 	}
-	l.logger.SetPrefix(fmt.Sprintf("Client %d [%s, %s]: ", l.client.Id(), l.Name(), s))
+	l.logger.SetPrefix(fmt.Sprintf("%s [%d]: [%s, %s] ", l.client.Username(), l.client.Id(), l.Name(), s))
 }
 func (l *Lobby) CanReceiveGlobalChat() bool {
 	return true

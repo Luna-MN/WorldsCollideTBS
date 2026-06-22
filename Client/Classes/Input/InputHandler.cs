@@ -164,7 +164,6 @@ public partial class InputHandler : Node3D
     {
         if (CurrentMouseNode == null || SelectedTile == null)
         {
-            GD.Print("null");
             return;
         }
         var currNode = SelectedTile.TerrainInfo;
@@ -178,10 +177,15 @@ public partial class InputHandler : Node3D
             return;
         }
         
-        unit.Position = new Vector3(moveToNode.Position.X, moveToNode.TileHeight, moveToNode.Position.Z);
+        unit.Position = new Vector3(moveToNode.Position.X * 1.25f, moveToNode.TileHeight + 1, moveToNode.Position.Z * 1.25f);
+        unit.PositionI = moveToNode.PositionI;
         currNode.Unit = null;
         moveToNode.Unit = unit;
         SelectedTile = null;
+        if (!startGame.UnassignedUnits())
+        {
+            startGame.confirm.Visible = true;
+        }
     }
     private void MainGameInputHandling()
     {

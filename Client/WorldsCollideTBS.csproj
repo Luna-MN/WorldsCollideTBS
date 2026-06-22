@@ -27,4 +27,8 @@
       <Content Include="steam_appid.txt" />
         <!-- /Steamworks.NET -->
     </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\Features\Castle\" />
+    <Folder Include="Objects\Units\Mesh\" />
+  </ItemGroup>
 </Project>

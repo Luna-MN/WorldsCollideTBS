@@ -13,7 +13,9 @@ public class CurrentGameData
     public long RightSeed;
     public ulong EnemyID;
     public long MyArmyID;
+    public Dictionary<long, IUnit> MyUnits = new Dictionary<long, IUnit>();
     public long EnemyArmyID;
+    public Dictionary<long, IUnit> EnemyUnits = new Dictionary<long, IUnit> ();
     public Dictionary<Vector2I, TerrainInfo> Tiles = new Dictionary<Vector2I, TerrainInfo>();
     public TerrainGen TerrainGen, TerrainGen1, TerrainGen2;
     public Side MySide;
@@ -62,6 +64,28 @@ public class CurrentGameData
 
         GD.Print(TerrainGen.worldInfo.TerrainInfo.Count + TerrainGen1.worldInfo.TerrainInfo.Count +  TerrainGen2.worldInfo.TerrainInfo.Count);
         GD.Print(Tiles.Count);
+    }
+    
+    public List<UnitData> InitUnitData(List<UnitDataJSON> units, ulong id)
+    {
+        var dataList = new List<UnitData>();
+        foreach (var unit in units)
+        {
+            var data = new UnitData(unit, id);
+            dataList.Add(data);    
+        }
+        return dataList;
+    }
+
+    public void InitEnemyArmy(PackedScene unitScene)
+    {
+        var units = GetOpponentUnits();
+        foreach (var unit in units.Values)
+        {
+            var unitNode = unitScene.Instantiate<UniversalUnit>();
+            unitNode.Data = new UnitData(unit, EnemyID);
+            EnemyUnits[unit.ID] = unitNode;
+        }
     }
 
     public ArmyDataJSON GetMyArmy()

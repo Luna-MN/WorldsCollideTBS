@@ -1,4 +1,6 @@
-﻿using Google.Protobuf.Collections;
+﻿using System.Collections.Generic;
+using Godot;
+using Google.Protobuf.Collections;
 
 namespace Packets.Util;
 
@@ -66,6 +68,45 @@ public static class PacketUtil
             ArmyId = new ArmyIDMessage()
             {
                 Id = id
+            }
+        };
+    }
+
+    public static Packet NewUnitPositionsPacket(List<UnitPositionMessage> unitPositions)
+    {
+        var p = new Packet
+        {
+            UnitPositions = new UnitPositionsMessage()
+        };
+        p.UnitPositions.Units.AddRange(unitPositions);
+        return p;
+    }
+
+    public static UnitPositionMessage NewUnitPositionMessage(long id, Vector2I pos)
+    {
+        return new UnitPositionMessage()
+        {
+            UnitId = id,
+            Position = new Vector2IMsg()
+            {
+                X = pos.X,
+                Y = pos.Y
+            }
+        };
+    }
+
+    public static Packet NewUnitPositionPacket(long id, Vector2I pos)
+    {
+        return new Packet()
+        {
+            UnitPosition = new UnitPositionMessage()
+            {
+                UnitId = id,
+                Position = new Vector2IMsg()
+                {
+                    X = pos.X,
+                    Y = pos.Y
+                }
             }
         };
     }

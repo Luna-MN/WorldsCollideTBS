@@ -31,7 +31,7 @@ func (m *Menu) Name() string {
 
 func (m *Menu) SetClient(client *server.Client) {
 	m.client = client
-	loginPrefix := fmt.Sprintf("%s : %d [%s]: ", client.Username(), client.Id(), m.Name())
+	loginPrefix := fmt.Sprintf("%s [%d]: [%s] ", client.Username(), client.Id(), m.Name())
 	m.logger = log.New(log.Writer(), loginPrefix, log.LstdFlags)
 	m.queries = client.DbTx().Queries
 	m.dbCtx = client.DbTx().Ctx
@@ -39,10 +39,10 @@ func (m *Menu) SetClient(client *server.Client) {
 }
 func (m *Menu) UpdateLoggerPrefix(s string) {
 	if s == "" {
-		m.logger.SetPrefix(fmt.Sprintf("Client %d [%s]: ", m.client.Id(), m.Name()))
+		m.logger.SetPrefix(fmt.Sprintf("%s [%d]: [%s] ", m.client.Username(), m.client.Id(), m.Name()))
 		return
 	}
-	m.logger.SetPrefix(fmt.Sprintf("Client %d [%s, %s]: ", m.client.Id(), m.Name(), s))
+	m.logger.SetPrefix(fmt.Sprintf("%s [%d]: [%s, %s] ", m.client.Username(), m.client.Id(), m.Name(), s))
 }
 func (m *Menu) CanReceiveGlobalChat() bool {
 	return true

@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"server/internal/server/objects"
 	"server/internal/server/objects/noise"
 )
@@ -68,9 +69,32 @@ func (g *GameTerrainService) GetTiles(positions []objects.Vector2I) []*objects.T
 	return tiles
 }
 func (g *GameTerrainService) GetGlobalTileAt(pos objects.Vector3) *objects.TerrainInfo {
-	pos2D := objects.WorldToHexPosition(pos.X, pos.Z)
-	return g.GetTileAt(pos2D)
+	pos2D := objects.WorldToHexPosition(pos)
+	tile := g.GetTileAt(pos2D)
+	if tile == nil {
+		tile = g.GetClosestGlobalTile(pos)
+		fmt.Println("No tile found at ", pos2D, " using closest ", tile.PositionI)
+	}
+	return tile
 }
+func (g *GameTerrainService) GetClosestGlobalTile(pos objects.Vector3) *objects.TerrainInfo {
+	var closest *objects.TerrainInfo
+	minDist := float32(1e9)
+
+	for _, tile := range g.Tiles {
+		dx := tile.Position.X - pos.X
+		dz := tile.Position.Z - pos.Z
+		dist := dx*dx + dz*dz
+
+		if dist < minDist {
+			minDist = dist
+			closest = tile
+		}
+	}
+
+	return closest
+}
+
 func (g *GameTerrainService) GetGlobalTilesAt(positions []objects.Vector3) []*objects.TerrainInfo {
 	tiles := make([]*objects.TerrainInfo, len(positions))
 	for i, pos := range positions {
@@ -89,7 +113,10 @@ func (g *GameTerrainService) PopulateTilesFrom(terrainGen *objects.TerrainGen) {
 	for _, info := range terrainGen.GetWorldInfo().TerrainInfo {
 		info.Position = info.Position.Add(terrainGen.GlobalPos)
 		info.PositionL = info.PositionI
-		info.PositionI = objects.WorldToHexPosition(info.Position.X, info.Position.Z)
+		info.PositionI = objects.WorldToHexPosition(info.Position)
+		if _, ok := g.Tiles[info.PositionI]; ok {
+			fmt.Println("Duplicate tile at ", info.PositionI, "")
+		}
 		g.Tiles[info.PositionI] = info
 	}
 }

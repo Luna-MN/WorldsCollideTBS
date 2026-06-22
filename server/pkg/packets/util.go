@@ -3,7 +3,6 @@ package packets
 import (
 	"server/internal/server/db"
 	"server/internal/server/objects"
-	"server/internal/server/objects/units/units/util"
 )
 
 type Msg = isPacket_Msg
@@ -100,29 +99,6 @@ func NewHexPositions(id uint64, positions []objects.Vector3) *Packet_HexPosition
 	}
 }
 
-func NewUnitData(data util.UnitData) *UnitMessage {
-	return &UnitMessage{
-		OwnerId:  data.OwnerID,
-		UnitId:   data.UnitID,
-		Attacks:  data.Attacks,
-		Movement: data.Movement,
-		AP:       data.AP,
-		HP:       data.HP,
-		MaxHP:    data.MaxHP,
-		Speed:    Speeds(data.Speed),
-		UnitName: data.UnitName,
-		Pos:      NewVector3(data.Pos.X, data.Pos.Y, data.Pos.Z),
-	}
-}
-
-func UnwrapUnitData(UnitPacket *UnitMessage) *util.UnitData {
-	return util.NewUnitData(UnitPacket.UnitName, UnitPacket.GetOwnerId(), UnitPacket.GetUnitId(), UnitPacket.Attacks, UnitPacket.Movement, UnitPacket.AP, UnitPacket.HP, UnitPacket.MaxHP, util.Speed(UnitPacket.Speed), UnwrapVector3(UnitPacket.Pos))
-}
-
-func NewUnitDataFromPacket(UnitPacket *UnitMessage) *util.UnitData {
-	return util.NewUnitData(UnitPacket.UnitName, UnitPacket.GetOwnerId(), UnitPacket.GetUnitId(), UnitPacket.Attacks, UnitPacket.Movement, UnitPacket.AP, UnitPacket.HP, UnitPacket.MaxHP, util.Speed(UnitPacket.Speed), UnwrapVector3(UnitPacket.Pos))
-}
-
 func NewFactionDataFromDB(f db.Faction, armies []int64) *FactionData {
 	return &FactionData{
 		Id:          f.ID,
@@ -177,6 +153,21 @@ func NewData(version string, fs []*FactionData, as []*ArmyData, us []*UnitData) 
 	}
 }
 
+func NewUnitPositionMessage(unitId int64, pos objects.Vector2I) *UnitPositionMessage {
+	return &UnitPositionMessage{
+		UnitId:   unitId,
+		Position: NewVector2I(int32(pos.X), int32(pos.Y)),
+	}
+}
+
+func NewUnitPositions(positions []*UnitPositionMessage) *Packet_UnitPositions {
+	return &Packet_UnitPositions{
+		UnitPositions: &UnitPositionsMessage{
+			Units: positions,
+		},
+	}
+}
+
 func NewArmyId(id int64) *Packet_ArmyId {
 	return &Packet_ArmyId{ArmyId: &ArmyIDMessage{Id: id}}
 }
@@ -191,4 +182,8 @@ func UnwrapVector3(v *Vector3Msg) objects.Vector3 {
 
 func NewVector2(x, y float32) *Vector2Msg {
 	return &Vector2Msg{X: x, Y: y}
+}
+
+func NewVector2I(x, y int32) *Vector2IMsg {
+	return &Vector2IMsg{X: x, Y: y}
 }

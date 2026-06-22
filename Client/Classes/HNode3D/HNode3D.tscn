@@ -4,4 +4,4 @@
 
 [node name="HNode3D" type="Node3D" unique_id=1432245861]
 script = ExtResource("1_c4tuy")
-FullSize = 50.0
+FullSize = 30.0

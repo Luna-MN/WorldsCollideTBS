@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Godot;
 
-public class BasicMovement : IMovement
+public class DefaultMovement : IMovement
 {
     public IUnit Unit { get; set; }
     public Node3D Node { get; set; }

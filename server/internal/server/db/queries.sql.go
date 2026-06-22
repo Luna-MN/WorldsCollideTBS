@@ -342,6 +342,31 @@ func (q *Queries) GetUnitArmy(ctx context.Context, arg GetUnitArmyParams) (ArmyU
 	return i, err
 }
 
+const getUnitById = `-- name: GetUnitById :one
+SELECT
+    id, name, attacks, movement, maxhp, ap, speed, armies
+FROM
+    units
+WHERE
+    id = ?
+`
+
+func (q *Queries) GetUnitById(ctx context.Context, id int64) (Unit, error) {
+	row := q.db.QueryRowContext(ctx, getUnitById, id)
+	var i Unit
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Attacks,
+		&i.Movement,
+		&i.Maxhp,
+		&i.Ap,
+		&i.Speed,
+		&i.Armies,
+	)
+	return i, err
+}
+
 const getUnitIdsForArmy = `-- name: GetUnitIdsForArmy :many
 SELECT
     unitId
