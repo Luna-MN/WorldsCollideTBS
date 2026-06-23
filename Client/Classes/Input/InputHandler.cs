@@ -150,19 +150,18 @@ public partial class InputHandler : Node3D
 
         if (startGame.seedSelected)
         {
-            if (SelectedTile == null)
+            if (SelectedTile == null && CurrentMouseNode?.TerrainInfo?.Unit != null)
             {
                 SelectedTile = CurrentMouseNode;
                 return;
             }
             StartGameMovement();
         }
-
-        GD.Print(startGame.seedSelected, SelectedTile != null);
+        
     }
     private void StartGameMovement()
     {
-        if (CurrentMouseNode == null || SelectedTile == null)
+        if (CurrentMouseNode == null || SelectedTile == null || CurrentMouseNode == SelectedTile)
         {
             return;
         }
@@ -174,10 +173,13 @@ public partial class InputHandler : Node3D
         if (moveToNode.Unit != null)
         {
             GD.PrintErr("Tile Already has a unit on it");
+            SelectedTile = null;
+            CurrentMouseNode = null;
             return;
         }
-        
-        unit.Position = new Vector3(moveToNode.Position.X * 1.25f, moveToNode.TileHeight + 1, moveToNode.Position.Z * 1.25f);
+
+        unit.TileNode = CurrentMouseNode;
+        unit.Position = new Vector3(moveToNode.Position.X * 1.25f, moveToNode.TileHeight*1.25f, moveToNode.Position.Z * 1.25f);
         unit.PositionI = moveToNode.PositionI;
         currNode.Unit = null;
         moveToNode.Unit = unit;
@@ -220,6 +222,7 @@ public partial class InputHandler : Node3D
         }
         if (SelectedTile != null && UnitInfo.Unit == null)
         {
+            SelectedTile.TerrainInfo.Unit.TileNode = SelectedTile;
             HandleMovement(SelectedTile.TerrainInfo, UnitInfo, SelectedTile.TerrainInfo.Unit);
             SelectedTile = null;
             return;

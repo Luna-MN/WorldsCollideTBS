@@ -1,4 +1,4 @@
-package BasicMovement
+package DefaultMovement
 
 import (
 	"server/internal/server"
@@ -6,34 +6,34 @@ import (
 	"server/pkg/packets"
 )
 
-type BasicMovement struct {
+type DefaultMovement struct {
 	unitId      uint64
 	clientId    uint64
 	client      *server.Client
 	enemyClient *server.Client
 }
 
-func (b *BasicMovement) UnitId() uint64 {
+func (b *DefaultMovement) UnitId() uint64 {
 	return b.unitId
 }
 
-func (b *BasicMovement) ClientId() uint64 {
+func (b *DefaultMovement) ClientId() uint64 {
 	return b.clientId
 }
 
-func (b *BasicMovement) InitMovement(UnitId uint64, client *server.Client, enemyClient *server.Client) {
+func (b *DefaultMovement) InitMovement(UnitId uint64, client *server.Client, enemyClient *server.Client) {
 	b.unitId = UnitId
 	b.clientId = client.Id()
 	b.client = client
 	b.enemyClient = enemyClient
 }
 
-func (b *BasicMovement) Move(infos []*objects.TerrainInfo) {
+func (b *DefaultMovement) Move(infos []*objects.TerrainInfo) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (b *BasicMovement) SendMovementPacket(infos []*objects.TerrainInfo) {
+func (b *DefaultMovement) SendMovementPacket(infos []*objects.TerrainInfo) {
 	positions := make([]objects.Vector3, len(infos))
 	for i, info := range infos {
 		positions[i] = info.Position

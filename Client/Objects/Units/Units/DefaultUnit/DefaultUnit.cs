@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public partial class DefaultUnit : Node3D, IUnit
 {
     public UnitData Data { get; set; }
+    public Node3D TileNode { get; set; }
     public List<IAttack> Attacks { get; set; }
     public IMovement Movement { get; set; }
     public Vector2I PositionI { get; set; }

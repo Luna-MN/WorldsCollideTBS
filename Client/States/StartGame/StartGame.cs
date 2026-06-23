@@ -17,6 +17,8 @@ public partial class StartGame : Node3D, IState
     public int selectedSeed;
     [Export]
     private TerrainGen terrainGen1, terrainGen2, terrainGen3, selectedGen;
+    [Export]
+    private CustomTerrainInfo LeftSide, RightSide;
     [Export] private InputHandler inputHandler;
     [Export] public Button confirm;
     private List<CustomTerrainInfo> terrainList;
@@ -99,6 +101,16 @@ public partial class StartGame : Node3D, IState
                 Globals.GM.CurrentGameData.EnemyUnits[unit.UnitId].PositionI = new Vector2I(unit.Position.X, unit.Position.Y);
             }
             log.info("Units received");
+            selectedGen.Scale = new Vector3(1, 1, 1);
+            foreach (var tile in selectedGen.worldInfo.TerrainInfo.Values)
+            {
+                if (tile.Unit != null)
+                {
+                    tile.Unit.Position = tile.Unit.TileNode.Position + new Vector3(0, tile.TileHeight, 0);
+                        
+                }
+
+            }
             Globals.GM.SetState(GameManager.state.Game);
         }
     }
@@ -121,6 +133,19 @@ public partial class StartGame : Node3D, IState
             HideSeeds();
             CreateUnits();
             confirm.Visible = false;
+            CustomTerrainInfo terrainSide = null;
+            if (Globals.GM.CurrentGameData.MySide == CurrentGameData.Side.left)
+            {
+                LeftSide.Visible = true;
+                terrainSide = LeftSide;
+            }
+            else
+            {
+                RightSide.Visible = true;
+                terrainSide = RightSide;
+            }
+            var tw = terrainSide.CreateTween();
+            tw.TweenProperty(terrainSide, "scale", new Vector3(1, 1, 1), 0.5f).SetTrans(Tween.TransitionType.Bounce).SetEase(Tween.EaseType.Out);
         }
         else
         {
@@ -136,13 +161,13 @@ public partial class StartGame : Node3D, IState
             TransitionNodes = [n];
             selectedGen.GetParent().RemoveChild(selectedGen);
             n.CallDeferred("add_child", selectedGen);
+            selectedGen.Name = "TerrainGen";
             foreach (var unit in Globals.GM.CurrentGameData.MyUnits.Values)
             {
                 (unit as Node3D).GetParent().RemoveChild(unit as Node3D);
                 n.CallDeferred("add_child", unit as Node3D);
-                
+                (unit as Node3D).Name = unit.Data.UnitName + " " + unit.Data.UnitId;
             }
-
             log.info("Sending unit positions");
             TrafficManager.Send(PacketUtil.NewUnitPositionsPacket(unitsMessages));
         }
@@ -237,10 +262,6 @@ public partial class StartGame : Node3D, IState
             var tw = gen.CreateTween();
             tw.TweenProperty(gen, "scale", new Vector3(1f, 1f, 1f), 0.2f).SetTrans(Tween.TransitionType.Bounce).SetEase(Tween.EaseType.Out);
         }
-    }
-    private void HandleStartGameMessage(StartGameMessage msg)
-    {
-        TransitionNodes = [terrainGen1, terrainGen2, terrainGen3];
     }
     public void OnWSConnectionClosed()
     {

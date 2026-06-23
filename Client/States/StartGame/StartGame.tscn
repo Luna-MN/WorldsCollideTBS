@@ -18,7 +18,7 @@ frequency = 0.693
 seed = 178
 frequency = 0.693
 
-[node name="StartGame" type="Node3D" unique_id=341148836 node_paths=PackedStringArray("log", "unitTerrainNodes", "terrainGen1", "terrainGen2", "terrainGen3", "inputHandler", "confirm")]
+[node name="StartGame" type="Node3D" unique_id=341148836 node_paths=PackedStringArray("log", "unitTerrainNodes", "terrainGen1", "terrainGen2", "terrainGen3", "LeftSide", "RightSide", "inputHandler", "confirm")]
 script = ExtResource("1_8ltj8")
 log = NodePath("CanvasLayer/Log")
 unitScene = ExtResource("2_ine34")
@@ -27,6 +27,8 @@ unitTerrainNodes = NodePath("HNode3D")
 terrainGen1 = NodePath("TerrainGen")
 terrainGen2 = NodePath("TerrainGen2")
 terrainGen3 = NodePath("TerrainGen3")
+LeftSide = NodePath("LeftSide")
+RightSide = NodePath("RightSide")
 inputHandler = NodePath("Input")
 confirm = NodePath("CanvasLayer/Confirm")
 
@@ -64,7 +66,7 @@ noise = SubResource("FastNoiseLite_s6kuv")
 DefaultTile = 3
 
 [node name="TerrainGen3" parent="." unique_id=765626791 instance=ExtResource("2_8ltj8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.129242, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.031, 0, 0)
 Radius = 2
 noise = ExtResource("5_v8l31")
 DefaultTile = 3
@@ -83,5 +85,13 @@ startGame = NodePath("../..")
 
 [node name="HNode3D" parent="." unique_id=1432245861 instance=ExtResource("7_w43px")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.9528837)
+
+[node name="RightSide" parent="." unique_id=1388308053 instance=ExtResource("8_ine34")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -13.031, 0, 0)
+visible = false
+
+[node name="LeftSide" parent="." unique_id=1693387099 instance=ExtResource("8_ine34")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 13.031, 0, 0)
+visible = false
 
 [editable path="Camera"]

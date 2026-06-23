@@ -9,6 +9,7 @@ public partial class UniversalUnit : Node3D, IUnit
     private const string MeshFolderPath = "res://Objects/Units/Mesh";
     
     public UnitData Data { get; set; }
+    public Node3D TileNode { get; set; }
     [Export] public PackedScene MeshScene, DefaultMeshScene;
     public Node3D Mesh;
     public List<IAttack> Attacks { get; set; }

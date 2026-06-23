@@ -89,7 +89,7 @@ public static class TileUtil
 
             if (terrainInfo.TileType == TileType.River)
             {
-                GD.Print(terrainInfo.NextTile.Position + " " + terrainInfo.PreviousTile.Position + " " + terrainInfo.Connected);
+                GD.Print(terrainInfo.NextTile?.Position + " " + terrainInfo.PreviousTile?.Position + " " + terrainInfo.Connected);
             }
             return TileState.floor;
         }
