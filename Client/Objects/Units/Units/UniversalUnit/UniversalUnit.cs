@@ -49,6 +49,7 @@ public partial class UniversalUnit : Node3D, IUnit
         if (string.IsNullOrWhiteSpace(meshName))
         {
             GD.PrintErr("Mesh name is empty.");
+            MeshScene = DefaultMeshScene;
             return;
         }
 

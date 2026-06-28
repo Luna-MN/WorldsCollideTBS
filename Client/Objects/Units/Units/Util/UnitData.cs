@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,7 +12,8 @@ public class UnitData
     }
     public string UnitName { get; set; }
     public ulong OwnerId { get; set; }
-    public long UnitId { get; set; }
+    public int UnitId { get; set; }
+    public long JSONID { get; set; }
     public List<string> Attacks { get; set; }
     public string Movement { get; set; }
     public long AP { get; set; }
@@ -23,11 +22,12 @@ public class UnitData
     public Speeds Speed { get; set; }
     public UnitData() { }
 
-    public UnitData(UnitDataJSON data, ulong id)
+    public UnitData(UnitDataJSON data, ulong id, int unitID)
     {
         UnitName = data.Name;
         OwnerId = id;
-        UnitId = data.ID;
+        JSONID = data.ID;
+        UnitId = unitID;
         Attacks = string.IsNullOrWhiteSpace(data.Attacks)
             ? null
             : data.Attacks.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();

@@ -239,6 +239,27 @@ func (q *Queries) GetArmyIdsForFaction(ctx context.Context, factionid int64) ([]
 	return items, nil
 }
 
+const getArmyUnitCount = `-- name: GetArmyUnitCount :one
+SELECT
+    count
+FROM
+    army_units
+WHERE
+    armyId = ? AND unitId = ?
+`
+
+type GetArmyUnitCountParams struct {
+	Armyid int64
+	Unitid int64
+}
+
+func (q *Queries) GetArmyUnitCount(ctx context.Context, arg GetArmyUnitCountParams) (int64, error) {
+	row := q.db.QueryRowContext(ctx, getArmyUnitCount, arg.Armyid, arg.Unitid)
+	var count int64
+	err := row.Scan(&count)
+	return count, err
+}
+
 const getFaction = `-- name: GetFaction :one
 SELECT
     id, name, description
@@ -323,7 +344,7 @@ func (q *Queries) GetUnit(ctx context.Context, name string) (Unit, error) {
 
 const getUnitArmy = `-- name: GetUnitArmy :one
 SELECT
-    armyid, unitid
+    armyid, unitid, count
 FROM
     army_units
 WHERE
@@ -338,7 +359,7 @@ type GetUnitArmyParams struct {
 func (q *Queries) GetUnitArmy(ctx context.Context, arg GetUnitArmyParams) (ArmyUnit, error) {
 	row := q.db.QueryRowContext(ctx, getUnitArmy, arg.Armyid, arg.Unitid)
 	var i ArmyUnit
-	err := row.Scan(&i.Armyid, &i.Unitid)
+	err := row.Scan(&i.Armyid, &i.Unitid, &i.Count)
 	return i, err
 }
 
@@ -600,21 +621,22 @@ func (q *Queries) NewUnit(ctx context.Context, arg NewUnitParams) (Unit, error) 
 
 const newUnitArmy = `-- name: NewUnitArmy :one
 INSERT INTO
-    army_units(armyId, unitId)
+    army_units(armyId, unitId, count)
 VALUES
-    (?, ?)
-RETURNING armyid, unitid
+    (?, ?, ?)
+RETURNING armyid, unitid, count
 `
 
 type NewUnitArmyParams struct {
 	Armyid int64
 	Unitid int64
+	Count  int64
 }
 
 func (q *Queries) NewUnitArmy(ctx context.Context, arg NewUnitArmyParams) (ArmyUnit, error) {
-	row := q.db.QueryRowContext(ctx, newUnitArmy, arg.Armyid, arg.Unitid)
+	row := q.db.QueryRowContext(ctx, newUnitArmy, arg.Armyid, arg.Unitid, arg.Count)
 	var i ArmyUnit
-	err := row.Scan(&i.Armyid, &i.Unitid)
+	err := row.Scan(&i.Armyid, &i.Unitid, &i.Count)
 	return i, err
 }
 
@@ -747,6 +769,26 @@ func (q *Queries) UpdateUnit(ctx context.Context, arg UpdateUnitParams) error {
 		arg.Armies,
 		arg.Name,
 	)
+	return err
+}
+
+const updateUnitArmy = `-- name: UpdateUnitArmy :exec
+UPDATE
+    army_units
+SET
+    count = ?
+WHERE
+    armyId = ? AND unitId = ?
+`
+
+type UpdateUnitArmyParams struct {
+	Count  int64
+	Armyid int64
+	Unitid int64
+}
+
+func (q *Queries) UpdateUnitArmy(ctx context.Context, arg UpdateUnitArmyParams) error {
+	_, err := q.db.ExecContext(ctx, updateUnitArmy, arg.Count, arg.Armyid, arg.Unitid)
 	return err
 }
 

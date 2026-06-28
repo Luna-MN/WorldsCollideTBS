@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Godot;
 
 public class GameDataHandler
 {
@@ -57,11 +58,38 @@ public class GameDataHandler
         private Dictionary<long, UnitDataJSON> PopulateUnitsForArmy(long armyId)
         {
             var unitDict = new Dictionary<long, UnitDataJSON>();
+
             var army = GetArmy(armyId);
-            foreach (var UID in army.unitIds)
+            if (army == null)
             {
-                unitDict[UID] = GetUnit(UID);
+                GD.PushError($"PopulateUnitsForArmy: Could not find army with ID {armyId}.");
+                return unitDict;
             }
+
+            if (army.unitIds == null)
+            {
+                GD.PushError($"PopulateUnitsForArmy: Army {armyId} has null unitIds.");
+                return unitDict;
+            }
+
+            foreach (var uid in army.unitIds)
+            {
+                if (uid == null)
+                {
+                    GD.PushError($"PopulateUnitsForArmy: Army {armyId} contains a null unit ID entry.");
+                    continue;
+                }
+
+                var unit = GetUnit(uid.unitId);
+                if (unit == null)
+                {
+                    GD.PushError($"PopulateUnitsForArmy: Could not find unit with ID {uid.unitId} for army {armyId}.");
+                    continue;
+                }
+
+                unitDict[uid.unitId] = unit;
+            }
+
             return unitDict;
         }
         private Dictionary<long, ArmyDataJSON> PopulateArmiesForFaction(long factionId)

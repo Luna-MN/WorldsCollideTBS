@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Godot;
+using Packets;
 
 public class CurrentGameData
 {
@@ -14,11 +16,13 @@ public class CurrentGameData
     public ulong EnemyID;
     public long MyArmyID;
     public Dictionary<long, IUnit> MyUnits = new Dictionary<long, IUnit>();
+    public List<UnitData> MyUnitData = new List<UnitData>();
     public long EnemyArmyID;
     public Dictionary<long, IUnit> EnemyUnits = new Dictionary<long, IUnit> ();
     public Dictionary<Vector2I, TerrainInfo> Tiles = new Dictionary<Vector2I, TerrainInfo>();
     public TerrainGen TerrainGen, TerrainGen1, TerrainGen2;
     public Side MySide;
+    private int currUnitID = 0;
 
     public TerrainInfo GetTileAt(Vector2I pos)
     {
@@ -69,22 +73,43 @@ public class CurrentGameData
     public List<UnitData> InitUnitData(List<UnitDataJSON> units, ulong id)
     {
         var dataList = new List<UnitData>();
+        var army = Globals.GDH.GetArmy(MyArmyID);
         foreach (var unit in units)
         {
-            var data = new UnitData(unit, id);
-            dataList.Add(data);    
+            for (var i = 0; i < army.unitIds.First(x => x.unitId == unit.ID).count; i++)
+            {
+                var data = new UnitData(unit, id, currUnitID);
+                currUnitID++;
+                dataList.Add(data);    
+            }
         }
         return dataList;
     }
 
-    public void InitEnemyArmy(PackedScene unitScene)
+    public void InitEnemyArmy(PackedScene unitScene, UnitIDsMessage enemyIDs)
     {
         var units = GetOpponentUnits();
+        Dictionary<long, List<int>> unitIDs = new Dictionary<long, List<int>>(); // JSONID, current game ID
+        foreach (var ids in enemyIDs.Ids)
+        {
+            if (!unitIDs.ContainsKey(ids.Id))
+            {
+                unitIDs.Add(ids.Id, new List<int>() { ids.UnitId });
+            }
+            else
+            {
+                unitIDs[ids.Id].Add(ids.UnitId);
+            }
+        }
         foreach (var unit in units.Values)
         {
-            var unitNode = unitScene.Instantiate<UniversalUnit>();
-            unitNode.Data = new UnitData(unit, EnemyID);
-            EnemyUnits[unit.ID] = unitNode;
+            foreach (var id in unitIDs[unit.ID])
+            {
+                var unitNode = unitScene.Instantiate<UniversalUnit>();
+                unitNode.Data = new UnitData(unit, EnemyID, id);
+                EnemyUnits[unit.ID] = unitNode;
+            }
+
         }
     }
 

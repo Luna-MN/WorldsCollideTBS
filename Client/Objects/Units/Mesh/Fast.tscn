@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://3xyh25sdksyp"]
+
+[ext_resource type="PackedScene" uid="uid://byvv1roqwvxwe" path="res://Objects/Units/Mesh/DefaultUnit.tscn" id="1_5j3un"]
+
+[node name="unit" unique_id=1839850710 instance=ExtResource("1_5j3un")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

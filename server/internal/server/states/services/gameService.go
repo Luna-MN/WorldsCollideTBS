@@ -25,6 +25,7 @@ const (
 type PlayerGameData struct {
 	Player               *server.Client
 	PlayerFactionService *PlayerFactionService
+	ids                  *packets.Packet_UnitIds
 	Seeds                []int32
 	Seed                 int32
 }
@@ -131,32 +132,54 @@ func (g *GameService) HandleMessage(player *server.Client, msg packets.Msg) {
 		g.HandleSeedMessage(pd, msg.(*packets.Packet_Seed))
 	case *packets.Packet_ArmyId:
 		g.HandleArmyIdMessage(pd, msg.(*packets.Packet_ArmyId))
+	case *packets.Packet_UnitIds:
+		g.HandleUnitIdsMessage(pd, msg.(*packets.Packet_UnitIds))
 	case *packets.Packet_UnitPositions:
 		g.HandleUnitPositionsMessage(pd, msg.(*packets.Packet_UnitPositions))
 	}
 }
 
 func (g *GameService) HandleArmyIdMessage(pd *PlayerGameData, id *packets.Packet_ArmyId) {
-	g.Mux.Lock()
-	defer g.Mux.Unlock()
 	pd.PlayerFactionService.ArmyId = id.ArmyId.Id
-	pd.PlayerFactionService.InitUnitData()
-	if !g.ArmyIdsReceived {
-		g.ArmyIdsReceived = true
-		return
-	}
-	g.SendArmyIDs(g.player1)
-	g.SendArmyIDs(g.player2)
-
-	g.SendToClients(packets.NewOK())
-
-	g.player1.SocketSend(packets.NewSeed(g.Player1GameData.Seeds), server.WebSocket)
-	g.player2.SocketSend(packets.NewSeed(g.Player2GameData.Seeds), server.WebSocket)
 }
 
 func (g *GameService) SendArmyIDs(player *server.Client) {
 	player.SocketSendAs(packets.NewArmyId(g.GetClientData(g.player1).PlayerFactionService.ArmyId), g.player1.Id(), server.WebSocket)
 	player.SocketSendAs(packets.NewArmyId(g.GetClientData(g.player2).PlayerFactionService.ArmyId), g.player2.Id(), server.WebSocket)
+}
+func (g *GameService) HandleUnitIdsMessage(pd *PlayerGameData, ids *packets.Packet_UnitIds) {
+	// assign the players units with the IDs
+
+	if pd == nil {
+		g.logger.Println("HandleUnitIdsMessage received nil PlayerGameData")
+		return
+	}
+	if ids == nil || ids.UnitIds == nil {
+		g.logger.Println("HandleUnitIdsMessage received nil UnitIds packet")
+		return
+	}
+	if pd.PlayerFactionService == nil {
+		g.logger.Println("HandleUnitIdsMessage received PlayerGameData with nil PlayerFactionService")
+		return
+	}
+
+	g.Mux.Lock()
+	defer g.Mux.Unlock()
+	pd.PlayerFactionService.InitUnitData(ids)
+	pd.ids = ids
+	if !g.ArmyIdsReceived {
+		g.ArmyIdsReceived = true
+		return
+	}
+	g.logger.Println("All army IDs received")
+	g.SendArmyIDs(g.player1)
+	g.SendArmyIDs(g.player2)
+
+	g.player1.SocketSend(g.Player2GameData.ids, server.WebSocket)
+	g.player2.SocketSend(g.Player1GameData.ids, server.WebSocket)
+
+	g.player1.SocketSend(packets.NewSeed(g.Player1GameData.Seeds), server.WebSocket)
+	g.player2.SocketSend(packets.NewSeed(g.Player2GameData.Seeds), server.WebSocket)
 }
 
 func (g *GameService) HandleSeedMessage(playerData *PlayerGameData, msg *packets.Packet_Seed) {
@@ -170,7 +193,6 @@ func (g *GameService) HandleSeedMessage(playerData *PlayerGameData, msg *packets
 		g.seedsReceived = true
 		return
 	}
-	g.gameState = InProgress
 	g.logger.Println("Seeds Selected, Starting Game")
 	g.gameTerrainService = NewGameTerrainService(uint64(g.Player1GameData.Seed), uint64(g.Player2GameData.Seed), uint64(g.seed))
 	g.gameTerrainService.GenerateTerrain()
@@ -192,7 +214,7 @@ func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *
 		// convert to global position
 		pos := objects.HexToWorldPosition(int(unitPosition.Position.X), int(unitPosition.Position.Y))
 		pos = pos.Add(genPos)
-		pd.PlayerFactionService.units[unitPosition.UnitId].Pos = pos
+		pd.PlayerFactionService.Units[unitPosition.UnitId].SetPosition(&pos)
 	}
 	g.logger.Println("Unit positions received for ", pd.Player.Username())
 	if !g.UnitPositionsReceived {
@@ -202,22 +224,23 @@ func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *
 	g.logger.Println("All unit positions received")
 	g.SendUnitPositions(g.Player1GameData)
 	g.SendUnitPositions(g.Player2GameData)
+	g.gameState = InProgress
 }
 
 func (g *GameService) SendUnitPositions(pd *PlayerGameData) {
-	g.logger.Println(len(pd.PlayerFactionService.units), " units")
-	unitPositions := make([]*packets.UnitPositionMessage, 0, len(pd.PlayerFactionService.units))
-	for _, unit := range pd.PlayerFactionService.units {
-		tile := g.gameTerrainService.GetGlobalTileAt(unit.Pos)
+	g.logger.Println(len(pd.PlayerFactionService.Units), " Units")
+	unitPositions := make([]*packets.UnitPositionMessage, 0, len(pd.PlayerFactionService.Units))
+	for _, unit := range pd.PlayerFactionService.Units {
+		tile := g.gameTerrainService.GetGlobalTileAt(unit.Position())
 		if tile == nil {
-			g.logger.Printf("Warning: No tile found at position %v for unit %d\n", unit.Pos, unit.UnitID)
+			g.logger.Printf("Warning: No tile found at position %v for unit %d\n", unit.Position(), unit.Data().UnitID)
 			for _, tiles := range g.gameTerrainService.Tiles {
 				g.logger.Printf("t=%+v", tiles.Position)
 			}
 			continue
 		}
 		posI := tile.PositionI
-		unitPositions = append(unitPositions, packets.NewUnitPositionMessage(unit.UnitID, posI))
+		unitPositions = append(unitPositions, packets.NewUnitPositionMessage(unit.Data().UnitID, posI))
 	}
 	g.logger.Println("Sending unit positions as ", pd.Player.Username(), " : ", unitPositions)
 	g.SendToClientsAs(pd.Player.Id(), packets.NewUnitPositions(unitPositions))

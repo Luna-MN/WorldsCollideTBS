@@ -62,6 +62,9 @@ public partial class LoginAdmin : Node, IState
             case Packet.MsgOneofCase.GameData:
                 HandleGameData(packet.GameData);
                 break;
+            case Packet.MsgOneofCase.GameVersion:
+                HandleGameVersion();
+                break;
             case Packet.MsgOneofCase.OK:
                 ActionOnOkReceived?.Invoke();
                 ActionOnOkReceived = null;
@@ -71,6 +74,10 @@ public partial class LoginAdmin : Node, IState
     private void HandleGameData(GameDataMessage msg)
     {
         gameDataUpdater.UpdateVersion(msg.Version.Version, msg);
+    }
+    private void HandleGameVersion()
+    {
+        gameDataUpdater.DeserializeGameData();
     }
     public void OnWSConnectionClosed()
     {

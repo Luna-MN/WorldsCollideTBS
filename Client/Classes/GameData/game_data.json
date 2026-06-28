@@ -23,9 +23,18 @@
       "Name": "Default",
       "Description": "Test Army",
       "unitIds": [
-        3,
-        5,
-        6
+        {
+          "unitId": 3,
+          "count": 1
+        },
+        {
+          "unitId": 5,
+          "count": 1
+        },
+        {
+          "unitId": 6,
+          "count": 2
+        }
       ]
     },
     {
@@ -33,7 +42,10 @@
       "Name": "Plague Spreaders",
       "Description": "Spread Plague!",
       "unitIds": [
-        4
+        {
+          "unitId": 4,
+          "count": 1
+        }
       ]
     }
   ],

@@ -69,6 +69,7 @@ func (l *Login) OnExit() {
 
 func (l *Login) HandleGameDataVersion(id uint64, message *packets.Packet_GameVersion) {
 	if message.GameVersion.Version == internal.GameDataVersion {
+		l.client.SocketSend(packets.NewVersionPacket(internal.GameDataVersion), server.WebSocket)
 		return
 	}
 	l.gameData.HandleGameVersionUpdate()

@@ -82,7 +82,7 @@ public static class PacketUtil
         return p;
     }
 
-    public static UnitPositionMessage NewUnitPositionMessage(long id, Vector2I pos)
+    public static UnitPositionMessage NewUnitPositionMessage(int id, Vector2I pos)
     {
         return new UnitPositionMessage()
         {
@@ -95,7 +95,7 @@ public static class PacketUtil
         };
     }
 
-    public static Packet NewUnitPositionPacket(long id, Vector2I pos)
+    public static Packet NewUnitPositionPacket(int id, Vector2I pos)
     {
         return new Packet()
         {
@@ -110,4 +110,51 @@ public static class PacketUtil
             }
         };
     }
+
+    public static Packet NewHexPositions(int unitId, List<HexPositionMessage> hexPositions)
+    {
+        return new Packet()
+        {
+            HexPositions = new HexPositionsMessage()
+            {
+                Id = unitId,
+                Positions = { hexPositions }
+            }
+        };
+    }
+    public static HexPositionMessage NewHexPositionMessage(Vector2I pos)
+    {
+        return new HexPositionMessage()
+        {
+            Position = new Vector2Msg()
+            {
+                X = pos.X,
+                Y = pos.Y
+            }
+        };
+    }
+
+    public static Packet NewUnitIdsPacket(List<UIDData> data)
+    {
+        var p = new Packet();
+        var UIDS = new UnitIDsMessage();
+
+        foreach (var d in data)
+        {
+            var UID = new UnitIDMessage()
+            {
+                Id = d.UnitId,
+                UnitId = d.Id
+            };
+            UIDS.Ids.Add(UID);
+        }
+        p.UnitIds = UIDS;
+        return p;
+    }
+}
+
+public class UIDData
+{
+    public int Id { get; set; }
+    public long UnitId { get; set; }
 }

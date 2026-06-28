@@ -18,7 +18,7 @@ const (
 type UnitData struct {
 	UnitName string
 	OwnerID  uint64
-	UnitID   int64
+	UnitID   int32
 	Attacks  []string
 	Movement string
 	AP       int64
@@ -28,7 +28,7 @@ type UnitData struct {
 	Speed    Speed
 }
 
-func NewUnitData(unitName string, ownerID uint64, unitID int64, attacks []string, movement string, ap, hp, maxHP int64, speed Speed, pos objects.Vector3) *UnitData {
+func NewUnitData(unitName string, ownerID uint64, unitID int32, attacks []string, movement string, ap, hp, maxHP int64, speed Speed, pos objects.Vector3) *UnitData {
 	return &UnitData{
 		UnitName: unitName,
 		OwnerID:  ownerID,
@@ -43,11 +43,11 @@ func NewUnitData(unitName string, ownerID uint64, unitID int64, attacks []string
 	}
 }
 
-func NewUnitDataFromDB(unit *db.Unit, ownerID uint64) *UnitData {
+func NewUnitDataFromDB(unit *db.Unit, ownerID uint64, unitID int32) *UnitData {
 	return &UnitData{
 		UnitName: unit.Name,
 		OwnerID:  ownerID,
-		UnitID:   unit.ID,
+		UnitID:   unitID,
 		Attacks:  strings.Split(unit.Attacks.String, ","),
 		Movement: unit.Movement.String,
 		AP:       unit.Ap.Int64,
@@ -59,7 +59,7 @@ func NewUnitDataFromDB(unit *db.Unit, ownerID uint64) *UnitData {
 
 func (u *UnitData) UpdateUnit(UnitMessage *packets.UnitMessage) {
 	u.OwnerID = UnitMessage.OwnerId
-	u.UnitID = UnitMessage.UnitId
+	u.UnitID = int32(UnitMessage.UnitId)
 	u.AP = UnitMessage.AP
 	u.HP = UnitMessage.HP
 	u.MaxHP = UnitMessage.MaxHP

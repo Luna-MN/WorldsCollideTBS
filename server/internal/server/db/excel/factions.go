@@ -170,13 +170,14 @@ func (fi *FactionInput) Units(sheet string) map[string]db.Unit {
 		if err != nil {
 			unit = fi.CreateUnit(unitName, attacks, movement, MaxHPInt, APint, speedInt, armies)
 		}
-		if unit.Attacks.String != attacks || unit.Movement.String != movement || unit.Maxhp.Int64 != int64(MaxHPInt) || unit.Ap.Int64 != int64(APint) || unit.Speed.Int64 != int64(speedInt) {
-			fi.UpdateUnit(unitName, attacks, movement, MaxHPInt, APint, speedInt)
+		if unit.Attacks.String != attacks || unit.Movement.String != movement || unit.Maxhp.Int64 != int64(MaxHPInt) || unit.Ap.Int64 != int64(APint) || unit.Speed.Int64 != int64(speedInt) || unit.Armies.String != armies {
+			fi.UpdateUnit(unitName, attacks, movement, MaxHPInt, APint, speedInt, armies)
 			unit.Attacks.String = attacks
 			unit.Movement.String = movement
 			unit.Maxhp.Int64 = int64(MaxHPInt)
 			unit.Ap.Int64 = int64(APint)
 			unit.Speed.Int64 = int64(speedInt)
+			unit.Armies.String = armies
 		}
 		fi.workbook.SetCellValue(sheet, "H"+fmt.Sprint(unitRow), unit.ID)
 		units[unitName] = unit
@@ -202,13 +203,14 @@ func (fi *FactionInput) CreateUnit(name, attacks, movement string, maxHP, AP, sp
 	return unit
 }
 
-func (fi *FactionInput) UpdateUnit(name, attacks, movement string, maxHP, AP, speed int) {
+func (fi *FactionInput) UpdateUnit(name, attacks, movement string, maxHP, AP, speed int, armies string) {
 	err := fi.queries.UpdateUnit(fi.dbCtx, db.UpdateUnitParams{
 		Attacks:  db.NewNullString(attacks),
 		Movement: db.NewNullString(movement),
 		Maxhp:    db.NewNullInt64(int64(maxHP)),
 		Ap:       db.NewNullInt64(int64(AP)),
 		Speed:    db.NewNullInt64(int64(speed)),
+		Armies:   db.NewNullString(armies),
 		Name:     name,
 	})
 	if err != nil {
@@ -238,16 +240,35 @@ func (fi *FactionInput) ArmyUnit(armies map[string]db.Army, units map[string]db.
 	for _, unit := range units {
 		armiesSplit := strings.Split(unit.Armies.String, ",")
 		for _, name := range armiesSplit {
-			army := armies[name]
-			_, err := fi.queries.GetUnitArmy(fi.dbCtx, db.GetUnitArmyParams{
+			armySplit := strings.Split(name, " ")
+			army := armies[armySplit[0]]
+			Count := 1
+			if len(armySplit) > 1 {
+				Count, _ = strconv.Atoi(armySplit[1])
+			}
+			if Count == 0 {
+				Count = 1
+			}
+			ua, err := fi.queries.GetUnitArmy(fi.dbCtx, db.GetUnitArmyParams{
 				Armyid: army.ID,
 				Unitid: unit.ID,
 			})
 			if err != nil {
-				_, err = fi.queries.NewUnitArmy(fi.dbCtx, db.NewUnitArmyParams{
+				ua, err = fi.queries.NewUnitArmy(fi.dbCtx, db.NewUnitArmyParams{
 					Armyid: army.ID,
 					Unitid: unit.ID,
+					Count:  int64(Count),
 				})
+			}
+			if ua.Count != int64(Count) {
+				err = fi.queries.UpdateUnitArmy(fi.dbCtx, db.UpdateUnitArmyParams{
+					Armyid: army.ID,
+					Unitid: unit.ID,
+					Count:  int64(Count),
+				})
+				if err != nil {
+					fmt.Println(err)
+				}
 			}
 		}
 	}

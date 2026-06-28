@@ -1,12 +1,14 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Packets;
 using Packets.Util;
 
 public partial class ChooseArmy : Control, IState
 {
     [Export]
-    private PackedScene armyScene;
+    private PackedScene armyScene, unitScene;
     [Export]
     private GridContainer armyGrid;
     [Export]
@@ -50,7 +52,19 @@ public partial class ChooseArmy : Control, IState
     }
     private void StartGame()
     {
+        var data = Globals.GM.CurrentGameData.InitUnitData(Globals.GM.CurrentGameData.GetMyUnits().Values.ToList(), Globals.GM.clientId);
+        Globals.GM.CurrentGameData.MyUnitData = data;
         TrafficManager.Send(PacketUtil.NewArmyIdPacket(Globals.GM.CurrentGameData.MyArmyID));
+        var l = new List<UIDData>();
+        foreach (var d in data)
+        {
+            l.Add(new UIDData()
+            {
+                Id = d.UnitId,
+                UnitId = d.JSONID
+            });
+        }
+        TrafficManager.Send(PacketUtil.NewUnitIdsPacket(l));
     }
     public void OnPacketReceived(Packet packet)
     {
@@ -58,6 +72,9 @@ public partial class ChooseArmy : Control, IState
         {
             case Packet.MsgOneofCase.ArmyId:
                 HandleArmyId(packet.SenderId, packet.ArmyId);
+                break;
+            case Packet.MsgOneofCase.UnitIds:
+                HandleUnitIdsMessage(packet.UnitIds);
                 break;
             case Packet.MsgOneofCase.OK:
                 HandleOKMessage();
@@ -75,10 +92,13 @@ public partial class ChooseArmy : Control, IState
         {
             Globals.GM.CurrentGameData.EnemyArmyID = packetArmyId.Id;
         }
-
-
     }
-
+    private void HandleUnitIdsMessage(UnitIDsMessage packetUnitIds)
+    {
+        Globals.GM.CurrentGameData.InitEnemyArmy(unitScene, packetUnitIds);
+        GD.Print(Globals.GM.CurrentGameData.EnemyUnits.Count);
+        Globals.GM.SetState(GameManager.state.StartGame); 
+    }
     private void HandleOKMessage()
     {
         GD.Print(Globals.GM.CurrentGameData.GetMyArmy().Name);

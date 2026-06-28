@@ -9,3 +9,7 @@ enum TileType
 	underground,
 }
 @export var _tileType : TileType
+
+func a():
+	print(_tileNode)
+	print(_tileType)

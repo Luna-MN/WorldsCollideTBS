@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cnon35carkjsy"]
 
 [ext_resource type="Script" uid="uid://clmx0t3jjybt5" path="res://Objects/Units/Units/UniversalUnit/UniversalUnit.cs" id="1_7aepl"]
-[ext_resource type="PackedScene" uid="uid://sy3b34a2ikpp" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/units/neutral/unit.fbx" id="2_10h7y"]
+[ext_resource type="PackedScene" uid="uid://byvv1roqwvxwe" path="res://Objects/Units/Mesh/DefaultUnit.tscn" id="3_cg75n"]
 
 [node name="UniversalUnit" type="Node3D" unique_id=272241028]
 script = ExtResource("1_7aepl")
-MeshScene = ExtResource("2_10h7y")
+DefaultMeshScene = ExtResource("3_cg75n")

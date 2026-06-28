@@ -27,12 +27,17 @@ type TerrainInfo struct {
 	PositionL    Vector2I
 	Position     Vector3
 	Neighbors    []*TerrainInfo
+	MovementCost int
 }
 
 func NewTerrainInfo(tileType TileType) *TerrainInfo {
 	return &TerrainInfo{
 		TileType: tileType,
 	}
+}
+
+func (t *TerrainInfo) CalculateMovementCost() {
+	t.MovementCost = 1
 }
 
 type FeatureArgs struct {

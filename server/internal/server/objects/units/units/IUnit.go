@@ -5,17 +5,18 @@ import (
 	"server/internal/server/objects/units/Attack"
 	"server/internal/server/objects/units/Movement"
 	"server/internal/server/objects/units/units/util"
+	"server/pkg/packets"
 )
 
 type IUnit interface {
+	NewUnit(*util.UnitData)
 	Position() objects.Vector3
+	SetPosition(*objects.Vector3)
 	Data() *util.UnitData
 
-	InitUnit()
-
-	Attacks() []*Attack.IAttack
+	Attacks() *[]Attack.IAttack
 	Attack(IUnit)
 
 	Movement() *Movement.IMovement
-	Move(path []*objects.TerrainInfo)
+	Move(path []*packets.HexPositionMessage)
 }

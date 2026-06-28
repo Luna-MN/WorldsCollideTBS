@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"fmt"
 	"server/internal"
 	"server/internal/server"
 	"server/internal/server/db"
@@ -68,7 +69,18 @@ func (g *GameDataService) HandleGameVersionUpdate() {
 		if err != nil {
 			return
 		}
-		arm := packets.NewArmyDataFromDB(a, unitIds)
+		unitArmyData := make([]*packets.UnitArmyData, len(unitIds))
+		for j, unitID := range unitIds {
+			count, err := g.queries.GetArmyUnitCount(g.dbCtx, db.GetArmyUnitCountParams{
+				Armyid: a.ID,
+				Unitid: unitID,
+			})
+			if err != nil {
+				continue
+			}
+			unitArmyData[j] = packets.NewUnitArmyData(unitID, int32(count))
+		}
+		arm := packets.NewArmyDataFromDB(a, unitArmyData)
 		armiesData[i] = arm
 	}
 	for i, u := range units {
@@ -81,6 +93,7 @@ func (g *GameDataService) HandleGameVersionUpdate() {
 	}
 
 	// send that packet
+	fmt.Println(armiesData)
 	GD := packets.NewData(internal.GameDataVersion, factionData, armiesData, unitsData)
 	g.client.SocketSend(GD, server.WebSocket)
 }

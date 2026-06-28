@@ -23,6 +23,7 @@ type ArmyFaction struct {
 type ArmyUnit struct {
 	Armyid int64
 	Unitid int64
+	Count  int64
 }
 
 type Faction struct {

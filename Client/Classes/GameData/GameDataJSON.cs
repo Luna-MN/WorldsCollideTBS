@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
+using Godot;
 using Packets;
 
 public class GameDataJSON
@@ -42,7 +44,7 @@ public class ArmyDataJSON
     public long ID;
     public string Name;
     public string Description;
-    public long[] unitIds;
+    public UnitArmyDataJSON[] unitIds;
     [JsonConstructor]
     public ArmyDataJSON(){}
     public ArmyDataJSON(ArmyData army)
@@ -50,7 +52,26 @@ public class ArmyDataJSON
         ID = army.Id;
         Name = army.Name;
         Description = army.Description;
-        unitIds = army.UnitIds.ToArray();
+        var uIDList = new List<UnitArmyDataJSON>();
+        foreach (var unit in army.UnitIds)
+        {
+            uIDList.Add(new UnitArmyDataJSON(unit.UnitId, unit.Count));
+        }
+        unitIds = uIDList.ToArray();
+        GD.Print(unitIds.Length + " units" + unitIds[0].unitId);
+    }
+}
+
+public class UnitArmyDataJSON
+{
+    public long unitId;
+    public int count;
+    [JsonConstructor]
+    public UnitArmyDataJSON(){}
+    public UnitArmyDataJSON(long unitId, int count)
+    {
+        this.unitId = unitId;
+        this.count = count;
     }
 }
 

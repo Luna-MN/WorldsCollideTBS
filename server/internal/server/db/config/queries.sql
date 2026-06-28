@@ -187,10 +187,26 @@ WHERE
 
 -- name: NewUnitArmy :one
 INSERT INTO
-    army_units(armyId, unitId)
+    army_units(armyId, unitId, count)
 VALUES
-    (?, ?)
+    (?, ?, ?)
 RETURNING *;
+
+-- name: GetArmyUnitCount :one
+SELECT
+    count
+FROM
+    army_units
+WHERE
+    armyId = ? AND unitId = ?;
+
+-- name: UpdateUnitArmy :exec
+UPDATE
+    army_units
+SET
+    count = ?
+WHERE
+    armyId = ? AND unitId = ?;
 
 -- name: GetAllFactions :many
 SELECT

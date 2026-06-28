@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS army_faction (
 CREATE TABLE IF NOT EXISTS army_units (
                                   armyId INTEGER NOT NULL REFERENCES army(id),
                                   unitId INTEGER NOT NULL REFERENCES units(id),
+                                  count INTEGER DEFAULT 1 NOT NULL,
                                   PRIMARY KEY (armyId, unitId)
 );
 

@@ -4,7 +4,9 @@ import (
 	"context"
 	"server/internal/server"
 	"server/internal/server/db"
+	"server/internal/server/objects/units/units"
 	"server/internal/server/objects/units/units/util"
+	"server/pkg/packets"
 )
 
 type PlayerFactionService struct {
@@ -13,7 +15,7 @@ type PlayerFactionService struct {
 
 	ArmyId int64
 
-	units map[int64]*util.UnitData
+	Units map[int32]units.IUnit
 
 	queries *db.Queries
 	dbCtx   context.Context
@@ -33,19 +35,58 @@ func (p *PlayerFactionService) GetArmyId() int64 {
 	return p.ArmyId
 }
 
-func (p *PlayerFactionService) InitUnitData() {
-	units, err := p.queries.GetUnitIdsForArmy(p.dbCtx, p.ArmyId)
+func (p *PlayerFactionService) InitUnitData(UnitIds *packets.Packet_UnitIds) {
+	if UnitIds == nil || UnitIds.UnitIds == nil {
+		p.gameService.logger.Println("InitUnitData received nil UnitIds packet")
+		return
+	}
+
+	unitsDB, err := p.queries.GetUnitIdsForArmy(p.dbCtx, p.ArmyId)
 	if err != nil {
 		p.gameService.logger.Printf("Failed to get unit ids for army, %v", err)
 		return
 	}
-	p.units = make(map[int64]*util.UnitData)
-	for _, unitID := range units {
+
+	p.Units = make(map[int32]units.IUnit)
+	PlayerIDs := make(map[int64][]int32)
+	for _, message := range UnitIds.UnitIds.Ids {
+		if message == nil {
+			continue
+		}
+		PlayerIDs[message.Id] = append(PlayerIDs[message.Id], message.UnitId)
+	}
+	for _, unitID := range unitsDB {
 		unitDB, err := p.queries.GetUnitById(p.dbCtx, unitID)
 		if err != nil {
 			p.gameService.logger.Printf("Failed to get unit by id, %v", err)
 			continue
 		}
-		p.units[unitID] = util.NewUnitDataFromDB(&unitDB, p.client.Id())
+
+		unitCount, err := p.queries.GetArmyUnitCount(p.dbCtx, db.GetArmyUnitCountParams{
+			Armyid: p.ArmyId,
+			Unitid: unitID,
+		})
+		if err != nil {
+			p.gameService.logger.Printf("Failed to get army unit count, %v", err)
+			continue
+		}
+
+		playerUnitIDs := PlayerIDs[unitID]
+		if len(playerUnitIDs) < int(unitCount) {
+			p.gameService.logger.Printf(
+				"Not enough unit ids for unit %d: got %d, expected %d",
+				unitID,
+				len(playerUnitIDs),
+				unitCount,
+			)
+			continue
+		}
+
+		for i := 0; i < int(unitCount); i++ {
+			playerUnitID := playerUnitIDs[i]
+			p.Units[playerUnitID] = units.NewUniversalUnit()
+			p.Units[playerUnitID].NewUnit(util.NewUnitDataFromDB(&unitDB, p.client.Id(), playerUnitID))
+		}
+
 	}
 }

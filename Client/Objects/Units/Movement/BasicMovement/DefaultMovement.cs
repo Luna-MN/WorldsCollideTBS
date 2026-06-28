@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using Godot;
+using Packets;
+using Packets.Util;
 
 public class DefaultMovement : IMovement
 {
     public IUnit Unit { get; set; }
     public Node3D Node { get; set; }
+    public List<HexPositionMessage> PrevMove { get; set; }
     public void InitMovement(IUnit unit, Node3D node)
     {
         Unit = unit;
@@ -35,5 +38,12 @@ public class DefaultMovement : IMovement
 
     public void SendModePacket(List<TerrainInfo> path)
     {
+        var hexPositions = new List<HexPositionMessage>();
+        foreach (var tile in path)
+        {
+            hexPositions.Add(PacketUtil.NewHexPositionMessage(tile.PositionI));
+        }
+        PrevMove = hexPositions;
+        TrafficManager.Send(PacketUtil.NewHexPositions(Unit.Data.UnitId, hexPositions));
     }
 }

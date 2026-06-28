@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://qobkapga7kay" path="res://States/ChooseArmy/ChooseArmy.cs" id="1_nwqmu"]
 [ext_resource type="PackedScene" uid="uid://cj0wuaa8xj7vx" path="res://Objects/ArmyButton/ArmyButton.tscn" id="2_8pcgd"]
 [ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="2_62f57"]
+[ext_resource type="PackedScene" uid="uid://cnon35carkjsy" path="res://Objects/Units/Units/UniversalUnit/UniversalUnit.tscn" id="3_ecsp6"]
 
 [node name="ChooseArmy" type="Control" unique_id=1839532097 node_paths=PackedStringArray("armyGrid", "armyScroll", "waitPlease")]
 layout_mode = 3
@@ -13,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nwqmu")
 armyScene = ExtResource("2_8pcgd")
+unitScene = ExtResource("3_ecsp6")
 armyGrid = NodePath("ScrollContainer/GridContainer")
 armyScroll = NodePath("ScrollContainer")
 waitPlease = NodePath("RichTextLabel")

@@ -86,15 +86,11 @@ func NewHexPosition(position objects.Vector3) *HexPositionMessage {
 	}
 }
 
-func NewHexPositions(id uint64, positions []objects.Vector3) *Packet_HexPositions {
-	var hexPositions []*HexPositionMessage
-	for _, position := range positions {
-		hexPositions = append(hexPositions, NewHexPosition(position))
-	}
+func NewHexPositions(id int32, positions []*HexPositionMessage) *Packet_HexPositions {
 	return &Packet_HexPositions{
 		HexPositions: &HexPositionsMessage{
 			Id:        id,
-			Positions: hexPositions,
+			Positions: positions,
 		},
 	}
 }
@@ -108,12 +104,19 @@ func NewFactionDataFromDB(f db.Faction, armies []int64) *FactionData {
 	}
 }
 
-func NewArmyDataFromDB(a db.Army, units []int64) *ArmyData {
+func NewArmyDataFromDB(a db.Army, units []*UnitArmyData) *ArmyData {
 	return &ArmyData{
 		Id:          a.ID,
 		Name:        a.Name,
 		Description: a.Description.String,
 		UnitIds:     units,
+	}
+}
+
+func NewUnitArmyData(id int64, count int32) *UnitArmyData {
+	return &UnitArmyData{
+		UnitId: id,
+		Count:  count,
 	}
 }
 
@@ -153,7 +156,7 @@ func NewData(version string, fs []*FactionData, as []*ArmyData, us []*UnitData) 
 	}
 }
 
-func NewUnitPositionMessage(unitId int64, pos objects.Vector2I) *UnitPositionMessage {
+func NewUnitPositionMessage(unitId int32, pos objects.Vector2I) *UnitPositionMessage {
 	return &UnitPositionMessage{
 		UnitId:   unitId,
 		Position: NewVector2I(int32(pos.X), int32(pos.Y)),

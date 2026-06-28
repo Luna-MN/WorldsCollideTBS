@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://byvv1roqwvxwe"]
+
+[ext_resource type="PackedScene" uid="uid://sy3b34a2ikpp" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/units/neutral/unit.fbx" id="1_nsboq"]
+
+[node name="unit" unique_id=1839850710 instance=ExtResource("1_nsboq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

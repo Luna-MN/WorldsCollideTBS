@@ -15,7 +15,7 @@ public class GameDataUpdater
     public GameDataUpdater()
     {
         GetOrCreateTXT();
-        DeserializeGameData();
+        Globals.GDH = new GameDataHandler();
     }
     public string GetVersion() => version;
     public void UpdateVersion(string newVersion, GameDataMessage gameData)
@@ -66,15 +66,15 @@ public class GameDataUpdater
         file.StoreString(json);
     }
 
-    private void DeserializeGameData()
+    public void DeserializeGameData()
     {
         string filePath = path + GameDataFileName;
         if (!FileAccess.FileExists(filePath)) return;
         using FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
         string json = file.GetAsText();
         GameDataJSON data = JsonSerializer.Deserialize<GameDataJSON>(json, new JsonSerializerOptions{IncludeFields = true});
-        Globals.GDH = new GameDataHandler();
         Globals.GDH.Init(data);
+        GD.Print(Globals.GDH.GetFactions().Count);
     }
 
     private void GetOrCreateTXT()

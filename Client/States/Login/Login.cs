@@ -63,10 +63,18 @@ public partial class Login : Control, IState
             case Packet.MsgOneofCase.GameData:
                 HandleGameData(packet.GameData);
                 break;
+            case Packet.MsgOneofCase.GameVersion:
+                HandleGameVersion();
+                break;
             default:
                 GD.Print($"Unknown packet received: {packet.MsgCase}");
                 break;
         }
+    }
+
+    private void HandleGameVersion()
+    {
+        gameDataUpdater.DeserializeGameData();
     }
 
     private void HandleOKMessage()

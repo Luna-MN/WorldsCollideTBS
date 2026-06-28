@@ -54,12 +54,14 @@ public partial class StartGame : Node3D, IState
                         break;
                 }
                 break;
+            case Packet.MsgOneofCase.UnitIds:
+                HandleUnitIdsMessage(packet.UnitIds);
+                break;
             case Packet.MsgOneofCase.UnitPositions:
                 HandleUnitPositionsMessage(packet.SenderId, packet.UnitPositions);
                 break;
         }
     }
-
     private void ThreeSeedMessageReceived(SeedMessage msg)
     {
         if (msg.Seed.Count < 3)
@@ -89,13 +91,16 @@ public partial class StartGame : Node3D, IState
         log.info($"Seeds: {Globals.GM.CurrentGameData.LeftSeed} {Globals.GM.CurrentGameData.RightSeed}");
         Globals.GM.CurrentGameData.GameSeed = seedMessage.Seed[1];
     }
+    private void HandleUnitIdsMessage(UnitIDsMessage packetUnitIds)
+    {
+        Globals.GM.CurrentGameData.InitEnemyArmy(unitScene, packetUnitIds);
+        GD.Print(Globals.GM.CurrentGameData.EnemyUnits.Count);
+    }
     private void HandleUnitPositionsMessage(ulong senderId, UnitPositionsMessage packetUnitPositions)
     {
         log.info(senderId + " sent unit positions");
         if (senderId != Globals.GM.clientId)
         {
-            Globals.GM.CurrentGameData.InitEnemyArmy(unitScene);
-            GD.Print(Globals.GM.CurrentGameData.EnemyUnits.Count);
             foreach (var unit in packetUnitPositions.Units)
             {
                 Globals.GM.CurrentGameData.EnemyUnits[unit.UnitId].PositionI = new Vector2I(unit.Position.X, unit.Position.Y);
@@ -175,7 +180,7 @@ public partial class StartGame : Node3D, IState
     // after hide seeds create a unit for each unit in my units, and then add them to HNode3D, use universalUnit
     private void CreateUnits()
     {
-        var data = Globals.GM.CurrentGameData.InitUnitData(Globals.GM.CurrentGameData.GetMyUnits().Values.ToList(), Globals.GM.clientId);
+        var data = Globals.GM.CurrentGameData.MyUnitData;
         // create the terrains before creating the units
         terrainList = [];
         for (int i = 0; i < data.Count; i++)
