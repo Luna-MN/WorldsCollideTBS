@@ -85,7 +85,11 @@ func (p *PlayerFactionService) InitUnitData(UnitIds *packets.Packet_UnitIds) {
 		for i := 0; i < int(unitCount); i++ {
 			playerUnitID := playerUnitIDs[i]
 			p.Units[playerUnitID] = units.NewUniversalUnit()
-			p.Units[playerUnitID].NewUnit(util.NewUnitDataFromDB(&unitDB, p.client.Id(), playerUnitID))
+			oc := p.gameService.player1
+			if p.client == p.gameService.player1 {
+				oc = p.gameService.player2
+			}
+			p.Units[playerUnitID].NewUnit(util.NewUnitDataFromDB(&unitDB, p.client.Id(), playerUnitID), p.client, oc)
 		}
 
 	}

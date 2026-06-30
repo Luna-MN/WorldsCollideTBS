@@ -136,6 +136,8 @@ func (g *GameService) HandleMessage(player *server.Client, msg packets.Msg) {
 		g.HandleUnitIdsMessage(pd, msg.(*packets.Packet_UnitIds))
 	case *packets.Packet_UnitPositions:
 		g.HandleUnitPositionsMessage(pd, msg.(*packets.Packet_UnitPositions))
+	case *packets.Packet_HexPositions:
+		g.HandleHexPositionsMessage(pd, msg.(*packets.Packet_HexPositions))
 	}
 }
 
@@ -215,6 +217,7 @@ func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *
 		pos := objects.HexToWorldPosition(int(unitPosition.Position.X), int(unitPosition.Position.Y))
 		pos = pos.Add(genPos)
 		pd.PlayerFactionService.Units[unitPosition.UnitId].SetPosition(&pos)
+		//g.gameTerrainService.GetTileAt(packets.UnwrapVector2I(unitPosition.Position)).Unit = unitPosition.UnitId
 	}
 	g.logger.Println("Unit positions received for ", pd.Player.Username())
 	if !g.UnitPositionsReceived {
@@ -227,6 +230,43 @@ func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *
 	g.gameState = InProgress
 }
 
+func (g *GameService) HandleHexPositionsMessage(pd *PlayerGameData, positions *packets.Packet_HexPositions) {
+
+	unit, ok := pd.PlayerFactionService.Units[positions.HexPositions.Id]
+	if !ok || unit == nil {
+		g.logger.Printf("HandleHexPositionsMessage received unknown unit id %d", positions.HexPositions.Id)
+		return
+	}
+
+	firstPosition := positions.HexPositions.Positions[0]
+	lastPosition := positions.HexPositions.Positions[len(positions.HexPositions.Positions)-1]
+
+	if firstPosition == nil || firstPosition.Position == nil {
+		g.logger.Println("HandleHexPositionsMessage received nil first position")
+		return
+	}
+	if lastPosition == nil || lastPosition.Position == nil {
+		g.logger.Println("HandleHexPositionsMessage received nil last position")
+		return
+	}
+
+	if unit.Move(positions.HexPositions.Positions) {
+		startTile := g.gameTerrainService.GetTileAt(packets.UnwrapVector2I(firstPosition.Position))
+		endTile := g.gameTerrainService.GetTileAt(packets.UnwrapVector2I(lastPosition.Position))
+
+		if startTile == nil {
+			g.logger.Println("HandleHexPositionsMessage start tile was nil")
+			return
+		}
+		if endTile == nil {
+			g.logger.Println("HandleHexPositionsMessage end tile was nil")
+			return
+		}
+
+		startTile.Unit = 0
+		endTile.Unit = unit.Data().UnitID
+	}
+}
 func (g *GameService) SendUnitPositions(pd *PlayerGameData) {
 	g.logger.Println(len(pd.PlayerFactionService.Units), " Units")
 	unitPositions := make([]*packets.UnitPositionMessage, 0, len(pd.PlayerFactionService.Units))

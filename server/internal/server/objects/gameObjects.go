@@ -28,6 +28,7 @@ type TerrainInfo struct {
 	Position     Vector3
 	Neighbors    []*TerrainInfo
 	MovementCost int
+	Unit         int32
 }
 
 func NewTerrainInfo(tileType TileType) *TerrainInfo {

@@ -488,6 +488,7 @@ type UnitData struct {
 	AP            int64                  `protobuf:"varint,6,opt,name=AP,proto3" json:"AP,omitempty"`
 	Speed         Speeds                 `protobuf:"varint,7,opt,name=Speed,proto3,enum=packets.Speeds" json:"Speed,omitempty"`
 	FactionId     int64                  `protobuf:"varint,8,opt,name=factionId,proto3" json:"factionId,omitempty"`
+	Support       string                 `protobuf:"bytes,9,opt,name=support,proto3" json:"support,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -576,6 +577,13 @@ func (x *UnitData) GetFactionId() int64 {
 		return x.FactionId
 	}
 	return 0
+}
+
+func (x *UnitData) GetSupport() string {
+	if x != nil {
+		return x.Support
+	}
+	return ""
 }
 
 type ChatMessage struct {
@@ -1060,7 +1068,7 @@ func (x *QueueMessage) GetQueueType() string {
 
 type HexPositionMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Position      *Vector2Msg            `protobuf:"bytes,1,opt,name=position,proto3" json:"position,omitempty"`
+	Position      *Vector2IMsg           `protobuf:"bytes,1,opt,name=position,proto3" json:"position,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1095,7 +1103,7 @@ func (*HexPositionMessage) Descriptor() ([]byte, []int) {
 	return file_packets_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *HexPositionMessage) GetPosition() *Vector2Msg {
+func (x *HexPositionMessage) GetPosition() *Vector2IMsg {
 	if x != nil {
 		return x.Position
 	}
@@ -2241,7 +2249,7 @@ const file_packets_proto_rawDesc = "" +
 	"\aunitIds\x18\x04 \x03(\v2\x15.packets.UnitArmyDataR\aunitIds\"<\n" +
 	"\fUnitArmyData\x12\x16\n" +
 	"\x06unitId\x18\x01 \x01(\x03R\x06unitId\x12\x14\n" +
-	"\x05count\x18\x02 \x01(\x05R\x05count\"\xcf\x01\n" +
+	"\x05count\x18\x02 \x01(\x05R\x05count\"\xe9\x01\n" +
 	"\bUnitData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
@@ -2250,7 +2258,8 @@ const file_packets_proto_rawDesc = "" +
 	"\x05maxHP\x18\x05 \x01(\x03R\x05maxHP\x12\x0e\n" +
 	"\x02AP\x18\x06 \x01(\x03R\x02AP\x12%\n" +
 	"\x05Speed\x18\a \x01(\x0e2\x0f.packets.SpeedsR\x05Speed\x12\x1c\n" +
-	"\tfactionId\x18\b \x01(\x03R\tfactionId\"b\n" +
+	"\tfactionId\x18\b \x01(\x03R\tfactionId\x12\x18\n" +
+	"\asupport\x18\t \x01(\tR\asupport\"b\n" +
 	"\vChatMessage\x12%\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x11.packets.ChatTypeR\x04type\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x12\x1a\n" +
@@ -2275,9 +2284,9 @@ const file_packets_proto_rawDesc = "" +
 	"\x12ChangeStateMessage\x12\x1c\n" +
 	"\tstateName\x18\x01 \x01(\tR\tstateName\",\n" +
 	"\fQueueMessage\x12\x1c\n" +
-	"\tQueueType\x18\x01 \x01(\tR\tQueueType\"E\n" +
-	"\x12HexPositionMessage\x12/\n" +
-	"\bposition\x18\x01 \x01(\v2\x13.packets.Vector2MsgR\bposition\"`\n" +
+	"\tQueueType\x18\x01 \x01(\tR\tQueueType\"F\n" +
+	"\x12HexPositionMessage\x120\n" +
+	"\bposition\x18\x01 \x01(\v2\x14.packets.Vector2IMsgR\bposition\"`\n" +
 	"\x13HexPositionsMessage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x129\n" +
 	"\tpositions\x18\x02 \x03(\v2\x1b.packets.HexPositionMessageR\tpositions\"Y\n" +
@@ -2415,7 +2424,7 @@ var file_packets_proto_depIdxs = []int32{
 	7,  // 0: packets.ArmyData.unitIds:type_name -> packets.UnitArmyData
 	1,  // 1: packets.UnitData.Speed:type_name -> packets.Speeds
 	0,  // 2: packets.ChatMessage.type:type_name -> packets.ChatType
-	3,  // 3: packets.HexPositionMessage.position:type_name -> packets.Vector2Msg
+	4,  // 3: packets.HexPositionMessage.position:type_name -> packets.Vector2IMsg
 	19, // 4: packets.HexPositionsMessage.positions:type_name -> packets.HexPositionMessage
 	10, // 5: packets.IDsMessage.IDs:type_name -> packets.IdMessage
 	1,  // 6: packets.UnitMessage.speed:type_name -> packets.Speeds

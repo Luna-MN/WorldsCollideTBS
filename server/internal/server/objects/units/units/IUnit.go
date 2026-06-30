@@ -1,6 +1,7 @@
 package units
 
 import (
+	"server/internal/server"
 	"server/internal/server/objects"
 	"server/internal/server/objects/units/Attack"
 	"server/internal/server/objects/units/Movement"
@@ -9,7 +10,7 @@ import (
 )
 
 type IUnit interface {
-	NewUnit(*util.UnitData)
+	NewUnit(*util.UnitData, *server.Client, *server.Client)
 	Position() objects.Vector3
 	SetPosition(*objects.Vector3)
 	Data() *util.UnitData
@@ -18,5 +19,5 @@ type IUnit interface {
 	Attack(IUnit)
 
 	Movement() *Movement.IMovement
-	Move(path []*packets.HexPositionMessage)
+	Move(path []*packets.HexPositionMessage) bool
 }

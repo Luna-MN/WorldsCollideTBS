@@ -1,13 +1,13 @@
 using Godot;
 using System;
 using Packets;
+using Packets.Util;
 
 public partial class MainGame : Node3D, ISmoothState
 {
     [Export]
     public Log log { get; set; }
     public Node[] PrevObjects { get; set; }
-    [Export] public PackedScene unitScene;
     public bool IsSmoothState => true;
     public Node[] TransitionNodes { get; set; }
     [Export] private TerrainGen TerrainGen1, MainGameTerrainGen, TerrainGen2;
@@ -62,6 +62,7 @@ public partial class MainGame : Node3D, ISmoothState
         foreach (var unit in Globals.GM.CurrentGameData.EnemyUnits.Values)
         {
             var nodeU = (unit as Node3D);
+            Globals.GM.CurrentGameData.Tiles[unit.PositionI].Unit = unit;
             AddChild(nodeU);
             var uTile = Globals.GM.CurrentGameData.Tiles[unit.PositionI];
             nodeU.Position = uTile.Position + new Vector3(0, uTile.TileHeight, 0);
@@ -98,7 +99,33 @@ public partial class MainGame : Node3D, ISmoothState
     }
     public void OnPacketReceived(Packet packet)
     {
-        
+        switch (packet.MsgCase)
+        {
+            case Packet.MsgOneofCase.HexPositions:
+                HandleHexPositions(packet);
+                break;
+        }
+    }
+
+    private void HandleHexPositions(Packet packet)
+    {
+        if (packet.SenderId == Globals.GM.opponentId)
+        {
+            var unit = Globals.GM.CurrentGameData.EnemyUnits[packet.HexPositions.Id];
+            var toPos = Globals.GM.CurrentGameData.GetTileAt(PacketUtil.UnwrapVec2I(packet.HexPositions.Positions[^1].Position));
+            var fromPos = Globals.GM.CurrentGameData.GetTileAt(PacketUtil.UnwrapVec2I(packet.HexPositions.Positions[0].Position));
+            unit.Move(fromPos, toPos, true);
+        }
+        else
+        {
+            var unit = Globals.GM.CurrentGameData.MyUnits[packet.HexPositions.Id];
+            var toPos = Globals.GM.CurrentGameData.GetTileAt(PacketUtil.UnwrapVec2I(packet.HexPositions.Positions[^1].Position));
+            var fromPos = Globals.GM.CurrentGameData.GetTileAt(PacketUtil.UnwrapVec2I(packet.HexPositions.Positions[0].Position));
+            if (unit.Movement.ValidateMovement(packet.HexPositions))
+            {
+                unit.Move(toPos, fromPos);
+            }
+        }
     }
 
     public void OnWSConnectionClosed()

@@ -14,7 +14,7 @@ public interface IUnit
     public void Attack(IUnit unit);
     public List<IAttack> Attacks { get; set; }
     
-    public void Move(TerrainInfo fromPos, TerrainInfo toPos);
+    public void Move(TerrainInfo fromPos, TerrainInfo toPos, bool message = false);
     public IMovement Movement { get; set; }
 
 }

@@ -133,7 +133,7 @@ func (q *Queries) GetAllFactions(ctx context.Context) ([]Faction, error) {
 
 const getAllUnits = `-- name: GetAllUnits :many
 SELECT
-    id, name, attacks, movement, maxhp, ap, speed, armies
+    id, name, attacks, movement, maxhp, ap, speed, armies, support
 FROM
     units
 `
@@ -156,6 +156,7 @@ func (q *Queries) GetAllUnits(ctx context.Context) ([]Unit, error) {
 			&i.Ap,
 			&i.Speed,
 			&i.Armies,
+			&i.Support,
 		); err != nil {
 			return nil, err
 		}
@@ -319,7 +320,7 @@ func (q *Queries) GetSteamUser(ctx context.Context, steamid sql.NullString) (Use
 
 const getUnit = `-- name: GetUnit :one
 SELECT
-    id, name, attacks, movement, maxhp, ap, speed, armies
+    id, name, attacks, movement, maxhp, ap, speed, armies, support
 FROM
     units
 WHERE
@@ -338,6 +339,7 @@ func (q *Queries) GetUnit(ctx context.Context, name string) (Unit, error) {
 		&i.Ap,
 		&i.Speed,
 		&i.Armies,
+		&i.Support,
 	)
 	return i, err
 }
@@ -365,7 +367,7 @@ func (q *Queries) GetUnitArmy(ctx context.Context, arg GetUnitArmyParams) (ArmyU
 
 const getUnitById = `-- name: GetUnitById :one
 SELECT
-    id, name, attacks, movement, maxhp, ap, speed, armies
+    id, name, attacks, movement, maxhp, ap, speed, armies, support
 FROM
     units
 WHERE
@@ -384,6 +386,7 @@ func (q *Queries) GetUnitById(ctx context.Context, id int64) (Unit, error) {
 		&i.Ap,
 		&i.Speed,
 		&i.Armies,
+		&i.Support,
 	)
 	return i, err
 }
@@ -579,10 +582,10 @@ func (q *Queries) NewGame(ctx context.Context, arg NewGameParams) (Game, error) 
 
 const newUnit = `-- name: NewUnit :one
 INSERT INTO
-    units(name, attacks, movement, maxHP, AP, Speed, Armies)
+    units(name, attacks, movement, maxHP, AP, Speed, Armies, support)
 VALUES
-    (?, ?, ?, ?, ?, ?, ?)
-RETURNING id, name, attacks, movement, maxhp, ap, speed, armies
+    (?, ?, ?, ?, ?, ?, ?, ?)
+RETURNING id, name, attacks, movement, maxhp, ap, speed, armies, support
 `
 
 type NewUnitParams struct {
@@ -593,6 +596,7 @@ type NewUnitParams struct {
 	Ap       sql.NullInt64
 	Speed    sql.NullInt64
 	Armies   sql.NullString
+	Support  sql.NullString
 }
 
 func (q *Queries) NewUnit(ctx context.Context, arg NewUnitParams) (Unit, error) {
@@ -604,6 +608,7 @@ func (q *Queries) NewUnit(ctx context.Context, arg NewUnitParams) (Unit, error) 
 		arg.Ap,
 		arg.Speed,
 		arg.Armies,
+		arg.Support,
 	)
 	var i Unit
 	err := row.Scan(
@@ -615,6 +620,7 @@ func (q *Queries) NewUnit(ctx context.Context, arg NewUnitParams) (Unit, error) 
 		&i.Ap,
 		&i.Speed,
 		&i.Armies,
+		&i.Support,
 	)
 	return i, err
 }
@@ -744,7 +750,8 @@ SET
     maxHP = ?,
     AP = ?,
     Speed = ?,
-    Armies = ?
+    Armies = ?,
+    support = ?
 WHERE
     name = ?
 `
@@ -756,6 +763,7 @@ type UpdateUnitParams struct {
 	Ap       sql.NullInt64
 	Speed    sql.NullInt64
 	Armies   sql.NullString
+	Support  sql.NullString
 	Name     string
 }
 
@@ -767,6 +775,7 @@ func (q *Queries) UpdateUnit(ctx context.Context, arg UpdateUnitParams) error {
 		arg.Ap,
 		arg.Speed,
 		arg.Armies,
+		arg.Support,
 		arg.Name,
 	)
 	return err

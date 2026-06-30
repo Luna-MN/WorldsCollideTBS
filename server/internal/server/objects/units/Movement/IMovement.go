@@ -9,6 +9,6 @@ type IMovement interface {
 	UnitId() int32
 	ClientId() uint64
 	InitMovement(UnitId int32, client *server.Client, enemyClient *server.Client)
-	Move([]*packets.HexPositionMessage)
+	Move([]*packets.HexPositionMessage) bool
 	SendMovementPacket([]*packets.HexPositionMessage)
 }

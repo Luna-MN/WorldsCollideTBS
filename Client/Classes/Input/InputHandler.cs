@@ -199,7 +199,6 @@ public partial class InputHandler : Node3D
     
     private void HandleMainLeftClick()
     {
-        GD.Print(CurrentMouseNode.Position.ToString());
         if (CurrentMouseNode == null) return;
         var nodeInfo = CurrentMouseNode.TerrainInfo;
         if (nodeInfo == null) return;
@@ -211,7 +210,7 @@ public partial class InputHandler : Node3D
     }
     private void HandleUnitClick(TerrainInfo UnitInfo, Tile UnitTile)
     {
-        if (SelectedTile == null && UnitInfo.Unit == null)
+        if ((SelectedTile == null && UnitInfo.Unit == null) || (UnitInfo.Unit != null && UnitInfo.Unit.Data.OwnerId != Globals.GM.clientId))
         {
             return;
         }
@@ -229,9 +228,15 @@ public partial class InputHandler : Node3D
         }
         if (SelectedTile != null && UnitInfo.Unit != null)
         {
-            GD.PrintErr("Tile Already has a unit on it");
-            HandleAttack(SelectedTile.TerrainInfo.Unit, UnitInfo.Unit);
             // Handle attack/ healing
+            if (UnitInfo.Unit.Data.OwnerId != Globals.GM.clientId)
+            {
+                HandleAttack(SelectedTile.TerrainInfo.Unit, UnitInfo.Unit);
+            }
+            else
+            {
+                HandleSupport(SelectedTile.TerrainInfo.Unit, UnitInfo.Unit);
+            }
         }
     }
     private void HandleMovement(TerrainInfo fromPos, TerrainInfo toPos, IUnit unit)
@@ -241,5 +246,10 @@ public partial class InputHandler : Node3D
     private void HandleAttack(IUnit me, IUnit enemy)
     {
         me.Attack(enemy);
+    }
+
+    private void HandleSupport(IUnit me, IUnit ally)
+    {
+        //me.Support(ally)
     }
 }

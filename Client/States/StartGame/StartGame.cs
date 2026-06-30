@@ -98,7 +98,6 @@ public partial class StartGame : Node3D, IState
     }
     private void HandleUnitPositionsMessage(ulong senderId, UnitPositionsMessage packetUnitPositions)
     {
-        log.info(senderId + " sent unit positions");
         if (senderId != Globals.GM.clientId)
         {
             foreach (var unit in packetUnitPositions.Units)
@@ -192,6 +191,7 @@ public partial class StartGame : Node3D, IState
         foreach (var unitData in data)
         {
             var unit = unitScene.Instantiate<UniversalUnit>();
+            unit.Color = Globals.GM.CurrentGameData.MyColor == Colors.White ? Globals.GM.CurrentGameData.MyDefaultColor : Globals.GM.CurrentGameData.MyColor;
             var unitIndex = data.IndexOf(unitData);
             unit.Data = unitData;
             AddChild(unit);

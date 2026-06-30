@@ -7,15 +7,19 @@ public class DefaultMovement : IMovement
 {
     public IUnit Unit { get; set; }
     public Node3D Node { get; set; }
-    public List<HexPositionMessage> PrevMove { get; set; }
+    public HexPositionsMessage PrevMove { get; set; }
     public void InitMovement(IUnit unit, Node3D node)
     {
         Unit = unit;
         Node = node;
     }
-    public async void Move(List<TerrainInfo> path)
+    public async void Move(List<TerrainInfo> path, bool message = false)
     {
-        SendModePacket(path);
+        if (!message)
+        {
+            SendModePacket(path);
+        }
+
         foreach (var tile in path)
         {
             if (path.IndexOf(tile) == 0)
@@ -43,7 +47,14 @@ public class DefaultMovement : IMovement
         {
             hexPositions.Add(PacketUtil.NewHexPositionMessage(tile.PositionI));
         }
-        PrevMove = hexPositions;
-        TrafficManager.Send(PacketUtil.NewHexPositions(Unit.Data.UnitId, hexPositions));
+
+        var move = PacketUtil.NewHexPositions(Unit.Data.UnitId, hexPositions);
+        PrevMove = move.HexPositions;
+        TrafficManager.Send(move);
+    }
+
+    public bool ValidateMovement(HexPositionsMessage hexPositions)
+    {
+        return !hexPositions.Equals(PrevMove);
     }
 }

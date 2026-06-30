@@ -64,6 +64,7 @@ public partial class ChooseArmy : Control, IState
                 UnitId = d.JSONID
             });
         }
+        GD.Print("Sending unit ids: " + l.Count);
         TrafficManager.Send(PacketUtil.NewUnitIdsPacket(l));
     }
     public void OnPacketReceived(Packet packet)
@@ -96,7 +97,6 @@ public partial class ChooseArmy : Control, IState
     private void HandleUnitIdsMessage(UnitIDsMessage packetUnitIds)
     {
         Globals.GM.CurrentGameData.InitEnemyArmy(unitScene, packetUnitIds);
-        GD.Print(Globals.GM.CurrentGameData.EnemyUnits.Count);
         Globals.GM.SetState(GameManager.state.StartGame); 
     }
     private void HandleOKMessage()

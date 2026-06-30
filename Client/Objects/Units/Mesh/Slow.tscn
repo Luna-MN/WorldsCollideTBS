@@ -2,5 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://byvv1roqwvxwe" path="res://Objects/Units/Mesh/DefaultUnit.tscn" id="1_ral50"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ral50"]
+viewport_path = NodePath("ControlSubSpace/SubViewport")
+
 [node name="unit" unique_id=1839850710 instance=ExtResource("1_ral50")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="unit" parent="." index="0" unique_id=697158257]
+transform = Transform3D(300, 0, 0, 0, -1.3113417e-05, 300, 0, -300, -1.3113417e-05, 0, 0, 0)
+
+[node name="ControlSubSpace" parent="." index="1" unique_id=1055513179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.056277, 0)
+
+[node name="Sprite3D" parent="ControlSubSpace" index="1" unique_id=1115770193]
+texture = SubResource("ViewportTexture_ral50")

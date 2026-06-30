@@ -15,14 +15,18 @@ public class CurrentGameData
     public long RightSeed;
     public ulong EnemyID;
     public long MyArmyID;
-    public Dictionary<long, IUnit> MyUnits = new Dictionary<long, IUnit>();
+    public Dictionary<int, IUnit> MyUnits = new Dictionary<int, IUnit>();
     public List<UnitData> MyUnitData = new List<UnitData>();
+    public Color MyColor = Colors.White;
+    public Color MyDefaultColor = Colors.Blue;
     public long EnemyArmyID;
-    public Dictionary<long, IUnit> EnemyUnits = new Dictionary<long, IUnit> ();
+    public Dictionary<int, IUnit> EnemyUnits = new Dictionary<int, IUnit> ();
+    public Color EnemyColor = Colors.White;
+    public Color EnemyDefaultColor = Colors.Red;
     public Dictionary<Vector2I, TerrainInfo> Tiles = new Dictionary<Vector2I, TerrainInfo>();
     public TerrainGen TerrainGen, TerrainGen1, TerrainGen2;
     public Side MySide;
-    private int currUnitID = 0;
+    private int currUnitID = 1;
 
     public TerrainInfo GetTileAt(Vector2I pos)
     {
@@ -106,8 +110,9 @@ public class CurrentGameData
             foreach (var id in unitIDs[unit.ID])
             {
                 var unitNode = unitScene.Instantiate<UniversalUnit>();
+                unitNode.Color = EnemyColor == Colors.White ? EnemyDefaultColor : EnemyColor;
                 unitNode.Data = new UnitData(unit, EnemyID, id);
-                EnemyUnits[unit.ID] = unitNode;
+                EnemyUnits[id] = unitNode;
             }
 
         }

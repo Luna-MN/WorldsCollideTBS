@@ -126,7 +126,7 @@ public static class PacketUtil
     {
         return new HexPositionMessage()
         {
-            Position = new Vector2Msg()
+            Position = new Vector2IMsg()
             {
                 X = pos.X,
                 Y = pos.Y
@@ -150,6 +150,15 @@ public static class PacketUtil
         }
         p.UnitIds = UIDS;
         return p;
+    }
+
+    public static Vector2I UnwrapVec2I(Vector2IMsg vec2)
+    {
+        return new Vector2I()
+        {
+            X = vec2.X,
+            Y = vec2.Y
+        };
     }
 }
 

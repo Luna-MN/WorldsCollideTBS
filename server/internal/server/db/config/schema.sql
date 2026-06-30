@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS units (
                                      maxHP INTEGER,
                                      AP INTEGER,
                                      Speed INTEGER, -- 0 Normal, 1 Fast, 2 Slow
-                                     Armies TEXT
+                                     Armies TEXT,
+                                     support TEXT
 );
 
 CREATE TABLE IF NOT EXISTS army_faction (

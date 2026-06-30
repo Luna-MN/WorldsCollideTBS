@@ -81,6 +81,7 @@ public class UnitDataJSON
     public string Name;
     public string Attacks;
     public string Movement;
+    public string Support;
     public long MaxHP;
     public long AP;
     public long speed;
@@ -97,5 +98,6 @@ public class UnitDataJSON
         AP = unit.AP;
         speed = (long)unit.Speed;
         factionId = unit.FactionId;
+        Support = unit.Support;
     }
 }

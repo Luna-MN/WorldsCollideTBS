@@ -82,7 +82,7 @@ func NewIds(Ids []uint64) *Packet_IDs {
 
 func NewHexPosition(position objects.Vector3) *HexPositionMessage {
 	return &HexPositionMessage{
-		Position: NewVector2(position.X, position.Z),
+		Position: NewVector2I(int32(position.X), int32(position.Z)),
 	}
 }
 
@@ -129,6 +129,7 @@ func NewUnitDataFromDB(u db.Unit, factionID int64) *UnitData {
 		MaxHP:     u.Maxhp.Int64,
 		AP:        u.Ap.Int64,
 		Speed:     Speeds(u.Speed.Int64),
+		Support:   u.Support.String,
 		FactionId: factionID,
 	}
 }
@@ -189,4 +190,11 @@ func NewVector2(x, y float32) *Vector2Msg {
 
 func NewVector2I(x, y int32) *Vector2IMsg {
 	return &Vector2IMsg{X: x, Y: y}
+}
+
+func UnwrapVector2I(position *Vector2IMsg) objects.Vector2I {
+	return objects.Vector2I{
+		X: int(position.X),
+		Y: int(position.Y),
+	}
 }

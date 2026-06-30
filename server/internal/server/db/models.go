@@ -51,6 +51,7 @@ type Unit struct {
 	Ap       sql.NullInt64
 	Speed    sql.NullInt64
 	Armies   sql.NullString
+	Support  sql.NullString
 }
 
 type User struct {

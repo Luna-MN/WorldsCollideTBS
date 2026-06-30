@@ -11,7 +11,8 @@ public partial class UniversalUnit : Node3D, IUnit
     public UnitData Data { get; set; }
     public Node3D TileNode { get; set; }
     [Export] public PackedScene MeshScene, DefaultMeshScene;
-    public Node3D Mesh;
+    public DefaultUnit Mesh;
+    public Color Color;
     public List<IAttack> Attacks { get; set; }
     public IMovement Movement { get; set; }
     public Vector2I PositionI { get; set; }
@@ -33,8 +34,11 @@ public partial class UniversalUnit : Node3D, IUnit
             FindMesh(Data.UnitName);
         }
 
-        Mesh = MeshScene?.Instantiate<Node3D>();
+        Mesh = MeshScene?.Instantiate<DefaultUnit>();
+        BuildNamePlate();
+        Mesh?.ChangeColor(Color);
         AddChild(Mesh);
+        
         
         FindAttacks(Data.Attacks);
         FindMovement(Data.Movement);
@@ -43,7 +47,11 @@ public partial class UniversalUnit : Node3D, IUnit
         Attacks?.ForEach(a => a.InitAttack(this, this));
 
     }
-
+    
+    public void BuildNamePlate()
+    {
+        Mesh.NamePlate.Text = Data.UnitName;
+    }
     private void FindMesh(string meshName)
     {
         if (string.IsNullOrWhiteSpace(meshName))
@@ -92,10 +100,10 @@ public partial class UniversalUnit : Node3D, IUnit
         Movement = (IMovement)Activator.CreateInstance(movementType);
     }
     
-    public virtual void Move(TerrainInfo fromPos, TerrainInfo toPos)
+    public virtual void Move(TerrainInfo fromPos, TerrainInfo toPos, bool message = false)
     {
         var path = PathFinding.FindCheapestPath(fromPos, toPos);
-        Movement.Move(path);
+        Movement.Move(path, message);
     }
     public virtual void Attack(IUnit unit)
     {
