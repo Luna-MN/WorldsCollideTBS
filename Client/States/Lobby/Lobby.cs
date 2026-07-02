@@ -49,11 +49,13 @@ public partial class Lobby : Control, IState
         {
             Globals.GM.CurrentGameData.MySide = CurrentGameData.Side.left;
             Globals.GM.CurrentGameData.EnemyID = ids.IDs[1].Id;
+            Globals.GM.CurrentGameData.MyTurn = true;
         }
         else
         {
             Globals.GM.CurrentGameData.MySide = CurrentGameData.Side.right;
             Globals.GM.CurrentGameData.EnemyID = ids.IDs[0].Id;
+            Globals.GM.CurrentGameData.MyTurn = false;
         }
         GD.Print($"MyID {Globals.GM.clientId} Player1 {ids.IDs[0].Id} Player2 {ids.IDs[1].Id}, My Side {Globals.GM.CurrentGameData.MySide}");
     }

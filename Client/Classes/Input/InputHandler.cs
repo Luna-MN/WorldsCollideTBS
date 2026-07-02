@@ -15,13 +15,16 @@ public partial class InputHandler : Node3D
 
     private Vector3 mousePosition;
     public Tile CurrentMouseNode;
-    [Export] private bool StoreNode, MainGame, CamMove;
+    [Export] private bool StoreNode, CamMove;
     [Export] private Camera Camera;
     [Export] private float camSpeed;
     
     [ExportGroup("StartGame")] 
     [Export(PropertyHint.GroupEnable)] private bool StartGame;
     [Export] private StartGame startGame;
+    [ExportGroup("MainGame")] 
+    [Export(PropertyHint.GroupEnable)] private bool MainGame;
+    [Export] private MainGame mainGame;
 
     private Tile SelectedTile;
     public override void _Ready()
@@ -203,20 +206,17 @@ public partial class InputHandler : Node3D
         var nodeInfo = CurrentMouseNode.TerrainInfo;
         if (nodeInfo == null) return;
         HandleUnitClick(nodeInfo, CurrentMouseNode);
-        // if (nodeInfo.Unit != null || SelectedTile != null)
-        // {
-        //     HandleUnitClick(nodeInfo, CurrentMouseNode);
-        // }
     }
     private void HandleUnitClick(TerrainInfo UnitInfo, Tile UnitTile)
     {
-        if ((SelectedTile == null && UnitInfo.Unit == null) || (UnitInfo.Unit != null && UnitInfo.Unit.Data.OwnerId != Globals.GM.clientId))
+        if ((SelectedTile == null && UnitInfo.Unit == null) || (UnitInfo.Unit != null && UnitInfo.Unit.Data.OwnerId != Globals.GM.clientId) || !Globals.GM.CurrentGameData.MyTurn)
         {
             return;
         }
         if (SelectedTile == null && UnitInfo.Unit != null)
         {
             SelectedTile = UnitTile;
+            mainGame.UI.unitPanel.ChangeUnit(SelectedTile.TerrainInfo.Unit.Data);
             return;
         }
         if (SelectedTile != null && UnitInfo.Unit == null)
@@ -250,6 +250,6 @@ public partial class InputHandler : Node3D
 
     private void HandleSupport(IUnit me, IUnit ally)
     {
-        //me.Support(ally)
+        me.Support(ally);
     }
 }

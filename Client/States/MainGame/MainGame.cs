@@ -12,9 +12,13 @@ public partial class MainGame : Node3D, ISmoothState
     public Node[] TransitionNodes { get; set; }
     [Export] private TerrainGen TerrainGen1, MainGameTerrainGen, TerrainGen2;
 
+    [Export] public Ui UI;
+
     public override void _Ready()
     {
         Globals.GM.Subscribe(OnPacketReceived, OnWSConnectionClosed);
+        
+        UI.EndTurn.ButtonUp += EndTurnClicked;
         
         TerrainGen1.seed = (int)Globals.GM.CurrentGameData.LeftSeed;
         TerrainGen2.seed = (int)Globals.GM.CurrentGameData.RightSeed;
@@ -96,6 +100,11 @@ public partial class MainGame : Node3D, ISmoothState
             }
 
         }
+    }
+
+    private void EndTurnClicked()
+    {
+        
     }
     public void OnPacketReceived(Packet packet)
     {

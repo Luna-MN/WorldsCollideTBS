@@ -14,6 +14,7 @@ public partial class UniversalUnit : Node3D, IUnit
     public DefaultUnit Mesh;
     public Color Color;
     public List<IAttack> Attacks { get; set; }
+    public List<ISupport> Supports { get; set; }
     public IMovement Movement { get; set; }
     public Vector2I PositionI { get; set; }
 
@@ -42,13 +43,13 @@ public partial class UniversalUnit : Node3D, IUnit
         
         FindAttacks(Data.Attacks);
         FindMovement(Data.Movement);
+        FindSupports(Data.Support);
         Movement = new DefaultMovement();
         Movement.InitMovement(this, this);
         Attacks?.ForEach(a => a.InitAttack(this, this));
 
     }
-    
-    public void BuildNamePlate()
+    private void BuildNamePlate()
     {
         Mesh.NamePlate.Text = Data.UnitName;
     }
@@ -100,6 +101,21 @@ public partial class UniversalUnit : Node3D, IUnit
         Movement = (IMovement)Activator.CreateInstance(movementType);
     }
     
+    private void FindSupports(List<string> supports)
+    {
+        if (supports == null || supports.Count <= 0 || (supports.Count == 1 && supports[0] == ""))
+        {
+            return;
+        }
+        Supports = new();
+        foreach (var supportName in supports)
+        {
+            var supportType = Assembly.GetExecutingAssembly().GetTypes().Where(t =>
+                typeof(ISupport).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract && t.Name == supportName).ToList()[0];
+            var support = (ISupport)Activator.CreateInstance(supportType);
+            Supports.Add(support);
+        }
+    }
     public virtual void Move(TerrainInfo fromPos, TerrainInfo toPos, bool message = false)
     {
         var path = PathFinding.FindCheapestPath(fromPos, toPos);
@@ -108,7 +124,9 @@ public partial class UniversalUnit : Node3D, IUnit
     public virtual void Attack(IUnit unit)
     {
     }
-    
+    public void Support(IUnit unit)
+    {
+    }
     
     private string FindScenePathRecursive(string folderPath, string meshName)
     {
@@ -145,7 +163,6 @@ public partial class UniversalUnit : Node3D, IUnit
             if (!string.IsNullOrEmpty(result))
                 return result;
         }
-
         return null;
     }
 }

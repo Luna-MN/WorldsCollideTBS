@@ -16,8 +16,36 @@ public class TerrainInfo
     public int TileHeight;
     public IUnit Unit;
     public int MovementCost;
-    public void CalculatedMovementCost()
+    public int CalculatedMovementCost(TerrainInfo FromTile)
     {
-        MovementCost = 1;
+        // cost based on type
+        switch (TileTopType)
+        {
+            case TileUtil.TileTopType.Tree:
+                MovementCost = 2;
+                break;
+            case TileUtil.TileTopType.None:
+                MovementCost = 1;
+                break;
+            case TileUtil.TileTopType.Stone:
+                MovementCost = 3;
+                break;
+        }
+        switch (TileType)
+        {
+            case TileUtil.TileType.River:
+                MovementCost += 1;
+                break;
+            case TileUtil.TileType.Path:
+                MovementCost -= 2;
+                break;
+        }
+        
+        // height cost
+        var dif = FromTile.TileHeight - TileHeight;
+        dif = Mathf.Max(dif, -1);
+        MovementCost += dif;
+        
+        return MovementCost;
     }
 }

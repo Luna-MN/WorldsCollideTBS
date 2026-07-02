@@ -70,14 +70,6 @@ public class WorldInfo
             feature.Generate(seed);
             FeaturesList.Add(feature);
         }
-        CalculateMovementCosts();
-    }
-    private void CalculateMovementCosts()
-    {
-        foreach (var terrainInfo in TerrainInfo.Values)
-        {
-            terrainInfo.CalculatedMovementCost();
-        }
     }
     private List<TerrainInfo> GetHexNeighbors(int q, int r)
     {

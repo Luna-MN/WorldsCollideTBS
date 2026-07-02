@@ -20,6 +20,8 @@ public partial class CustomTerrainInfo : Node3D
     private TileUtil.TileTopState TopTileState;
     [Export]
     private TileUtil.TileTopType TileTopType;
+
+    public Tile hexInstance;
     public override void _EnterTree()
     {
         GenerateTerrain();
@@ -29,6 +31,12 @@ public partial class CustomTerrainInfo : Node3D
     {
         TileMaps.GDBackup();
         TopTileMaps.GDBackup();
+
+        if (hexInstance != null)
+        {
+            hexInstance.QueueFree();
+            hexInstance = null;
+        }
         
         TerrainInfo = new TerrainInfo()
         {
@@ -37,8 +45,9 @@ public partial class CustomTerrainInfo : Node3D
             TopTileState = TopTileState,
             TileTopType = TileTopType,
         };
-        var hexInstance = TerrainScene.Instantiate<Tile>();
+        hexInstance = TerrainScene.Instantiate<Tile>();
         AddChild(hexInstance);
+        hexInstance.Owner = GetTree().EditedSceneRoot;
         hexInstance.Position = TerrainInfo.Position;
         hexInstance.RotationDegrees = new Vector3(0, 90, 0);
         hexInstance.Set(TileMaps[TerrainInfo.TileType], TopTileMaps[TerrainInfo.TileTopType], TerrainInfo.Position.X, TerrainInfo.Position.Z, TerrainInfo);

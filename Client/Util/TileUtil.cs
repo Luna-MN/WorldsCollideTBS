@@ -18,7 +18,8 @@ public static class TileUtil
         Grass,
         River,
         Path,
-        Fall
+        Fall,
+        Gray
     }
 
     public enum TileTopType

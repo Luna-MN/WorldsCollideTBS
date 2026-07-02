@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TileInfoSaveState" format=3 uid="uid://dnxc2qgjdvcwy"]
+
+[ext_resource type="PackedScene" uid="uid://dttj4y8fy1qhn" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/gray/hex_grass.tscn" id="1_jvt5f"]
+[ext_resource type="Script" uid="uid://n6mju7ayan2c" path="res://Classes/GDScriptWorldSaveStates/TileInfoSaveState.gd" id="2_pt6ve"]
+
+[resource]
+script = ExtResource("2_pt6ve")
+_tileNode = [ExtResource("1_jvt5f")]
+metadata/_custom_type_script = "uid://n6mju7ayan2c"

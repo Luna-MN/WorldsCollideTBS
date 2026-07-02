@@ -20,6 +20,7 @@ public class UnitData
     public long HP { get; set; }
     public long MaxHP { get; set; }
     public Speeds Speed { get; set; }
+    public List<string> Support { get; set; }
     public UnitData() { }
 
     public UnitData(UnitDataJSON data, ulong id, int unitID)
@@ -37,5 +38,9 @@ public class UnitData
         HP = data.MaxHP;
         MaxHP = data.MaxHP;
         Speed = (Speeds)data.speed;
+        Support = string.IsNullOrWhiteSpace(data.Support)
+            ? null
+            : data.Support.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
+        Support?.ForEach(s => s = s.Replace(" ", "").Trim());
     }
 }

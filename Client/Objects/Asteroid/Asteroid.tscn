@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bs4kl2fhqfucl"]
+
+[ext_resource type="PackedScene" uid="uid://bkus0sc0dnr6" path="res://Objects/CustomTerrainInfo/CustomTerrainInfo.tscn" id="1_huicm"]
+[ext_resource type="Script" uid="uid://crror68ws5kuc" path="res://Objects/Asteroid/Asteroid.cs" id="1_pr0cd"]
+[ext_resource type="PackedScene" uid="uid://dwesn8b3yi8wa" path="res://Objects/Tile/Tile.tscn" id="3_jbb6e"]
+[ext_resource type="Script" uid="uid://cc68a6xx4w38q" path="res://Objects/Tile/Tile.cs" id="4_lp0if"]
+[ext_resource type="PackedScene" uid="uid://cv4skw3mtkna0" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/gray/hex_grass_bottom.tscn" id="5_8fi6g"]
+[ext_resource type="PackedScene" uid="uid://dttj4y8fy1qhn" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/gray/hex_grass.tscn" id="6_ss2ii"]
+
+[node name="Node3D" type="Node3D" unique_id=1364936464 node_paths=PackedStringArray("TerrainInfo")]
+script = ExtResource("1_pr0cd")
+TerrainInfo = NodePath("CustomTerrainInfo")
+
+[node name="CustomTerrainInfo" parent="." unique_id=1388308053 instance=ExtResource("1_huicm")]
+TileHeight = 2
+TileType = 4
+
+[node name="@Node3D@49525" type="Node3D" parent="CustomTerrainInfo" unique_id=405162964 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("3_jbb6e")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("4_lp0if")
+NodeParent = NodePath("Tiles")
+StaticBody = NodePath("Collision")
+
+[node name="hex_grass_bottom" type="Node3D" parent="CustomTerrainInfo/@Node3D@49525" unique_id=9981333 instance=ExtResource("5_8fi6g")]
+
+[node name="@Node3D@49526" type="Node3D" parent="CustomTerrainInfo/@Node3D@49525" unique_id=1256969145 instance=ExtResource("5_8fi6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="hex_grass" type="Node3D" parent="CustomTerrainInfo/@Node3D@49525" unique_id=2008694322 instance=ExtResource("6_ss2ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[editable path="CustomTerrainInfo"]

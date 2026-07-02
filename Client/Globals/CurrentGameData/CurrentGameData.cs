@@ -27,6 +27,7 @@ public class CurrentGameData
     public TerrainGen TerrainGen, TerrainGen1, TerrainGen2;
     public Side MySide;
     private int currUnitID = 1;
+    public bool MyTurn;
 
     public TerrainInfo GetTileAt(Vector2I pos)
     {

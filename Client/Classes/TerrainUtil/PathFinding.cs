@@ -48,7 +48,7 @@ public class PathFinding
 
                     // Use 0 if current not in gScore (shouldn't happen, but safe)
                     int currentGScore = gScore.ContainsKey(current) ? gScore[current] : 0;
-                    int tentativeGScore = currentGScore + neighbor.MovementCost;
+                    int tentativeGScore = currentGScore + neighbor.CalculatedMovementCost(current);
 
                     if (!gScore.ContainsKey(neighbor) || tentativeGScore < gScore[neighbor])
                     {

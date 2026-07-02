@@ -8,7 +8,7 @@ public partial class Tile : Node3D
     [Export] 
     private Node3D NodeParent;
     [Export]
-    private StaticBody3D StaticBody;
+    public StaticBody3D StaticBody;
     private TileMap TileMap;
     private TopTileMap TopTileMap;
     public TerrainInfo TerrainInfo;
@@ -43,6 +43,7 @@ public partial class Tile : Node3D
 
             var node = PS.Instantiate<Node3D> ();
             AddChild(node);
+            node.Owner = GetTree().EditedSceneRoot;
             node.Position = new Vector3(0, i, 0);
             node.RotationDegrees = new Vector3(0, TileUtil.GetTileRotation(TerrainInfo, TileUtil.GetState(TerrainInfo, i)), 0);
         }
@@ -51,6 +52,7 @@ public partial class Tile : Node3D
             var TPS = TopTileMap[TerrainInfo.TopTileState].TileNode;
             var topNode = TPS.Instantiate<Node3D>();
             AddChild(topNode);
+            topNode.Owner = GetTree().EditedSceneRoot;
             topNode.Position = new Vector3(0, TerrainInfo.TileHeight, 0);
         }
         StaticBody.Position = new Vector3(0, TerrainInfo.TileHeight, 0);
