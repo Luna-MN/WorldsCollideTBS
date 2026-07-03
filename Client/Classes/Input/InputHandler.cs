@@ -50,7 +50,12 @@ public partial class InputHandler : Node3D
     }
     private void MouseHover()
     {
-        var obj = RayCast.CastObject<Node3D>()?.GetParent<Tile>();
+        var mouseObj = RayCast.CastObject<Node3D>();
+        if (mouseObj?.GetParent().GetParent().GetParent() is Asteroid || mouseObj?.GetParent() is Asteroid)
+        {
+            return;
+        }
+        var obj = mouseObj?.GetParent<Tile>();
         
         if (obj == null)
         {

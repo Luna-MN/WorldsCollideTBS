@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b6c4gpxn0m8j5" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/trees_B_small.fbx" id="15_14ulb"]
 [ext_resource type="Script" uid="uid://c1wgyu68ppngp" path="res://States/MainGame/Ui.cs" id="15_tpv42"]
 [ext_resource type="Script" uid="uid://bqouh3lqpkqk0" path="res://Objects/UnitPanel/UnitPanel.cs" id="17_hupsw"]
-[ext_resource type="Script" uid="uid://ce8fekstn4ulv" path="res://States/MainGame/Asteroids.cs" id="18_hupsw"]
+[ext_resource type="Script" uid="uid://ce8fekstn4ulv" path="res://States/MainGame/AsteroidStuff/Asteroids.cs" id="18_hupsw"]
 [ext_resource type="Script" uid="uid://cw5qy36ivay4o" path="res://States/MainGame/AsteroidStuff/AsteroidVisability.cs" id="21_14ulb"]
 
 [sub_resource type="Resource" id="Resource_rp31r"]

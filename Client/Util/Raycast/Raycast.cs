@@ -49,6 +49,7 @@ public static class RayCast
         var query = PhysicsRayQueryParameters3D.Create(rayO, rayE);
         query.CollideWithAreas = true;
         query.CollideWithBodies = true;
+        query.SetCollisionMask(1);
 
         Dictionary result = spaceState.IntersectRay(query);
         

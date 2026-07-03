@@ -5,6 +5,10 @@ public partial class Asteroid : Node3D
 {
     [Export]
     private CustomTerrainInfo TerrainInfo;
+    [Export]
+    private float speed;
+    [Export]
+    private Area3D Area;
     public int DestroyTimerTime;
     private Timer DestroyTimer;
     private Vector3 StartPos;
@@ -25,12 +29,24 @@ public partial class Asteroid : Node3D
             QueueFree();
         };
         AddChild(DestroyTimer);
-        CallDeferred(nameof(MaskLayerDeferred));
+        var rng = new RandomNumberGenerator();
+        var dir = rng.RandiRange(0, 3);
+        Position = dir switch
+        {
+            0 => new Vector3(rng.RandfRange(-30, 30), 0, rng.RandfRange(-30, -25)),
+            1 => new Vector3(rng.RandfRange(25, 30), 0, rng.RandfRange(-30, 30)),
+            2 => new Vector3(rng.RandfRange(-30, 30), 0, rng.RandfRange(25, 30)),
+            3 => new Vector3(rng.RandfRange(-30, -25), 0, rng.RandfRange(-30, 30)),
+            _ => Position
+        };
+        StartPos = Position;
+        StopPos = new Vector3(rng.RandfRange(-30, 30), 0, rng.RandfRange(-30, 30));
     }
+    
 
-    private void MaskLayerDeferred()
+    public override void _Process(double delta)
     {
-        TerrainInfo.hexInstance.StaticBody.CollisionMask = 4;
-        TerrainInfo.hexInstance.StaticBody.CollisionLayer = 4;
+        Position = Position.Lerp(StopPos, (float)(delta * speed));
     }
+    
 }

@@ -42,7 +42,7 @@ public partial class Tile : Node3D
             PS = TileMap[TerrainInfo, i].TileNode;
 
             var node = PS.Instantiate<Node3D> ();
-            AddChild(node);
+            NodeParent.AddChild(node);
             node.Owner = GetTree().EditedSceneRoot;
             node.Position = new Vector3(0, i, 0);
             node.RotationDegrees = new Vector3(0, TileUtil.GetTileRotation(TerrainInfo, TileUtil.GetState(TerrainInfo, i)), 0);
