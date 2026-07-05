@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cc68a6xx4w38q" path="res://Objects/Tile/Tile.cs" id="4_lp0if"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
-size = Vector3(1.1643311, 0.8927002, 1.9956055)
+size = Vector3(0.42853394, 0.8927002, 0.22668457)
 
 [node name="Node3D" type="Node3D" unique_id=1364936464 node_paths=PackedStringArray("TerrainInfo", "Area")]
 script = ExtResource("1_pr0cd")
@@ -30,15 +30,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2051802516]
-transform = Transform3D(0.8660253, 0, -0.49999997, 0, 0.99999994, 0, 0.49999997, 0, 0.8660253, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_a0tk4")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=917381390]
-transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 0.99999994, 0, 0.9999999, 0, -4.3711385e-08, -0.0023671035, -0.5, 0.018946487)
-shape = SubResource("BoxShape3D_a0tk4")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Area3D" unique_id=1321134019]
-transform = Transform3D(-0.8660253, 0, -0.5, 0, 0.9999999, 0, 0.5, 0, -0.8660253, 0, -0.5, 0)
+transform = Transform3D(0.8660253, 0, -0.49999997, 0, 0.99999994, 0, 0.49999997, 0, 0.8660253, -0.08643612, -0.5, 0.118565835)
 shape = SubResource("BoxShape3D_a0tk4")
 
 [editable path="CustomTerrainInfo"]

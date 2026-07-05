@@ -49,10 +49,11 @@ type GameService struct {
 	ArmyIdsReceived       bool
 	UnitPositionsReceived bool
 
-	seed          int32
-	seedsReceived bool
-
 	gameTerrainService *GameTerrainService
+	seed               int32
+	seedsReceived      bool
+
+	turnManagementService *TurnManagementService
 
 	queries *db.Queries
 	dbCtx   context.Context
@@ -228,6 +229,11 @@ func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *
 	g.SendUnitPositions(g.Player1GameData)
 	g.SendUnitPositions(g.Player2GameData)
 	g.gameState = InProgress
+	g.InitTurnManagementService()
+}
+
+func (g *GameService) InitTurnManagementService() {
+	g.turnManagementService = NewTurnManagementService(g.Player1GameData.Player.Id(), g.Player2GameData.Player.Id())
 }
 
 func (g *GameService) HandleHexPositionsMessage(pd *PlayerGameData, positions *packets.Packet_HexPositions) {

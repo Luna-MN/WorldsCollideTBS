@@ -5,9 +5,7 @@
 [ext_resource type="FastNoiseLite" uid="uid://ba5qt6qlj6qqf" path="res://player.tres" id="3_8kttb"]
 [ext_resource type="Script" uid="uid://f0vo74h3lkq6" path="res://Classes/Tiles/TopTile/TopTileInfo/TopTileInfo.cs" id="4_v43kf"]
 [ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="7_el7pk"]
-[ext_resource type="PackedScene" uid="uid://cgmyw76q22of" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/fall/hex_grass_bottom.tscn" id="7_t3o0p"]
 [ext_resource type="Script" uid="uid://dq0poljwdwgt7" path="res://Classes/Tiles/TopTile/TopTileMap/TopTileMap.cs" id="7_tpv42"]
-[ext_resource type="PackedScene" uid="uid://dymlud2bpml5t" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/tiles/fall/hex_grass.tscn" id="8_14ulb"]
 [ext_resource type="PackedScene" uid="uid://bs4kl2fhqfucl" path="res://Objects/Asteroid/Asteroid.tscn" id="8_hupsw"]
 [ext_resource type="FastNoiseLite" uid="uid://bysr3m7gd0r6p" path="res://default.tres" id="8_nncol"]
 [ext_resource type="PackedScene" uid="uid://cu3o8617lux7i" path="res://Objects/Camera/Camera.tscn" id="8_tpv42"]
@@ -23,9 +21,6 @@
 [ext_resource type="Script" uid="uid://ce8fekstn4ulv" path="res://States/MainGame/AsteroidStuff/Asteroids.cs" id="18_hupsw"]
 [ext_resource type="Script" uid="uid://cw5qy36ivay4o" path="res://States/MainGame/AsteroidStuff/AsteroidVisability.cs" id="21_14ulb"]
 
-[sub_resource type="Resource" id="Resource_rp31r"]
-script = ExtResource("4_v43kf")
-
 [sub_resource type="Resource" id="Resource_t3o0p"]
 script = ExtResource("4_v43kf")
 
@@ -33,13 +28,13 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_oxfgx"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_14ulb")
-Medium = SubResource("Resource_t3o0p")
-Large = SubResource("Resource_rp31r")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_k7iuc"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_oxfgx")
+Medium = SubResource("Resource_14ulb")
+Large = SubResource("Resource_t3o0p")
 
 [sub_resource type="Resource" id="Resource_eey8p"]
 script = ExtResource("4_v43kf")
@@ -48,13 +43,13 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_25l26"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_b2co8")
-Medium = SubResource("Resource_eey8p")
-Large = SubResource("Resource_k7iuc")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_ysjsb"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_25l26")
+Medium = SubResource("Resource_b2co8")
+Large = SubResource("Resource_eey8p")
 
 [sub_resource type="Resource" id="Resource_4p42s"]
 script = ExtResource("4_v43kf")
@@ -63,21 +58,24 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_e6thy"]
+script = ExtResource("4_v43kf")
+
+[sub_resource type="Resource" id="Resource_snmgp"]
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_fevcq")
-Medium = SubResource("Resource_4p42s")
-Large = SubResource("Resource_ysjsb")
+Small = SubResource("Resource_e6thy")
+Medium = SubResource("Resource_fevcq")
+Large = SubResource("Resource_4p42s")
 
 [sub_resource type="Resource" id="Resource_v43kf"]
 script = ExtResource("11_14ulb")
 TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
-0: SubResource("Resource_oxfgx"),
-1: SubResource("Resource_e6thy"),
-2: SubResource("Resource_25l26")
+0: SubResource("Resource_k7iuc"),
+1: SubResource("Resource_snmgp"),
+2: SubResource("Resource_ysjsb")
 })
-None = SubResource("Resource_oxfgx")
-Tree = SubResource("Resource_e6thy")
-Stone = SubResource("Resource_25l26")
+None = SubResource("Resource_k7iuc")
+Tree = SubResource("Resource_snmgp")
+Stone = SubResource("Resource_ysjsb")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tpv42"]
@@ -89,9 +87,6 @@ sky_material = SubResource("PanoramaSkyMaterial_tpv42")
 background_mode = 1
 sky = SubResource("Sky_tpv42")
 
-[sub_resource type="Resource" id="Resource_snmgp"]
-script = ExtResource("4_v43kf")
-
 [sub_resource type="Resource" id="Resource_x1k1j"]
 script = ExtResource("4_v43kf")
 
@@ -99,13 +94,13 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_txgfy"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_7cdwx")
-Medium = SubResource("Resource_x1k1j")
-Large = SubResource("Resource_snmgp")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_4yw43"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_txgfy")
+Medium = SubResource("Resource_7cdwx")
+Large = SubResource("Resource_x1k1j")
 
 [sub_resource type="Resource" id="Resource_7uu1x"]
 script = ExtResource("4_v43kf")
@@ -114,13 +109,13 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_yq3qt"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_8he5e")
-Medium = SubResource("Resource_7uu1x")
-Large = SubResource("Resource_4yw43")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_0ui2a"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_yq3qt")
+Medium = SubResource("Resource_8he5e")
+Large = SubResource("Resource_7uu1x")
 
 [sub_resource type="Resource" id="Resource_v07hf"]
 script = ExtResource("4_v43kf")
@@ -129,44 +124,44 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_ikml0"]
+script = ExtResource("4_v43kf")
+
+[sub_resource type="Resource" id="Resource_0kw4j"]
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_gesv8")
-Medium = SubResource("Resource_v07hf")
-Large = SubResource("Resource_0ui2a")
+Small = SubResource("Resource_ikml0")
+Medium = SubResource("Resource_gesv8")
+Large = SubResource("Resource_v07hf")
 
 [sub_resource type="Resource" id="Resource_hupsw"]
 script = ExtResource("11_14ulb")
 TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
-0: SubResource("Resource_txgfy"),
-1: SubResource("Resource_ikml0"),
-2: SubResource("Resource_yq3qt")
+0: SubResource("Resource_4yw43"),
+1: SubResource("Resource_0kw4j"),
+2: SubResource("Resource_0ui2a")
 })
-None = SubResource("Resource_txgfy")
-Tree = SubResource("Resource_ikml0")
-Stone = SubResource("Resource_yq3qt")
+None = SubResource("Resource_4yw43")
+Tree = SubResource("Resource_0kw4j")
+Stone = SubResource("Resource_0ui2a")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
-
-[sub_resource type="Resource" id="Resource_0kw4j"]
-script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("10_nncol")]
 
 [sub_resource type="Resource" id="Resource_i4iof"]
 script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("11_tpv42")]
+_tileNode = [ExtResource("10_nncol")]
 
 [sub_resource type="Resource" id="Resource_yfdlo"]
 script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("12_hupsw")]
+_tileNode = [ExtResource("11_tpv42")]
 
 [sub_resource type="Resource" id="Resource_nwnq7"]
-resource_name = "None"
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_yfdlo")
-Medium = SubResource("Resource_i4iof")
-Large = SubResource("Resource_0kw4j")
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("12_hupsw")]
 
 [sub_resource type="Resource" id="Resource_1kmlu"]
-script = ExtResource("4_v43kf")
+resource_name = "None"
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_nwnq7")
+Medium = SubResource("Resource_yfdlo")
+Large = SubResource("Resource_i4iof")
 
 [sub_resource type="Resource" id="Resource_ojto5"]
 script = ExtResource("4_v43kf")
@@ -175,48 +170,51 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_qkfei"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_bdp2p")
-Medium = SubResource("Resource_ojto5")
-Large = SubResource("Resource_1kmlu")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_4tpu5"]
-script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("13_rp31r")]
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_qkfei")
+Medium = SubResource("Resource_bdp2p")
+Large = SubResource("Resource_ojto5")
 
 [sub_resource type="Resource" id="Resource_ehu6q"]
 script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("14_t3o0p")]
+_tileNode = [ExtResource("13_rp31r")]
 
 [sub_resource type="Resource" id="Resource_td18n"]
 script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("15_14ulb")]
+_tileNode = [ExtResource("14_t3o0p")]
 
 [sub_resource type="Resource" id="Resource_j3i4v"]
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("15_14ulb")]
+
+[sub_resource type="Resource" id="Resource_ruqxf"]
 resource_name = "Tree"
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_td18n")
-Medium = SubResource("Resource_ehu6q")
-Large = SubResource("Resource_4tpu5")
+Small = SubResource("Resource_j3i4v")
+Medium = SubResource("Resource_td18n")
+Large = SubResource("Resource_ehu6q")
 
 [sub_resource type="Resource" id="Resource_2gh4u"]
 script = ExtResource("11_14ulb")
 TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
-0: SubResource("Resource_nwnq7"),
-1: SubResource("Resource_j3i4v"),
-2: SubResource("Resource_qkfei")
+0: SubResource("Resource_1kmlu"),
+1: SubResource("Resource_ruqxf"),
+2: SubResource("Resource_4tpu5")
 })
-None = SubResource("Resource_nwnq7")
-Tree = SubResource("Resource_j3i4v")
-Stone = SubResource("Resource_qkfei")
+None = SubResource("Resource_1kmlu")
+Tree = SubResource("Resource_ruqxf")
+Stone = SubResource("Resource_4tpu5")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xi4mn"]
 margin = 0.0
-radius = 12.747034
+radius = 15.360744
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h88im"]
-radius = 6.7591276
+radius = 8.404025
 
 [node name="MainGame" type="Node3D" unique_id=1284737066 node_paths=PackedStringArray("log", "TerrainGen1", "MainGameTerrainGen", "TerrainGen2", "UI")]
 script = ExtResource("1_bg3qp")
@@ -232,162 +230,6 @@ Radius = 2
 noise = ExtResource("3_8kttb")
 DefaultTile = 3
 TopTileMaps = SubResource("Resource_v43kf")
-
-[node name="hex_grass_bottom" type="Node3D" parent="TerrainGen1" unique_id=9981333 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.4499998, 0, -1.9918584)
-
-[node name="hex_grass" type="Node3D" parent="TerrainGen1" unique_id=2008694322 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.4499998, 1, -1.9918584)
-
-[node name="hex_grass_bottom2" type="Node3D" parent="TerrainGen1" unique_id=391444365 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.4499998, 0, 0)
-
-[node name="_Node3D_35538" type="Node3D" parent="TerrainGen1" unique_id=1627323540 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.4499998, 1, 0)
-
-[node name="hex_grass2" type="Node3D" parent="TerrainGen1" unique_id=2080860291 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.4499998, 2, 0)
-
-[node name="hex_grass_bottom3" type="Node3D" parent="TerrainGen1" unique_id=1044212653 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.4499998, 0, 1.9918584)
-
-[node name="hex_grass3" type="Node3D" parent="TerrainGen1" unique_id=1908801020 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.4499998, 1, 1.9918584)
-
-[node name="hex_grass_bottom4" type="Node3D" parent="TerrainGen1" unique_id=1619394743 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7249994, 0, -2.9877875)
-
-[node name="hex_grass4" type="Node3D" parent="TerrainGen1" unique_id=369462957 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7249994, 1, -2.9877875)
-
-[node name="hex_grass_bottom5" type="Node3D" parent="TerrainGen1" unique_id=1071022826 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7249994, 0, -0.9959292)
-
-[node name="_Node3D_35542" type="Node3D" parent="TerrainGen1" unique_id=1594528817 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7249994, 1, -0.9959292)
-
-[node name="hex_grass5" type="Node3D" parent="TerrainGen1" unique_id=1864427096 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7249994, 2, -0.9959292)
-
-[node name="hex_grass_bottom6" type="Node3D" parent="TerrainGen1" unique_id=1590459979 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7249994, 0, 0.9959292)
-
-[node name="_Node3D_35544" type="Node3D" parent="TerrainGen1" unique_id=920681638 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7249994, 1, 0.9959292)
-
-[node name="hex_grass6" type="Node3D" parent="TerrainGen1" unique_id=490176579 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7249994, 2, 0.9959292)
-
-[node name="hex_grass_bottom7" type="Node3D" parent="TerrainGen1" unique_id=1926934733 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7249994, 0, 2.9877875)
-
-[node name="hex_grass7" type="Node3D" parent="TerrainGen1" unique_id=907750832 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.7249994, 1, 2.9877875)
-
-[node name="hex_grass_bottom8" type="Node3D" parent="TerrainGen1" unique_id=1346760273 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -3.9837167)
-
-[node name="_Node3D_35547" type="Node3D" parent="TerrainGen1" unique_id=2056146702 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, -3.9837167)
-
-[node name="hex_grass8" type="Node3D" parent="TerrainGen1" unique_id=864533413 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, -3.9837167)
-
-[node name="hex_grass_bottom9" type="Node3D" parent="TerrainGen1" unique_id=887564994 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.9918584)
-
-[node name="_Node3D_35549" type="Node3D" parent="TerrainGen1" unique_id=1187238480 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, -1.9918584)
-
-[node name="hex_grass9" type="Node3D" parent="TerrainGen1" unique_id=536800151 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, -1.9918584)
-
-[node name="hex_grass_bottom10" type="Node3D" parent="TerrainGen1" unique_id=742870869 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-
-[node name="_Node3D_35551" type="Node3D" parent="TerrainGen1" unique_id=1836916977 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 0)
-
-[node name="hex_grass10" type="Node3D" parent="TerrainGen1" unique_id=87417886 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, 0)
-
-[node name="hex_grass_bottom11" type="Node3D" parent="TerrainGen1" unique_id=1002567597 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 1.9918584)
-
-[node name="_Node3D_35553" type="Node3D" parent="TerrainGen1" unique_id=1881659987 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 1.9918584)
-
-[node name="hex_grass11" type="Node3D" parent="TerrainGen1" unique_id=219492897 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, 1.9918584)
-
-[node name="hex_grass_bottom12" type="Node3D" parent="TerrainGen1" unique_id=673618937 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 3.9837167)
-
-[node name="_Node3D_35555" type="Node3D" parent="TerrainGen1" unique_id=560112200 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 3.9837167)
-
-[node name="_Node3D_35556" type="Node3D" parent="TerrainGen1" unique_id=1254113177 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, 3.9837167)
-
-[node name="hex_grass12" type="Node3D" parent="TerrainGen1" unique_id=2118860303 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 3, 3.9837167)
-
-[node name="hex_grass_bottom13" type="Node3D" parent="TerrainGen1" unique_id=1425909711 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 0, -2.9877875)
-
-[node name="_Node3D_35558" type="Node3D" parent="TerrainGen1" unique_id=577134571 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 1, -2.9877875)
-
-[node name="hex_grass13" type="Node3D" parent="TerrainGen1" unique_id=1986925817 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 2, -2.9877875)
-
-[node name="hex_grass_bottom14" type="Node3D" parent="TerrainGen1" unique_id=1215043600 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 0, -0.9959292)
-
-[node name="_Node3D_35560" type="Node3D" parent="TerrainGen1" unique_id=752439363 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 1, -0.9959292)
-
-[node name="hex_grass14" type="Node3D" parent="TerrainGen1" unique_id=1399344343 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 2, -0.9959292)
-
-[node name="hex_grass_bottom15" type="Node3D" parent="TerrainGen1" unique_id=470608889 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 0, 0.9959292)
-
-[node name="hex_grass15" type="Node3D" parent="TerrainGen1" unique_id=1648639238 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 1, 0.9959292)
-
-[node name="hex_grass_bottom16" type="Node3D" parent="TerrainGen1" unique_id=731472979 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 0, 2.9877875)
-
-[node name="_Node3D_35563" type="Node3D" parent="TerrainGen1" unique_id=1434535423 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 1, 2.9877875)
-
-[node name="hex_grass16" type="Node3D" parent="TerrainGen1" unique_id=985889571 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7249994, 2, 2.9877875)
-
-[node name="hex_grass_bottom17" type="Node3D" parent="TerrainGen1" unique_id=1060633631 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.4499998, 0, -1.9918584)
-
-[node name="_Node3D_35565" type="Node3D" parent="TerrainGen1" unique_id=847250420 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.4499998, 1, -1.9918584)
-
-[node name="hex_grass17" type="Node3D" parent="TerrainGen1" unique_id=1671888657 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.4499998, 2, -1.9918584)
-
-[node name="hex_grass_bottom18" type="Node3D" parent="TerrainGen1" unique_id=9982378 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.4499998, 0, 0)
-
-[node name="hex_grass18" type="Node3D" parent="TerrainGen1" unique_id=1563024690 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.4499998, 1, 0)
-
-[node name="hex_grass_bottom19" type="Node3D" parent="TerrainGen1" unique_id=639335450 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.4499998, 0, 1.9918584)
-
-[node name="_Node3D_35568" type="Node3D" parent="TerrainGen1" unique_id=804233071 instance=ExtResource("7_t3o0p")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.4499998, 1, 1.9918584)
-
-[node name="hex_grass19" type="Node3D" parent="TerrainGen1" unique_id=1225105254 instance=ExtResource("8_14ulb")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.4499998, 2, 1.9918584)
 
 [node name="Camera" parent="." unique_id=1675463847 instance=ExtResource("8_tpv42")]
 transform = Transform3D(1, 0, 0, 0, 0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, 0, 18, 6.5)
