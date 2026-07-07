@@ -1794,6 +1794,50 @@ func (x *UnitIDMessage) GetUnitId() int32 {
 	return 0
 }
 
+type TurnMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TurnMessage) Reset() {
+	*x = TurnMessage{}
+	mi := &file_packets_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TurnMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TurnMessage) ProtoMessage() {}
+
+func (x *TurnMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_packets_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TurnMessage.ProtoReflect.Descriptor instead.
+func (*TurnMessage) Descriptor() ([]byte, []int) {
+	return file_packets_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *TurnMessage) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
 type Packet struct {
 	state    protoimpl.MessageState `protogen:"open.v1"`
 	SenderId uint64                 `protobuf:"varint,1,opt,name=sender_id,json=senderId,proto3" json:"sender_id,omitempty"`
@@ -1822,6 +1866,7 @@ type Packet struct {
 	//	*Packet_UnitPosition
 	//	*Packet_UnitPositions
 	//	*Packet_UnitIds
+	//	*Packet_Turn
 	Msg           isPacket_Msg `protobuf_oneof:"msg"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1829,7 +1874,7 @@ type Packet struct {
 
 func (x *Packet) Reset() {
 	*x = Packet{}
-	mi := &file_packets_proto_msgTypes[31]
+	mi := &file_packets_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1841,7 +1886,7 @@ func (x *Packet) String() string {
 func (*Packet) ProtoMessage() {}
 
 func (x *Packet) ProtoReflect() protoreflect.Message {
-	mi := &file_packets_proto_msgTypes[31]
+	mi := &file_packets_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1854,7 +1899,7 @@ func (x *Packet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Packet.ProtoReflect.Descriptor instead.
 func (*Packet) Descriptor() ([]byte, []int) {
-	return file_packets_proto_rawDescGZIP(), []int{31}
+	return file_packets_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *Packet) GetSenderId() uint64 {
@@ -2078,6 +2123,15 @@ func (x *Packet) GetUnitIds() *UnitIDsMessage {
 	return nil
 }
 
+func (x *Packet) GetTurn() *TurnMessage {
+	if x != nil {
+		if x, ok := x.Msg.(*Packet_Turn); ok {
+			return x.Turn
+		}
+	}
+	return nil
+}
+
 type isPacket_Msg interface {
 	isPacket_Msg()
 }
@@ -2171,7 +2225,11 @@ type Packet_UnitPositions struct {
 }
 
 type Packet_UnitIds struct {
-	UnitIds *UnitIDsMessage `protobuf:"bytes,24,opt,name=UnitIds,proto3,oneof"` //...
+	UnitIds *UnitIDsMessage `protobuf:"bytes,24,opt,name=UnitIds,proto3,oneof"`
+}
+
+type Packet_Turn struct {
+	Turn *TurnMessage `protobuf:"bytes,25,opt,name=Turn,proto3,oneof"` //...
 }
 
 func (*Packet_Chat) isPacket_Msg() {}
@@ -2219,6 +2277,8 @@ func (*Packet_UnitPosition) isPacket_Msg() {}
 func (*Packet_UnitPositions) isPacket_Msg() {}
 
 func (*Packet_UnitIds) isPacket_Msg() {}
+
+func (*Packet_Turn) isPacket_Msg() {}
 
 var File_packets_proto protoreflect.FileDescriptor
 
@@ -2328,7 +2388,9 @@ const file_packets_proto_rawDesc = "" +
 	"\x03ids\x18\x01 \x03(\v2\x16.packets.UnitIDMessageR\x03ids\"7\n" +
 	"\rUnitIDMessage\x12\x0e\n" +
 	"\x02Id\x18\x01 \x01(\x03R\x02Id\x12\x16\n" +
-	"\x06unitId\x18\x02 \x01(\x05R\x06unitId\"\xbc\n" +
+	"\x06unitId\x18\x02 \x01(\x05R\x06unitId\"\x1d\n" +
+	"\vTurnMessage\x12\x0e\n" +
+	"\x02Id\x18\x01 \x01(\x04R\x02Id\"\xe8\n" +
 	"\n" +
 	"\x06Packet\x12\x1b\n" +
 	"\tsender_id\x18\x01 \x01(\x04R\bsenderId\x12*\n" +
@@ -2355,7 +2417,8 @@ const file_packets_proto_rawDesc = "" +
 	"\x06ArmyId\x18\x15 \x01(\v2\x16.packets.ArmyIDMessageH\x00R\x06ArmyId\x12B\n" +
 	"\fUnitPosition\x18\x16 \x01(\v2\x1c.packets.UnitPositionMessageH\x00R\fUnitPosition\x12E\n" +
 	"\rUnitPositions\x18\x17 \x01(\v2\x1d.packets.UnitPositionsMessageH\x00R\rUnitPositions\x123\n" +
-	"\aUnitIds\x18\x18 \x01(\v2\x17.packets.UnitIDsMessageH\x00R\aUnitIdsB\x05\n" +
+	"\aUnitIds\x18\x18 \x01(\v2\x17.packets.UnitIDsMessageH\x00R\aUnitIds\x12*\n" +
+	"\x04Turn\x18\x19 \x01(\v2\x14.packets.TurnMessageH\x00R\x04TurnB\x05\n" +
 	"\x03msg*B\n" +
 	"\bChatType\x12\v\n" +
 	"\aNothing\x10\x00\x12\n" +
@@ -2383,7 +2446,7 @@ func file_packets_proto_rawDescGZIP() []byte {
 }
 
 var file_packets_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_packets_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
+var file_packets_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
 var file_packets_proto_goTypes = []any{
 	(ChatType)(0),                  // 0: packets.ChatType
 	(Speeds)(0),                    // 1: packets.Speeds
@@ -2418,7 +2481,8 @@ var file_packets_proto_goTypes = []any{
 	(*ArmyIDMessage)(nil),          // 30: packets.ArmyIDMessage
 	(*UnitIDsMessage)(nil),         // 31: packets.UnitIDsMessage
 	(*UnitIDMessage)(nil),          // 32: packets.UnitIDMessage
-	(*Packet)(nil),                 // 33: packets.Packet
+	(*TurnMessage)(nil),            // 33: packets.TurnMessage
+	(*Packet)(nil),                 // 34: packets.Packet
 }
 var file_packets_proto_depIdxs = []int32{
 	7,  // 0: packets.ArmyData.unitIds:type_name -> packets.UnitArmyData
@@ -2459,11 +2523,12 @@ var file_packets_proto_depIdxs = []int32{
 	26, // 35: packets.Packet.UnitPosition:type_name -> packets.UnitPositionMessage
 	27, // 36: packets.Packet.UnitPositions:type_name -> packets.UnitPositionsMessage
 	31, // 37: packets.Packet.UnitIds:type_name -> packets.UnitIDsMessage
-	38, // [38:38] is the sub-list for method output_type
-	38, // [38:38] is the sub-list for method input_type
-	38, // [38:38] is the sub-list for extension type_name
-	38, // [38:38] is the sub-list for extension extendee
-	0,  // [0:38] is the sub-list for field type_name
+	33, // 38: packets.Packet.Turn:type_name -> packets.TurnMessage
+	39, // [39:39] is the sub-list for method output_type
+	39, // [39:39] is the sub-list for method input_type
+	39, // [39:39] is the sub-list for extension type_name
+	39, // [39:39] is the sub-list for extension extendee
+	0,  // [0:39] is the sub-list for field type_name
 }
 
 func init() { file_packets_proto_init() }
@@ -2471,7 +2536,7 @@ func file_packets_proto_init() {
 	if File_packets_proto != nil {
 		return
 	}
-	file_packets_proto_msgTypes[31].OneofWrappers = []any{
+	file_packets_proto_msgTypes[32].OneofWrappers = []any{
 		(*Packet_Chat)(nil),
 		(*Packet_Id)(nil),
 		(*Packet_LoginRequest)(nil),
@@ -2495,6 +2560,7 @@ func file_packets_proto_init() {
 		(*Packet_UnitPosition)(nil),
 		(*Packet_UnitPositions)(nil),
 		(*Packet_UnitIds)(nil),
+		(*Packet_Turn)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -2502,7 +2568,7 @@ func file_packets_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_packets_proto_rawDesc), len(file_packets_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   32,
+			NumMessages:   33,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

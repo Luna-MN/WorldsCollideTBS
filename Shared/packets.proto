@@ -41,6 +41,7 @@ message GameDataVersion { string Version = 1; }
 message ArmyIDMessage { int64 Id = 1; }
 message UnitIDsMessage { repeated UnitIDMessage ids = 1; }
 message UnitIDMessage {int64 Id = 1; int32 unitId = 2;}
+message TurnMessage { uint64 Id = 1; }
 // more message types here
 
 
@@ -73,6 +74,7 @@ message Packet {
     UnitPositionMessage UnitPosition = 22;
     UnitPositionsMessage UnitPositions = 23;
     UnitIDsMessage UnitIds = 24;
+    TurnMessage Turn = 25;
     //...
   }
 }

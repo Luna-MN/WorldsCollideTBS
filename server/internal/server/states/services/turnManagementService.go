@@ -57,6 +57,6 @@ func (t *TurnManagementService) IsMyTurn(id uint64) bool {
 	return t.turnIds[t.turnPointer] == id
 }
 
-func (t *TurnManagementService) IsPlayerTurn(id uint64) bool {
-	return t.player1Id == id || t.player2Id == id
+func (t *TurnManagementService) IsPlayerTurn() bool {
+	return t.player1Id == t.turnIds[t.turnPointer] || t.player2Id == t.turnIds[t.turnPointer]
 }

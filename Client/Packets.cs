@@ -67,35 +67,36 @@ namespace Packets {
             "a2V0cy5Vbml0RGF0YSIiCg9HYW1lRGF0YVZlcnNpb24SDwoHVmVyc2lvbhgB",
             "IAEoCSIbCg1Bcm15SURNZXNzYWdlEgoKAklkGAEgASgDIjUKDlVuaXRJRHNN",
             "ZXNzYWdlEiMKA2lkcxgBIAMoCzIWLnBhY2tldHMuVW5pdElETWVzc2FnZSIr",
-            "Cg1Vbml0SURNZXNzYWdlEgoKAklkGAEgASgDEg4KBnVuaXRJZBgCIAEoBSLP",
-            "CAoGUGFja2V0EhEKCXNlbmRlcl9pZBgBIAEoBBIkCgRjaGF0GAIgASgLMhQu",
-            "cGFja2V0cy5DaGF0TWVzc2FnZUgAEiAKAmlkGAMgASgLMhIucGFja2V0cy5J",
-            "ZE1lc3NhZ2VIABI0Cgxsb2dpblJlcXVlc3QYBCABKAsyHC5wYWNrZXRzLkxv",
-            "Z2luUmVxdWVzdE1lc3NhZ2VIABI6Cg9yZWdpc3RlclJlcXVlc3QYBSABKAsy",
-            "Hy5wYWNrZXRzLlJlZ2lzdGVyUmVxdWVzdE1lc3NhZ2VIABIoCgJPSxgGIAEo",
-            "CzIaLnBhY2tldHMuT2tSZXNwb25zZU1lc3NhZ2VIABIsCgREZW55GAcgASgL",
-            "MhwucGFja2V0cy5EZW55UmVzcG9uc2VNZXNzYWdlSAASKgoHY29tbWFuZBgI",
-            "IAEoCzIXLnBhY2tldHMuQ29tbWFuZE1lc3NhZ2VIABIyCgtoZXhQb3NpdGlv",
-            "bhgJIAEoCzIbLnBhY2tldHMuSGV4UG9zaXRpb25NZXNzYWdlSAASNAoMaGV4",
-            "UG9zaXRpb25zGAogASgLMhwucGFja2V0cy5IZXhQb3NpdGlvbnNNZXNzYWdl",
-            "SAASNgoLc3RlYW1UaWNrZXQYCyABKAsyHy5wYWNrZXRzLlN0ZWFtQXV0aFRp",
-            "Y2tldE1lc3NhZ2VIABIyCgtjaGFuZ2VTdGF0ZRgMIAEoCzIbLnBhY2tldHMu",
-            "Q2hhbmdlU3RhdGVNZXNzYWdlSAASJgoFcXVldWUYDSABKAsyFS5wYWNrZXRz",
-            "LlF1ZXVlTWVzc2FnZUgAEiwKCG9wcG9uZW50GA4gASgLMhgucGFja2V0cy5P",
-            "cHBvbmVudE1lc3NhZ2VIABIuCglzdGFydEdhbWUYDyABKAsyGS5wYWNrZXRz",
-            "LlN0YXJ0R2FtZU1lc3NhZ2VIABIkCgRzZWVkGBAgASgLMhQucGFja2V0cy5T",
-            "ZWVkTWVzc2FnZUgAEiIKA0lEcxgRIAEoCzITLnBhY2tldHMuSURzTWVzc2Fn",
-            "ZUgAEiQKBFVuaXQYEiABKAsyFC5wYWNrZXRzLlVuaXRNZXNzYWdlSAASLAoI",
-            "R2FtZURhdGEYEyABKAsyGC5wYWNrZXRzLkdhbWVEYXRhTWVzc2FnZUgAEi8K",
-            "C0dhbWVWZXJzaW9uGBQgASgLMhgucGFja2V0cy5HYW1lRGF0YVZlcnNpb25I",
-            "ABIoCgZBcm15SWQYFSABKAsyFi5wYWNrZXRzLkFybXlJRE1lc3NhZ2VIABI0",
-            "CgxVbml0UG9zaXRpb24YFiABKAsyHC5wYWNrZXRzLlVuaXRQb3NpdGlvbk1l",
-            "c3NhZ2VIABI2Cg1Vbml0UG9zaXRpb25zGBcgASgLMh0ucGFja2V0cy5Vbml0",
-            "UG9zaXRpb25zTWVzc2FnZUgAEioKB1VuaXRJZHMYGCABKAsyFy5wYWNrZXRz",
-            "LlVuaXRJRHNNZXNzYWdlSABCBQoDbXNnKkIKCENoYXRUeXBlEgsKB05vdGhp",
-            "bmcQABIKCgZHbG9iYWwQARIJCgVMb2NhbBACEgkKBVBhcnR5EAMSBwoDTWF4",
-            "EAQqKAoGU3BlZWRzEgoKBk5vcm1hbBAAEggKBFNsb3cQARIICgRGYXN0EAJC",
-            "DVoLcGtnL3BhY2tldHNiBnByb3RvMw=="));
+            "Cg1Vbml0SURNZXNzYWdlEgoKAklkGAEgASgDEg4KBnVuaXRJZBgCIAEoBSIZ",
+            "CgtUdXJuTWVzc2FnZRIKCgJJZBgBIAEoBCL1CAoGUGFja2V0EhEKCXNlbmRl",
+            "cl9pZBgBIAEoBBIkCgRjaGF0GAIgASgLMhQucGFja2V0cy5DaGF0TWVzc2Fn",
+            "ZUgAEiAKAmlkGAMgASgLMhIucGFja2V0cy5JZE1lc3NhZ2VIABI0Cgxsb2dp",
+            "blJlcXVlc3QYBCABKAsyHC5wYWNrZXRzLkxvZ2luUmVxdWVzdE1lc3NhZ2VI",
+            "ABI6Cg9yZWdpc3RlclJlcXVlc3QYBSABKAsyHy5wYWNrZXRzLlJlZ2lzdGVy",
+            "UmVxdWVzdE1lc3NhZ2VIABIoCgJPSxgGIAEoCzIaLnBhY2tldHMuT2tSZXNw",
+            "b25zZU1lc3NhZ2VIABIsCgREZW55GAcgASgLMhwucGFja2V0cy5EZW55UmVz",
+            "cG9uc2VNZXNzYWdlSAASKgoHY29tbWFuZBgIIAEoCzIXLnBhY2tldHMuQ29t",
+            "bWFuZE1lc3NhZ2VIABIyCgtoZXhQb3NpdGlvbhgJIAEoCzIbLnBhY2tldHMu",
+            "SGV4UG9zaXRpb25NZXNzYWdlSAASNAoMaGV4UG9zaXRpb25zGAogASgLMhwu",
+            "cGFja2V0cy5IZXhQb3NpdGlvbnNNZXNzYWdlSAASNgoLc3RlYW1UaWNrZXQY",
+            "CyABKAsyHy5wYWNrZXRzLlN0ZWFtQXV0aFRpY2tldE1lc3NhZ2VIABIyCgtj",
+            "aGFuZ2VTdGF0ZRgMIAEoCzIbLnBhY2tldHMuQ2hhbmdlU3RhdGVNZXNzYWdl",
+            "SAASJgoFcXVldWUYDSABKAsyFS5wYWNrZXRzLlF1ZXVlTWVzc2FnZUgAEiwK",
+            "CG9wcG9uZW50GA4gASgLMhgucGFja2V0cy5PcHBvbmVudE1lc3NhZ2VIABIu",
+            "CglzdGFydEdhbWUYDyABKAsyGS5wYWNrZXRzLlN0YXJ0R2FtZU1lc3NhZ2VI",
+            "ABIkCgRzZWVkGBAgASgLMhQucGFja2V0cy5TZWVkTWVzc2FnZUgAEiIKA0lE",
+            "cxgRIAEoCzITLnBhY2tldHMuSURzTWVzc2FnZUgAEiQKBFVuaXQYEiABKAsy",
+            "FC5wYWNrZXRzLlVuaXRNZXNzYWdlSAASLAoIR2FtZURhdGEYEyABKAsyGC5w",
+            "YWNrZXRzLkdhbWVEYXRhTWVzc2FnZUgAEi8KC0dhbWVWZXJzaW9uGBQgASgL",
+            "MhgucGFja2V0cy5HYW1lRGF0YVZlcnNpb25IABIoCgZBcm15SWQYFSABKAsy",
+            "Fi5wYWNrZXRzLkFybXlJRE1lc3NhZ2VIABI0CgxVbml0UG9zaXRpb24YFiAB",
+            "KAsyHC5wYWNrZXRzLlVuaXRQb3NpdGlvbk1lc3NhZ2VIABI2Cg1Vbml0UG9z",
+            "aXRpb25zGBcgASgLMh0ucGFja2V0cy5Vbml0UG9zaXRpb25zTWVzc2FnZUgA",
+            "EioKB1VuaXRJZHMYGCABKAsyFy5wYWNrZXRzLlVuaXRJRHNNZXNzYWdlSAAS",
+            "JAoEVHVybhgZIAEoCzIULnBhY2tldHMuVHVybk1lc3NhZ2VIAEIFCgNtc2cq",
+            "QgoIQ2hhdFR5cGUSCwoHTm90aGluZxAAEgoKBkdsb2JhbBABEgkKBUxvY2Fs",
+            "EAISCQoFUGFydHkQAxIHCgNNYXgQBCooCgZTcGVlZHMSCgoGTm9ybWFsEAAS",
+            "CAoEU2xvdxABEggKBEZhc3QQAkINWgtwa2cvcGFja2V0c2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Packets.ChatType), typeof(global::Packets.Speeds), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -130,7 +131,8 @@ namespace Packets {
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.ArmyIDMessage), global::Packets.ArmyIDMessage.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.UnitIDsMessage), global::Packets.UnitIDsMessage.Parser, new[]{ "Ids" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.UnitIDMessage), global::Packets.UnitIDMessage.Parser, new[]{ "Id", "UnitId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.Packet), global::Packets.Packet.Parser, new[]{ "SenderId", "Chat", "Id", "LoginRequest", "RegisterRequest", "OK", "Deny", "Command", "HexPosition", "HexPositions", "SteamTicket", "ChangeState", "Queue", "Opponent", "StartGame", "Seed", "IDs", "Unit", "GameData", "GameVersion", "ArmyId", "UnitPosition", "UnitPositions", "UnitIds" }, new[]{ "Msg" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.TurnMessage), global::Packets.TurnMessage.Parser, new[]{ "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.Packet), global::Packets.Packet.Parser, new[]{ "SenderId", "Chat", "Id", "LoginRequest", "RegisterRequest", "OK", "Deny", "Command", "HexPosition", "HexPositions", "SteamTicket", "ChangeState", "Queue", "Opponent", "StartGame", "Seed", "IDs", "Unit", "GameData", "GameVersion", "ArmyId", "UnitPosition", "UnitPositions", "UnitIds", "Turn" }, new[]{ "Msg" }, null, null, null)
           }));
     }
     #endregion
@@ -7621,6 +7623,204 @@ namespace Packets {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class TurnMessage : pb::IMessage<TurnMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<TurnMessage> _parser = new pb::MessageParser<TurnMessage>(() => new TurnMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<TurnMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[31]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TurnMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TurnMessage(TurnMessage other) : this() {
+      id_ = other.id_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TurnMessage Clone() {
+      return new TurnMessage(this);
+    }
+
+    /// <summary>Field number for the "Id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private ulong id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as TurnMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(TurnMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0UL) hash ^= Id.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Id != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(Id);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(Id);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Id);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(TurnMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0UL) {
+        Id = other.Id;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Id = input.ReadUInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Id = input.ReadUInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Packet : pb::IMessage<Packet>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -7635,7 +7835,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[31]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[32]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7725,6 +7925,9 @@ namespace Packets {
           break;
         case MsgOneofCase.UnitIds:
           UnitIds = other.UnitIds.Clone();
+          break;
+        case MsgOneofCase.Turn:
+          Turn = other.Turn.Clone();
           break;
       }
 
@@ -8015,9 +8218,6 @@ namespace Packets {
 
     /// <summary>Field number for the "UnitIds" field.</summary>
     public const int UnitIdsFieldNumber = 24;
-    /// <summary>
-    ///...
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Packets.UnitIDsMessage UnitIds {
@@ -8025,6 +8225,21 @@ namespace Packets {
       set {
         msg_ = value;
         msgCase_ = value == null ? MsgOneofCase.None : MsgOneofCase.UnitIds;
+      }
+    }
+
+    /// <summary>Field number for the "Turn" field.</summary>
+    public const int TurnFieldNumber = 25;
+    /// <summary>
+    ///...
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Packets.TurnMessage Turn {
+      get { return msgCase_ == MsgOneofCase.Turn ? (global::Packets.TurnMessage) msg_ : null; }
+      set {
+        msg_ = value;
+        msgCase_ = value == null ? MsgOneofCase.None : MsgOneofCase.Turn;
       }
     }
 
@@ -8055,6 +8270,7 @@ namespace Packets {
       UnitPosition = 22,
       UnitPositions = 23,
       UnitIds = 24,
+      Turn = 25,
     }
     private MsgOneofCase msgCase_ = MsgOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8109,6 +8325,7 @@ namespace Packets {
       if (!object.Equals(UnitPosition, other.UnitPosition)) return false;
       if (!object.Equals(UnitPositions, other.UnitPositions)) return false;
       if (!object.Equals(UnitIds, other.UnitIds)) return false;
+      if (!object.Equals(Turn, other.Turn)) return false;
       if (MsgCase != other.MsgCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -8141,6 +8358,7 @@ namespace Packets {
       if (msgCase_ == MsgOneofCase.UnitPosition) hash ^= UnitPosition.GetHashCode();
       if (msgCase_ == MsgOneofCase.UnitPositions) hash ^= UnitPositions.GetHashCode();
       if (msgCase_ == MsgOneofCase.UnitIds) hash ^= UnitIds.GetHashCode();
+      if (msgCase_ == MsgOneofCase.Turn) hash ^= Turn.GetHashCode();
       hash ^= (int) msgCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -8256,6 +8474,10 @@ namespace Packets {
         output.WriteRawTag(194, 1);
         output.WriteMessage(UnitIds);
       }
+      if (msgCase_ == MsgOneofCase.Turn) {
+        output.WriteRawTag(202, 1);
+        output.WriteMessage(Turn);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -8362,6 +8584,10 @@ namespace Packets {
         output.WriteRawTag(194, 1);
         output.WriteMessage(UnitIds);
       }
+      if (msgCase_ == MsgOneofCase.Turn) {
+        output.WriteRawTag(202, 1);
+        output.WriteMessage(Turn);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -8443,6 +8669,9 @@ namespace Packets {
       }
       if (msgCase_ == MsgOneofCase.UnitIds) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(UnitIds);
+      }
+      if (msgCase_ == MsgOneofCase.Turn) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Turn);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -8597,6 +8826,12 @@ namespace Packets {
             UnitIds = new global::Packets.UnitIDsMessage();
           }
           UnitIds.MergeFrom(other.UnitIds);
+          break;
+        case MsgOneofCase.Turn:
+          if (Turn == null) {
+            Turn = new global::Packets.TurnMessage();
+          }
+          Turn.MergeFrom(other.Turn);
           break;
       }
 
@@ -8830,6 +9065,15 @@ namespace Packets {
             UnitIds = subBuilder;
             break;
           }
+          case 202: {
+            global::Packets.TurnMessage subBuilder = new global::Packets.TurnMessage();
+            if (msgCase_ == MsgOneofCase.Turn) {
+              subBuilder.MergeFrom(Turn);
+            }
+            input.ReadMessage(subBuilder);
+            Turn = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -9058,6 +9302,15 @@ namespace Packets {
             }
             input.ReadMessage(subBuilder);
             UnitIds = subBuilder;
+            break;
+          }
+          case 202: {
+            global::Packets.TurnMessage subBuilder = new global::Packets.TurnMessage();
+            if (msgCase_ == MsgOneofCase.Turn) {
+              subBuilder.MergeFrom(Turn);
+            }
+            input.ReadMessage(subBuilder);
+            Turn = subBuilder;
             break;
           }
         }

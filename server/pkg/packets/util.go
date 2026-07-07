@@ -198,3 +198,7 @@ func UnwrapVector2I(position *Vector2IMsg) objects.Vector2I {
 		Y: int(position.Y),
 	}
 }
+
+func NewTurnMessage(turn uint64) *Packet_Turn {
+	return &Packet_Turn{Turn: &TurnMessage{Id: turn}}
+}

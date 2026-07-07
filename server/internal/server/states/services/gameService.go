@@ -139,6 +139,8 @@ func (g *GameService) HandleMessage(player *server.Client, msg packets.Msg) {
 		g.HandleUnitPositionsMessage(pd, msg.(*packets.Packet_UnitPositions))
 	case *packets.Packet_HexPositions:
 		g.HandleHexPositionsMessage(pd, msg.(*packets.Packet_HexPositions))
+	case *packets.Packet_Turn:
+		g.HandleTurnMessage(pd, msg.(*packets.Packet_Turn))
 	}
 }
 
@@ -290,4 +292,25 @@ func (g *GameService) SendUnitPositions(pd *PlayerGameData) {
 	}
 	g.logger.Println("Sending unit positions as ", pd.Player.Username(), " : ", unitPositions)
 	g.SendToClientsAs(pd.Player.Id(), packets.NewUnitPositions(unitPositions))
+}
+
+func (g *GameService) HandleTurnMessage(pd *PlayerGameData, turn *packets.Packet_Turn) {
+	if g.turnManagementService == nil {
+		g.logger.Println("Turn management service is nil")
+		return
+	}
+	if !g.turnManagementService.IsMyTurn(turn.Turn.Id) {
+		g.logger.Println("Not my turn")
+		return
+	}
+
+	g.SendToClients(packets.NewTurnMessage(g.turnManagementService.NextTurn()))
+
+	if !g.turnManagementService.IsPlayerTurn() {
+		g.HandleNPCTurn()
+	}
+}
+
+func (g *GameService) HandleNPCTurn() {
+
 }
