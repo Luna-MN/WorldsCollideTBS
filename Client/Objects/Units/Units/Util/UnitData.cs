@@ -22,7 +22,7 @@ public class UnitData
     public Speeds Speed { get; set; }
     public List<string> Support { get; set; }
     public UnitData() { }
-
+    
     public UnitData(UnitDataJSON data, ulong id, int unitID)
     {
         UnitName = data.Name;
@@ -42,5 +42,9 @@ public class UnitData
             ? null
             : data.Support.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
         Support?.ForEach(s => s = s.Replace(" ", "").Trim());
+    }
+    public bool IsMine()
+    {
+        return OwnerId == Globals.GM.clientId;
     }
 }

@@ -207,31 +207,29 @@ public partial class InputHandler : Node3D
     
     private void HandleMainLeftClick()
     {
-        if (CurrentMouseNode == null) return;
-        var nodeInfo = CurrentMouseNode.TerrainInfo;
+        var nodeInfo = CurrentMouseNode?.TerrainInfo;
         if (nodeInfo == null) return;
         HandleUnitClick(nodeInfo, CurrentMouseNode);
     }
     private void HandleUnitClick(TerrainInfo UnitInfo, Tile UnitTile)
     {
-        if ((SelectedTile == null && UnitInfo.Unit == null) || (UnitInfo.Unit != null && UnitInfo.Unit.Data.OwnerId != Globals.GM.clientId) || !Globals.GM.CurrentGameData.MyTurn)
+        if (((SelectedTile == null && UnitInfo.Unit == null || SelectedTile == null && !UnitInfo.Unit.Data.IsMine()) || !Globals.GM.CurrentGameData.MyTurn)) // this is if the action is invalid
         {
+            SelectedTile = null;
             return;
         }
-        if (SelectedTile == null && UnitInfo.Unit != null)
+        if (UnitInfo.Unit != null && UnitInfo.Unit.Data.IsMine() && SelectedTile == null)
         {
             SelectedTile = UnitTile;
             mainGame.UI.unitPanel.ChangeUnit(SelectedTile.TerrainInfo.Unit.Data);
             return;
         }
-        if (SelectedTile != null && UnitInfo.Unit == null)
+        if (UnitInfo.Unit == null) // the selected tile is our unit, the new tile doesn't have a unit on it, so we can move to it
         {
             SelectedTile.TerrainInfo.Unit.TileNode = SelectedTile;
             HandleMovement(SelectedTile.TerrainInfo, UnitInfo, SelectedTile.TerrainInfo.Unit);
-            SelectedTile = null;
-            return;
         }
-        if (SelectedTile != null && UnitInfo.Unit != null)
+        else // the selected tile is our unit, the new tile has a unit on it, so we want to attack or support that unit
         {
             // Handle attack/ healing
             if (UnitInfo.Unit.Data.OwnerId != Globals.GM.clientId)
@@ -243,6 +241,8 @@ public partial class InputHandler : Node3D
                 HandleSupport(SelectedTile.TerrainInfo.Unit, UnitInfo.Unit);
             }
         }
+
+        SelectedTile = null;
     }
     private void HandleMovement(TerrainInfo fromPos, TerrainInfo toPos, IUnit unit)
     {
