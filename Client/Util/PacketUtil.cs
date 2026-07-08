@@ -160,6 +160,17 @@ public static class PacketUtil
             Y = vec2.Y
         };
     }
+
+    public static Packet NewEndTurnPacket()
+    {
+        return new Packet()
+        {
+            Turn = new TurnMessage()
+            {
+                Id = Globals.GM.clientId
+            }
+        };
+    }
 }
 
 public class UIDData

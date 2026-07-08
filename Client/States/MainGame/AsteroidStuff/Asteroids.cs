@@ -11,7 +11,7 @@ public partial class Asteroids : Node3D
     private List<Asteroid> asteroids = [];
     public override void _Ready()
     {
-        for (int i = 0; i < AsteroidCount; i++)
+        for (int i = 1; i < AsteroidCount; i++)
         {
             var asteroid = AsteroidScene.Instantiate<Asteroid>();
             asteroid.DestroyTimerTime = CreationTimerTime * i;
@@ -32,7 +32,7 @@ public partial class Asteroids : Node3D
     private void CreateAsteroid()
     {
         var asteroid = AsteroidScene.Instantiate<Asteroid>();
-        asteroid.DestroyTimerTime = CreationTimerTime * AsteroidCount;
+        asteroid.DestroyTimerTime = CreationTimerTime * AsteroidCount + 1;
         AddChild(asteroid);
         asteroids.Add(asteroid);
         CreationTimer.Start();

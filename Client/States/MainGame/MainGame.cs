@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using Packets;
 using Packets.Util;
 
@@ -104,18 +105,42 @@ public partial class MainGame : Node3D, ISmoothState
 
     private void EndTurnClicked()
     {
-        
+        GD.Print("End Turn Clicked");
+        TrafficManager.Send(PacketUtil.NewEndTurnPacket());
     }
     public void OnPacketReceived(Packet packet)
     {
         switch (packet.MsgCase)
         {
+            case Packet.MsgOneofCase.IDs:
+                HandleTurnOrder(packet);
+                break;
+            case Packet.MsgOneofCase.Turn:
+                HandleTurnChange(packet);
+                break;
             case Packet.MsgOneofCase.HexPositions:
                 HandleHexPositions(packet);
                 break;
         }
     }
 
+    private void HandleTurnOrder(Packet packet)
+    {
+        Globals.GM.CurrentGameData.TurnOrder = packet.IDs.IDs.Select(id => id.Id).ToArray();
+    }
+    
+    private void HandleTurnChange(Packet packet)
+    {
+        if (!Globals.GM.CurrentGameData.TurnOrder.Contains(packet.Turn.Id))
+        {
+            log.error("Turn change received but not in turn order");
+            return;
+        }
+        Globals.GM.CurrentGameData.currTurnPointer = Globals.GM.CurrentGameData.TurnOrder.ToList().IndexOf(packet.Turn.Id);
+        Globals.GM.CurrentGameData.MyTurn = Globals.GM.CurrentGameData.TurnOrder[Globals.GM.CurrentGameData.currTurnPointer] == Globals.GM.clientId;
+        UI.EndTurn.Visible = Globals.GM.CurrentGameData.MyTurn;
+    }
+    
     private void HandleHexPositions(Packet packet)
     {
         if (packet.SenderId == Globals.GM.opponentId)

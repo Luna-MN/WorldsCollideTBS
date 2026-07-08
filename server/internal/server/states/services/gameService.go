@@ -232,6 +232,8 @@ func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *
 	g.SendUnitPositions(g.Player2GameData)
 	g.gameState = InProgress
 	g.InitTurnManagementService()
+	g.SendToClients(packets.NewIds(g.turnManagementService.GetTurnOrder()))
+	g.SendToClients(packets.NewTurnMessage(g.turnManagementService.Turn()))
 }
 
 func (g *GameService) InitTurnManagementService() {
@@ -300,7 +302,7 @@ func (g *GameService) HandleTurnMessage(pd *PlayerGameData, turn *packets.Packet
 		return
 	}
 	if !g.turnManagementService.IsMyTurn(turn.Turn.Id) {
-		g.logger.Println("Not my turn")
+		g.logger.Printf("Not my turn, %d", turn.Turn.Id)
 		return
 	}
 
