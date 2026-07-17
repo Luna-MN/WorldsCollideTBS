@@ -79,9 +79,8 @@ public class UnitDataJSON
 {
     public long ID;
     public string Name;
-    public string Attacks;
+    public string Skills;
     public string Movement;
-    public string Support;
     public long MaxHP;
     public long AP;
     public long speed;
@@ -92,12 +91,11 @@ public class UnitDataJSON
     {
         ID = unit.Id;
         Name = unit.Name;
-        Attacks = unit.Attacks;
+        Skills = unit.Skills;
         Movement = unit.Movement;
         MaxHP = unit.MaxHP;
         AP = unit.AP;
         speed = (long)unit.Speed;
         factionId = unit.FactionId;
-        Support = unit.Support;
     }
 }

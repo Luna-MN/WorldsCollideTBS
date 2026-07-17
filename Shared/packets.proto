@@ -5,6 +5,7 @@ option go_package = "pkg/packets";
 
 enum ChatType { Nothing = 0; Global = 1; Local = 2; Party = 3; Max = 4; }
 enum Speeds { Normal = 0; Slow = 1; Fast = 2;}
+enum SkillType { Attack = 0; Support = 2; }
 
 message Vector3Msg { float x = 1; float y = 2; float z = 3; }
 message Vector2Msg { float x = 1; float y = 2; }
@@ -14,7 +15,7 @@ message Vector2IMsg { int32 x = 1; int32 y = 2; }
 message FactionData { int64 id = 1; string name = 2; string description = 3; repeated int64 armyIds = 4; }
 message ArmyData { int64 id = 1; string name = 2; string description = 3; repeated UnitArmyData unitIds = 4; }
 message UnitArmyData { int64 unitId = 1; int32 count = 2; }
-message UnitData { int64 id = 1; string name = 2; string attacks = 3; string movement = 4; int64 maxHP = 5; int64 AP = 6; Speeds Speed = 7; int64 factionId = 8; string support = 9;}
+message UnitData { int64 id = 1; string name = 2; string skills = 3; string movement = 4; int64 maxHP = 5; int64 AP = 6; Speeds Speed = 7; int64 factionId = 8;}
 
 
 message ChatMessage { ChatType type = 1; string msg = 2; string Username = 3;}
@@ -42,6 +43,7 @@ message ArmyIDMessage { int64 Id = 1; }
 message UnitIDsMessage { repeated UnitIDMessage ids = 1; }
 message UnitIDMessage {int64 Id = 1; int32 unitId = 2;}
 message TurnMessage { uint64 Id = 1; }
+message SkillMessage { string SkillName = 1; SkillType type = 2; int64 unitId = 3; int64 targetID = 4; Vector3Msg pos = 5; }
 // more message types here
 
 
@@ -75,6 +77,7 @@ message Packet {
     UnitPositionsMessage UnitPositions = 23;
     UnitIDsMessage UnitIds = 24;
     TurnMessage Turn = 25;
+    SkillMessage Skill = 26;
     //...
   }
 }

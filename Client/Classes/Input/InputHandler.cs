@@ -221,7 +221,7 @@ public partial class InputHandler : Node3D
         if (UnitInfo.Unit != null && UnitInfo.Unit.Data.IsMine() && SelectedTile == null)
         {
             SelectedTile = UnitTile;
-            mainGame.UI.unitPanel.ChangeUnit(SelectedTile.TerrainInfo.Unit.Data);
+            mainGame.UI.unitPanel.Select(SelectedTile.TerrainInfo.Unit);
             return;
         }
         if (UnitInfo.Unit == null) // the selected tile is our unit, the new tile doesn't have a unit on it, so we can move to it
@@ -250,11 +250,19 @@ public partial class InputHandler : Node3D
     }
     private void HandleAttack(IUnit me, IUnit enemy)
     {
-        me.Attack(enemy);
+        if (mainGame.UI.unitPanel.SelectedSkill == null || mainGame.UI.unitPanel.SelectedSkill.Skill is not IAttack)
+        {
+            return;
+        }
+        ((IAttack)mainGame.UI.unitPanel.SelectedSkill.Skill).Attack(enemy);
     }
 
     private void HandleSupport(IUnit me, IUnit ally)
     {
-        me.Support(ally);
+        if (mainGame.UI.unitPanel.SelectedSkill == null || mainGame.UI.unitPanel.SelectedSkill.Skill is not ISupport)
+        {
+            return;
+        }
+        ((ISupport)mainGame.UI.unitPanel.SelectedSkill.Skill).Support(ally);
     }
 }

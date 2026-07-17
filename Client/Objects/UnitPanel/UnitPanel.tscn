@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://baxipibyd5q0r"]
+
+[ext_resource type="Script" uid="uid://bqouh3lqpkqk0" path="res://Objects/UnitPanel/UnitPanel.cs" id="1_qeuae"]
+
+[node name="Unit Panel" type="Panel" unique_id=725283998 node_paths=PackedStringArray("NamePlate")]
+custom_minimum_size = Vector2(800, 150)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -179.99963
+offset_right = 895.0
+offset_bottom = -29.999634
+grow_vertical = 0
+script = ExtResource("1_qeuae")
+NamePlate = NodePath("Unit Name")
+
+[node name="Unit Name" type="RichTextLabel" parent="." unique_id=1360925442]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 1
+offset_right = 150.0
+offset_bottom = 45.0
+text = "Test Unit"
+
+[node name="AP" type="RichTextLabel" parent="." unique_id=2047752146]
+custom_minimum_size = Vector2(83.99, 0)
+layout_mode = 1
+offset_left = 206.0
+offset_right = 289.99
+offset_bottom = 40.0
+text = "AP:"
+
+[node name="HP" type="RichTextLabel" parent="." unique_id=15329803]
+custom_minimum_size = Vector2(83.99, 0)
+layout_mode = 0
+offset_left = 304.0
+offset_right = 387.99
+offset_bottom = 40.0
+text = "HP:"
+
+[node name="Attacks" type="Panel" parent="." unique_id=1809196279]
+self_modulate = Color(1, 0.36184528, 0.3477963, 1)
+layout_mode = 0
+offset_left = 11.0
+offset_top = 42.999634
+offset_right = 414.0
+offset_bottom = 139.99963
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Attacks" unique_id=297680095]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Supports" type="Panel" parent="." unique_id=635746881]
+self_modulate = Color(2.8878452e-07, 0.73106426, 0.33164856, 1)
+layout_mode = 0
+offset_left = 431.0
+offset_top = 41.999634
+offset_right = 834.0
+offset_bottom = 138.99963
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Supports" unique_id=1166616445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

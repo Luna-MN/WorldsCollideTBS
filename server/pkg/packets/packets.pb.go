@@ -125,6 +125,52 @@ func (Speeds) EnumDescriptor() ([]byte, []int) {
 	return file_packets_proto_rawDescGZIP(), []int{1}
 }
 
+type SkillType int32
+
+const (
+	SkillType_Attack  SkillType = 0
+	SkillType_Support SkillType = 2
+)
+
+// Enum value maps for SkillType.
+var (
+	SkillType_name = map[int32]string{
+		0: "Attack",
+		2: "Support",
+	}
+	SkillType_value = map[string]int32{
+		"Attack":  0,
+		"Support": 2,
+	}
+)
+
+func (x SkillType) Enum() *SkillType {
+	p := new(SkillType)
+	*p = x
+	return p
+}
+
+func (x SkillType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SkillType) Descriptor() protoreflect.EnumDescriptor {
+	return file_packets_proto_enumTypes[2].Descriptor()
+}
+
+func (SkillType) Type() protoreflect.EnumType {
+	return &file_packets_proto_enumTypes[2]
+}
+
+func (x SkillType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SkillType.Descriptor instead.
+func (SkillType) EnumDescriptor() ([]byte, []int) {
+	return file_packets_proto_rawDescGZIP(), []int{2}
+}
+
 type Vector3Msg struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	X             float32                `protobuf:"fixed32,1,opt,name=x,proto3" json:"x,omitempty"`
@@ -482,13 +528,12 @@ type UnitData struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Attacks       string                 `protobuf:"bytes,3,opt,name=attacks,proto3" json:"attacks,omitempty"`
+	Skills        string                 `protobuf:"bytes,3,opt,name=skills,proto3" json:"skills,omitempty"`
 	Movement      string                 `protobuf:"bytes,4,opt,name=movement,proto3" json:"movement,omitempty"`
 	MaxHP         int64                  `protobuf:"varint,5,opt,name=maxHP,proto3" json:"maxHP,omitempty"`
 	AP            int64                  `protobuf:"varint,6,opt,name=AP,proto3" json:"AP,omitempty"`
 	Speed         Speeds                 `protobuf:"varint,7,opt,name=Speed,proto3,enum=packets.Speeds" json:"Speed,omitempty"`
 	FactionId     int64                  `protobuf:"varint,8,opt,name=factionId,proto3" json:"factionId,omitempty"`
-	Support       string                 `protobuf:"bytes,9,opt,name=support,proto3" json:"support,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -537,9 +582,9 @@ func (x *UnitData) GetName() string {
 	return ""
 }
 
-func (x *UnitData) GetAttacks() string {
+func (x *UnitData) GetSkills() string {
 	if x != nil {
-		return x.Attacks
+		return x.Skills
 	}
 	return ""
 }
@@ -577,13 +622,6 @@ func (x *UnitData) GetFactionId() int64 {
 		return x.FactionId
 	}
 	return 0
-}
-
-func (x *UnitData) GetSupport() string {
-	if x != nil {
-		return x.Support
-	}
-	return ""
 }
 
 type ChatMessage struct {
@@ -1838,6 +1876,82 @@ func (x *TurnMessage) GetId() uint64 {
 	return 0
 }
 
+type SkillMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SkillName     string                 `protobuf:"bytes,1,opt,name=SkillName,proto3" json:"SkillName,omitempty"`
+	Type          SkillType              `protobuf:"varint,2,opt,name=type,proto3,enum=packets.SkillType" json:"type,omitempty"`
+	UnitId        int64                  `protobuf:"varint,3,opt,name=unitId,proto3" json:"unitId,omitempty"`
+	TargetID      int64                  `protobuf:"varint,4,opt,name=targetID,proto3" json:"targetID,omitempty"`
+	Pos           *Vector3Msg            `protobuf:"bytes,5,opt,name=pos,proto3" json:"pos,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SkillMessage) Reset() {
+	*x = SkillMessage{}
+	mi := &file_packets_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SkillMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SkillMessage) ProtoMessage() {}
+
+func (x *SkillMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_packets_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SkillMessage.ProtoReflect.Descriptor instead.
+func (*SkillMessage) Descriptor() ([]byte, []int) {
+	return file_packets_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *SkillMessage) GetSkillName() string {
+	if x != nil {
+		return x.SkillName
+	}
+	return ""
+}
+
+func (x *SkillMessage) GetType() SkillType {
+	if x != nil {
+		return x.Type
+	}
+	return SkillType_Attack
+}
+
+func (x *SkillMessage) GetUnitId() int64 {
+	if x != nil {
+		return x.UnitId
+	}
+	return 0
+}
+
+func (x *SkillMessage) GetTargetID() int64 {
+	if x != nil {
+		return x.TargetID
+	}
+	return 0
+}
+
+func (x *SkillMessage) GetPos() *Vector3Msg {
+	if x != nil {
+		return x.Pos
+	}
+	return nil
+}
+
 type Packet struct {
 	state    protoimpl.MessageState `protogen:"open.v1"`
 	SenderId uint64                 `protobuf:"varint,1,opt,name=sender_id,json=senderId,proto3" json:"sender_id,omitempty"`
@@ -1867,6 +1981,7 @@ type Packet struct {
 	//	*Packet_UnitPositions
 	//	*Packet_UnitIds
 	//	*Packet_Turn
+	//	*Packet_Skill
 	Msg           isPacket_Msg `protobuf_oneof:"msg"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1874,7 +1989,7 @@ type Packet struct {
 
 func (x *Packet) Reset() {
 	*x = Packet{}
-	mi := &file_packets_proto_msgTypes[32]
+	mi := &file_packets_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1886,7 +2001,7 @@ func (x *Packet) String() string {
 func (*Packet) ProtoMessage() {}
 
 func (x *Packet) ProtoReflect() protoreflect.Message {
-	mi := &file_packets_proto_msgTypes[32]
+	mi := &file_packets_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1899,7 +2014,7 @@ func (x *Packet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Packet.ProtoReflect.Descriptor instead.
 func (*Packet) Descriptor() ([]byte, []int) {
-	return file_packets_proto_rawDescGZIP(), []int{32}
+	return file_packets_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *Packet) GetSenderId() uint64 {
@@ -2132,6 +2247,15 @@ func (x *Packet) GetTurn() *TurnMessage {
 	return nil
 }
 
+func (x *Packet) GetSkill() *SkillMessage {
+	if x != nil {
+		if x, ok := x.Msg.(*Packet_Skill); ok {
+			return x.Skill
+		}
+	}
+	return nil
+}
+
 type isPacket_Msg interface {
 	isPacket_Msg()
 }
@@ -2229,7 +2353,11 @@ type Packet_UnitIds struct {
 }
 
 type Packet_Turn struct {
-	Turn *TurnMessage `protobuf:"bytes,25,opt,name=Turn,proto3,oneof"` //...
+	Turn *TurnMessage `protobuf:"bytes,25,opt,name=Turn,proto3,oneof"`
+}
+
+type Packet_Skill struct {
+	Skill *SkillMessage `protobuf:"bytes,26,opt,name=Skill,proto3,oneof"` //...
 }
 
 func (*Packet_Chat) isPacket_Msg() {}
@@ -2280,6 +2408,8 @@ func (*Packet_UnitIds) isPacket_Msg() {}
 
 func (*Packet_Turn) isPacket_Msg() {}
 
+func (*Packet_Skill) isPacket_Msg() {}
+
 var File_packets_proto protoreflect.FileDescriptor
 
 const file_packets_proto_rawDesc = "" +
@@ -2309,17 +2439,16 @@ const file_packets_proto_rawDesc = "" +
 	"\aunitIds\x18\x04 \x03(\v2\x15.packets.UnitArmyDataR\aunitIds\"<\n" +
 	"\fUnitArmyData\x12\x16\n" +
 	"\x06unitId\x18\x01 \x01(\x03R\x06unitId\x12\x14\n" +
-	"\x05count\x18\x02 \x01(\x05R\x05count\"\xe9\x01\n" +
+	"\x05count\x18\x02 \x01(\x05R\x05count\"\xcd\x01\n" +
 	"\bUnitData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
-	"\aattacks\x18\x03 \x01(\tR\aattacks\x12\x1a\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
+	"\x06skills\x18\x03 \x01(\tR\x06skills\x12\x1a\n" +
 	"\bmovement\x18\x04 \x01(\tR\bmovement\x12\x14\n" +
 	"\x05maxHP\x18\x05 \x01(\x03R\x05maxHP\x12\x0e\n" +
 	"\x02AP\x18\x06 \x01(\x03R\x02AP\x12%\n" +
 	"\x05Speed\x18\a \x01(\x0e2\x0f.packets.SpeedsR\x05Speed\x12\x1c\n" +
-	"\tfactionId\x18\b \x01(\x03R\tfactionId\x12\x18\n" +
-	"\asupport\x18\t \x01(\tR\asupport\"b\n" +
+	"\tfactionId\x18\b \x01(\x03R\tfactionId\"b\n" +
 	"\vChatMessage\x12%\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x11.packets.ChatTypeR\x04type\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x12\x1a\n" +
@@ -2390,8 +2519,13 @@ const file_packets_proto_rawDesc = "" +
 	"\x02Id\x18\x01 \x01(\x03R\x02Id\x12\x16\n" +
 	"\x06unitId\x18\x02 \x01(\x05R\x06unitId\"\x1d\n" +
 	"\vTurnMessage\x12\x0e\n" +
-	"\x02Id\x18\x01 \x01(\x04R\x02Id\"\xe8\n" +
-	"\n" +
+	"\x02Id\x18\x01 \x01(\x04R\x02Id\"\xaf\x01\n" +
+	"\fSkillMessage\x12\x1c\n" +
+	"\tSkillName\x18\x01 \x01(\tR\tSkillName\x12&\n" +
+	"\x04type\x18\x02 \x01(\x0e2\x12.packets.SkillTypeR\x04type\x12\x16\n" +
+	"\x06unitId\x18\x03 \x01(\x03R\x06unitId\x12\x1a\n" +
+	"\btargetID\x18\x04 \x01(\x03R\btargetID\x12%\n" +
+	"\x03pos\x18\x05 \x01(\v2\x13.packets.Vector3MsgR\x03pos\"\x97\v\n" +
 	"\x06Packet\x12\x1b\n" +
 	"\tsender_id\x18\x01 \x01(\x04R\bsenderId\x12*\n" +
 	"\x04chat\x18\x02 \x01(\v2\x14.packets.ChatMessageH\x00R\x04chat\x12$\n" +
@@ -2418,7 +2552,8 @@ const file_packets_proto_rawDesc = "" +
 	"\fUnitPosition\x18\x16 \x01(\v2\x1c.packets.UnitPositionMessageH\x00R\fUnitPosition\x12E\n" +
 	"\rUnitPositions\x18\x17 \x01(\v2\x1d.packets.UnitPositionsMessageH\x00R\rUnitPositions\x123\n" +
 	"\aUnitIds\x18\x18 \x01(\v2\x17.packets.UnitIDsMessageH\x00R\aUnitIds\x12*\n" +
-	"\x04Turn\x18\x19 \x01(\v2\x14.packets.TurnMessageH\x00R\x04TurnB\x05\n" +
+	"\x04Turn\x18\x19 \x01(\v2\x14.packets.TurnMessageH\x00R\x04Turn\x12-\n" +
+	"\x05Skill\x18\x1a \x01(\v2\x15.packets.SkillMessageH\x00R\x05SkillB\x05\n" +
 	"\x03msg*B\n" +
 	"\bChatType\x12\v\n" +
 	"\aNothing\x10\x00\x12\n" +
@@ -2431,7 +2566,11 @@ const file_packets_proto_rawDesc = "" +
 	"\n" +
 	"\x06Normal\x10\x00\x12\b\n" +
 	"\x04Slow\x10\x01\x12\b\n" +
-	"\x04Fast\x10\x02B\rZ\vpkg/packetsb\x06proto3"
+	"\x04Fast\x10\x02*$\n" +
+	"\tSkillType\x12\n" +
+	"\n" +
+	"\x06Attack\x10\x00\x12\v\n" +
+	"\aSupport\x10\x02B\rZ\vpkg/packetsb\x06proto3"
 
 var (
 	file_packets_proto_rawDescOnce sync.Once
@@ -2445,90 +2584,95 @@ func file_packets_proto_rawDescGZIP() []byte {
 	return file_packets_proto_rawDescData
 }
 
-var file_packets_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_packets_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
+var file_packets_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
+var file_packets_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_packets_proto_goTypes = []any{
 	(ChatType)(0),                  // 0: packets.ChatType
 	(Speeds)(0),                    // 1: packets.Speeds
-	(*Vector3Msg)(nil),             // 2: packets.Vector3Msg
-	(*Vector2Msg)(nil),             // 3: packets.Vector2Msg
-	(*Vector2IMsg)(nil),            // 4: packets.Vector2IMsg
-	(*FactionData)(nil),            // 5: packets.FactionData
-	(*ArmyData)(nil),               // 6: packets.ArmyData
-	(*UnitArmyData)(nil),           // 7: packets.UnitArmyData
-	(*UnitData)(nil),               // 8: packets.UnitData
-	(*ChatMessage)(nil),            // 9: packets.ChatMessage
-	(*IdMessage)(nil),              // 10: packets.IdMessage
-	(*LoginRequestMessage)(nil),    // 11: packets.LoginRequestMessage
-	(*SteamAuthTicketMessage)(nil), // 12: packets.SteamAuthTicketMessage
-	(*RegisterRequestMessage)(nil), // 13: packets.RegisterRequestMessage
-	(*OkResponseMessage)(nil),      // 14: packets.OkResponseMessage
-	(*DenyResponseMessage)(nil),    // 15: packets.DenyResponseMessage
-	(*CommandMessage)(nil),         // 16: packets.CommandMessage
-	(*ChangeStateMessage)(nil),     // 17: packets.ChangeStateMessage
-	(*QueueMessage)(nil),           // 18: packets.QueueMessage
-	(*HexPositionMessage)(nil),     // 19: packets.HexPositionMessage
-	(*HexPositionsMessage)(nil),    // 20: packets.HexPositionsMessage
-	(*OpponentMessage)(nil),        // 21: packets.OpponentMessage
-	(*StartGameMessage)(nil),       // 22: packets.StartGameMessage
-	(*SeedMessage)(nil),            // 23: packets.SeedMessage
-	(*IDsMessage)(nil),             // 24: packets.IDsMessage
-	(*UnitMessage)(nil),            // 25: packets.UnitMessage
-	(*UnitPositionMessage)(nil),    // 26: packets.UnitPositionMessage
-	(*UnitPositionsMessage)(nil),   // 27: packets.UnitPositionsMessage
-	(*GameDataMessage)(nil),        // 28: packets.GameDataMessage
-	(*GameDataVersion)(nil),        // 29: packets.GameDataVersion
-	(*ArmyIDMessage)(nil),          // 30: packets.ArmyIDMessage
-	(*UnitIDsMessage)(nil),         // 31: packets.UnitIDsMessage
-	(*UnitIDMessage)(nil),          // 32: packets.UnitIDMessage
-	(*TurnMessage)(nil),            // 33: packets.TurnMessage
-	(*Packet)(nil),                 // 34: packets.Packet
+	(SkillType)(0),                 // 2: packets.SkillType
+	(*Vector3Msg)(nil),             // 3: packets.Vector3Msg
+	(*Vector2Msg)(nil),             // 4: packets.Vector2Msg
+	(*Vector2IMsg)(nil),            // 5: packets.Vector2IMsg
+	(*FactionData)(nil),            // 6: packets.FactionData
+	(*ArmyData)(nil),               // 7: packets.ArmyData
+	(*UnitArmyData)(nil),           // 8: packets.UnitArmyData
+	(*UnitData)(nil),               // 9: packets.UnitData
+	(*ChatMessage)(nil),            // 10: packets.ChatMessage
+	(*IdMessage)(nil),              // 11: packets.IdMessage
+	(*LoginRequestMessage)(nil),    // 12: packets.LoginRequestMessage
+	(*SteamAuthTicketMessage)(nil), // 13: packets.SteamAuthTicketMessage
+	(*RegisterRequestMessage)(nil), // 14: packets.RegisterRequestMessage
+	(*OkResponseMessage)(nil),      // 15: packets.OkResponseMessage
+	(*DenyResponseMessage)(nil),    // 16: packets.DenyResponseMessage
+	(*CommandMessage)(nil),         // 17: packets.CommandMessage
+	(*ChangeStateMessage)(nil),     // 18: packets.ChangeStateMessage
+	(*QueueMessage)(nil),           // 19: packets.QueueMessage
+	(*HexPositionMessage)(nil),     // 20: packets.HexPositionMessage
+	(*HexPositionsMessage)(nil),    // 21: packets.HexPositionsMessage
+	(*OpponentMessage)(nil),        // 22: packets.OpponentMessage
+	(*StartGameMessage)(nil),       // 23: packets.StartGameMessage
+	(*SeedMessage)(nil),            // 24: packets.SeedMessage
+	(*IDsMessage)(nil),             // 25: packets.IDsMessage
+	(*UnitMessage)(nil),            // 26: packets.UnitMessage
+	(*UnitPositionMessage)(nil),    // 27: packets.UnitPositionMessage
+	(*UnitPositionsMessage)(nil),   // 28: packets.UnitPositionsMessage
+	(*GameDataMessage)(nil),        // 29: packets.GameDataMessage
+	(*GameDataVersion)(nil),        // 30: packets.GameDataVersion
+	(*ArmyIDMessage)(nil),          // 31: packets.ArmyIDMessage
+	(*UnitIDsMessage)(nil),         // 32: packets.UnitIDsMessage
+	(*UnitIDMessage)(nil),          // 33: packets.UnitIDMessage
+	(*TurnMessage)(nil),            // 34: packets.TurnMessage
+	(*SkillMessage)(nil),           // 35: packets.SkillMessage
+	(*Packet)(nil),                 // 36: packets.Packet
 }
 var file_packets_proto_depIdxs = []int32{
-	7,  // 0: packets.ArmyData.unitIds:type_name -> packets.UnitArmyData
+	8,  // 0: packets.ArmyData.unitIds:type_name -> packets.UnitArmyData
 	1,  // 1: packets.UnitData.Speed:type_name -> packets.Speeds
 	0,  // 2: packets.ChatMessage.type:type_name -> packets.ChatType
-	4,  // 3: packets.HexPositionMessage.position:type_name -> packets.Vector2IMsg
-	19, // 4: packets.HexPositionsMessage.positions:type_name -> packets.HexPositionMessage
-	10, // 5: packets.IDsMessage.IDs:type_name -> packets.IdMessage
+	5,  // 3: packets.HexPositionMessage.position:type_name -> packets.Vector2IMsg
+	20, // 4: packets.HexPositionsMessage.positions:type_name -> packets.HexPositionMessage
+	11, // 5: packets.IDsMessage.IDs:type_name -> packets.IdMessage
 	1,  // 6: packets.UnitMessage.speed:type_name -> packets.Speeds
-	2,  // 7: packets.UnitMessage.Pos:type_name -> packets.Vector3Msg
-	4,  // 8: packets.UnitPositionMessage.Position:type_name -> packets.Vector2IMsg
-	26, // 9: packets.UnitPositionsMessage.units:type_name -> packets.UnitPositionMessage
-	29, // 10: packets.GameDataMessage.version:type_name -> packets.GameDataVersion
-	5,  // 11: packets.GameDataMessage.factions:type_name -> packets.FactionData
-	6,  // 12: packets.GameDataMessage.armies:type_name -> packets.ArmyData
-	8,  // 13: packets.GameDataMessage.units:type_name -> packets.UnitData
-	32, // 14: packets.UnitIDsMessage.ids:type_name -> packets.UnitIDMessage
-	9,  // 15: packets.Packet.chat:type_name -> packets.ChatMessage
-	10, // 16: packets.Packet.id:type_name -> packets.IdMessage
-	11, // 17: packets.Packet.loginRequest:type_name -> packets.LoginRequestMessage
-	13, // 18: packets.Packet.registerRequest:type_name -> packets.RegisterRequestMessage
-	14, // 19: packets.Packet.OK:type_name -> packets.OkResponseMessage
-	15, // 20: packets.Packet.Deny:type_name -> packets.DenyResponseMessage
-	16, // 21: packets.Packet.command:type_name -> packets.CommandMessage
-	19, // 22: packets.Packet.hexPosition:type_name -> packets.HexPositionMessage
-	20, // 23: packets.Packet.hexPositions:type_name -> packets.HexPositionsMessage
-	12, // 24: packets.Packet.steamTicket:type_name -> packets.SteamAuthTicketMessage
-	17, // 25: packets.Packet.changeState:type_name -> packets.ChangeStateMessage
-	18, // 26: packets.Packet.queue:type_name -> packets.QueueMessage
-	21, // 27: packets.Packet.opponent:type_name -> packets.OpponentMessage
-	22, // 28: packets.Packet.startGame:type_name -> packets.StartGameMessage
-	23, // 29: packets.Packet.seed:type_name -> packets.SeedMessage
-	24, // 30: packets.Packet.IDs:type_name -> packets.IDsMessage
-	25, // 31: packets.Packet.Unit:type_name -> packets.UnitMessage
-	28, // 32: packets.Packet.GameData:type_name -> packets.GameDataMessage
-	29, // 33: packets.Packet.GameVersion:type_name -> packets.GameDataVersion
-	30, // 34: packets.Packet.ArmyId:type_name -> packets.ArmyIDMessage
-	26, // 35: packets.Packet.UnitPosition:type_name -> packets.UnitPositionMessage
-	27, // 36: packets.Packet.UnitPositions:type_name -> packets.UnitPositionsMessage
-	31, // 37: packets.Packet.UnitIds:type_name -> packets.UnitIDsMessage
-	33, // 38: packets.Packet.Turn:type_name -> packets.TurnMessage
-	39, // [39:39] is the sub-list for method output_type
-	39, // [39:39] is the sub-list for method input_type
-	39, // [39:39] is the sub-list for extension type_name
-	39, // [39:39] is the sub-list for extension extendee
-	0,  // [0:39] is the sub-list for field type_name
+	3,  // 7: packets.UnitMessage.Pos:type_name -> packets.Vector3Msg
+	5,  // 8: packets.UnitPositionMessage.Position:type_name -> packets.Vector2IMsg
+	27, // 9: packets.UnitPositionsMessage.units:type_name -> packets.UnitPositionMessage
+	30, // 10: packets.GameDataMessage.version:type_name -> packets.GameDataVersion
+	6,  // 11: packets.GameDataMessage.factions:type_name -> packets.FactionData
+	7,  // 12: packets.GameDataMessage.armies:type_name -> packets.ArmyData
+	9,  // 13: packets.GameDataMessage.units:type_name -> packets.UnitData
+	33, // 14: packets.UnitIDsMessage.ids:type_name -> packets.UnitIDMessage
+	2,  // 15: packets.SkillMessage.type:type_name -> packets.SkillType
+	3,  // 16: packets.SkillMessage.pos:type_name -> packets.Vector3Msg
+	10, // 17: packets.Packet.chat:type_name -> packets.ChatMessage
+	11, // 18: packets.Packet.id:type_name -> packets.IdMessage
+	12, // 19: packets.Packet.loginRequest:type_name -> packets.LoginRequestMessage
+	14, // 20: packets.Packet.registerRequest:type_name -> packets.RegisterRequestMessage
+	15, // 21: packets.Packet.OK:type_name -> packets.OkResponseMessage
+	16, // 22: packets.Packet.Deny:type_name -> packets.DenyResponseMessage
+	17, // 23: packets.Packet.command:type_name -> packets.CommandMessage
+	20, // 24: packets.Packet.hexPosition:type_name -> packets.HexPositionMessage
+	21, // 25: packets.Packet.hexPositions:type_name -> packets.HexPositionsMessage
+	13, // 26: packets.Packet.steamTicket:type_name -> packets.SteamAuthTicketMessage
+	18, // 27: packets.Packet.changeState:type_name -> packets.ChangeStateMessage
+	19, // 28: packets.Packet.queue:type_name -> packets.QueueMessage
+	22, // 29: packets.Packet.opponent:type_name -> packets.OpponentMessage
+	23, // 30: packets.Packet.startGame:type_name -> packets.StartGameMessage
+	24, // 31: packets.Packet.seed:type_name -> packets.SeedMessage
+	25, // 32: packets.Packet.IDs:type_name -> packets.IDsMessage
+	26, // 33: packets.Packet.Unit:type_name -> packets.UnitMessage
+	29, // 34: packets.Packet.GameData:type_name -> packets.GameDataMessage
+	30, // 35: packets.Packet.GameVersion:type_name -> packets.GameDataVersion
+	31, // 36: packets.Packet.ArmyId:type_name -> packets.ArmyIDMessage
+	27, // 37: packets.Packet.UnitPosition:type_name -> packets.UnitPositionMessage
+	28, // 38: packets.Packet.UnitPositions:type_name -> packets.UnitPositionsMessage
+	32, // 39: packets.Packet.UnitIds:type_name -> packets.UnitIDsMessage
+	34, // 40: packets.Packet.Turn:type_name -> packets.TurnMessage
+	35, // 41: packets.Packet.Skill:type_name -> packets.SkillMessage
+	42, // [42:42] is the sub-list for method output_type
+	42, // [42:42] is the sub-list for method input_type
+	42, // [42:42] is the sub-list for extension type_name
+	42, // [42:42] is the sub-list for extension extendee
+	0,  // [0:42] is the sub-list for field type_name
 }
 
 func init() { file_packets_proto_init() }
@@ -2536,7 +2680,7 @@ func file_packets_proto_init() {
 	if File_packets_proto != nil {
 		return
 	}
-	file_packets_proto_msgTypes[32].OneofWrappers = []any{
+	file_packets_proto_msgTypes[33].OneofWrappers = []any{
 		(*Packet_Chat)(nil),
 		(*Packet_Id)(nil),
 		(*Packet_LoginRequest)(nil),
@@ -2561,14 +2705,15 @@ func file_packets_proto_init() {
 		(*Packet_UnitPositions)(nil),
 		(*Packet_UnitIds)(nil),
 		(*Packet_Turn)(nil),
+		(*Packet_Skill)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_packets_proto_rawDesc), len(file_packets_proto_rawDesc)),
-			NumEnums:      2,
-			NumMessages:   33,
+			NumEnums:      3,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

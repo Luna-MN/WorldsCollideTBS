@@ -11,13 +11,12 @@ public interface IUnit
     
     public void InitUnit();
     
-    public void Attack(IUnit unit);
-    public List<IAttack> Attacks { get; set; }
-    
-    public void Support(IUnit unit);
-    public List<ISupport> Supports { get; set; }
+    public void Skill(Vector3 position, string skillName);
+    public List<ISkill> Skills { get; set; }
     
     public void Move(TerrainInfo fromPos, TerrainInfo toPos, bool message = false);
     public IMovement Movement { get; set; }
+    
+    public void Damage(float amount);
 
 }

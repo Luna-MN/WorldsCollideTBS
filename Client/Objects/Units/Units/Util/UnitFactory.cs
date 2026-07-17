@@ -10,7 +10,7 @@ public static class UnitFactory
         var UD = new UnitData()
         {
             UnitName = unit.UnitName,
-            AP = unit.AP,
+            MaxAP = unit.AP,
             HP = unit.HP,
             MaxHP = unit.MaxHP,
             OwnerId = unit.OwnerId,
@@ -25,7 +25,7 @@ public static class UnitFactory
         var unitPacket = new Packets.UnitMessage()
         {
             UnitName = unit.UnitName,
-            AP = unit.AP,
+            AP = unit.MaxAP,
             HP = unit.HP,
             MaxHP = unit.MaxHP,
             OwnerId = unit.OwnerId,

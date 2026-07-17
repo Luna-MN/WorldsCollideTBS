@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b4k24t13xmfrj"]
+
+[ext_resource type="Script" uid="uid://d0bx3vbqqobab" path="res://Objects/SkillButton/SkillButton.cs" id="1_iufyf"]
+
+[node name="SkillButton" type="Button" unique_id=1385243446]
+custom_minimum_size = Vector2(100, 0)
+autowrap_mode = 3
+script = ExtResource("1_iufyf")

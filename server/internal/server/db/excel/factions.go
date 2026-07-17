@@ -158,7 +158,7 @@ func (fi *FactionInput) Units(sheet string) map[string]db.Unit {
 	}
 	for unitName != "" {
 		unit, err := fi.queries.GetUnit(fi.dbCtx, unitName)
-		attacks, _ := fi.workbook.GetCellValue(sheet, "B"+fmt.Sprint(unitRow))
+		skills, _ := fi.workbook.GetCellValue(sheet, "B"+fmt.Sprint(unitRow))
 		movement, _ := fi.workbook.GetCellValue(sheet, "C"+fmt.Sprint(unitRow))
 		maxHP, _ := fi.workbook.GetCellValue(sheet, "D"+fmt.Sprint(unitRow))
 		AP, _ := fi.workbook.GetCellValue(sheet, "E"+fmt.Sprint(unitRow))
@@ -169,17 +169,16 @@ func (fi *FactionInput) Units(sheet string) map[string]db.Unit {
 		MaxHPInt, _ := strconv.Atoi(maxHP)
 		APint, _ := strconv.Atoi(AP)
 		if err != nil {
-			unit = fi.CreateUnit(unitName, attacks, movement, support, MaxHPInt, APint, speedInt, armies)
+			unit = fi.CreateUnit(unitName, skills, movement, support, MaxHPInt, APint, speedInt, armies)
 		}
-		if unit.Attacks.String != attacks || unit.Movement.String != movement || unit.Maxhp.Int64 != int64(MaxHPInt) || unit.Ap.Int64 != int64(APint) || unit.Speed.Int64 != int64(speedInt) || unit.Armies.String != armies || unit.Support.String != support {
-			fi.UpdateUnit(unitName, attacks, movement, support, MaxHPInt, APint, speedInt, armies)
-			unit.Attacks.String = attacks
+		if unit.Skills.String != skills || unit.Movement.String != movement || unit.Maxhp.Int64 != int64(MaxHPInt) || unit.Ap.Int64 != int64(APint) || unit.Speed.Int64 != int64(speedInt) || unit.Armies.String != armies {
+			fi.UpdateUnit(unitName, skills, movement, support, MaxHPInt, APint, speedInt, armies)
+			unit.Skills.String = skills
 			unit.Movement.String = movement
 			unit.Maxhp.Int64 = int64(MaxHPInt)
 			unit.Ap.Int64 = int64(APint)
 			unit.Speed.Int64 = int64(speedInt)
 			unit.Armies.String = armies
-			unit.Support.String = support
 		}
 		fi.workbook.SetCellValue(sheet, "H"+fmt.Sprint(unitRow), unit.ID)
 		units[unitName] = unit
@@ -189,16 +188,15 @@ func (fi *FactionInput) Units(sheet string) map[string]db.Unit {
 	return units
 }
 
-func (fi *FactionInput) CreateUnit(name, attacks, movement, support string, maxHP, AP, speed int, armies string) db.Unit {
+func (fi *FactionInput) CreateUnit(name, skills, movement, support string, maxHP, AP, speed int, armies string) db.Unit {
 	unit, err := fi.queries.NewUnit(fi.dbCtx, db.NewUnitParams{
 		Name:     name,
-		Attacks:  db.NewNullString(attacks),
+		Skills:   db.NewNullString(skills),
 		Movement: db.NewNullString(movement),
 		Maxhp:    db.NewNullInt64(int64(maxHP)),
 		Ap:       db.NewNullInt64(int64(AP)),
 		Speed:    db.NewNullInt64(int64(speed)),
 		Armies:   db.NewNullString(armies),
-		Support:  db.NewNullString(support),
 	})
 	if err != nil {
 		fmt.Println(err)
@@ -206,16 +204,15 @@ func (fi *FactionInput) CreateUnit(name, attacks, movement, support string, maxH
 	return unit
 }
 
-func (fi *FactionInput) UpdateUnit(name, attacks, movement, support string, maxHP, AP, speed int, armies string) {
+func (fi *FactionInput) UpdateUnit(name, skills, movement, support string, maxHP, AP, speed int, armies string) {
 	err := fi.queries.UpdateUnit(fi.dbCtx, db.UpdateUnitParams{
-		Attacks:  db.NewNullString(attacks),
+		Skills:   db.NewNullString(skills),
 		Movement: db.NewNullString(movement),
 		Maxhp:    db.NewNullInt64(int64(maxHP)),
 		Ap:       db.NewNullInt64(int64(AP)),
 		Speed:    db.NewNullInt64(int64(speed)),
 		Armies:   db.NewNullString(armies),
 		Name:     name,
-		Support:  db.NewNullString(support),
 	})
 	if err != nil {
 		fmt.Println(err)

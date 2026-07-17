@@ -13,8 +13,7 @@ public partial class UniversalUnit : Node3D, IUnit
     [Export] public PackedScene MeshScene, DefaultMeshScene;
     public DefaultUnit Mesh;
     public Color Color;
-    public List<IAttack> Attacks { get; set; }
-    public List<ISupport> Supports { get; set; }
+    public List<ISkill> Skills { get; set; }
     public IMovement Movement { get; set; }
     public Vector2I PositionI { get; set; }
 
@@ -41,12 +40,11 @@ public partial class UniversalUnit : Node3D, IUnit
         AddChild(Mesh);
         
         
-        FindAttacks(Data.Attacks);
+        FindSkills(Data.Skills);
         FindMovement(Data.Movement);
-        FindSupports(Data.Support);
         Movement = new DefaultMovement();
         Movement.InitMovement(this, this);
-        Attacks?.ForEach(a => a.InitAttack(this, this));
+        Skills?.ForEach(a => a.Init(this, this, null)); // skillData
 
     }
     private void BuildNamePlate()
@@ -79,19 +77,19 @@ public partial class UniversalUnit : Node3D, IUnit
         }
     }
     
-    private void FindAttacks(List<string> attacks)
+    private void FindSkills(List<string> skills)
     {
-        if (attacks == null || attacks.Count <= 0 || (attacks.Count == 1 && attacks[0] == ""))
+        if (skills == null || skills.Count <= 0 || (skills.Count == 1 && skills[0] == ""))
         {
             return;
         }
-        Attacks = new();
-        foreach (var attackName in attacks)
+        Skills = new();
+        foreach (var skillName in skills)
         {
             var attackType = Assembly.GetExecutingAssembly().GetTypes().Where(t =>
-                typeof(IAttack).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract && t.Name == attackName).ToList()[0];
-            var attack = (IAttack)Activator.CreateInstance(attackType);
-            Attacks.Add(attack);
+                typeof(ISkill).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract && t.Name == skillName).ToList()[0];
+            var attack = (ISkill)Activator.CreateInstance(attackType);
+            Skills.Add(attack);
         }
     }
 
@@ -101,33 +99,18 @@ public partial class UniversalUnit : Node3D, IUnit
         Movement = (IMovement)Activator.CreateInstance(movementType);
     }
     
-    private void FindSupports(List<string> supports)
-    {
-        if (supports == null || supports.Count <= 0 || (supports.Count == 1 && supports[0] == ""))
-        {
-            return;
-        }
-        Supports = new();
-        foreach (var supportName in supports)
-        {
-            var supportType = Assembly.GetExecutingAssembly().GetTypes().Where(t =>
-                typeof(ISupport).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract && t.Name == supportName).ToList()[0];
-            var support = (ISupport)Activator.CreateInstance(supportType);
-            Supports.Add(support);
-        }
-    }
     public virtual void Move(TerrainInfo fromPos, TerrainInfo toPos, bool message = false)
     {
         var path = PathFinding.FindCheapestPath(fromPos, toPos);
         Movement.Move(path, message);
     }
-    public virtual void Attack(IUnit unit)
+    public virtual void Skill(Vector3 position, string skillName)
     {
     }
-    public void Support(IUnit unit)
+    public void Damage(float amount)
     {
+        Data.HP -= (long)amount;
     }
-    
     private string FindScenePathRecursive(string folderPath, string meshName)
     {
         using DirAccess dir = DirAccess.Open(folderPath);

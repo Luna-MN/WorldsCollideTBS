@@ -124,12 +124,11 @@ func NewUnitDataFromDB(u db.Unit, factionID int64) *UnitData {
 	return &UnitData{
 		Id:        u.ID,
 		Name:      u.Name,
-		Attacks:   u.Attacks.String,
+		Skills:    u.Skills.String,
 		Movement:  u.Movement.String,
 		MaxHP:     u.Maxhp.Int64,
 		AP:        u.Ap.Int64,
 		Speed:     Speeds(u.Speed.Int64),
-		Support:   u.Support.String,
 		FactionId: factionID,
 	}
 }

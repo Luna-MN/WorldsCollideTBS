@@ -133,7 +133,7 @@ func (q *Queries) GetAllFactions(ctx context.Context) ([]Faction, error) {
 
 const getAllUnits = `-- name: GetAllUnits :many
 SELECT
-    id, name, attacks, movement, maxhp, ap, speed, armies, support
+    id, name, skills, movement, maxhp, ap, speed, armies
 FROM
     units
 `
@@ -150,13 +150,12 @@ func (q *Queries) GetAllUnits(ctx context.Context) ([]Unit, error) {
 		if err := rows.Scan(
 			&i.ID,
 			&i.Name,
-			&i.Attacks,
+			&i.Skills,
 			&i.Movement,
 			&i.Maxhp,
 			&i.Ap,
 			&i.Speed,
 			&i.Armies,
-			&i.Support,
 		); err != nil {
 			return nil, err
 		}
@@ -320,7 +319,7 @@ func (q *Queries) GetSteamUser(ctx context.Context, steamid sql.NullString) (Use
 
 const getUnit = `-- name: GetUnit :one
 SELECT
-    id, name, attacks, movement, maxhp, ap, speed, armies, support
+    id, name, skills, movement, maxhp, ap, speed, armies
 FROM
     units
 WHERE
@@ -333,13 +332,12 @@ func (q *Queries) GetUnit(ctx context.Context, name string) (Unit, error) {
 	err := row.Scan(
 		&i.ID,
 		&i.Name,
-		&i.Attacks,
+		&i.Skills,
 		&i.Movement,
 		&i.Maxhp,
 		&i.Ap,
 		&i.Speed,
 		&i.Armies,
-		&i.Support,
 	)
 	return i, err
 }
@@ -367,7 +365,7 @@ func (q *Queries) GetUnitArmy(ctx context.Context, arg GetUnitArmyParams) (ArmyU
 
 const getUnitById = `-- name: GetUnitById :one
 SELECT
-    id, name, attacks, movement, maxhp, ap, speed, armies, support
+    id, name, skills, movement, maxhp, ap, speed, armies
 FROM
     units
 WHERE
@@ -380,13 +378,12 @@ func (q *Queries) GetUnitById(ctx context.Context, id int64) (Unit, error) {
 	err := row.Scan(
 		&i.ID,
 		&i.Name,
-		&i.Attacks,
+		&i.Skills,
 		&i.Movement,
 		&i.Maxhp,
 		&i.Ap,
 		&i.Speed,
 		&i.Armies,
-		&i.Support,
 	)
 	return i, err
 }
@@ -582,45 +579,42 @@ func (q *Queries) NewGame(ctx context.Context, arg NewGameParams) (Game, error) 
 
 const newUnit = `-- name: NewUnit :one
 INSERT INTO
-    units(name, attacks, movement, maxHP, AP, Speed, Armies, support)
+    units(name, skills, movement, maxHP, AP, Speed, Armies)
 VALUES
-    (?, ?, ?, ?, ?, ?, ?, ?)
-RETURNING id, name, attacks, movement, maxhp, ap, speed, armies, support
+    (?, ?, ?, ?, ?, ?, ?)
+RETURNING id, name, skills, movement, maxhp, ap, speed, armies
 `
 
 type NewUnitParams struct {
 	Name     string
-	Attacks  sql.NullString
+	Skills   sql.NullString
 	Movement sql.NullString
 	Maxhp    sql.NullInt64
 	Ap       sql.NullInt64
 	Speed    sql.NullInt64
 	Armies   sql.NullString
-	Support  sql.NullString
 }
 
 func (q *Queries) NewUnit(ctx context.Context, arg NewUnitParams) (Unit, error) {
 	row := q.db.QueryRowContext(ctx, newUnit,
 		arg.Name,
-		arg.Attacks,
+		arg.Skills,
 		arg.Movement,
 		arg.Maxhp,
 		arg.Ap,
 		arg.Speed,
 		arg.Armies,
-		arg.Support,
 	)
 	var i Unit
 	err := row.Scan(
 		&i.ID,
 		&i.Name,
-		&i.Attacks,
+		&i.Skills,
 		&i.Movement,
 		&i.Maxhp,
 		&i.Ap,
 		&i.Speed,
 		&i.Armies,
-		&i.Support,
 	)
 	return i, err
 }
@@ -745,37 +739,34 @@ func (q *Queries) UpdateLastLoggedIn(ctx context.Context, arg UpdateLastLoggedIn
 const updateUnit = `-- name: UpdateUnit :exec
 UPDATE units
 SET
-    attacks = ?,
+    skills = ?,
     movement = ?,
     maxHP = ?,
     AP = ?,
     Speed = ?,
-    Armies = ?,
-    support = ?
+    Armies = ?
 WHERE
     name = ?
 `
 
 type UpdateUnitParams struct {
-	Attacks  sql.NullString
+	Skills   sql.NullString
 	Movement sql.NullString
 	Maxhp    sql.NullInt64
 	Ap       sql.NullInt64
 	Speed    sql.NullInt64
 	Armies   sql.NullString
-	Support  sql.NullString
 	Name     string
 }
 
 func (q *Queries) UpdateUnit(ctx context.Context, arg UpdateUnitParams) error {
 	_, err := q.db.ExecContext(ctx, updateUnit,
-		arg.Attacks,
+		arg.Skills,
 		arg.Movement,
 		arg.Maxhp,
 		arg.Ap,
 		arg.Speed,
 		arg.Armies,
-		arg.Support,
 		arg.Name,
 	)
 	return err

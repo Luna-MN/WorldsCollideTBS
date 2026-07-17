@@ -34,13 +34,12 @@ CREATE TABLE IF NOT EXISTS army (
 CREATE TABLE IF NOT EXISTS units (
                                      id INTEGER PRIMARY KEY AUTOINCREMENT,
                                      name TEXT NOT NULL,
-                                     attacks TEXT, -- CSV style split by commas
+                                     skills TEXT, -- CSV style split by commas
                                      movement TEXT,
                                      maxHP INTEGER,
                                      AP INTEGER,
                                      Speed INTEGER, -- 0 Normal, 1 Fast, 2 Slow
-                                     Armies TEXT,
-                                     support TEXT
+                                     Armies TEXT
 );
 
 CREATE TABLE IF NOT EXISTS army_faction (

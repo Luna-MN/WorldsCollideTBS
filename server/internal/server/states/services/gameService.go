@@ -9,6 +9,7 @@ import (
 	"server/internal/server/db"
 	"server/internal/server/objects"
 	_ "server/internal/server/objects/features"
+	"server/internal/server/objects/units/Skills"
 	"server/pkg/packets"
 	"sync"
 )
@@ -59,6 +60,11 @@ type GameService struct {
 	dbCtx   context.Context
 }
 
+func (g *GameService) World() Skills.GameTerrainService {
+	var gst Skills.GameTerrainService = g.gameTerrainService
+	return gst
+}
+
 func NewGameService(gameId int64, queries *db.Queries, dbCtx context.Context) *GameService {
 	logger := log.New(log.Writer(), "Game unknown: ", log.LstdFlags)
 	logger.SetPrefix(fmt.Sprintf("Game %d: ", gameId))
@@ -66,7 +72,7 @@ func NewGameService(gameId int64, queries *db.Queries, dbCtx context.Context) *G
 
 }
 func (g *GameService) Name() string {
-	return "GameService"
+	return "GameSkillService"
 }
 
 func (g *GameService) Id() uint64 {

@@ -137,9 +137,9 @@ WHERE
 
 -- name: NewUnit :one
 INSERT INTO
-    units(name, attacks, movement, maxHP, AP, Speed, Armies, support)
+    units(name, skills, movement, maxHP, AP, Speed, Armies)
 VALUES
-    (?, ?, ?, ?, ?, ?, ?, ?)
+    (?, ?, ?, ?, ?, ?, ?)
 RETURNING *;
 
 -- name: GetUnitById :one
@@ -153,13 +153,12 @@ WHERE
 -- name: UpdateUnit :exec
 UPDATE units
 SET
-    attacks = ?,
+    skills = ?,
     movement = ?,
     maxHP = ?,
     AP = ?,
     Speed = ?,
-    Armies = ?,
-    support = ?
+    Armies = ?
 WHERE
     name = ?;
 

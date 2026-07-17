@@ -19,7 +19,7 @@ type UnitData struct {
 	UnitName string
 	OwnerID  uint64
 	UnitID   int32
-	Attacks  []string
+	Skills   []string
 	Movement string
 	AP       int64
 	HP       int64
@@ -33,7 +33,7 @@ func NewUnitData(unitName string, ownerID uint64, unitID int32, attacks []string
 		UnitName: unitName,
 		OwnerID:  ownerID,
 		UnitID:   unitID,
-		Attacks:  attacks,
+		Skills:   attacks,
 		Movement: movement,
 		AP:       ap,
 		HP:       hp,
@@ -48,7 +48,7 @@ func NewUnitDataFromDB(unit *db.Unit, ownerID uint64, unitID int32) *UnitData {
 		UnitName: unit.Name,
 		OwnerID:  ownerID,
 		UnitID:   unitID,
-		Attacks:  strings.Split(unit.Attacks.String, ","),
+		Skills:   strings.Split(unit.Skills.String, ","),
 		Movement: unit.Movement.String,
 		AP:       unit.Ap.Int64,
 		HP:       unit.Maxhp.Int64,

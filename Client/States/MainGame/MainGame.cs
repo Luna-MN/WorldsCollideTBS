@@ -139,6 +139,7 @@ public partial class MainGame : Node3D, ISmoothState
         Globals.GM.CurrentGameData.currTurnPointer = Globals.GM.CurrentGameData.TurnOrder.ToList().IndexOf(packet.Turn.Id);
         Globals.GM.CurrentGameData.MyTurn = Globals.GM.CurrentGameData.TurnOrder[Globals.GM.CurrentGameData.currTurnPointer] == Globals.GM.clientId;
         UI.EndTurn.Visible = Globals.GM.CurrentGameData.MyTurn;
+        UI.ChangeTurn();
     }
     
     private void HandleHexPositions(Packet packet)

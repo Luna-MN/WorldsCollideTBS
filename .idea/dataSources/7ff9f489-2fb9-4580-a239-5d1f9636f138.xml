@@ -568,7 +568,7 @@
     </routine>
     <schema id="214" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2026-06-29.21:25:46</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-07-17.17:37:40</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="215" parent="14">
       <ArgumentDirection>R</ArgumentDirection>
@@ -2049,7 +2049,7 @@ unitId</ColNames>
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="687" parent="635" name="attacks">
+    <column id="687" parent="635" name="skills">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
@@ -2073,80 +2073,76 @@ unitId</ColNames>
       <Position>8</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="693" parent="635" name="support">
-      <Position>9</Position>
-      <StoredType>TEXT|0s</StoredType>
-    </column>
-    <key id="694" parent="635">
+    <key id="693" parent="635">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="695" parent="636" name="id">
+    <column id="694" parent="636" name="id">
       <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="696" parent="636" name="username">
+    <column id="695" parent="636" name="username">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="697" parent="636" name="password_hash">
+    <column id="696" parent="636" name="password_hash">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="698" parent="636" name="steamId">
+    <column id="697" parent="636" name="steamId">
       <Position>4</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="699" parent="636" name="Avatar">
+    <column id="698" parent="636" name="Avatar">
       <Position>5</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="700" parent="636" name="LastLoggedIn">
+    <column id="699" parent="636" name="LastLoggedIn">
       <Position>6</Position>
       <StoredType>DATETIME|0s</StoredType>
     </column>
-    <index id="701" parent="636" name="sqlite_autoindex_users_1">
+    <index id="700" parent="636" name="sqlite_autoindex_users_1">
       <ColNames>username</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="702" parent="636">
+    <key id="701" parent="636">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="703" parent="636">
+    <key id="702" parent="636">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_users_1</UnderlyingIndexName>
     </key>
-    <column id="704" parent="637" name="userId">
+    <column id="703" parent="637" name="userId">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="705" parent="637" name="armyId">
+    <column id="704" parent="637" name="armyId">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <foreign-key id="706" parent="637">
+    <foreign-key id="705" parent="637">
       <ColNames>userId</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>users</RefTableName>
     </foreign-key>
-    <foreign-key id="707" parent="637">
+    <foreign-key id="706" parent="637">
       <ColNames>armyId</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>faction</RefTableName>
     </foreign-key>
-    <index id="708" parent="637" name="sqlite_autoindex_users_army_1">
+    <index id="707" parent="637" name="sqlite_autoindex_users_army_1">
       <ColNames>userId
 armyId</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="709" parent="637">
+    <key id="708" parent="637">
       <ColNames>userId
 armyId</ColNames>
       <Primary>1</Primary>

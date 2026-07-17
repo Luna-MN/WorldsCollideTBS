@@ -171,6 +171,20 @@ public static class PacketUtil
             }
         };
     }
+
+    public static Packet NewSkillPacket(string skillName, SkillType type, int unitId, int targetId)
+    {
+        return new Packet()
+        {
+            Skill = new SkillMessage()
+            {
+                SkillName = skillName,
+                Type = type,
+                UnitId = unitId,
+                TargetID = targetId
+            }
+        };
+    }
 }
 
 public class UIDData

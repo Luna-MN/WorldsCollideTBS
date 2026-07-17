@@ -4,6 +4,7 @@ import (
 	"context"
 	"server/internal/server"
 	"server/internal/server/db"
+	"server/internal/server/objects/units/Skills"
 	"server/internal/server/objects/units/units"
 	"server/internal/server/objects/units/units/util"
 	"server/pkg/packets"
@@ -89,7 +90,8 @@ func (p *PlayerFactionService) InitUnitData(UnitIds *packets.Packet_UnitIds) {
 			if p.client == p.gameService.player1 {
 				oc = p.gameService.player2
 			}
-			p.Units[playerUnitID].NewUnit(util.NewUnitDataFromDB(&unitDB, p.client.Id(), playerUnitID), p.client, oc)
+			var gs Skills.GameSkillService = p.gameService
+			p.Units[playerUnitID].NewUnit(util.NewUnitDataFromDB(&unitDB, p.client.Id(), playerUnitID), p.client, oc, gs)
 		}
 
 	}

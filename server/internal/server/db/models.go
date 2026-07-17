@@ -45,13 +45,12 @@ type Game struct {
 type Unit struct {
 	ID       int64
 	Name     string
-	Attacks  sql.NullString
+	Skills   sql.NullString
 	Movement sql.NullString
 	Maxhp    sql.NullInt64
 	Ap       sql.NullInt64
 	Speed    sql.NullInt64
 	Armies   sql.NullString
-	Support  sql.NullString
 }
 
 type User struct {
