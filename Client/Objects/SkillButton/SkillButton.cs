@@ -1,14 +1,10 @@
 using Godot;
 using System;
+using Packets;
 
 public partial class SkillButton : Button
 {
-    public enum TypeEnum
-    {
-        Support,
-        Attack
-    }
-    public TypeEnum Type;
+    public SkillType Type;
     public ISkill Skill;
     public override void _Ready()
     {

@@ -18,15 +18,19 @@ public class BasicAttack : IAttack
         Unit = unit;
         Data = data as AttackData;
     }
-    
+
+    public SkillType Type()
+    {
+        return SkillType.Attack;
+    }
+
+    public void Use(Vector2I position)
+    {
+        Globals.GM.CurrentGameData.GetTileAt(position).Unit.Damage(Data.Damage);
+    }
 
     public AttackData Data { get; set; }
-
-    public void Attack(IUnit unit)
-    {
-        // Do attack Logic
-        unit.Damage(Data.Damage);
-    }
+    
 
     public void SendAttackPacket(IUnit unit)
     {

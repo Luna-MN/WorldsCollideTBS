@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Packets;
 
 public partial class UniversalUnit : Node3D, IUnit
 {
@@ -13,7 +14,7 @@ public partial class UniversalUnit : Node3D, IUnit
     [Export] public PackedScene MeshScene, DefaultMeshScene;
     public DefaultUnit Mesh;
     public Color Color;
-    public List<ISkill> Skills { get; set; }
+    public Dictionary<string, ISkill> Skills { get; set; }
     public IMovement Movement { get; set; }
     public Vector2I PositionI { get; set; }
 
@@ -44,7 +45,7 @@ public partial class UniversalUnit : Node3D, IUnit
         FindMovement(Data.Movement);
         Movement = new DefaultMovement();
         Movement.InitMovement(this, this);
-        Skills?.ForEach(a => a.Init(this, this, null)); // skillData
+        Skills?.Values.ToList().ForEach(a => a.Init(this, this, null)); // skillData
 
     }
     private void BuildNamePlate()
@@ -86,10 +87,10 @@ public partial class UniversalUnit : Node3D, IUnit
         Skills = new();
         foreach (var skillName in skills)
         {
-            var attackType = Assembly.GetExecutingAssembly().GetTypes().Where(t =>
+            var skillType = Assembly.GetExecutingAssembly().GetTypes().Where(t =>
                 typeof(ISkill).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract && t.Name == skillName).ToList()[0];
-            var attack = (ISkill)Activator.CreateInstance(attackType);
-            Skills.Add(attack);
+            var skill = (ISkill)Activator.CreateInstance(skillType);
+            Skills.Add(skillName, skill);
         }
     }
 
@@ -104,8 +105,10 @@ public partial class UniversalUnit : Node3D, IUnit
         var path = PathFinding.FindCheapestPath(fromPos, toPos);
         Movement.Move(path, message);
     }
-    public virtual void Skill(Vector3 position, string skillName)
+    public virtual void Skill(Vector2I position, string skillName)
     {
+        var skill = Skills[skillName];
+        skill.Use(position);
     }
     public void Damage(float amount)
     {

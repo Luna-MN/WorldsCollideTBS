@@ -1,4 +1,5 @@
 ﻿using Godot;
+using Packets;
 
 
 public interface ISkill
@@ -7,4 +8,6 @@ public interface ISkill
     public string Name();
     public Node3D Node { get; set; }
     public void Init(IUnit unit, Node3D node, SkillData data);
+    public SkillType Type();
+    public void Use(Vector2I position);
 }

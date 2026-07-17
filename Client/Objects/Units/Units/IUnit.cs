@@ -11,8 +11,8 @@ public interface IUnit
     
     public void InitUnit();
     
-    public void Skill(Vector3 position, string skillName);
-    public List<ISkill> Skills { get; set; }
+    public void Skill(Vector2I position, string skillName);
+    public Dictionary<string, ISkill> Skills { get; set; }
     
     public void Move(TerrainInfo fromPos, TerrainInfo toPos, bool message = false);
     public IMovement Movement { get; set; }

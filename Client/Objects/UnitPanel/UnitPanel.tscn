@@ -39,11 +39,11 @@ offset_bottom = 40.0
 text = "HP:"
 
 [node name="Attacks" type="Panel" parent="." unique_id=1809196279]
-self_modulate = Color(1, 0.36184528, 0.3477963, 1)
+self_modulate = Color(0.668016, 0.48815358, 1, 1)
 layout_mode = 0
 offset_left = 11.0
 offset_top = 42.999634
-offset_right = 414.0
+offset_right = 826.0
 offset_bottom = 139.99963
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Attacks" unique_id=297680095]
@@ -54,19 +54,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-
-[node name="Supports" type="Panel" parent="." unique_id=635746881]
-self_modulate = Color(2.8878452e-07, 0.73106426, 0.33164856, 1)
-layout_mode = 0
-offset_left = 431.0
-offset_top = 41.999634
-offset_right = 834.0
-offset_bottom = 138.99963
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Supports" unique_id=1166616445]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2

@@ -31,8 +31,8 @@ public partial class UnitPanel : Panel
         foreach (var skill in unit.Skills)
         {
             var SB = SkillButtonScene.Instantiate<SkillButton>();
-            SB.Skill = unit.Skills.Find(s => s.Name == skill.Name);
-            SB.Type = SkillButton.TypeEnum.Attack;
+            SB.Skill = unit.Skills[skill.Key];
+            SB.Type = SB.Skill.Type();
             SB.ButtonUp += () => SelectedSkill = SB;
             Attacks.AddChild(SB);
         }

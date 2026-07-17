@@ -224,7 +224,7 @@ public partial class InputHandler : Node3D
             mainGame.UI.unitPanel.Select(SelectedTile.TerrainInfo.Unit);
             return;
         }
-        if (UnitInfo.Unit == null) // the selected tile is our unit, the new tile doesn't have a unit on it, so we can move to it
+        if (mainGame.UI.unitPanel.SelectedSkill == null) // the selected tile is our unit, the new tile doesn't have a unit on it, so we can move to it
         {
             SelectedTile.TerrainInfo.Unit.TileNode = SelectedTile;
             HandleMovement(SelectedTile.TerrainInfo, UnitInfo, SelectedTile.TerrainInfo.Unit);
@@ -232,14 +232,7 @@ public partial class InputHandler : Node3D
         else // the selected tile is our unit, the new tile has a unit on it, so we want to attack or support that unit
         {
             // Handle attack/ healing
-            if (UnitInfo.Unit.Data.OwnerId != Globals.GM.clientId)
-            {
-                HandleAttack(SelectedTile.TerrainInfo.Unit, UnitInfo.Unit);
-            }
-            else
-            {
-                HandleSupport(SelectedTile.TerrainInfo.Unit, UnitInfo.Unit);
-            }
+            HandleSkill(SelectedTile.TerrainInfo.Unit, UnitInfo.PositionI);
         }
 
         SelectedTile = null;
@@ -248,21 +241,12 @@ public partial class InputHandler : Node3D
     {
         unit.Move(fromPos, toPos);
     }
-    private void HandleAttack(IUnit me, IUnit enemy)
+    private void HandleSkill(IUnit me, Vector2I pos)
     {
-        if (mainGame.UI.unitPanel.SelectedSkill == null || mainGame.UI.unitPanel.SelectedSkill.Skill is not IAttack)
+        if (mainGame.UI.unitPanel.SelectedSkill == null)
         {
             return;
         }
-        ((IAttack)mainGame.UI.unitPanel.SelectedSkill.Skill).Attack(enemy);
-    }
-
-    private void HandleSupport(IUnit me, IUnit ally)
-    {
-        if (mainGame.UI.unitPanel.SelectedSkill == null || mainGame.UI.unitPanel.SelectedSkill.Skill is not ISupport)
-        {
-            return;
-        }
-        ((ISupport)mainGame.UI.unitPanel.SelectedSkill.Skill).Support(ally);
+        me.Skill(pos, mainGame.UI.unitPanel.SelectedSkill.Skill.Name());
     }
 }
