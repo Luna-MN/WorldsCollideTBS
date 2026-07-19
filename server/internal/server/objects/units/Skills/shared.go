@@ -2,6 +2,7 @@ package Skills
 
 import (
 	"server/internal/server/objects"
+	"server/internal/server/objects/units/units"
 	"server/pkg/packets"
 )
 
@@ -17,6 +18,7 @@ type GameSkillService interface {
 	SendToClients(msg packets.Msg)
 	SendToClientsAs(senderId uint64, msg packets.Msg)
 	World() GameTerrainService
+	GetUnit(clientId uint64, id int32) units.IUnit
 }
 
 type SkillFactory func() ISkill

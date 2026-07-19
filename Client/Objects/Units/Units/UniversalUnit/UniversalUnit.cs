@@ -114,6 +114,10 @@ public partial class UniversalUnit : Node3D, IUnit
     {
         Data.HP -= (long)amount;
     }
+    public void Heal(float amount)
+    {
+        Data.HP += (long)amount;
+    }
     private string FindScenePathRecursive(string folderPath, string meshName)
     {
         using DirAccess dir = DirAccess.Open(folderPath);

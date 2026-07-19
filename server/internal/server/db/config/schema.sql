@@ -61,4 +61,25 @@ CREATE TABLE IF NOT EXISTS users_army (
                                     PRIMARY KEY (userId, armyId)
 );
 
+
+CREATE TABLE IF NOT EXISTS skills (
+                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    name TEXT NOT NULL UNIQUE,
+                                    description TEXT NOT NULL,
+                                    type TEXT NOT NULL,
+                                    cooldown INTEGER NOT NULL,
+                                    AP INTEGER NOT NULL,
+                                    range INTEGER NOT NULL,
+
+                                    damage INTEGER,
+
+                                    healing INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS units_skills (
+                                    unitId INTEGER NOT NULL REFERENCES units(id),
+                                    skillId INTEGER NOT NULL REFERENCES skills(id),
+                                    PRIMARY KEY (unitId, skillId)
+);
+
 -- sqlc generate -f server/internal/server/db/config/sqlc.yml

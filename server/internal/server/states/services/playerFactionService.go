@@ -96,3 +96,7 @@ func (p *PlayerFactionService) InitUnitData(UnitIds *packets.Packet_UnitIds) {
 
 	}
 }
+
+func (p *PlayerFactionService) GetUnit(id int32) units.IUnit {
+	return p.Units[id]
+}

@@ -3,20 +3,30 @@ package Skills
 import (
 	"server/internal/server"
 	"server/internal/server/objects"
-)
-
-type SkillType int
-
-const (
-	None SkillType = iota
-	Attack
-	Support
+	"server/pkg/packets"
 )
 
 type ISkill interface {
-	Type() SkillType
+	Type() packets.SkillType
+	Name() string
 	UnitId() int32
 	ClientId() uint64
-	ValidTarget(pos objects.Vector3) bool
 	Initiate(UnitId int32, client *server.Client, enemyClient *server.Client, gameService GameSkillService)
+	ValidTarget(pos objects.Vector2I) bool
+	Use(skillId int32, pos objects.Vector2I)
+	SendPacket(packet packets.Msg)
+}
+
+type Data struct {
+	Cooldown    int
+	AP          int
+	Name        string
+	Description string
+	Type        packets.SkillType
+	Range       int
+}
+
+type AttackData struct {
+	Data
+	Damage int
 }

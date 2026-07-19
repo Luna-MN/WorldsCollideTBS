@@ -29,11 +29,10 @@ public class BasicAttack : IAttack
         Globals.GM.CurrentGameData.GetTileAt(position).Unit.Damage(Data.Damage);
     }
 
-    public AttackData Data { get; set; }
-    
-
-    public void SendAttackPacket(IUnit unit)
+    public void SendPacket(Vector2I position)
     {
-        TrafficManager.Send(PacketUtil.NewSkillPacket(Name(), SkillType.Attack, Unit.Data.UnitId, unit.Data.UnitId));
+        TrafficManager.Send(PacketUtil.NewSkillPacket(Name(), Type(), Unit.Data.UnitId, PacketUtil.WrapVec2I(position)));
     }
+
+    public AttackData Data { get; set; }
 }

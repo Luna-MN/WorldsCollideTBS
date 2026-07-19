@@ -37,13 +37,16 @@ func NewFactionInput(path string, queries *db.Queries, ctx context.Context) *Fac
 }
 
 func (fi *FactionInput) InputData() {
+	skills := make(map[string]map[string]db.Skill)
 	factions := make(map[string]db.Faction)
 	armies := make(map[string]map[string]db.Army)
 	units := make(map[string]map[string]db.Unit)
+	skills["Data"] = fi.skills("Data")
 	for _, sheet := range fi.workbook.GetSheetList() {
 		if slices.Contains(fi.ignore, sheet) {
 			continue
 		}
+
 		factions[sheet] = fi.faction(sheet)
 		armies[sheet] = fi.Army(sheet)
 		units[sheet] = fi.Units(sheet)
@@ -51,6 +54,10 @@ func (fi *FactionInput) InputData() {
 		fi.ArmyUnit(armies[sheet], units[sheet])
 	}
 	fi.workbook.SaveAs("Shared\\LoadedData.xlsx")
+}
+
+func (fi *FactionInput) skills(sheet string) map[string]db.Skill {
+	return make(map[string]db.Skill)
 }
 
 func (fi *FactionInput) faction(sheet string) db.Faction {

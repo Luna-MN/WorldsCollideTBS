@@ -18,5 +18,6 @@ public interface IUnit
     public IMovement Movement { get; set; }
     
     public void Damage(float amount);
+    void Heal(float amount);
 
 }

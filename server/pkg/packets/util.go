@@ -201,3 +201,31 @@ func UnwrapVector2I(position *Vector2IMsg) objects.Vector2I {
 func NewTurnMessage(turn uint64) *Packet_Turn {
 	return &Packet_Turn{Turn: &TurnMessage{Id: turn}}
 }
+
+func NewSkillMessage(SkillName string, skillType SkillType, unitId int32, targetPos *Vector2IMsg) *Packet_Skill {
+	return &Packet_Skill{Skill: &SkillMessage{
+		SkillName: SkillName,
+		Type:      skillType,
+		UnitId:    unitId,
+		TargetPos: targetPos,
+	}}
+}
+
+func NewSkillAcceptMessage(SkillId int32, clientId uint64) *Packet_SkillAccept {
+	return &Packet_SkillAccept{
+		SkillAccept: &SkillAcceptMessage{
+			SkillId:  SkillId,
+			ClientId: clientId,
+		},
+	}
+}
+
+func NewSkillDenyMessage(SkillId int32, clientId uint64, reason string) *Packet_SkillDeny {
+	return &Packet_SkillDeny{
+		SkillDeny: &SkillDenyMessage{
+			SkillId:  SkillId,
+			ClientId: clientId,
+			Reason:   reason,
+		},
+	}
+}

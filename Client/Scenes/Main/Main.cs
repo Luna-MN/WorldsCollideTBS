@@ -9,5 +9,7 @@ public partial class Main : Control
         Globals.GM = GetTree().Root.GetNode<GameManager>("GameManager");
         Globals.SM = GetTree().Root.GetNode<SteamManager>("SteamManager");
         Globals.GM.SetState(GameManager.state.MainMenu);
+        var DSL = new DslCompiler();
+        GD.Print(DSL.Compile("I(D(1), 3)"));
     }
 }

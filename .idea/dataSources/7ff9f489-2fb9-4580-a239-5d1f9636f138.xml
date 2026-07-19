@@ -568,7 +568,7 @@
     </routine>
     <schema id="214" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2026-07-17.17:37:40</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-07-17.21:54:18</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="215" parent="14">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1809,9 +1809,9 @@
     <table id="627" parent="214" name="army"/>
     <table id="628" parent="214" name="army_faction"/>
     <table id="629" parent="214" name="army_units"/>
-    <table id="630" parent="214" name="army_units_dg_tmp"/>
-    <table id="631" parent="214" name="faction"/>
-    <table id="632" parent="214" name="games"/>
+    <table id="630" parent="214" name="faction"/>
+    <table id="631" parent="214" name="games"/>
+    <table id="632" parent="214" name="skills"/>
     <table id="633" parent="214" name="sqlite_master">
       <System>1</System>
     </table>
@@ -1819,330 +1819,381 @@
       <System>1</System>
     </table>
     <table id="635" parent="214" name="units"/>
-    <table id="636" parent="214" name="users"/>
-    <table id="637" parent="214" name="users_army"/>
-    <column id="638" parent="627" name="id">
+    <table id="636" parent="214" name="units_skills"/>
+    <table id="637" parent="214" name="users"/>
+    <table id="638" parent="214" name="users_army"/>
+    <column id="639" parent="627" name="id">
       <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="639" parent="627" name="name">
+    <column id="640" parent="627" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="640" parent="627" name="description">
+    <column id="641" parent="627" name="description">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <index id="641" parent="627" name="sqlite_autoindex_army_1">
+    <index id="642" parent="627" name="sqlite_autoindex_army_1">
       <ColNames>name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="642" parent="627">
+    <key id="643" parent="627">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="643" parent="627">
+    <key id="644" parent="627">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_army_1</UnderlyingIndexName>
     </key>
-    <column id="644" parent="628" name="id">
+    <column id="645" parent="628" name="id">
       <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="645" parent="628" name="factionId">
+    <column id="646" parent="628" name="factionId">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="646" parent="628" name="armyId">
+    <column id="647" parent="628" name="armyId">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <foreign-key id="647" parent="628">
+    <foreign-key id="648" parent="628">
       <ColNames>factionId</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>faction</RefTableName>
     </foreign-key>
-    <foreign-key id="648" parent="628">
+    <foreign-key id="649" parent="628">
       <ColNames>armyId</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>army</RefTableName>
     </foreign-key>
-    <key id="649" parent="628">
+    <key id="650" parent="628">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="650" parent="629" name="armyId">
+    <column id="651" parent="629" name="armyId">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="651" parent="629" name="unitId">
+    <column id="652" parent="629" name="unitId">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="652" parent="629" name="count">
+    <column id="653" parent="629" name="count">
       <DefaultExpression>1</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <foreign-key id="653" parent="629">
+    <foreign-key id="654" parent="629">
       <ColNames>armyId</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>army</RefTableName>
     </foreign-key>
-    <foreign-key id="654" parent="629">
+    <foreign-key id="655" parent="629">
       <ColNames>unitId</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>units</RefTableName>
     </foreign-key>
-    <index id="655" parent="629" name="sqlite_autoindex_army_units_1">
+    <index id="656" parent="629" name="sqlite_autoindex_army_units_1">
       <ColNames>armyId
 unitId</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="656" parent="629">
+    <key id="657" parent="629">
       <ColNames>armyId
 unitId</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_army_units_1</UnderlyingIndexName>
     </key>
-    <column id="657" parent="630" name="armyId">
-      <NotNull>1</NotNull>
+    <column id="658" parent="630" name="id">
+      <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="658" parent="630" name="unitId">
+    <column id="659" parent="630" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StoredType>INTEGER|0s</StoredType>
+      <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="659" parent="630" name="count">
-      <DefaultExpression>1</DefaultExpression>
-      <NotNull>1</NotNull>
+    <column id="660" parent="630" name="description">
       <Position>3</Position>
-      <StoredType>integer|0s</StoredType>
+      <StoredType>TEXT|0s</StoredType>
     </column>
-    <foreign-key id="660" parent="630">
-      <ColNames>armyId</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>army</RefTableName>
-    </foreign-key>
-    <foreign-key id="661" parent="630">
-      <ColNames>unitId</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>units</RefTableName>
-    </foreign-key>
-    <index id="662" parent="630" name="sqlite_autoindex_army_units_dg_tmp_1">
-      <ColNames>armyId
-unitId</ColNames>
+    <index id="661" parent="630" name="sqlite_autoindex_faction_1">
+      <ColNames>name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="663" parent="630">
-      <ColNames>armyId
-unitId</ColNames>
+    <key id="662" parent="630">
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
-      <UnderlyingIndexName>sqlite_autoindex_army_units_dg_tmp_1</UnderlyingIndexName>
+    </key>
+    <key id="663" parent="630">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_faction_1</UnderlyingIndexName>
     </key>
     <column id="664" parent="631" name="id">
       <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="665" parent="631" name="name">
-      <NotNull>1</NotNull>
+    <column id="665" parent="631" name="player1Id">
       <Position>2</Position>
-      <StoredType>TEXT|0s</StoredType>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="666" parent="631" name="description">
+    <column id="666" parent="631" name="player2Id">
       <Position>3</Position>
-      <StoredType>TEXT|0s</StoredType>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
-    <index id="667" parent="631" name="sqlite_autoindex_faction_1">
-      <ColNames>name</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Unique>1</Unique>
-    </index>
-    <key id="668" parent="631">
+    <column id="667" parent="631" name="player1Score">
+      <Position>4</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="668" parent="631" name="player2Score">
+      <Position>5</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="669" parent="631" name="winnerId">
+      <Position>6</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="670" parent="631" name="MatchTime">
+      <Position>7</Position>
+      <StoredType>DATETIME|0s</StoredType>
+    </column>
+    <key id="671" parent="631">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="669" parent="631">
-      <ColNames>name</ColNames>
-      <UnderlyingIndexName>sqlite_autoindex_faction_1</UnderlyingIndexName>
-    </key>
-    <column id="670" parent="632" name="id">
+    <column id="672" parent="632" name="id">
       <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="671" parent="632" name="player1Id">
+    <column id="673" parent="632" name="name">
+      <NotNull>1</NotNull>
       <Position>2</Position>
-      <StoredType>INTEGER|0s</StoredType>
+      <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="672" parent="632" name="player2Id">
+    <column id="674" parent="632" name="description">
+      <NotNull>1</NotNull>
       <Position>3</Position>
-      <StoredType>INTEGER|0s</StoredType>
+      <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="673" parent="632" name="player1Score">
+    <column id="675" parent="632" name="type">
+      <NotNull>1</NotNull>
       <Position>4</Position>
-      <StoredType>INTEGER|0s</StoredType>
+      <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="674" parent="632" name="player2Score">
+    <column id="676" parent="632" name="cooldown">
+      <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="675" parent="632" name="winnerId">
+    <column id="677" parent="632" name="AP">
+      <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="676" parent="632" name="MatchTime">
+    <column id="678" parent="632" name="range">
+      <NotNull>1</NotNull>
       <Position>7</Position>
-      <StoredType>DATETIME|0s</StoredType>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
-    <key id="677" parent="632">
+    <column id="679" parent="632" name="damage">
+      <Position>8</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="680" parent="632" name="healing">
+      <Position>9</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <index id="681" parent="632" name="sqlite_autoindex_skills_1">
+      <ColNames>name</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="682" parent="632">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="678" parent="633" name="type">
+    <key id="683" parent="632">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_skills_1</UnderlyingIndexName>
+    </key>
+    <column id="684" parent="633" name="type">
       <Position>1</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="679" parent="633" name="name">
+    <column id="685" parent="633" name="name">
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="680" parent="633" name="tbl_name">
+    <column id="686" parent="633" name="tbl_name">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="681" parent="633" name="rootpage">
+    <column id="687" parent="633" name="rootpage">
       <Position>4</Position>
       <StoredType>INT|0s</StoredType>
     </column>
-    <column id="682" parent="633" name="sql">
+    <column id="688" parent="633" name="sql">
       <Position>5</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="683" parent="634" name="name">
+    <column id="689" parent="634" name="name">
       <Position>1</Position>
     </column>
-    <column id="684" parent="634" name="seq">
+    <column id="690" parent="634" name="seq">
       <Position>2</Position>
     </column>
-    <column id="685" parent="635" name="id">
+    <column id="691" parent="635" name="id">
       <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="686" parent="635" name="name">
+    <column id="692" parent="635" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="687" parent="635" name="skills">
+    <column id="693" parent="635" name="skills">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="688" parent="635" name="movement">
+    <column id="694" parent="635" name="movement">
       <Position>4</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="689" parent="635" name="maxHP">
+    <column id="695" parent="635" name="maxHP">
       <Position>5</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="690" parent="635" name="AP">
+    <column id="696" parent="635" name="AP">
       <Position>6</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="691" parent="635" name="Speed">
+    <column id="697" parent="635" name="Speed">
       <Position>7</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="692" parent="635" name="Armies">
+    <column id="698" parent="635" name="Armies">
       <Position>8</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <key id="693" parent="635">
+    <key id="699" parent="635">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="694" parent="636" name="id">
+    <column id="700" parent="636" name="unitId">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="701" parent="636" name="skillId">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <foreign-key id="702" parent="636">
+      <ColNames>unitId</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>units</RefTableName>
+    </foreign-key>
+    <foreign-key id="703" parent="636">
+      <ColNames>skillId</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>skills</RefTableName>
+    </foreign-key>
+    <index id="704" parent="636" name="sqlite_autoindex_units_skills_1">
+      <ColNames>unitId
+skillId</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="705" parent="636">
+      <ColNames>unitId
+skillId</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_units_skills_1</UnderlyingIndexName>
+    </key>
+    <column id="706" parent="637" name="id">
       <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="695" parent="636" name="username">
+    <column id="707" parent="637" name="username">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="696" parent="636" name="password_hash">
+    <column id="708" parent="637" name="password_hash">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="697" parent="636" name="steamId">
+    <column id="709" parent="637" name="steamId">
       <Position>4</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="698" parent="636" name="Avatar">
+    <column id="710" parent="637" name="Avatar">
       <Position>5</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="699" parent="636" name="LastLoggedIn">
+    <column id="711" parent="637" name="LastLoggedIn">
       <Position>6</Position>
       <StoredType>DATETIME|0s</StoredType>
     </column>
-    <index id="700" parent="636" name="sqlite_autoindex_users_1">
+    <index id="712" parent="637" name="sqlite_autoindex_users_1">
       <ColNames>username</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="701" parent="636">
+    <key id="713" parent="637">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="702" parent="636">
+    <key id="714" parent="637">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_users_1</UnderlyingIndexName>
     </key>
-    <column id="703" parent="637" name="userId">
+    <column id="715" parent="638" name="userId">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="704" parent="637" name="armyId">
+    <column id="716" parent="638" name="armyId">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <foreign-key id="705" parent="637">
+    <foreign-key id="717" parent="638">
       <ColNames>userId</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>users</RefTableName>
     </foreign-key>
-    <foreign-key id="706" parent="637">
+    <foreign-key id="718" parent="638">
       <ColNames>armyId</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>faction</RefTableName>
     </foreign-key>
-    <index id="707" parent="637" name="sqlite_autoindex_users_army_1">
+    <index id="719" parent="638" name="sqlite_autoindex_users_army_1">
       <ColNames>userId
 armyId</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="708" parent="637">
+    <key id="720" parent="638">
       <ColNames>userId
 armyId</ColNames>
       <Primary>1</Primary>

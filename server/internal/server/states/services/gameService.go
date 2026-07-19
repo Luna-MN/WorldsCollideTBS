@@ -10,6 +10,7 @@ import (
 	"server/internal/server/objects"
 	_ "server/internal/server/objects/features"
 	"server/internal/server/objects/units/Skills"
+	"server/internal/server/objects/units/units"
 	"server/pkg/packets"
 	"sync"
 )
@@ -279,7 +280,7 @@ func (g *GameService) HandleHexPositionsMessage(pd *PlayerGameData, positions *p
 			return
 		}
 
-		startTile.Unit = 0
+		startTile.Unit = -1
 		endTile.Unit = unit.Data().UnitID
 	}
 }
@@ -320,5 +321,14 @@ func (g *GameService) HandleTurnMessage(pd *PlayerGameData, turn *packets.Packet
 }
 
 func (g *GameService) HandleNPCTurn() {
+
+}
+
+func (g *GameService) GetUnit(clientId uint64, id int32) units.IUnit {
+	if clientId == g.player1.Id() {
+		return g.Player1GameData.PlayerFactionService.GetUnit(id)
+	} else {
+		return g.Player2GameData.PlayerFactionService.GetUnit(id)
+	}
 
 }

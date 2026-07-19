@@ -152,6 +152,15 @@ public static class PacketUtil
         return p;
     }
 
+    public static Vector2IMsg WrapVec2I(Vector2I vec2)
+    {
+        return new Vector2IMsg()
+        {
+            X = vec2.X,
+            Y = vec2.Y
+        };
+    }
+
     public static Vector2I UnwrapVec2I(Vector2IMsg vec2)
     {
         return new Vector2I()
@@ -172,7 +181,7 @@ public static class PacketUtil
         };
     }
 
-    public static Packet NewSkillPacket(string skillName, SkillType type, int unitId, int targetId)
+    public static Packet NewSkillPacket(string skillName, SkillType type, int unitId, Vector2IMsg targetPos)
     {
         return new Packet()
         {
@@ -181,7 +190,7 @@ public static class PacketUtil
                 SkillName = skillName,
                 Type = type,
                 UnitId = unitId,
-                TargetID = targetId
+                TargetPos = targetPos
             }
         };
     }

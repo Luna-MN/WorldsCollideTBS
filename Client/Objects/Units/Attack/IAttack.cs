@@ -3,5 +3,4 @@
 public interface IAttack : ISkill
 {
     public AttackData Data { get; set; }
-    public void SendAttackPacket(IUnit unit);
 }

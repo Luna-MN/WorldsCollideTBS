@@ -1878,11 +1878,11 @@ func (x *TurnMessage) GetId() uint64 {
 
 type SkillMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	SkillName     string                 `protobuf:"bytes,1,opt,name=SkillName,proto3" json:"SkillName,omitempty"`
-	Type          SkillType              `protobuf:"varint,2,opt,name=type,proto3,enum=packets.SkillType" json:"type,omitempty"`
-	UnitId        int64                  `protobuf:"varint,3,opt,name=unitId,proto3" json:"unitId,omitempty"`
-	TargetID      int64                  `protobuf:"varint,4,opt,name=targetID,proto3" json:"targetID,omitempty"`
-	Pos           *Vector3Msg            `protobuf:"bytes,5,opt,name=pos,proto3" json:"pos,omitempty"`
+	SkillId       int32                  `protobuf:"varint,1,opt,name=skillId,proto3" json:"skillId,omitempty"`
+	SkillName     string                 `protobuf:"bytes,2,opt,name=SkillName,proto3" json:"SkillName,omitempty"`
+	Type          SkillType              `protobuf:"varint,3,opt,name=type,proto3,enum=packets.SkillType" json:"type,omitempty"`
+	UnitId        int32                  `protobuf:"varint,4,opt,name=unitId,proto3" json:"unitId,omitempty"`
+	TargetPos     *Vector2IMsg           `protobuf:"bytes,5,opt,name=targetPos,proto3" json:"targetPos,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1917,6 +1917,13 @@ func (*SkillMessage) Descriptor() ([]byte, []int) {
 	return file_packets_proto_rawDescGZIP(), []int{32}
 }
 
+func (x *SkillMessage) GetSkillId() int32 {
+	if x != nil {
+		return x.SkillId
+	}
+	return 0
+}
+
 func (x *SkillMessage) GetSkillName() string {
 	if x != nil {
 		return x.SkillName
@@ -1931,25 +1938,130 @@ func (x *SkillMessage) GetType() SkillType {
 	return SkillType_Attack
 }
 
-func (x *SkillMessage) GetUnitId() int64 {
+func (x *SkillMessage) GetUnitId() int32 {
 	if x != nil {
 		return x.UnitId
 	}
 	return 0
 }
 
-func (x *SkillMessage) GetTargetID() int64 {
+func (x *SkillMessage) GetTargetPos() *Vector2IMsg {
 	if x != nil {
-		return x.TargetID
+		return x.TargetPos
+	}
+	return nil
+}
+
+type SkillDenyMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SkillId       int32                  `protobuf:"varint,1,opt,name=skillId,proto3" json:"skillId,omitempty"`
+	ClientId      uint64                 `protobuf:"varint,2,opt,name=clientId,proto3" json:"clientId,omitempty"`
+	Reason        string                 `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SkillDenyMessage) Reset() {
+	*x = SkillDenyMessage{}
+	mi := &file_packets_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SkillDenyMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SkillDenyMessage) ProtoMessage() {}
+
+func (x *SkillDenyMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_packets_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SkillDenyMessage.ProtoReflect.Descriptor instead.
+func (*SkillDenyMessage) Descriptor() ([]byte, []int) {
+	return file_packets_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *SkillDenyMessage) GetSkillId() int32 {
+	if x != nil {
+		return x.SkillId
 	}
 	return 0
 }
 
-func (x *SkillMessage) GetPos() *Vector3Msg {
+func (x *SkillDenyMessage) GetClientId() uint64 {
 	if x != nil {
-		return x.Pos
+		return x.ClientId
 	}
-	return nil
+	return 0
+}
+
+func (x *SkillDenyMessage) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type SkillAcceptMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SkillId       int32                  `protobuf:"varint,1,opt,name=skillId,proto3" json:"skillId,omitempty"`
+	ClientId      uint64                 `protobuf:"varint,2,opt,name=clientId,proto3" json:"clientId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SkillAcceptMessage) Reset() {
+	*x = SkillAcceptMessage{}
+	mi := &file_packets_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SkillAcceptMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SkillAcceptMessage) ProtoMessage() {}
+
+func (x *SkillAcceptMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_packets_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SkillAcceptMessage.ProtoReflect.Descriptor instead.
+func (*SkillAcceptMessage) Descriptor() ([]byte, []int) {
+	return file_packets_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *SkillAcceptMessage) GetSkillId() int32 {
+	if x != nil {
+		return x.SkillId
+	}
+	return 0
+}
+
+func (x *SkillAcceptMessage) GetClientId() uint64 {
+	if x != nil {
+		return x.ClientId
+	}
+	return 0
 }
 
 type Packet struct {
@@ -1982,6 +2094,8 @@ type Packet struct {
 	//	*Packet_UnitIds
 	//	*Packet_Turn
 	//	*Packet_Skill
+	//	*Packet_SkillDeny
+	//	*Packet_SkillAccept
 	Msg           isPacket_Msg `protobuf_oneof:"msg"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1989,7 +2103,7 @@ type Packet struct {
 
 func (x *Packet) Reset() {
 	*x = Packet{}
-	mi := &file_packets_proto_msgTypes[33]
+	mi := &file_packets_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2001,7 +2115,7 @@ func (x *Packet) String() string {
 func (*Packet) ProtoMessage() {}
 
 func (x *Packet) ProtoReflect() protoreflect.Message {
-	mi := &file_packets_proto_msgTypes[33]
+	mi := &file_packets_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2014,7 +2128,7 @@ func (x *Packet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Packet.ProtoReflect.Descriptor instead.
 func (*Packet) Descriptor() ([]byte, []int) {
-	return file_packets_proto_rawDescGZIP(), []int{33}
+	return file_packets_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *Packet) GetSenderId() uint64 {
@@ -2256,6 +2370,24 @@ func (x *Packet) GetSkill() *SkillMessage {
 	return nil
 }
 
+func (x *Packet) GetSkillDeny() *SkillDenyMessage {
+	if x != nil {
+		if x, ok := x.Msg.(*Packet_SkillDeny); ok {
+			return x.SkillDeny
+		}
+	}
+	return nil
+}
+
+func (x *Packet) GetSkillAccept() *SkillAcceptMessage {
+	if x != nil {
+		if x, ok := x.Msg.(*Packet_SkillAccept); ok {
+			return x.SkillAccept
+		}
+	}
+	return nil
+}
+
 type isPacket_Msg interface {
 	isPacket_Msg()
 }
@@ -2357,7 +2489,15 @@ type Packet_Turn struct {
 }
 
 type Packet_Skill struct {
-	Skill *SkillMessage `protobuf:"bytes,26,opt,name=Skill,proto3,oneof"` //...
+	Skill *SkillMessage `protobuf:"bytes,26,opt,name=Skill,proto3,oneof"`
+}
+
+type Packet_SkillDeny struct {
+	SkillDeny *SkillDenyMessage `protobuf:"bytes,27,opt,name=SkillDeny,proto3,oneof"`
+}
+
+type Packet_SkillAccept struct {
+	SkillAccept *SkillAcceptMessage `protobuf:"bytes,28,opt,name=SkillAccept,proto3,oneof"` //...
 }
 
 func (*Packet_Chat) isPacket_Msg() {}
@@ -2409,6 +2549,10 @@ func (*Packet_UnitIds) isPacket_Msg() {}
 func (*Packet_Turn) isPacket_Msg() {}
 
 func (*Packet_Skill) isPacket_Msg() {}
+
+func (*Packet_SkillDeny) isPacket_Msg() {}
+
+func (*Packet_SkillAccept) isPacket_Msg() {}
 
 var File_packets_proto protoreflect.FileDescriptor
 
@@ -2519,13 +2663,20 @@ const file_packets_proto_rawDesc = "" +
 	"\x02Id\x18\x01 \x01(\x03R\x02Id\x12\x16\n" +
 	"\x06unitId\x18\x02 \x01(\x05R\x06unitId\"\x1d\n" +
 	"\vTurnMessage\x12\x0e\n" +
-	"\x02Id\x18\x01 \x01(\x04R\x02Id\"\xaf\x01\n" +
-	"\fSkillMessage\x12\x1c\n" +
-	"\tSkillName\x18\x01 \x01(\tR\tSkillName\x12&\n" +
-	"\x04type\x18\x02 \x01(\x0e2\x12.packets.SkillTypeR\x04type\x12\x16\n" +
-	"\x06unitId\x18\x03 \x01(\x03R\x06unitId\x12\x1a\n" +
-	"\btargetID\x18\x04 \x01(\x03R\btargetID\x12%\n" +
-	"\x03pos\x18\x05 \x01(\v2\x13.packets.Vector3MsgR\x03pos\"\x97\v\n" +
+	"\x02Id\x18\x01 \x01(\x04R\x02Id\"\xba\x01\n" +
+	"\fSkillMessage\x12\x18\n" +
+	"\askillId\x18\x01 \x01(\x05R\askillId\x12\x1c\n" +
+	"\tSkillName\x18\x02 \x01(\tR\tSkillName\x12&\n" +
+	"\x04type\x18\x03 \x01(\x0e2\x12.packets.SkillTypeR\x04type\x12\x16\n" +
+	"\x06unitId\x18\x04 \x01(\x05R\x06unitId\x122\n" +
+	"\ttargetPos\x18\x05 \x01(\v2\x14.packets.Vector2IMsgR\ttargetPos\"`\n" +
+	"\x10SkillDenyMessage\x12\x18\n" +
+	"\askillId\x18\x01 \x01(\x05R\askillId\x12\x1a\n" +
+	"\bclientId\x18\x02 \x01(\x04R\bclientId\x12\x16\n" +
+	"\x06reason\x18\x03 \x01(\tR\x06reason\"J\n" +
+	"\x12SkillAcceptMessage\x12\x18\n" +
+	"\askillId\x18\x01 \x01(\x05R\askillId\x12\x1a\n" +
+	"\bclientId\x18\x02 \x01(\x04R\bclientId\"\x93\f\n" +
 	"\x06Packet\x12\x1b\n" +
 	"\tsender_id\x18\x01 \x01(\x04R\bsenderId\x12*\n" +
 	"\x04chat\x18\x02 \x01(\v2\x14.packets.ChatMessageH\x00R\x04chat\x12$\n" +
@@ -2553,7 +2704,9 @@ const file_packets_proto_rawDesc = "" +
 	"\rUnitPositions\x18\x17 \x01(\v2\x1d.packets.UnitPositionsMessageH\x00R\rUnitPositions\x123\n" +
 	"\aUnitIds\x18\x18 \x01(\v2\x17.packets.UnitIDsMessageH\x00R\aUnitIds\x12*\n" +
 	"\x04Turn\x18\x19 \x01(\v2\x14.packets.TurnMessageH\x00R\x04Turn\x12-\n" +
-	"\x05Skill\x18\x1a \x01(\v2\x15.packets.SkillMessageH\x00R\x05SkillB\x05\n" +
+	"\x05Skill\x18\x1a \x01(\v2\x15.packets.SkillMessageH\x00R\x05Skill\x129\n" +
+	"\tSkillDeny\x18\x1b \x01(\v2\x19.packets.SkillDenyMessageH\x00R\tSkillDeny\x12?\n" +
+	"\vSkillAccept\x18\x1c \x01(\v2\x1b.packets.SkillAcceptMessageH\x00R\vSkillAcceptB\x05\n" +
 	"\x03msg*B\n" +
 	"\bChatType\x12\v\n" +
 	"\aNothing\x10\x00\x12\n" +
@@ -2585,7 +2738,7 @@ func file_packets_proto_rawDescGZIP() []byte {
 }
 
 var file_packets_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_packets_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
+var file_packets_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
 var file_packets_proto_goTypes = []any{
 	(ChatType)(0),                  // 0: packets.ChatType
 	(Speeds)(0),                    // 1: packets.Speeds
@@ -2623,7 +2776,9 @@ var file_packets_proto_goTypes = []any{
 	(*UnitIDMessage)(nil),          // 33: packets.UnitIDMessage
 	(*TurnMessage)(nil),            // 34: packets.TurnMessage
 	(*SkillMessage)(nil),           // 35: packets.SkillMessage
-	(*Packet)(nil),                 // 36: packets.Packet
+	(*SkillDenyMessage)(nil),       // 36: packets.SkillDenyMessage
+	(*SkillAcceptMessage)(nil),     // 37: packets.SkillAcceptMessage
+	(*Packet)(nil),                 // 38: packets.Packet
 }
 var file_packets_proto_depIdxs = []int32{
 	8,  // 0: packets.ArmyData.unitIds:type_name -> packets.UnitArmyData
@@ -2642,7 +2797,7 @@ var file_packets_proto_depIdxs = []int32{
 	9,  // 13: packets.GameDataMessage.units:type_name -> packets.UnitData
 	33, // 14: packets.UnitIDsMessage.ids:type_name -> packets.UnitIDMessage
 	2,  // 15: packets.SkillMessage.type:type_name -> packets.SkillType
-	3,  // 16: packets.SkillMessage.pos:type_name -> packets.Vector3Msg
+	5,  // 16: packets.SkillMessage.targetPos:type_name -> packets.Vector2IMsg
 	10, // 17: packets.Packet.chat:type_name -> packets.ChatMessage
 	11, // 18: packets.Packet.id:type_name -> packets.IdMessage
 	12, // 19: packets.Packet.loginRequest:type_name -> packets.LoginRequestMessage
@@ -2668,11 +2823,13 @@ var file_packets_proto_depIdxs = []int32{
 	32, // 39: packets.Packet.UnitIds:type_name -> packets.UnitIDsMessage
 	34, // 40: packets.Packet.Turn:type_name -> packets.TurnMessage
 	35, // 41: packets.Packet.Skill:type_name -> packets.SkillMessage
-	42, // [42:42] is the sub-list for method output_type
-	42, // [42:42] is the sub-list for method input_type
-	42, // [42:42] is the sub-list for extension type_name
-	42, // [42:42] is the sub-list for extension extendee
-	0,  // [0:42] is the sub-list for field type_name
+	36, // 42: packets.Packet.SkillDeny:type_name -> packets.SkillDenyMessage
+	37, // 43: packets.Packet.SkillAccept:type_name -> packets.SkillAcceptMessage
+	44, // [44:44] is the sub-list for method output_type
+	44, // [44:44] is the sub-list for method input_type
+	44, // [44:44] is the sub-list for extension type_name
+	44, // [44:44] is the sub-list for extension extendee
+	0,  // [0:44] is the sub-list for field type_name
 }
 
 func init() { file_packets_proto_init() }
@@ -2680,7 +2837,7 @@ func file_packets_proto_init() {
 	if File_packets_proto != nil {
 		return
 	}
-	file_packets_proto_msgTypes[33].OneofWrappers = []any{
+	file_packets_proto_msgTypes[35].OneofWrappers = []any{
 		(*Packet_Chat)(nil),
 		(*Packet_Id)(nil),
 		(*Packet_LoginRequest)(nil),
@@ -2706,6 +2863,8 @@ func file_packets_proto_init() {
 		(*Packet_UnitIds)(nil),
 		(*Packet_Turn)(nil),
 		(*Packet_Skill)(nil),
+		(*Packet_SkillDeny)(nil),
+		(*Packet_SkillAccept)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -2713,7 +2872,7 @@ func file_packets_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_packets_proto_rawDesc), len(file_packets_proto_rawDesc)),
 			NumEnums:      3,
-			NumMessages:   34,
+			NumMessages:   36,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
