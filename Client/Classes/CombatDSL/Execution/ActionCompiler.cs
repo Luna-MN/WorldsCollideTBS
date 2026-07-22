@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public sealed class SkillCompiler
 {
+    public ICombatAction Compile(string text)
+    {
+        var expr = Globals.GM.DSLCompiler.Compile(text);
+        return Compile(expr);
+    }
     public ICombatAction Compile(DSLExpr expr)
     {
         switch (expr)
@@ -66,8 +72,13 @@ public sealed class SkillCompiler
                 return new DSLActions.Poison(poison.Amount);
             case Bleed bleed:
                 return new DSLActions.Bleed(bleed.Amount);
-            case Comp comp:
-                return new DSLActions.Comp(comp.Effects);
+            case Composite comp:
+                var comps = new List<ICombatAction>();
+                foreach (var e in comp.Effects)
+                {
+                    comps.Add(Compile(e));
+                }
+                return new DSLActions.Composite(comps);
             default:
                 throw new NotSupportedException($"Unsupported effect type: {effect.GetType().Name}");
         }

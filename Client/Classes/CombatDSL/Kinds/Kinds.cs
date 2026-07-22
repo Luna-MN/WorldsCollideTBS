@@ -26,7 +26,7 @@ public sealed record Poison(int Amount) : EType;
 
 public sealed record Bleed(int Amount) : EType;
 
-public sealed record Comp(IReadOnlyList<EType> Effects) : EType;
+public sealed record Composite(IReadOnlyList<EType> Effects) : EType;
 
 public sealed record Turns(int Amount) : CType;
 

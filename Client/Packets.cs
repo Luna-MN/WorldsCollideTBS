@@ -105,8 +105,8 @@ namespace Packets {
             "Y2tldHMuU2tpbGxBY2NlcHRNZXNzYWdlSABCBQoDbXNnKkIKCENoYXRUeXBl",
             "EgsKB05vdGhpbmcQABIKCgZHbG9iYWwQARIJCgVMb2NhbBACEgkKBVBhcnR5",
             "EAMSBwoDTWF4EAQqKAoGU3BlZWRzEgoKBk5vcm1hbBAAEggKBFNsb3cQARII",
-            "CgRGYXN0EAIqJAoJU2tpbGxUeXBlEgoKBkF0dGFjaxAAEgsKB1N1cHBvcnQQ",
-            "AkINWgtwa2cvcGFja2V0c2IGcHJvdG8z"));
+            "CgRGYXN0EAIqLgoJU2tpbGxUeXBlEggKBE5vbmUQABIKCgZBdHRhY2sQARIL",
+            "CgdTdXBwb3J0EAJCDVoLcGtnL3BhY2tldHNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Packets.ChatType), typeof(global::Packets.Speeds), typeof(global::Packets.SkillType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -167,7 +167,8 @@ namespace Packets {
   }
 
   public enum SkillType {
-    [pbr::OriginalName("Attack")] Attack = 0,
+    [pbr::OriginalName("None")] None = 0,
+    [pbr::OriginalName("Attack")] Attack = 1,
     [pbr::OriginalName("Support")] Support = 2,
   }
 
@@ -7876,7 +7877,7 @@ namespace Packets {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 3;
-    private global::Packets.SkillType type_ = global::Packets.SkillType.Attack;
+    private global::Packets.SkillType type_ = global::Packets.SkillType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Packets.SkillType Type {
@@ -7939,7 +7940,7 @@ namespace Packets {
       int hash = 1;
       if (SkillId != 0) hash ^= SkillId.GetHashCode();
       if (SkillName.Length != 0) hash ^= SkillName.GetHashCode();
-      if (Type != global::Packets.SkillType.Attack) hash ^= Type.GetHashCode();
+      if (Type != global::Packets.SkillType.None) hash ^= Type.GetHashCode();
       if (UnitId != 0) hash ^= UnitId.GetHashCode();
       if (targetPos_ != null) hash ^= TargetPos.GetHashCode();
       if (_unknownFields != null) {
@@ -7968,7 +7969,7 @@ namespace Packets {
         output.WriteRawTag(18);
         output.WriteString(SkillName);
       }
-      if (Type != global::Packets.SkillType.Attack) {
+      if (Type != global::Packets.SkillType.None) {
         output.WriteRawTag(24);
         output.WriteEnum((int) Type);
       }
@@ -7998,7 +7999,7 @@ namespace Packets {
         output.WriteRawTag(18);
         output.WriteString(SkillName);
       }
-      if (Type != global::Packets.SkillType.Attack) {
+      if (Type != global::Packets.SkillType.None) {
         output.WriteRawTag(24);
         output.WriteEnum((int) Type);
       }
@@ -8026,7 +8027,7 @@ namespace Packets {
       if (SkillName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(SkillName);
       }
-      if (Type != global::Packets.SkillType.Attack) {
+      if (Type != global::Packets.SkillType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (UnitId != 0) {
@@ -8053,7 +8054,7 @@ namespace Packets {
       if (other.SkillName.Length != 0) {
         SkillName = other.SkillName;
       }
-      if (other.Type != global::Packets.SkillType.Attack) {
+      if (other.Type != global::Packets.SkillType.None) {
         Type = other.Type;
       }
       if (other.UnitId != 0) {

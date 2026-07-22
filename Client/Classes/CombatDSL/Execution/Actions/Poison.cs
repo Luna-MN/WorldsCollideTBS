@@ -1,9 +1,18 @@
-﻿namespace DSLActions;
+﻿using Packets.Classes.CombatDSL.Execution;
 
-public class Poison(int amount) : ICombatAction
+namespace DSLActions;
+
+public class Poison(int amount) : UniversalCombatAction
 {
-    public void Execute(CombatContext context)
+    public override void Execute(CombatContext context, int skillId)
     {
+        base.Execute(context, skillId);
+        SkillContext[skillId].Total += amount;
         throw new System.NotImplementedException();
+    }
+    public override void Invert(int skillId)
+    {
+        SkillContext[skillId].Context.Target.Heal(SkillContext[skillId].Total);
+        SkillContext.Remove(skillId);
     }
 }

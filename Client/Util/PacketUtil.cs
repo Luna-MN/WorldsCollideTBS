@@ -181,12 +181,13 @@ public static class PacketUtil
         };
     }
 
-    public static Packet NewSkillPacket(string skillName, SkillType type, int unitId, Vector2IMsg targetPos)
+    public static Packet NewSkillPacket(int skillId, string skillName, SkillType type, int unitId, Vector2IMsg targetPos)
     {
         return new Packet()
         {
             Skill = new SkillMessage()
             {
+                SkillId = skillId,
                 SkillName = skillName,
                 Type = type,
                 UnitId = unitId,

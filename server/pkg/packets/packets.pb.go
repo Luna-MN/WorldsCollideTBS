@@ -128,18 +128,21 @@ func (Speeds) EnumDescriptor() ([]byte, []int) {
 type SkillType int32
 
 const (
-	SkillType_Attack  SkillType = 0
+	SkillType_None    SkillType = 0
+	SkillType_Attack  SkillType = 1
 	SkillType_Support SkillType = 2
 )
 
 // Enum value maps for SkillType.
 var (
 	SkillType_name = map[int32]string{
-		0: "Attack",
+		0: "None",
+		1: "Attack",
 		2: "Support",
 	}
 	SkillType_value = map[string]int32{
-		"Attack":  0,
+		"None":    0,
+		"Attack":  1,
 		"Support": 2,
 	}
 )
@@ -1935,7 +1938,7 @@ func (x *SkillMessage) GetType() SkillType {
 	if x != nil {
 		return x.Type
 	}
-	return SkillType_Attack
+	return SkillType_None
 }
 
 func (x *SkillMessage) GetUnitId() int32 {
@@ -2719,10 +2722,11 @@ const file_packets_proto_rawDesc = "" +
 	"\n" +
 	"\x06Normal\x10\x00\x12\b\n" +
 	"\x04Slow\x10\x01\x12\b\n" +
-	"\x04Fast\x10\x02*$\n" +
-	"\tSkillType\x12\n" +
+	"\x04Fast\x10\x02*.\n" +
+	"\tSkillType\x12\b\n" +
+	"\x04None\x10\x00\x12\n" +
 	"\n" +
-	"\x06Attack\x10\x00\x12\v\n" +
+	"\x06Attack\x10\x01\x12\v\n" +
 	"\aSupport\x10\x02B\rZ\vpkg/packetsb\x06proto3"
 
 var (
