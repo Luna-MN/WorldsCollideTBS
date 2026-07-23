@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "0Qz97v4KD3Y=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\matt\\Documents\\worlds-collide-tbs\\server\\internal\\steam\\FunctionalTeamCombiner\\FunctionalTeamCombiner\\FunctionalTeamCombiner.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\matt\\.nuget\\packages\\costura.fody\\6.2.0\\costura.fody.6.2.0.nupkg.sha512",
+    "C:\\Users\\matt\\.nuget\\packages\\fody\\6.9.3\\fody.6.9.3.nupkg.sha512",
+    "C:\\Users\\matt\\.nuget\\packages\\freespire.xls\\16.4.0\\freespire.xls.16.4.0.nupkg.sha512",
+    "C:\\Users\\matt\\.nuget\\packages\\harfbuzzsharp\\8.3.0.1\\harfbuzzsharp.8.3.0.1.nupkg.sha512",
+    "C:\\Users\\matt\\.nuget\\packages\\harfbuzzsharp.nativeassets.macos\\8.3.0.1\\harfbuzzsharp.nativeassets.macos.8.3.0.1.nupkg.sha512",
+    "C:\\Users\\matt\\.nuget\\packages\\harfbuzzsharp.nativeassets.win32\\8.3.0.1\\harfbuzzsharp.nativeassets.win32.8.3.0.1.nupkg.sha512",
+    "C:\\Users\\matt\\.nuget\\packages\\skiasharp\\3.116.1\\skiasharp.3.116.1.nupkg.sha512",
+    "C:\\Users\\matt\\.nuget\\packages\\skiasharp.nativeassets.macos\\3.116.1\\skiasharp.nativeassets.macos.3.116.1.nupkg.sha512",
+    "C:\\Users\\matt\\.nuget\\packages\\skiasharp.nativeassets.win32\\3.116.1\\skiasharp.nativeassets.win32.3.116.1.nupkg.sha512"
+  ],
+  "logs": []
+}
