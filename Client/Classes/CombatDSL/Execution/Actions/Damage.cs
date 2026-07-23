@@ -1,12 +1,22 @@
-﻿namespace DSLActions;
+﻿using Packets.Classes.CombatDSL.Execution;
 
-public class Damage(int amount) : ICombatAction
+namespace DSLActions;
+
+public class Damage(int amount) : UniversalCombatAction
 {
     public int Amount { get; } = amount;
 
-    public void Execute(CombatContext context)
+    public override void Execute(CombatContext context, int skillId)
     {
-        context.Target.Damage(Amount);
+        base.Execute(context, skillId);
+        
+        SkillContext[skillId].Total += Amount;
+        SkillContext[skillId].Context.Target.Damage(Amount);
     }
 
+    public override void Invert(int skillId)
+    {
+        SkillContext[skillId].Context.Target.Heal(SkillContext[skillId].Total);
+        SkillContext.Remove(skillId);
+    }
 }

@@ -36,6 +36,8 @@ public partial class GameManager : Node
     public string username;
     private Node CurrentSceneRoot;
     public CurrentGameData CurrentGameData;
+    public DslCompiler DSLCompiler = new DslCompiler();
+    public SkillCompiler SkillCompiler = new SkillCompiler();
     public void SetState(state newState)
     {
         var scene = (PackedScene)ResourceLoader.Load(stateScenes[newState]);

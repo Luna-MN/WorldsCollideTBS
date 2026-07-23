@@ -341,7 +341,7 @@ public sealed class DslCompiler
                     .Select(compiler.CompileEType)
                     .ToArray();
 
-                return new Comp(effects);
+                return new Composite(effects);
             }
         );
 

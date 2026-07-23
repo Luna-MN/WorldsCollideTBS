@@ -1,9 +1,17 @@
-﻿namespace DSLActions;
+﻿using Packets.Classes.CombatDSL.Execution;
 
-public class Inflict(ICombatAction eType, int turns) : ICombatAction
+namespace DSLActions;
+
+public class Inflict(ICombatAction eType, int turns) : UniversalCombatAction
 {
-    public void Execute(CombatContext context)
+    public override void Execute(CombatContext context, int skillId)
     {
-        throw new System.NotImplementedException();
+        base.Execute(context, skillId);
+        context.Target.Inflict(skillId, eType, turns);
     }
+    public override void Invert(int skillId)
+    {
+        SkillContext[skillId].Context.Caster.RemoveInflict(skillId);
+    }
+    
 }

@@ -16,8 +16,22 @@ public interface IUnit
     
     public void Move(TerrainInfo fromPos, TerrainInfo toPos, bool message = false);
     public IMovement Movement { get; set; }
+
+    void NewTurn();
+
+    void AddToSkillBuffer(int skillId, ICombatAction action);
+    void RemoveFromSkillBuffer(int skillId);
     
-    public void Damage(float amount);
+    void Inflict(int skillId, ICombatAction action, int Turns);
+    void RemoveInflict(int skillId);
+    
+    void Damage(float amount);
     void Heal(float amount);
 
+}
+
+public class InflictAction
+{
+    public ICombatAction Action;
+    public int Turns;
 }

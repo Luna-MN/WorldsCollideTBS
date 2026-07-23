@@ -10,5 +10,5 @@ public interface ISkill
     public void Init(IUnit unit, Node3D node, SkillData data);
     public SkillType Type();
     public void Use(Vector2I position);
-    public void SendPacket(Vector2I position);
+    public void SendPacket(Vector2I position, int skillId);
 }

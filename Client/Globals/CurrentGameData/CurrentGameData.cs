@@ -27,10 +27,19 @@ public class CurrentGameData
     public TerrainGen TerrainGen, TerrainGen1, TerrainGen2;
     public Side MySide;
     private int currUnitID = 1;
-
+    
     public ulong[] TurnOrder;
     public int currTurnPointer;
     public bool MyTurn;
+    private int currSkillID;
+    public int CurrentSkillID
+    {
+        get
+        {
+            currSkillID++;
+            return currSkillID;
+        }
+    }
 
     public TerrainInfo GetTileAt(Vector2I pos)
     {
