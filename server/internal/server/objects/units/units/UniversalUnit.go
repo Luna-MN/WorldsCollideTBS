@@ -2,7 +2,9 @@ package units
 
 import (
 	"server/internal/server"
+	"server/internal/server/combatDSL"
 	"server/internal/server/objects"
+	"server/internal/server/objects/tiles"
 	"server/internal/server/objects/units/Movement"
 	"server/internal/server/objects/units/Skills"
 	"server/internal/server/objects/units/units/util"
@@ -10,11 +12,55 @@ import (
 )
 
 type UniversalUnit struct {
-	data     *util.UnitData
-	pos      *objects.Vector3
-	skills   []Skills.ISkill
-	movement Movement.IMovement
-	Tile     *objects.TerrainInfo
+	data        *util.UnitData
+	pos         *objects.Vector3
+	skills      []Skills.ISkill
+	movement    Movement.IMovement
+	Tile        *tiles.TerrainInfo
+	SkillBuffer map[int32]combatDSL.CombatAction
+	Inflictions map[int32]InflictAction
+}
+
+func (u *UniversalUnit) NewTurn() {
+	for skillID, inflict := range u.Inflictions {
+		inflict.Action.Execute(
+			combatDSL.CombatContext{
+				Caster: u,
+				Target: u,
+			}, skillID)
+
+		inflict.Turns--
+		if inflict.Turns <= 0 {
+			delete(u.Inflictions, skillID)
+		}
+	}
+}
+
+func (u *UniversalUnit) RemoveInflict(skillID int32) {
+	u.Inflictions[skillID].Action.Invert(skillID)
+	delete(u.Inflictions, skillID)
+	delete(u.SkillBuffer, skillID)
+}
+
+func (u *UniversalUnit) Inflict(skillID int32, action combatDSL.CombatAction, turns int) {
+	u.Inflictions[skillID] = InflictAction{
+		Action: action,
+		Turns:  turns,
+	}
+}
+
+func (u *UniversalUnit) AddToSkillBuffer(skillID int32, action combatDSL.CombatAction) {
+	u.SkillBuffer[skillID] = action
+}
+
+func (u *UniversalUnit) RemoveFromSkillBuffer(skillId int32) {
+	u.SkillBuffer[skillId].Invert(skillId)
+	delete(u.SkillBuffer, skillId)
+}
+
+func (u *UniversalUnit) Heal(Amount int64) {
+	//TODO implement me
+	panic("implement me")
 }
 
 func NewUniversalUnit() *UniversalUnit {

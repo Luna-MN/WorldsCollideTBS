@@ -3,19 +3,20 @@ package features
 import (
 	"fmt"
 	"server/internal/server/objects"
+	"server/internal/server/objects/tiles"
 	"sort"
 )
 
 type River struct {
-	WorldInfo *objects.WorldInfo
-	args      *objects.FeatureArgs
-	tiles     []*objects.TerrainInfo
+	WorldInfo *tiles.WorldInfo
+	args      *tiles.FeatureArgs
+	tiles     []*tiles.TerrainInfo
 }
 
-func (r *River) Set(world *objects.WorldInfo, args *objects.FeatureArgs) {
+func (r *River) Set(world *tiles.WorldInfo, args *tiles.FeatureArgs) {
 	r.WorldInfo = world
 	r.args = args
-	r.tiles = make([]*objects.TerrainInfo, 0)
+	r.tiles = make([]*tiles.TerrainInfo, 0)
 }
 
 func (r *River) Generate(seed uint64) {
@@ -24,7 +25,7 @@ func (r *River) Generate(seed uint64) {
 		return
 	}
 
-	edgeTiles := make([]*objects.TerrainInfo, len(r.WorldInfo.EdgeTiles))
+	edgeTiles := make([]*tiles.TerrainInfo, len(r.WorldInfo.EdgeTiles))
 	copy(edgeTiles, r.WorldInfo.EdgeTiles)
 
 	sort.Slice(edgeTiles, func(i, j int) bool {
@@ -54,7 +55,7 @@ func (r *River) Generate(seed uint64) {
 		tile.TileType = objects.River
 		r.setTerrainTile(tile)
 
-		availableNeighbours := make([]*objects.TerrainInfo, 0)
+		availableNeighbours := make([]*tiles.TerrainInfo, 0)
 
 		for _, neighbour := range tile.Neighbors {
 			if !r.containsTile(neighbour) {
@@ -67,7 +68,7 @@ func (r *River) Generate(seed uint64) {
 			break
 		}
 
-		allowedNeighbours := make([]*objects.TerrainInfo, 0)
+		allowedNeighbours := make([]*tiles.TerrainInfo, 0)
 
 		for _, neighbour := range availableNeighbours {
 			if neighbour.TileHeight >= tile.TileHeight-1 && neighbour.TileHeight <= tile.TileHeight && neighbour.TileType != objects.River {
@@ -108,7 +109,7 @@ func (r *River) Generate(seed uint64) {
 	}
 }
 
-func (r *River) furthestEdgeTileFrom(startTile *objects.TerrainInfo) *objects.TerrainInfo {
+func (r *River) furthestEdgeTileFrom(startTile *tiles.TerrainInfo) *tiles.TerrainInfo {
 	endTile := r.WorldInfo.EdgeTiles[0]
 	maxDistance := startTile.Position.DistanceTo(&endTile.Position)
 
@@ -123,7 +124,7 @@ func (r *River) furthestEdgeTileFrom(startTile *objects.TerrainInfo) *objects.Te
 	return endTile
 }
 
-func (r *River) containsTile(tile *objects.TerrainInfo) bool {
+func (r *River) containsTile(tile *tiles.TerrainInfo) bool {
 	for _, existingTile := range r.tiles {
 		if existingTile.PositionI == tile.PositionI {
 			return true
@@ -132,7 +133,7 @@ func (r *River) containsTile(tile *objects.TerrainInfo) bool {
 
 	return false
 }
-func (r *River) setTerrainTile(tile *objects.TerrainInfo) {
+func (r *River) setTerrainTile(tile *tiles.TerrainInfo) {
 	r.WorldInfo.TerrainInfo[tile.PositionI] = tile
 }
 func (r *River) Destroy() {

@@ -1,12 +1,14 @@
 package features
 
-import "server/internal/server/objects"
+import (
+	"server/internal/server/objects/tiles"
+)
 
 func init() {
-	objects.RegisterFeature("Forest", func() objects.IFeature {
+	tiles.RegisterFeature("Forest", func() tiles.IFeature {
 		return &Forest{}
 	})
-	objects.RegisterFeature("River", func() objects.IFeature {
+	tiles.RegisterFeature("River", func() tiles.IFeature {
 		return &River{}
 	})
 }

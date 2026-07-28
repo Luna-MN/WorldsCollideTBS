@@ -1,6 +1,8 @@
-package objects
+package tiles
 
 import (
+	"server/internal/server/objects"
+
 	"github.com/furui/fastnoiselite-go"
 )
 
@@ -8,15 +10,15 @@ type TerrainGen struct {
 	Radius      int
 	Amplitude   int
 	Features    int
-	GlobalPos   Vector3
+	GlobalPos   objects.Vector3
 	noise       fastnoiselite.FastNoiseLite
-	DefaultTile TileType
+	DefaultTile objects.TileType
 	FeatureArgs *FeatureArgs
 	world       *WorldInfo
 	seed        uint64
 }
 
-func NewTerrainGen(radius, amplitude, features int, DefaultTile TileType, noise fastnoiselite.FastNoiseLite) *TerrainGen {
+func NewTerrainGen(radius, amplitude, features int, DefaultTile objects.TileType, noise fastnoiselite.FastNoiseLite) *TerrainGen {
 	return &TerrainGen{
 		Radius:      radius,
 		Amplitude:   amplitude,
@@ -35,6 +37,6 @@ func (t *TerrainGen) GetWorldInfo() *WorldInfo {
 	return t.world
 }
 
-func (t *TerrainGen) GetTileAt(pos Vector2I) *TerrainInfo {
+func (t *TerrainGen) GetTileAt(pos objects.Vector2I) *TerrainInfo {
 	return t.world.TerrainInfo[pos]
 }

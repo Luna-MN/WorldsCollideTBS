@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"server/internal/server/objects"
 	"server/internal/server/objects/noise"
+	"server/internal/server/objects/tiles"
 )
 
 var PlayerRadius = 2
@@ -16,12 +17,12 @@ var MainFeatures = 2
 
 type GameTerrainService struct {
 	seed1       uint64
-	terrainGen1 *objects.TerrainGen
+	terrainGen1 *tiles.TerrainGen
 	seed2       uint64
-	terrainGen2 *objects.TerrainGen
+	terrainGen2 *tiles.TerrainGen
 	mainSeed    uint64
-	terrainGen  *objects.TerrainGen
-	Tiles       map[objects.Vector2I]*objects.TerrainInfo
+	terrainGen  *tiles.TerrainGen
+	Tiles       map[objects.Vector2I]*tiles.TerrainInfo
 }
 
 func NewGameTerrainService(seed1, seed2, mainSeed uint64) *GameTerrainService {
@@ -29,7 +30,7 @@ func NewGameTerrainService(seed1, seed2, mainSeed uint64) *GameTerrainService {
 		seed1:    seed1,
 		seed2:    seed2,
 		mainSeed: mainSeed,
-		Tiles:    make(map[objects.Vector2I]*objects.TerrainInfo),
+		Tiles:    make(map[objects.Vector2I]*tiles.TerrainInfo),
 	}
 }
 
@@ -42,9 +43,9 @@ func (g *GameTerrainService) Id() uint64 {
 }
 
 func (g *GameTerrainService) GenerateTerrain() {
-	g.terrainGen = objects.NewTerrainGen(MainRadius, MainAmp, MainFeatures, objects.Grass, noise.DefaultNoise)
-	g.terrainGen1 = objects.NewTerrainGen(PlayerRadius, PlayerAmp, PlayerFeatures, objects.Fall, noise.PlayerDefaultNoise)
-	g.terrainGen2 = objects.NewTerrainGen(PlayerRadius, PlayerAmp, PlayerFeatures, objects.Fall, noise.PlayerDefaultNoise)
+	g.terrainGen = tiles.NewTerrainGen(MainRadius, MainAmp, MainFeatures, objects.Grass, noise.DefaultNoise)
+	g.terrainGen1 = tiles.NewTerrainGen(PlayerRadius, PlayerAmp, PlayerFeatures, objects.Fall, noise.PlayerDefaultNoise)
+	g.terrainGen2 = tiles.NewTerrainGen(PlayerRadius, PlayerAmp, PlayerFeatures, objects.Fall, noise.PlayerDefaultNoise)
 
 	g.terrainGen.GenerateTerrainInfo(g.mainSeed)
 	g.terrainGen1.GenerateTerrainInfo(g.seed1)
@@ -57,19 +58,19 @@ func (g *GameTerrainService) GenerateTerrain() {
 	g.PopulateTiles()
 }
 
-func (g *GameTerrainService) GetTileAt(pos objects.Vector2I) *objects.TerrainInfo {
+func (g *GameTerrainService) GetTileAt(pos objects.Vector2I) *tiles.TerrainInfo {
 	return g.Tiles[pos]
 }
 
-func (g *GameTerrainService) GetTiles(positions []objects.Vector2I) []*objects.TerrainInfo {
-	tiles := make([]*objects.TerrainInfo, len(positions))
+func (g *GameTerrainService) GetTiles(positions []objects.Vector2I) []*tiles.TerrainInfo {
+	tiles := make([]*tiles.TerrainInfo, len(positions))
 	for i, pos := range positions {
 		tiles[i] = g.GetTileAt(pos)
 	}
 	return tiles
 }
-func (g *GameTerrainService) GetGlobalTileAt(pos objects.Vector3) *objects.TerrainInfo {
-	pos2D := objects.WorldToHexPosition(pos)
+func (g *GameTerrainService) GetGlobalTileAt(pos objects.Vector3) *tiles.TerrainInfo {
+	pos2D := tiles.WorldToHexPosition(pos)
 	tile := g.GetTileAt(pos2D)
 	if tile == nil {
 		tile = g.GetClosestGlobalTile(pos)
@@ -77,8 +78,8 @@ func (g *GameTerrainService) GetGlobalTileAt(pos objects.Vector3) *objects.Terra
 	}
 	return tile
 }
-func (g *GameTerrainService) GetClosestGlobalTile(pos objects.Vector3) *objects.TerrainInfo {
-	var closest *objects.TerrainInfo
+func (g *GameTerrainService) GetClosestGlobalTile(pos objects.Vector3) *tiles.TerrainInfo {
+	var closest *tiles.TerrainInfo
 	minDist := float32(1e9)
 
 	for _, tile := range g.Tiles {
@@ -95,8 +96,8 @@ func (g *GameTerrainService) GetClosestGlobalTile(pos objects.Vector3) *objects.
 	return closest
 }
 
-func (g *GameTerrainService) GetGlobalTilesAt(positions []objects.Vector3) []*objects.TerrainInfo {
-	tiles := make([]*objects.TerrainInfo, len(positions))
+func (g *GameTerrainService) GetGlobalTilesAt(positions []objects.Vector3) []*tiles.TerrainInfo {
+	tiles := make([]*tiles.TerrainInfo, len(positions))
 	for i, pos := range positions {
 		tiles[i] = g.GetGlobalTileAt(pos)
 	}
@@ -109,11 +110,11 @@ func (g *GameTerrainService) PopulateTiles() {
 	g.PopulateTilesFrom(g.terrainGen2)
 }
 
-func (g *GameTerrainService) PopulateTilesFrom(terrainGen *objects.TerrainGen) {
+func (g *GameTerrainService) PopulateTilesFrom(terrainGen *tiles.TerrainGen) {
 	for _, info := range terrainGen.GetWorldInfo().TerrainInfo {
 		info.Position = info.Position.Add(terrainGen.GlobalPos)
 		info.PositionL = info.PositionI
-		info.PositionI = objects.WorldToHexPosition(info.Position)
+		info.PositionI = tiles.WorldToHexPosition(info.Position)
 		if _, ok := g.Tiles[info.PositionI]; ok {
 			fmt.Println("Duplicate tile at ", info.PositionI, "")
 		}

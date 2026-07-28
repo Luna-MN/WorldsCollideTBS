@@ -1,15 +1,20 @@
-package objects
+package tiles
 
 import (
 	"fmt"
 	"math"
+	"server/internal/server/combatDSL"
+	"server/internal/server/objects"
 	noise2 "server/internal/server/objects/noise"
 	"server/internal/server/objects/rng"
+	"server/internal/server/objects/units/Movement"
+	"server/internal/server/objects/units/units/util"
+	"server/pkg/packets"
 
 	"github.com/furui/fastnoiselite-go"
 )
 
-var HexNeighborOffsets = []Vector2I{
+var HexNeighborOffsets = []objects.Vector2I{
 	{1, 0},
 	{1, -1},
 	{0, -1},
@@ -20,18 +25,37 @@ var HexNeighborOffsets = []Vector2I{
 
 type TerrainInfo struct {
 	TileHeight   int
-	TileType     TileType
-	TopTileType  TopTileType
-	TileTopState TileTopState
-	PositionI    Vector2I
-	PositionL    Vector2I
-	Position     Vector3
+	TileType     objects.TileType
+	TopTileType  objects.TopTileType
+	TileTopState objects.TileTopState
+	PositionI    objects.Vector2I
+	PositionL    objects.Vector2I
+	Position     objects.Vector3
 	Neighbors    []*TerrainInfo
 	MovementCost int
-	Unit         int32
+	Unit         TileUnit
 }
 
-func NewTerrainInfo(tileType TileType) *TerrainInfo {
+type TileUnit interface {
+	Position() objects.Vector3
+	SetPosition(*objects.Vector3)
+	Data() *util.UnitData
+
+	NewTurn()
+
+	Movement() *Movement.IMovement
+	Move(path []*packets.HexPositionMessage) bool
+
+	Damage(Amount int64)
+	Heal(Amount int64)
+
+	AddToSkillBuffer(skillID int32, action combatDSL.CombatAction)
+	RemoveFromSkillBuffer(skillId int32)
+	Inflict(skillID int32, action combatDSL.CombatAction, turns int)
+	RemoveInflict(skillID int32)
+}
+
+func NewTerrainInfo(tileType objects.TileType) *TerrainInfo {
 	return &TerrainInfo{
 		TileType: tileType,
 	}
@@ -54,9 +78,9 @@ type IFeature interface {
 }
 
 type WorldInfo struct {
-	TerrainInfo   map[Vector2I]*TerrainInfo
+	TerrainInfo   map[objects.Vector2I]*TerrainInfo
 	EdgeTiles     []*TerrainInfo
-	DefaultTile   TileType
+	DefaultTile   objects.TileType
 	FeatureArgs   *FeatureArgs
 	Radius        int
 	Amplitude     int
@@ -66,9 +90,9 @@ type WorldInfo struct {
 	Random        *rng.SplitMix64
 }
 
-func NewWorldInfo(radius, amplitude, features int, DefaultTile TileType) *WorldInfo {
+func NewWorldInfo(radius, amplitude, features int, DefaultTile objects.TileType) *WorldInfo {
 	return &WorldInfo{
-		TerrainInfo: make(map[Vector2I]*TerrainInfo),
+		TerrainInfo: make(map[objects.Vector2I]*TerrainInfo),
 		DefaultTile: DefaultTile,
 		Radius:      radius,
 		Amplitude:   amplitude,
@@ -88,7 +112,7 @@ func (w *WorldInfo) GenerateTerrainInfo(noise fastnoiselite.FastNoiseLite, seed 
 		r2 := int(math.Min(float64(w.Radius), float64(-q+w.Radius)))
 		for r := r1; r <= r2; r++ {
 			tileInfo := NewTerrainInfo(w.DefaultTile)
-			tileInfo.PositionI = Vector2I{r, q}
+			tileInfo.PositionI = objects.Vector2I{r, q}
 			tileInfo.Position = HexToWorldPosition(q, r)
 			w.TerrainInfo[tileInfo.PositionI] = tileInfo
 
@@ -114,22 +138,22 @@ func (w *WorldInfo) GenerateTerrainInfo(noise fastnoiselite.FastNoiseLite, seed 
 	}
 }
 
-func HexToWorldPosition(q, r int) Vector3 {
+func HexToWorldPosition(q, r int) objects.Vector3 {
 	hexSize := 1.15
 
 	x := hexSize * (3.0 / 2.0 * float64(q))
 	z := hexSize * (math.Sqrt(3)/2*float64(q) + math.Sqrt(3)*float64(r))
-	return Vector3{float32(x), 0, float32(z)}
+	return objects.Vector3{float32(x), 0, float32(z)}
 }
 
-func WorldToHexPosition(worldPos Vector3) Vector2I {
+func WorldToHexPosition(worldPos objects.Vector3) objects.Vector2I {
 	hexSize := float32(1.15)
 
 	q := worldPos.X * 2.0 / 3.0 / hexSize
 	r := (worldPos.Z / hexSize / float32(math.Sqrt(3.0))) - (q / 2.0)
 
 	qRounded, rRounded := HexRound(float64(q), float64(r))
-	return Vector2I{qRounded, rRounded}
+	return objects.Vector2I{qRounded, rRounded}
 }
 
 func HexRound(qf, rf float64) (int, int) {
@@ -155,7 +179,7 @@ func (w *WorldInfo) GetHexNeighbors(q, r int) []*TerrainInfo {
 	neighbors := make([]*TerrainInfo, 0, 6)
 
 	for _, offset := range HexNeighborOffsets {
-		neighborCoord := Vector2I{q + offset.X, r + offset.Y}
+		neighborCoord := objects.Vector2I{q + offset.X, r + offset.Y}
 		if w.IsValidHexCoord(neighborCoord.X, neighborCoord.Y) {
 			if neighbor := w.TerrainInfo[neighborCoord]; neighbor != nil {
 				neighbors = append(neighbors, neighbor)
@@ -186,7 +210,7 @@ func (w *WorldInfo) GetEdgeTiles() []*TerrainInfo {
 	return edgeTiles
 }
 
-func (w *WorldInfo) IsEdgeTile(coord Vector2I) bool {
+func (w *WorldInfo) IsEdgeTile(coord objects.Vector2I) bool {
 	neighbors := w.GetHexNeighbors(coord.X, coord.Y)
 	return len(neighbors) < 6
 }

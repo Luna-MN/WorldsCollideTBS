@@ -9,8 +9,8 @@ import (
 	"server/internal/server/db"
 	"server/internal/server/objects"
 	_ "server/internal/server/objects/features"
+	"server/internal/server/objects/tiles"
 	"server/internal/server/objects/units/Skills"
-	"server/internal/server/objects/units/units"
 	"server/pkg/packets"
 	"sync"
 )
@@ -224,10 +224,10 @@ func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *
 	}
 	for _, unitPosition := range positions.UnitPositions.Units {
 		// convert to global position
-		pos := objects.HexToWorldPosition(int(unitPosition.Position.X), int(unitPosition.Position.Y))
+		pos := tiles.HexToWorldPosition(int(unitPosition.Position.X), int(unitPosition.Position.Y))
 		pos = pos.Add(genPos)
 		pd.PlayerFactionService.Units[unitPosition.UnitId].SetPosition(&pos)
-		//g.gameTerrainService.GetTileAt(packets.UnwrapVector2I(unitPosition.Position)).Unit = unitPosition.UnitId
+		g.gameTerrainService.GetTileAt(packets.UnwrapVector2I(unitPosition.Position)).Unit = pd.PlayerFactionService.Units[unitPosition.UnitId]
 	}
 	g.logger.Println("Unit positions received for ", pd.Player.Username())
 	if !g.UnitPositionsReceived {
@@ -280,8 +280,8 @@ func (g *GameService) HandleHexPositionsMessage(pd *PlayerGameData, positions *p
 			return
 		}
 
-		startTile.Unit = -1
-		endTile.Unit = unit.Data().UnitID
+		startTile.Unit = nil
+		endTile.Unit = unit
 	}
 }
 func (g *GameService) SendUnitPositions(pd *PlayerGameData) {
@@ -324,7 +324,7 @@ func (g *GameService) HandleNPCTurn() {
 
 }
 
-func (g *GameService) GetUnit(clientId uint64, id int32) units.IUnit {
+func (g *GameService) GetUnit(clientId uint64, id int32) Skills.GameUnit {
 	if clientId == g.player1.Id() {
 		return g.Player1GameData.PlayerFactionService.GetUnit(id)
 	} else {

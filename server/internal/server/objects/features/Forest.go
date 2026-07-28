@@ -2,24 +2,25 @@ package features
 
 import (
 	"server/internal/server/objects"
+	"server/internal/server/objects/tiles"
 
 	"github.com/furui/fastnoiselite-go"
 )
 
 type Forest struct {
-	WorldInfo *objects.WorldInfo
-	args      *objects.FeatureArgs
+	WorldInfo *tiles.WorldInfo
+	args      *tiles.FeatureArgs
 	noise     fastnoiselite.FastNoiseLite
 	threshold float32
-	tiles     []*objects.TerrainInfo
+	tiles     []*tiles.TerrainInfo
 }
 
-func (f *Forest) Set(world *objects.WorldInfo, args *objects.FeatureArgs) {
+func (f *Forest) Set(world *tiles.WorldInfo, args *tiles.FeatureArgs) {
 	f.WorldInfo = world
 	f.args = args
 	f.threshold = args.Threshold
 	f.noise = args.ForestNoise
-	f.tiles = make([]*objects.TerrainInfo, 0)
+	f.tiles = make([]*tiles.TerrainInfo, 0)
 }
 
 func (f *Forest) Generate(seed uint64) {

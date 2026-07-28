@@ -9,8 +9,6 @@ import (
 type ISkill interface {
 	Type() packets.SkillType
 	Name() string
-	UnitId() int32
-	ClientId() uint64
 	Initiate(UnitId int32, client *server.Client, enemyClient *server.Client, gameService GameSkillService)
 	ValidTarget(pos objects.Vector2I) bool
 	Use(skillId int32, pos objects.Vector2I)

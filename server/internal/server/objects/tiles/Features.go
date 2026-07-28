@@ -1,4 +1,4 @@
-package objects
+package tiles
 
 type FeatureFactory func() IFeature
 
