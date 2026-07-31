@@ -9,14 +9,18 @@ public class GameDataJSON
     public FactionDataJSON[] factions;
     public ArmyDataJSON[] armies;
     public UnitDataJSON[] units;
+    public Dictionary<string, SkillDataJSON> skills = new Dictionary<string, SkillDataJSON>();
+    public Dictionary<string, MovementDataJSON> movements = new Dictionary<string, MovementDataJSON>();
     
     [JsonConstructor]
     public GameDataJSON() { }
-    public GameDataJSON(FactionDataJSON[] factions, ArmyDataJSON[] armies, UnitDataJSON[] units)
+    public GameDataJSON(FactionDataJSON[] factions, ArmyDataJSON[] armies, UnitDataJSON[] units, Dictionary<string, SkillDataJSON> skills, Dictionary<string, MovementDataJSON> movements)
     {
         this.factions = factions;
         this.armies = armies;
         this.units = units;
+        this.skills = skills;
+        this.movements = movements;
     }
 
 }
@@ -97,5 +101,59 @@ public class UnitDataJSON
         AP = unit.AP;
         speed = (long)unit.Speed;
         factionId = unit.FactionId;
+    }
+}
+
+public class SkillDataJSON
+{
+    public long ID;
+    public string Name;
+    public string Description;
+    public SkillType Type;
+    public long Cooldown;
+    public long AP;
+    public long Range;
+    public string CombatString;
+    public bool Universal;
+
+    [JsonConstructor]
+    public SkillDataJSON()
+    {
+        
+    }
+
+    public SkillDataJSON(SkillDataMessage Data)
+    {
+        ID = Data.Id;
+        Name = Data.Name;
+        Description = Data.Desc;
+        Type = Data.Type;
+        Cooldown = Data.Cooldown;
+        AP = Data.AP;
+        Range = Data.Range;
+        CombatString = Data.CombatString;
+        Universal = Data.Universal;
+    }
+}
+
+public class MovementDataJSON
+{
+    public long ID;
+    public string Name;
+    public string Description;
+    public long MovementCost;
+
+    [JsonConstructor]
+    public MovementDataJSON()
+    {
+        
+    }
+
+    public MovementDataJSON(MovementDataMessage Data)
+    {
+        ID = Data.Id;
+        Name = Data.Name;
+        Description = Data.Desc;
+        MovementCost = Data.MoveCost;
     }
 }

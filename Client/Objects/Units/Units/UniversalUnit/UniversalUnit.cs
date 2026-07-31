@@ -50,7 +50,6 @@ public partial class UniversalUnit : Node3D, IUnit
         FindMovement(Data.Movement);
         Movement = new DefaultMovement();
         Movement.InitMovement(this, this);
-        Skills?.Values.ToList().ForEach(a => a.Init(this, this, null)); // skillData
 
     }
 
@@ -95,11 +94,23 @@ public partial class UniversalUnit : Node3D, IUnit
         Skills = new();
         foreach (var skillName in skills)
         {
-            var skillType = Assembly.GetExecutingAssembly().GetTypes().Where(t =>
-                    typeof(ISkill).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract && t.Name == skillName)
-                .ToList()[0];
-            var skill = (ISkill)Activator.CreateInstance(skillType);
-            Skills.Add(skillName, skill);
+            if (Globals.GDH.GetSkill(skillName).Universal)
+            {
+                var skillType = Assembly.GetExecutingAssembly().GetTypes().Where(t =>
+                        typeof(ISkill).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract && t.Name == "Universal" + Globals.GDH.GetSkill(skillName).Type)
+                    .ToList()[0];
+                var skill = (ISkill)Activator.CreateInstance(skillType);
+                Skills.Add(skillName, skill);
+            }
+            else
+            {
+                var skillType = Assembly.GetExecutingAssembly().GetTypes().Where(t =>
+                        typeof(ISkill).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract && t.Name == skillName)
+                    .ToList()[0];
+                var skill = (ISkill)Activator.CreateInstance(skillType);
+                Skills.Add(skillName, skill);
+            }
+            Skills[skillName].Init(this, this, Globals.GDH.GetSkill(skillName)); // skillData [ skillName, skill]
         }
     }
 

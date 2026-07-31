@@ -54,7 +54,16 @@ func (g *GameDataService) HandleGameVersionUpdate() {
 	if err != nil {
 		return
 	}
-
+	skills, err := g.queries.GetAllSkills(g.dbCtx)
+	skillsData := make([]*packets.SkillDataMessage, len(skills))
+	if err != nil {
+		return
+	}
+	movemets, err := g.queries.GetAllMovement(g.dbCtx)
+	movemetsData := make([]*packets.MovementDataMessage, len(movemets))
+	if err != nil {
+		return
+	}
 	// map that data to packets
 	for i, f := range factions {
 		armyIds, err := g.queries.GetArmyIdsForFaction(g.dbCtx, f.ID)
@@ -91,9 +100,16 @@ func (g *GameDataService) HandleGameVersionUpdate() {
 		uni := packets.NewUnitDataFromDB(u, FID)
 		unitsData[i] = uni
 	}
-
+	for i, s := range skills {
+		skill := packets.NewSkillDataMessageFromDB(s)
+		skillsData[i] = skill
+	}
+	for i, m := range movemets {
+		mov := packets.NewMovementDataMessageFromDB(m)
+		movemetsData[i] = mov
+	}
 	// send that packet
 	fmt.Println(armiesData)
-	GD := packets.NewData(internal.GameDataVersion, factionData, armiesData, unitsData)
+	GD := packets.NewData(internal.GameDataVersion, factionData, armiesData, unitsData, skillsData, movemetsData)
 	g.client.SocketSend(GD, server.WebSocket)
 }

@@ -16,7 +16,8 @@ message FactionData { int64 id = 1; string name = 2; string description = 3; rep
 message ArmyData { int64 id = 1; string name = 2; string description = 3; repeated UnitArmyData unitIds = 4; }
 message UnitArmyData { int64 unitId = 1; int32 count = 2; }
 message UnitData { int64 id = 1; string name = 2; string skills = 3; string movement = 4; int64 maxHP = 5; int64 AP = 6; Speeds Speed = 7; int64 factionId = 8;}
-
+message SkillDataMessage { int64 id = 1; string name = 2; string desc = 3; SkillType type = 4; int64  cooldown = 5; int64 AP = 6; int64 Range = 7; string CombatString = 8; bool Universal = 9; }
+message MovementDataMessage { int64 id = 1; string name = 2; string desc = 3; int64 MoveCost = 4; }
 
 message ChatMessage { ChatType type = 1; string msg = 2; string Username = 3;}
 message IdMessage { uint64 id = 1; }
@@ -37,7 +38,7 @@ message IDsMessage { repeated IdMessage IDs = 1; }
 message UnitMessage { uint64 OwnerId = 1; int32 UnitId = 2; int64 AP = 5; int64 HP = 6; int64 MaxHP = 7; Speeds speed = 8; string UnitName = 9; Vector3Msg Pos = 10;}
 message UnitPositionMessage { int32 unitId = 1; Vector2IMsg Position = 2; }
 message UnitPositionsMessage { repeated UnitPositionMessage units = 1; }
-message GameDataMessage { GameDataVersion version = 1; repeated FactionData factions = 2; repeated ArmyData armies = 3; repeated UnitData units = 4; }
+message GameDataMessage { GameDataVersion version = 1; repeated FactionData factions = 2; repeated ArmyData armies = 3; repeated UnitData units = 4; repeated SkillDataMessage Skills = 5; repeated MovementDataMessage Movements = 6; }
 message GameDataVersion { string Version = 1; }
 message ArmyIDMessage { int64 Id = 1; }
 message UnitIDsMessage { repeated UnitIDMessage ids = 1; }

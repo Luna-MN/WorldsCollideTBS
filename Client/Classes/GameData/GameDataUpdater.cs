@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using Godot;
@@ -45,7 +46,19 @@ public class GameDataUpdater
             units[i] = new UnitDataJSON(gameData.Units[i]);
         }
 
-        GameDataJSON data = new GameDataJSON(factions, armies, units);
+        var skills = new Dictionary<string, SkillDataJSON>();
+        foreach (var skill in gameData.Skills)
+        {
+            skills.Add(skill.Name, new SkillDataJSON(skill));
+        }
+
+        var movements = new Dictionary<string, MovementDataJSON>();
+        foreach (var movement in gameData.Movements)
+        {
+            movements.Add(movement.Name, new MovementDataJSON(movement));
+        }
+
+        GameDataJSON data = new GameDataJSON(factions, armies, units, skills, movements);
         Globals.GDH.Init(data);
         SerializeGameData(data);
     }

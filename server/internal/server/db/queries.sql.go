@@ -131,6 +131,81 @@ func (q *Queries) GetAllFactions(ctx context.Context) ([]Faction, error) {
 	return items, nil
 }
 
+const getAllMovement = `-- name: GetAllMovement :many
+SELECT
+    id, name, description, movecost
+FROM
+    movement
+`
+
+func (q *Queries) GetAllMovement(ctx context.Context) ([]Movement, error) {
+	rows, err := q.db.QueryContext(ctx, getAllMovement)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Movement
+	for rows.Next() {
+		var i Movement
+		if err := rows.Scan(
+			&i.ID,
+			&i.Name,
+			&i.Description,
+			&i.Movecost,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getAllSkills = `-- name: GetAllSkills :many
+SELECT
+    id, name, description, type, cooldown, ap, "range", combatstring, universal
+FROM
+    skills
+`
+
+func (q *Queries) GetAllSkills(ctx context.Context) ([]Skill, error) {
+	rows, err := q.db.QueryContext(ctx, getAllSkills)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Skill
+	for rows.Next() {
+		var i Skill
+		if err := rows.Scan(
+			&i.ID,
+			&i.Name,
+			&i.Description,
+			&i.Type,
+			&i.Cooldown,
+			&i.Ap,
+			&i.Range,
+			&i.Combatstring,
+			&i.Universal,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const getAllUnits = `-- name: GetAllUnits :many
 SELECT
     id, name, skills, movement, maxhp, ap, speed, armies
@@ -273,6 +348,100 @@ func (q *Queries) GetFaction(ctx context.Context, name string) (Faction, error) 
 	row := q.db.QueryRowContext(ctx, getFaction, name)
 	var i Faction
 	err := row.Scan(&i.ID, &i.Name, &i.Description)
+	return i, err
+}
+
+const getMovement = `-- name: GetMovement :one
+SELECT
+    id, name, description, movecost
+FROM
+    movement
+WHERE
+    id = ?
+`
+
+func (q *Queries) GetMovement(ctx context.Context, id int64) (Movement, error) {
+	row := q.db.QueryRowContext(ctx, getMovement, id)
+	var i Movement
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Description,
+		&i.Movecost,
+	)
+	return i, err
+}
+
+const getMovementByName = `-- name: GetMovementByName :one
+SELECT
+    id, name, description, movecost
+FROM
+    movement
+WHERE
+    name = ?
+`
+
+func (q *Queries) GetMovementByName(ctx context.Context, name string) (Movement, error) {
+	row := q.db.QueryRowContext(ctx, getMovementByName, name)
+	var i Movement
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Description,
+		&i.Movecost,
+	)
+	return i, err
+}
+
+const getSkill = `-- name: GetSkill :one
+SELECT
+    id, name, description, type, cooldown, ap, "range", combatstring, universal
+FROM
+    skills
+WHERE
+    id = ?
+`
+
+func (q *Queries) GetSkill(ctx context.Context, id int64) (Skill, error) {
+	row := q.db.QueryRowContext(ctx, getSkill, id)
+	var i Skill
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Description,
+		&i.Type,
+		&i.Cooldown,
+		&i.Ap,
+		&i.Range,
+		&i.Combatstring,
+		&i.Universal,
+	)
+	return i, err
+}
+
+const getSkillByName = `-- name: GetSkillByName :one
+SELECT
+    id, name, description, type, cooldown, ap, "range", combatstring, universal
+FROM
+    skills
+WHERE
+    name = ?
+`
+
+func (q *Queries) GetSkillByName(ctx context.Context, name string) (Skill, error) {
+	row := q.db.QueryRowContext(ctx, getSkillByName, name)
+	var i Skill
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Description,
+		&i.Type,
+		&i.Cooldown,
+		&i.Ap,
+		&i.Range,
+		&i.Combatstring,
+		&i.Universal,
+	)
 	return i, err
 }
 
@@ -577,6 +746,77 @@ func (q *Queries) NewGame(ctx context.Context, arg NewGameParams) (Game, error) 
 	return i, err
 }
 
+const newMovement = `-- name: NewMovement :one
+INSERT INTO
+    movement(name, description, moveCost)
+VALUES
+    (?, ?, ?)
+RETURNING id, name, description, movecost
+`
+
+type NewMovementParams struct {
+	Name        string
+	Description string
+	Movecost    int64
+}
+
+func (q *Queries) NewMovement(ctx context.Context, arg NewMovementParams) (Movement, error) {
+	row := q.db.QueryRowContext(ctx, newMovement, arg.Name, arg.Description, arg.Movecost)
+	var i Movement
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Description,
+		&i.Movecost,
+	)
+	return i, err
+}
+
+const newSkill = `-- name: NewSkill :one
+INSERT INTO
+    skills(name, description, type, cooldown, AP, range, combatString, Universal)
+VALUES
+    (?, ?, ?, ?, ?, ?, ?, ?)
+RETURNING id, name, description, type, cooldown, ap, "range", combatstring, universal
+`
+
+type NewSkillParams struct {
+	Name         string
+	Description  string
+	Type         string
+	Cooldown     int64
+	Ap           int64
+	Range        int64
+	Combatstring sql.NullString
+	Universal    sql.NullBool
+}
+
+func (q *Queries) NewSkill(ctx context.Context, arg NewSkillParams) (Skill, error) {
+	row := q.db.QueryRowContext(ctx, newSkill,
+		arg.Name,
+		arg.Description,
+		arg.Type,
+		arg.Cooldown,
+		arg.Ap,
+		arg.Range,
+		arg.Combatstring,
+		arg.Universal,
+	)
+	var i Skill
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Description,
+		&i.Type,
+		&i.Cooldown,
+		&i.Ap,
+		&i.Range,
+		&i.Combatstring,
+		&i.Universal,
+	)
+	return i, err
+}
+
 const newUnit = `-- name: NewUnit :one
 INSERT INTO
     units(name, skills, movement, maxHP, AP, Speed, Armies)
@@ -734,6 +974,77 @@ func (q *Queries) UpdateLastLoggedIn(ctx context.Context, arg UpdateLastLoggedIn
 		&i.Avatar,
 	)
 	return i, err
+}
+
+const updateMovement = `-- name: UpdateMovement :exec
+UPDATE
+    movement
+SET
+    name = ?,
+    description = ?,
+    moveCost = ?
+WHERE
+    id = ?
+`
+
+type UpdateMovementParams struct {
+	Name        string
+	Description string
+	Movecost    int64
+	ID          int64
+}
+
+func (q *Queries) UpdateMovement(ctx context.Context, arg UpdateMovementParams) error {
+	_, err := q.db.ExecContext(ctx, updateMovement,
+		arg.Name,
+		arg.Description,
+		arg.Movecost,
+		arg.ID,
+	)
+	return err
+}
+
+const updateSkill = `-- name: UpdateSkill :exec
+UPDATE
+    skills
+SET
+    name = ?,
+    description = ?,
+    type = ?,
+    cooldown = ?,
+    AP = ?,
+    range = ?,
+    combatString = ?,
+    Universal = ?
+WHERE
+    id = ?
+`
+
+type UpdateSkillParams struct {
+	Name         string
+	Description  string
+	Type         string
+	Cooldown     int64
+	Ap           int64
+	Range        int64
+	Combatstring sql.NullString
+	Universal    sql.NullBool
+	ID           int64
+}
+
+func (q *Queries) UpdateSkill(ctx context.Context, arg UpdateSkillParams) error {
+	_, err := q.db.ExecContext(ctx, updateSkill,
+		arg.Name,
+		arg.Description,
+		arg.Type,
+		arg.Cooldown,
+		arg.Ap,
+		arg.Range,
+		arg.Combatstring,
+		arg.Universal,
+		arg.ID,
+	)
+	return err
 }
 
 const updateUnit = `-- name: UpdateUnit :exec

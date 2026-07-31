@@ -38,10 +38,12 @@ func NewFactionInput(path string, queries *db.Queries, ctx context.Context) *Fac
 
 func (fi *FactionInput) InputData() {
 	skills := make(map[string]map[string]db.Skill)
+	movements := make(map[string]map[string]db.Movement)
 	factions := make(map[string]db.Faction)
 	armies := make(map[string]map[string]db.Army)
 	units := make(map[string]map[string]db.Unit)
 	skills["Data"] = fi.skills("Data")
+	movements["Data"] = fi.Movement("Data")
 	for _, sheet := range fi.workbook.GetSheetList() {
 		if slices.Contains(fi.ignore, sheet) {
 			continue
@@ -57,7 +59,96 @@ func (fi *FactionInput) InputData() {
 }
 
 func (fi *FactionInput) skills(sheet string) map[string]db.Skill {
-	return make(map[string]db.Skill)
+	skillRow := 4
+	skills := make(map[string]db.Skill)
+
+	skillName, err := fi.workbook.GetCellValue(sheet, "A"+fmt.Sprint(skillRow))
+	for skillName != "" {
+
+		skillName, err = fi.workbook.GetCellValue(sheet, "A"+fmt.Sprint(skillRow))
+		if err != nil || skillName == "" {
+			break
+		}
+		skill, err := fi.queries.GetSkillByName(fi.dbCtx, skillName)
+
+		CS, _ := fi.workbook.GetCellValue(sheet, "B"+fmt.Sprint(skillRow))
+		A, _ := fi.workbook.GetCellValue(sheet, "C"+fmt.Sprint(skillRow))
+		AP, _ := strconv.Atoi(A)
+		R, _ := fi.workbook.GetCellValue(sheet, "D"+fmt.Sprint(skillRow))
+		Range, _ := strconv.Atoi(R)
+		Desc, _ := fi.workbook.GetCellValue(sheet, "E"+fmt.Sprint(skillRow))
+		U, _ := fi.workbook.GetCellValue(sheet, "F"+fmt.Sprint(skillRow))
+		Universal, _ := strconv.ParseBool(U)
+		Type, _ := fi.workbook.GetCellValue(sheet, "G"+fmt.Sprint(skillRow))
+		C, _ := fi.workbook.GetCellValue(sheet, "H"+fmt.Sprint(skillRow))
+		Cooldown, _ := strconv.Atoi(C)
+
+		if err != nil {
+			skill, err = fi.queries.NewSkill(fi.dbCtx, db.NewSkillParams{
+				Name:         skillName,
+				Description:  Desc,
+				Type:         Type,
+				Cooldown:     int64(Cooldown),
+				Ap:           int64(AP),
+				Range:        int64(Range),
+				Combatstring: sql.NullString{String: CS, Valid: true},
+				Universal:    sql.NullBool{Bool: Universal, Valid: true},
+			})
+		}
+		if skill.Combatstring.String != CS || skill.Ap != int64(AP) || skill.Range != int64(Range) || skill.Description != Desc || skill.Type != Type || skill.Cooldown != int64(Cooldown) || skill.Universal.Bool != Universal {
+			err = fi.queries.UpdateSkill(fi.dbCtx, db.UpdateSkillParams{
+				Name:         skillName,
+				Description:  Desc,
+				Type:         Type,
+				Cooldown:     int64(Cooldown),
+				Ap:           int64(AP),
+				Range:        int64(Range),
+				Combatstring: sql.NullString{String: CS, Valid: true},
+				Universal:    sql.NullBool{Bool: Universal, Valid: true},
+			})
+		}
+
+		skills[skillName] = skill
+		skillRow++
+	}
+
+	return skills
+}
+
+func (fi *FactionInput) Movement(sheet string) map[string]db.Movement {
+	moveRow := 4
+	movements := make(map[string]db.Movement)
+
+	movementName, err := fi.workbook.GetCellValue(sheet, "K"+fmt.Sprint(moveRow))
+	for movementName != "" {
+		movementName, err = fi.workbook.GetCellValue(sheet, "K"+fmt.Sprint(moveRow))
+		if err != nil || movementName == "" {
+			break
+		}
+		movement, err := fi.queries.GetMovementByName(fi.dbCtx, movementName)
+
+		description, _ := fi.workbook.GetCellValue(sheet, "M"+fmt.Sprint(moveRow))
+		moveCost, _ := fi.workbook.GetCellValue(sheet, "L"+fmt.Sprint(moveRow))
+		moveCostInt, _ := strconv.Atoi(moveCost)
+		if err != nil {
+			movement, err = fi.queries.NewMovement(fi.dbCtx, db.NewMovementParams{
+				Name:        movementName,
+				Description: description,
+				Movecost:    int64(moveCostInt),
+			})
+		}
+		if movement.Description != description || movement.Movecost != int64(moveCostInt) {
+			err = fi.queries.UpdateMovement(fi.dbCtx, db.UpdateMovementParams{
+				Name:        movementName,
+				Description: description,
+				Movecost:    int64(moveCostInt),
+			})
+		}
+
+		movements[movementName] = movement
+		moveRow++
+	}
+	return movements
 }
 
 func (fi *FactionInput) faction(sheet string) db.Faction {

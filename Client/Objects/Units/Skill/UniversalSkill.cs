@@ -7,16 +7,18 @@ public class UniversalSkill : ISkill
 {
     public IUnit Unit { get; set; }
     public ICombatAction CombatAction { get; set; }
+    public SkillDataJSON Data { get; set; }
     public virtual string Name()
     {
         return "UniversalSkill";
     }
 
     public Node3D Node { get; set; }
-    public virtual void Init(IUnit unit, Node3D node, SkillData data)
+    public virtual void Init(IUnit unit, Node3D node, SkillDataJSON data)
     {
         Node = node;
         Unit = unit;
+        Data = data;
     }
 
     public virtual void CombatString(string str)
@@ -26,7 +28,7 @@ public class UniversalSkill : ISkill
     
     public virtual SkillType Type()
     {
-        return SkillType.None;
+        return Data.Type;
     }
 
     public virtual void Use(Vector2I position)

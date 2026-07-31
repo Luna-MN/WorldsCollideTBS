@@ -133,6 +133,38 @@ func NewUnitDataFromDB(u db.Unit, factionID int64) *UnitData {
 	}
 }
 
+func NewSkillDataMessageFromDB(u db.Skill) *SkillDataMessage {
+	skillType := SkillType_None
+	switch u.Type {
+	case "None":
+		skillType = SkillType_None
+	case "Attack":
+		skillType = SkillType_Attack
+	case "Support":
+		skillType = SkillType_Support
+	}
+	return &SkillDataMessage{
+		Id:           u.ID,
+		Name:         u.Name,
+		Desc:         u.Description,
+		Type:         skillType,
+		Cooldown:     u.Cooldown,
+		AP:           u.Ap,
+		Range:        u.Range,
+		CombatString: u.Combatstring.String,
+		Universal:    u.Universal.Bool,
+	}
+}
+
+func NewMovementDataMessageFromDB(u db.Movement) *MovementDataMessage {
+	return &MovementDataMessage{
+		Id:       u.ID,
+		Name:     u.Name,
+		Desc:     u.Description,
+		MoveCost: u.Movecost,
+	}
+}
+
 func NewVersionMessage(version string) *GameDataVersion {
 	return &GameDataVersion{
 		Version: version,
@@ -145,13 +177,15 @@ func NewVersionPacket(version string) *Packet_GameVersion {
 	}
 }
 
-func NewData(version string, fs []*FactionData, as []*ArmyData, us []*UnitData) *Packet_GameData {
+func NewData(version string, fs []*FactionData, as []*ArmyData, us []*UnitData, sd []*SkillDataMessage, ms []*MovementDataMessage) *Packet_GameData {
 	return &Packet_GameData{
 		GameData: &GameDataMessage{
-			Version:  NewVersionMessage(version),
-			Factions: fs,
-			Armies:   as,
-			Units:    us,
+			Version:   NewVersionMessage(version),
+			Factions:  fs,
+			Armies:    as,
+			Units:     us,
+			Skills:    sd,
+			Movements: ms,
 		},
 	}
 }

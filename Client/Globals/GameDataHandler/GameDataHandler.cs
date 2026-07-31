@@ -50,6 +50,8 @@ public class GameDataHandler
     public UnitDataJSON GetUnit(long id) => units[id];
     public FactionDataJSON GetFaction(long id) => factions[id];
     public ArmyDataJSON GetArmy(long id) => armies[id];
+    public SkillDataJSON GetSkill(string name) => gameData.skills[name];
+    public MovementDataJSON GetMovement(string name) => gameData.movements[name];
     public Dictionary<long, UnitDataJSON> GetUnitsForFaction(long factionId) => unitsByFaction[factionId];
     public Dictionary<long, ArmyDataJSON> GetArmiesForFaction(long factionId) => armiesByFaction[factionId];
     public Dictionary<long, UnitDataJSON> GetUnitsForArmy(long armyId) => unitsByArmy[armyId];

@@ -53,7 +53,7 @@
     {
       "ID": 3,
       "Name": "Default",
-      "Attacks": "",
+      "Skills": "",
       "Movement": "Default Movement",
       "MaxHP": 5,
       "AP": 5,
@@ -63,7 +63,7 @@
     {
       "ID": 4,
       "Name": "Plague Rat",
-      "Attacks": "",
+      "Skills": "",
       "Movement": "Default Movement",
       "MaxHP": 3,
       "AP": 4,
@@ -73,7 +73,7 @@
     {
       "ID": 5,
       "Name": "Fast",
-      "Attacks": "",
+      "Skills": "",
       "Movement": "Default Movement",
       "MaxHP": 5,
       "AP": 5,
@@ -83,12 +83,33 @@
     {
       "ID": 6,
       "Name": "Slow",
-      "Attacks": "",
+      "Skills": "",
       "Movement": "Default Movement",
       "MaxHP": 5,
       "AP": 5,
       "speed": 2,
       "factionId": 3
     }
-  ]
+  ],
+  "skills": {
+    "Basic Attack": {
+      "ID": 1,
+      "Name": "Basic Attack",
+      "Description": "Basic Strike",
+      "Type": 1,
+      "Cooldown": 1,
+      "AP": 1,
+      "Range": 1,
+      "CombatString": "D(2)",
+      "Universal": true
+    }
+  },
+  "movements": {
+    "Default Movement": {
+      "ID": 1,
+      "Name": "Default Movement",
+      "Description": "Default Movement",
+      "MovementCost": 1
+    }
+  }
 }

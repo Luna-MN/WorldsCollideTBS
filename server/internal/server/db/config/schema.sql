@@ -71,9 +71,15 @@ CREATE TABLE IF NOT EXISTS skills (
                                     AP INTEGER NOT NULL,
                                     range INTEGER NOT NULL,
 
-                                    damage INTEGER,
+                                    CombatString TEXT,
+                                    Universal BOOLEAN DEFAULT FALSE
+);
 
-                                    healing INTEGER
+CREATE TABLE IF NOT EXISTS movement (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE,
+    description TEXT NOT NULL,
+    moveCost INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS units_skills (

@@ -4,20 +4,15 @@ namespace Packets.Objects.Units.Attack;
 
 public class UniversalAttack : UniversalSkill
 {
-    public AttackData Data { get; set; }
     public override string Name()
     {
-        return "UniversalAttack";
-    }
-    public override SkillType Type()
-    {
-        return SkillType.Attack;
+        return nameof(UniversalAttack);
     }
     
-    public override void Init(IUnit unit, Node3D node, SkillData data)
+    public override void Init(IUnit unit, Node3D node, SkillDataJSON data)
     {
         base.Init(unit, node, data);
-        Data = data as AttackData;
+        Data = data;
     }
 
 }

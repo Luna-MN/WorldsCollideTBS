@@ -42,16 +42,23 @@ type Game struct {
 	Matchtime    sql.NullTime
 }
 
-type Skill struct {
+type Movement struct {
 	ID          int64
 	Name        string
 	Description string
-	Type        string
-	Cooldown    int64
-	Ap          int64
-	Range       int64
-	Damage      sql.NullInt64
-	Healing     sql.NullInt64
+	Movecost    int64
+}
+
+type Skill struct {
+	ID           int64
+	Name         string
+	Description  string
+	Type         string
+	Cooldown     int64
+	Ap           int64
+	Range        int64
+	Combatstring sql.NullString
+	Universal    sql.NullBool
 }
 
 type Unit struct {

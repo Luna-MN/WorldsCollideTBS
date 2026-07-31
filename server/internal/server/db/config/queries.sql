@@ -251,3 +251,86 @@ FROM
     army_faction af ON au.armyId = af.armyId
 WHERE
     au.unitId = ?;
+
+-- name: NewSkill :one
+INSERT INTO
+    skills(name, description, type, cooldown, AP, range, combatString, Universal)
+VALUES
+    (?, ?, ?, ?, ?, ?, ?, ?)
+RETURNING *;
+
+-- name: UpdateSkill :exec
+UPDATE
+    skills
+SET
+    name = ?,
+    description = ?,
+    type = ?,
+    cooldown = ?,
+    AP = ?,
+    range = ?,
+    combatString = ?,
+    Universal = ?
+WHERE
+    id = ?;
+
+-- name: GetSkill :one
+SELECT
+    *
+FROM
+    skills
+WHERE
+    id = ?;
+
+-- name: GetSkillByName :one
+SELECT
+    *
+FROM
+    skills
+WHERE
+    name = ?;
+
+-- name: GetAllSkills :many
+SELECT
+    *
+FROM
+    skills;
+
+-- name: NewMovement :one
+INSERT INTO
+    movement(name, description, moveCost)
+VALUES
+    (?, ?, ?)
+RETURNING *;
+
+-- name: UpdateMovement :exec
+UPDATE
+    movement
+SET
+    name = ?,
+    description = ?,
+    moveCost = ?
+WHERE
+    id = ?;
+
+-- name: GetMovement :one
+SELECT
+    *
+FROM
+    movement
+WHERE
+    id = ?;
+
+-- name: GetMovementByName :one
+SELECT
+    *
+FROM
+    movement
+WHERE
+    name = ?;
+
+-- name: GetAllMovement :many
+SELECT
+    *
+FROM
+    movement;
