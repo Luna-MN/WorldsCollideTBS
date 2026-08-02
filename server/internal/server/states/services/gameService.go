@@ -30,6 +30,7 @@ type PlayerGameData struct {
 	ids                  *packets.Packet_UnitIds
 	Seeds                []int32
 	Seed                 int32
+	UnitPositions        packets.Packet_UnitPositions
 }
 
 func NewPlayerGameData(player *server.Client) *PlayerGameData {
@@ -135,6 +136,7 @@ func (g *GameService) GenerateSeeds(seeds []int32) {
 
 func (g *GameService) HandleMessage(player *server.Client, msg packets.Msg) {
 	pd := g.GetClientData(player)
+	g.logger.Printf("Handling %s message type", msg)
 	switch msg.(type) {
 	case *packets.Packet_Seed:
 		g.HandleSeedMessage(pd, msg.(*packets.Packet_Seed))
@@ -212,7 +214,21 @@ func (g *GameService) HandleSeedMessage(playerData *PlayerGameData, msg *packets
 	g.player2.SocketSend(packets.NewSeed([]int32{g.Player1GameData.Seed, g.seed}), server.WebSocket)
 
 }
+func (g *GameService) SetUnitPositions(playerData *PlayerGameData) {
 
+	genPos := objects.NewVector3(0, 0, 0)
+	if playerData.Player == g.player1 {
+		genPos = objects.NewVector3(-13.8, 0, 0)
+	} else {
+		genPos = objects.NewVector3(13.8, 0, 0)
+	}
+
+	for _, unitPosition := range playerData.UnitPositions.UnitPositions.Units {
+		pos := tiles.HexToWorldPosition(int(unitPosition.Position.X), int(unitPosition.Position.Y))
+		pos = pos.Add(genPos)
+		g.gameTerrainService.GetGlobalTileAt(pos).Unit = playerData.PlayerFactionService.Units[unitPosition.UnitId]
+	}
+}
 func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *packets.Packet_UnitPositions) {
 	g.Mux.Lock()
 	defer g.Mux.Unlock()
@@ -222,12 +238,12 @@ func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *
 	} else {
 		genPos = objects.NewVector3(13.8, 0, 0)
 	}
+	pd.UnitPositions = *positions
 	for _, unitPosition := range positions.UnitPositions.Units {
 		// convert to global position
 		pos := tiles.HexToWorldPosition(int(unitPosition.Position.X), int(unitPosition.Position.Y))
 		pos = pos.Add(genPos)
 		pd.PlayerFactionService.Units[unitPosition.UnitId].SetPosition(&pos)
-		g.gameTerrainService.GetTileAt(packets.UnwrapVector2I(unitPosition.Position)).Unit = pd.PlayerFactionService.Units[unitPosition.UnitId]
 	}
 	g.logger.Println("Unit positions received for ", pd.Player.Username())
 	if !g.UnitPositionsReceived {
@@ -235,6 +251,10 @@ func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *
 		return
 	}
 	g.logger.Println("All unit positions received")
+
+	g.SetUnitPositions(g.Player1GameData)
+	g.SetUnitPositions(g.Player2GameData)
+
 	g.SendUnitPositions(g.Player1GameData)
 	g.SendUnitPositions(g.Player2GameData)
 	g.gameState = InProgress

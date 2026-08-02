@@ -8,13 +8,13 @@ public partial class Ui : CanvasLayer
     [Export] public RichTextLabel Turn;
     public void ChangeTurn()
     {
-        if (Turn.Text == "Your Turn")
+        if (Globals.GM.CurrentGameData.TurnOrder[Globals.GM.CurrentGameData.currTurnPointer] == Globals.GM.clientId)
         {
-            Turn.Text = "Enemy Turn";
+            Turn.Text = "Your Turn";
         }
         else
         {
-            Turn.Text = "Your Turn";
+            Turn.Text = "Enemy Turn";
         }
     }
 }

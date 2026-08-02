@@ -174,6 +174,7 @@ public partial class StartGame : Node3D, IState
             }
             log.info("Sending unit positions");
             TrafficManager.Send(PacketUtil.NewUnitPositionsPacket(unitsMessages));
+            confirm.Visible = false;
         }
     }
     // after hide seeds create a unit for each unit in my units, and then add them to HNode3D, use universalUnit

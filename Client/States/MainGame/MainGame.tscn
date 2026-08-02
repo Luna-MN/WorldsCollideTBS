@@ -255,8 +255,9 @@ Features = 2
 noise = ExtResource("8_nncol")
 TopTileMaps = SubResource("Resource_2gh4u")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=491515222 node_paths=PackedStringArray("EndTurn", "Turn")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=491515222 node_paths=PackedStringArray("unitPanel", "EndTurn", "Turn")]
 script = ExtResource("15_tpv42")
+unitPanel = NodePath("Unit Panel")
 EndTurn = NodePath("EndTurn")
 Turn = NodePath("Turn/Turn Text")
 

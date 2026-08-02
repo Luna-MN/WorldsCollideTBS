@@ -33,12 +33,13 @@ type GameUnit interface {
 
 type SkillFactory func() ISkill
 
-var SkillRegistry = map[string]ISkill{}
+var SkillRegistry = map[string]SkillFactory{}
 
 func RegisterSkill(name string, factory SkillFactory) {
-	SkillRegistry[name] = factory()
+	SkillRegistry[name] = factory
 }
 
 func init() {
-
+	RegisterSkill("UniversalSkill", func() ISkill { return &UniversalSkill{} })
+	RegisterSkill("BasicAttack", func() ISkill { return &UniversalSkill{} })
 }

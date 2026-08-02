@@ -29,6 +29,7 @@
     </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\Features\Castle\" />
+    <Folder Include="Objects\Units\Attack\AttackInstances\" />
     <Folder Include="Objects\Units\Mesh\" />
   </ItemGroup>
 </Project>

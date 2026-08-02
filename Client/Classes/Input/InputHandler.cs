@@ -208,7 +208,7 @@ public partial class InputHandler : Node3D
     private void HandleMainLeftClick()
     {
         var nodeInfo = CurrentMouseNode?.TerrainInfo;
-        if (nodeInfo == null) return;
+        if (nodeInfo == null || CurrentMouseNode == null) return;
         HandleUnitClick(nodeInfo, CurrentMouseNode);
     }
     private void HandleUnitClick(TerrainInfo UnitInfo, Tile UnitTile)
@@ -221,6 +221,7 @@ public partial class InputHandler : Node3D
         if (UnitInfo.Unit != null && UnitInfo.Unit.Data.IsMine() && SelectedTile == null)
         {
             SelectedTile = UnitTile;
+            GD.Print("Selected Tile: " + SelectedTile.TerrainInfo.Unit);
             mainGame.UI.unitPanel.Select(SelectedTile.TerrainInfo.Unit);
             return;
         }

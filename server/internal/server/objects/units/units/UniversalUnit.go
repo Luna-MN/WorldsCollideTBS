@@ -1,6 +1,7 @@
 package units
 
 import (
+	"fmt"
 	"server/internal/server"
 	"server/internal/server/combatDSL"
 	"server/internal/server/objects"
@@ -68,16 +69,36 @@ func NewUniversalUnit() *UniversalUnit {
 }
 
 func (u *UniversalUnit) NewUnit(data *util.UnitData, client *server.Client, enemyClient *server.Client, service Skills.GameSkillService) {
+	fmt.Println(data)
+	if data == nil {
+		return
+	}
+
 	u.data = data
-	// init attacks
-	// init movement
-	u.movement = Movement.MovementRegistry[data.Movement]()
+
+	movementFactory, ok := Movement.MovementRegistry[data.Movement]
+	if !ok || movementFactory == nil {
+		fmt.Printf("unknown movement type %q for unit id %d", data.Movement, data.UnitID)
+	}
+
+	u.movement = movementFactory()
+	if u.movement == nil {
+		fmt.Printf("movement factory returned nil for movement type %q, unit id %d", data.Movement, data.UnitID)
+	}
+
 	u.movement.InitMovement(data.UnitID, client, enemyClient)
 
-	for _, skillName := range u.data.Skills { // change attacks to skills
-		skill := Skills.SkillRegistry[skillName]
-		skill.Initiate(data.UnitID, client, enemyClient, service)
-		u.skills = append(u.skills, skill)
+	for _, skillName := range u.data.Skills {
+		if skillName == "" {
+			continue
+		}
+		skill, ok := Skills.SkillRegistry[skillName]
+		if !ok || skill == nil {
+			fmt.Printf("unknown skill %q for unit id %d", skillName, data.UnitID)
+		}
+
+		skill().Initiate(data.UnitID, client, enemyClient, service)
+		u.skills = append(u.skills, skill())
 	}
 }
 func (u *UniversalUnit) Position() objects.Vector3 {
