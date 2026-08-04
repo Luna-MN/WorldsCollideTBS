@@ -69,6 +69,7 @@ func (fi *FactionInput) skills(sheet string) map[string]db.Skill {
 		if err != nil || skillName == "" {
 			break
 		}
+		skillName = strings.Replace(skillName, " ", "", -1)
 		skill, err := fi.queries.GetSkillByName(fi.dbCtx, skillName)
 
 		CS, _ := fi.workbook.GetCellValue(sheet, "B"+fmt.Sprint(skillRow))
@@ -256,7 +257,14 @@ func (fi *FactionInput) Units(sheet string) map[string]db.Unit {
 	}
 	for unitName != "" {
 		unit, err := fi.queries.GetUnit(fi.dbCtx, unitName)
-		skills, _ := fi.workbook.GetCellValue(sheet, "B"+fmt.Sprint(unitRow))
+		skillsUnformatted, _ := fi.workbook.GetCellValue(sheet, "B"+fmt.Sprint(unitRow))
+
+		skillsSplit := strings.Split(skillsUnformatted, ",")
+		skillNames := make([]string, len(skillsSplit))
+		for i, skill := range skillsSplit {
+			skillNames[i] = strings.Replace(skill, " ", "", -1)
+		}
+		skills := strings.Join(skillNames, ",")
 		movement, _ := fi.workbook.GetCellValue(sheet, "C"+fmt.Sprint(unitRow))
 		maxHP, _ := fi.workbook.GetCellValue(sheet, "D"+fmt.Sprint(unitRow))
 		AP, _ := fi.workbook.GetCellValue(sheet, "E"+fmt.Sprint(unitRow))

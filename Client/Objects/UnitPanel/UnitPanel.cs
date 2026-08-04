@@ -9,10 +9,15 @@ public partial class UnitPanel : Panel
     public SkillButton SelectedSkill;
     public void Select(IUnit unit)
     {
+
         SelectedSkill = null;
         if (unit == null)
         {
             Visible = false;
+            return;
+        }
+        if (unit.Skills is not { Count: > 0 })
+        {
             return;
         }
         Visible = true;

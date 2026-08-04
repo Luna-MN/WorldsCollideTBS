@@ -53,7 +53,7 @@
     {
       "ID": 3,
       "Name": "Default",
-      "Skills": "",
+      "Skills": "BasicAttack",
       "Movement": "Default Movement",
       "MaxHP": 5,
       "AP": 5,
@@ -92,9 +92,9 @@
     }
   ],
   "skills": {
-    "Basic Attack": {
-      "ID": 1,
-      "Name": "Basic Attack",
+    "BasicAttack": {
+      "ID": 3,
+      "Name": "BasicAttack",
       "Description": "Basic Strike",
       "Type": 1,
       "Cooldown": 1,
