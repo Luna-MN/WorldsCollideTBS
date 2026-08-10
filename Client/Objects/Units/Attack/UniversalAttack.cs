@@ -6,7 +6,7 @@ public class UniversalAttack : UniversalSkill
 {
     public override string Name()
     {
-        return nameof(UniversalAttack);
+        return Data.Name;
     }
     
     public override void Init(IUnit unit, Node3D node, SkillDataJSON data)

@@ -4,6 +4,7 @@ using System;
 public partial class DefaultUnit : Node3D
 {
     [Export] public RichTextLabel NamePlate;
+    [Export] public ProgressBar HPBar;
     [Export] public MeshInstance3D Mesh;
 
     public void ChangeColor(Color color)

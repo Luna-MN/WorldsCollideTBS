@@ -18,64 +18,65 @@
 [ext_resource type="PackedScene" uid="uid://b6c4gpxn0m8j5" path="res://KayKit Medieval Hexagon Pack 1.0.1/Assets/fbx/decoration/nature/trees_B_small.fbx" id="15_14ulb"]
 [ext_resource type="Script" uid="uid://c1wgyu68ppngp" path="res://States/MainGame/Ui.cs" id="15_tpv42"]
 [ext_resource type="PackedScene" uid="uid://baxipibyd5q0r" path="res://Objects/UnitPanel/UnitPanel.tscn" id="17_t3o0p"]
+[ext_resource type="PackedScene" uid="uid://c0gwboyvfmmbd" path="res://Classes/Menu/menu.tscn" id="18_14ulb"]
 [ext_resource type="Script" uid="uid://ce8fekstn4ulv" path="res://States/MainGame/AsteroidStuff/Asteroids.cs" id="18_hupsw"]
 [ext_resource type="Script" uid="uid://cw5qy36ivay4o" path="res://States/MainGame/AsteroidStuff/AsteroidVisability.cs" id="21_14ulb"]
-
-[sub_resource type="Resource" id="Resource_t3o0p"]
-script = ExtResource("4_v43kf")
-
-[sub_resource type="Resource" id="Resource_14ulb"]
-script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_oxfgx"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_k7iuc"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_oxfgx")
-Medium = SubResource("Resource_14ulb")
-Large = SubResource("Resource_t3o0p")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_eey8p"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_b2co8"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_eey8p")
+Medium = SubResource("Resource_k7iuc")
+Large = SubResource("Resource_oxfgx")
 
 [sub_resource type="Resource" id="Resource_25l26"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_ysjsb"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_25l26")
-Medium = SubResource("Resource_b2co8")
-Large = SubResource("Resource_eey8p")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_4p42s"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_fevcq"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_4p42s")
+Medium = SubResource("Resource_ysjsb")
+Large = SubResource("Resource_25l26")
 
 [sub_resource type="Resource" id="Resource_e6thy"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_snmgp"]
+script = ExtResource("4_v43kf")
+
+[sub_resource type="Resource" id="Resource_x1k1j"]
+script = ExtResource("4_v43kf")
+
+[sub_resource type="Resource" id="Resource_7cdwx"]
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_e6thy")
-Medium = SubResource("Resource_fevcq")
-Large = SubResource("Resource_4p42s")
+Small = SubResource("Resource_x1k1j")
+Medium = SubResource("Resource_snmgp")
+Large = SubResource("Resource_e6thy")
 
 [sub_resource type="Resource" id="Resource_v43kf"]
 script = ExtResource("11_14ulb")
 TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
-0: SubResource("Resource_k7iuc"),
-1: SubResource("Resource_snmgp"),
-2: SubResource("Resource_ysjsb")
+0: SubResource("Resource_b2co8"),
+1: SubResource("Resource_7cdwx"),
+2: SubResource("Resource_fevcq")
 })
-None = SubResource("Resource_k7iuc")
-Tree = SubResource("Resource_snmgp")
-Stone = SubResource("Resource_ysjsb")
+None = SubResource("Resource_b2co8")
+Tree = SubResource("Resource_7cdwx")
+Stone = SubResource("Resource_fevcq")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tpv42"]
@@ -87,126 +88,126 @@ sky_material = SubResource("PanoramaSkyMaterial_tpv42")
 background_mode = 1
 sky = SubResource("Sky_tpv42")
 
-[sub_resource type="Resource" id="Resource_x1k1j"]
-script = ExtResource("4_v43kf")
-
-[sub_resource type="Resource" id="Resource_7cdwx"]
-script = ExtResource("4_v43kf")
-
 [sub_resource type="Resource" id="Resource_txgfy"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_4yw43"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_txgfy")
-Medium = SubResource("Resource_7cdwx")
-Large = SubResource("Resource_x1k1j")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_7uu1x"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_8he5e"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_7uu1x")
+Medium = SubResource("Resource_4yw43")
+Large = SubResource("Resource_txgfy")
 
 [sub_resource type="Resource" id="Resource_yq3qt"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_0ui2a"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_yq3qt")
-Medium = SubResource("Resource_8he5e")
-Large = SubResource("Resource_7uu1x")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_v07hf"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_gesv8"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_v07hf")
+Medium = SubResource("Resource_0ui2a")
+Large = SubResource("Resource_yq3qt")
 
 [sub_resource type="Resource" id="Resource_ikml0"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_0kw4j"]
+script = ExtResource("4_v43kf")
+
+[sub_resource type="Resource" id="Resource_i4iof"]
+script = ExtResource("4_v43kf")
+
+[sub_resource type="Resource" id="Resource_yfdlo"]
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_ikml0")
-Medium = SubResource("Resource_gesv8")
-Large = SubResource("Resource_v07hf")
+Small = SubResource("Resource_i4iof")
+Medium = SubResource("Resource_0kw4j")
+Large = SubResource("Resource_ikml0")
 
 [sub_resource type="Resource" id="Resource_hupsw"]
 script = ExtResource("11_14ulb")
 TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
-0: SubResource("Resource_4yw43"),
-1: SubResource("Resource_0kw4j"),
-2: SubResource("Resource_0ui2a")
+0: SubResource("Resource_8he5e"),
+1: SubResource("Resource_yfdlo"),
+2: SubResource("Resource_gesv8")
 })
-None = SubResource("Resource_4yw43")
-Tree = SubResource("Resource_0kw4j")
-Stone = SubResource("Resource_0ui2a")
+None = SubResource("Resource_8he5e")
+Tree = SubResource("Resource_yfdlo")
+Stone = SubResource("Resource_gesv8")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
-
-[sub_resource type="Resource" id="Resource_i4iof"]
-script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("10_nncol")]
-
-[sub_resource type="Resource" id="Resource_yfdlo"]
-script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("11_tpv42")]
 
 [sub_resource type="Resource" id="Resource_nwnq7"]
 script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("12_hupsw")]
+_tileNode = [ExtResource("10_nncol")]
 
 [sub_resource type="Resource" id="Resource_1kmlu"]
-resource_name = "None"
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_nwnq7")
-Medium = SubResource("Resource_yfdlo")
-Large = SubResource("Resource_i4iof")
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("11_tpv42")]
 
 [sub_resource type="Resource" id="Resource_ojto5"]
 script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("12_hupsw")]
 
 [sub_resource type="Resource" id="Resource_bdp2p"]
-script = ExtResource("4_v43kf")
+resource_name = "None"
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_ojto5")
+Medium = SubResource("Resource_1kmlu")
+Large = SubResource("Resource_nwnq7")
 
 [sub_resource type="Resource" id="Resource_qkfei"]
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_4tpu5"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_qkfei")
-Medium = SubResource("Resource_bdp2p")
-Large = SubResource("Resource_ojto5")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_ehu6q"]
 script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("13_rp31r")]
 
 [sub_resource type="Resource" id="Resource_td18n"]
-script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("14_t3o0p")]
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_ehu6q")
+Medium = SubResource("Resource_4tpu5")
+Large = SubResource("Resource_qkfei")
 
 [sub_resource type="Resource" id="Resource_j3i4v"]
 script = ExtResource("4_v43kf")
-_tileNode = [ExtResource("15_14ulb")]
+_tileNode = [ExtResource("13_rp31r")]
 
 [sub_resource type="Resource" id="Resource_ruqxf"]
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("14_t3o0p")]
+
+[sub_resource type="Resource" id="Resource_bv638"]
+script = ExtResource("4_v43kf")
+_tileNode = [ExtResource("15_14ulb")]
+
+[sub_resource type="Resource" id="Resource_eh77p"]
 resource_name = "Tree"
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_j3i4v")
-Medium = SubResource("Resource_td18n")
-Large = SubResource("Resource_ehu6q")
+Small = SubResource("Resource_bv638")
+Medium = SubResource("Resource_ruqxf")
+Large = SubResource("Resource_j3i4v")
 
 [sub_resource type="Resource" id="Resource_2gh4u"]
 script = ExtResource("11_14ulb")
 TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
-0: SubResource("Resource_1kmlu"),
-1: SubResource("Resource_ruqxf"),
-2: SubResource("Resource_4tpu5")
+0: SubResource("Resource_bdp2p"),
+1: SubResource("Resource_eh77p"),
+2: SubResource("Resource_td18n")
 })
-None = SubResource("Resource_1kmlu")
-Tree = SubResource("Resource_ruqxf")
-Stone = SubResource("Resource_4tpu5")
+None = SubResource("Resource_bdp2p")
+Tree = SubResource("Resource_eh77p")
+Stone = SubResource("Resource_td18n")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xi4mn"]
@@ -306,6 +307,9 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Unit Panel" parent="UI" unique_id=725283998 instance=ExtResource("17_t3o0p")]
+
+[node name="Menu" parent="UI" unique_id=757771309 instance=ExtResource("18_14ulb")]
+visible = false
 
 [node name="Asteroids" type="Node3D" parent="." unique_id=917314539]
 script = ExtResource("18_hupsw")

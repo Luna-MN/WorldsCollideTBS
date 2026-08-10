@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bccy8swuvrtpe"]
+
+[ext_resource type="Script" uid="uid://g1qw11yjh4gk" path="res://Classes/MenuButton/MenuButton.cs" id="1_kpnc4"]
+
+[node name="MenuButton" type="Button" unique_id=658526727]
+custom_minimum_size = Vector2(350, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kpnc4")

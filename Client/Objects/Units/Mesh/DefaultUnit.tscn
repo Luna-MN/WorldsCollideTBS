@@ -46,6 +46,30 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6prly")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2las"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.52156866, 0.52156866, 0.52156866, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duu0b"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.34117648, 0.58431375, 0.30980393, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 6
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_xi4mn"]
 viewport_path = NodePath("ControlSubSpace/SubViewport")
 
@@ -63,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654, -0.25)
 
 [node name="SubViewport" type="SubViewport" parent="ControlSubSpace" index="0" unique_id=322464173]
 transparent_bg = true
-size = Vector2i(197, 50)
+size = Vector2i(197, 58)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ControlSubSpace/SubViewport" index="0" unique_id=2007864662]
 anchors_preset = 15
@@ -75,6 +99,20 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Test Text"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="ControlSubSpace/SubViewport" index="1" unique_id=69984266]
+custom_minimum_size = Vector2(100, 15)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 15.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_a2las")
+theme_override_styles/fill = SubResource("StyleBoxFlat_duu0b")
+value = 12.0
+show_percentage = false
 
 [node name="Sprite3D" type="Sprite3D" parent="ControlSubSpace" index="1" unique_id=1115770193]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2103101, 0)

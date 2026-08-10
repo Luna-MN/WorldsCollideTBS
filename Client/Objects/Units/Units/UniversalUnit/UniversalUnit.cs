@@ -56,6 +56,16 @@ public partial class UniversalUnit : Node3D, IUnit
     private void BuildNamePlate()
     {
         Mesh.NamePlate.Text = Data.UnitName;
+        Mesh.HPBar.MaxValue = Data.MaxHP;
+        Mesh.HPBar.Value = Data.HP;
+        Mesh.HPBar.MinValue = 0;
+    }
+
+    private void UpdateHPBar()
+    {
+        Mesh.HPBar.MaxValue = Data.MaxHP;
+        Mesh.HPBar.Value = Data.HP;
+        Mesh.HPBar.MinValue = 0;
     }
 
     private void FindMesh(string meshName)
@@ -206,15 +216,17 @@ public partial class UniversalUnit : Node3D, IUnit
 
     public void RemoveInflict(int skillId)
     {
-        throw new NotImplementedException();
+        Inflictions.Remove(skillId);
     }
 
     public void Damage(float amount)
     {
         Data.HP -= (long)amount;
+        UpdateHPBar();
     }
     public void Heal(float amount)
     {
         Data.HP += (long)amount;
+        UpdateHPBar();
     }
 }

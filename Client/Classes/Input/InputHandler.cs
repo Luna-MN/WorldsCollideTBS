@@ -18,6 +18,7 @@ public partial class InputHandler : Node3D
     [Export] private bool StoreNode, CamMove;
     [Export] private Camera Camera;
     [Export] private float camSpeed;
+    [Export] private Panel Menu;
     
     [ExportGroup("StartGame")] 
     [Export(PropertyHint.GroupEnable)] private bool StartGame;
@@ -203,6 +204,11 @@ public partial class InputHandler : Node3D
         {
             HandleMainLeftClick();
         }
+
+        if (Input.IsActionJustPressed("ui_escape"))
+        {
+            HandleMainEscape();
+        }
     }
     
     private void HandleMainLeftClick()
@@ -210,6 +216,23 @@ public partial class InputHandler : Node3D
         var nodeInfo = CurrentMouseNode?.TerrainInfo;
         if (nodeInfo == null || CurrentMouseNode == null) return;
         HandleUnitClick(nodeInfo, CurrentMouseNode);
+    }
+
+    private void HandleMainEscape()
+    {
+        if(SelectedTile != null)
+        {
+            SelectedTile = null;
+            mainGame.UI.unitPanel.Select(null);
+        }
+        else
+        {
+            ShowMenu();
+        }
+    }
+    private void ShowMenu()
+    {
+        Menu.Visible = !Menu.Visible;
     }
     private void HandleUnitClick(TerrainInfo UnitInfo, Tile UnitTile)
     {
