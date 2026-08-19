@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://dwesn8b3yi8wa"]
 
 [ext_resource type="Script" uid="uid://cc68a6xx4w38q" path="res://Objects/Tile/Tile.cs" id="1_rltd0"]
+[ext_resource type="Texture2D" uid="uid://syjmjdqa6mg7" path="res://KayKit Medieval Hexagon Pack 1.0.1/Textures/hexagons_medieval_Winter.png" id="2_wbcmx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdd56"]
+albedo_texture = ExtResource("2_wbcmx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
 size = Vector3(1.1643311, 0.8927002, 1.9956055)
@@ -9,6 +13,7 @@ size = Vector3(1.1643311, 0.8927002, 1.9956055)
 script = ExtResource("1_rltd0")
 NodeParent = NodePath("Tiles")
 StaticBody = NodePath("Collision")
+SelectMaterial = SubResource("StandardMaterial3D_jdd56")
 
 [node name="Collision" type="StaticBody3D" parent="." unique_id=1080447204]
 
