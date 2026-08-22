@@ -73,9 +73,10 @@ corner_detail = 6
 [sub_resource type="ViewportTexture" id="ViewportTexture_xi4mn"]
 viewport_path = NodePath("ControlSubSpace/SubViewport")
 
-[node name="unit" unique_id=1839850710 node_paths=PackedStringArray("NamePlate", "Mesh") instance=ExtResource("1_nsboq")]
+[node name="unit" unique_id=1839850710 node_paths=PackedStringArray("NamePlate", "HPBar", "Mesh") instance=ExtResource("1_nsboq")]
 script = ExtResource("2_a2las")
 NamePlate = NodePath("ControlSubSpace/SubViewport/RichTextLabel")
+HPBar = NodePath("ControlSubSpace/SubViewport/ProgressBar")
 Mesh = NodePath("unit")
 
 [node name="unit" parent="." index="0" unique_id=697158257]

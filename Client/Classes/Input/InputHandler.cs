@@ -205,7 +205,7 @@ public partial class InputHandler : Node3D
             HandleMainLeftClick();
         }
 
-        if (Input.IsActionJustPressed("ui_escape"))
+        if (Input.IsActionJustPressed("ui_cancel"))
         {
             HandleMainEscape();
         }

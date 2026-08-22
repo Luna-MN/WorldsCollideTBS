@@ -45,6 +45,22 @@ public class CurrentGameData
     {
         return Tiles.GetValueOrDefault(pos);
     }
+    public Vector2I WorldPositionToHex(Vector3 worldPos)
+    {
+        float hexSize = 1.15f;
+    
+        float x = worldPos.X / hexSize;
+        float z = worldPos.Z / hexSize;
+    
+        float q = (2.0f / 3.0f) * x;
+        float r = (-1.0f / 3.0f) * x + (Mathf.Sqrt(3.0f) / 3.0f) * z;
+    
+        // Round to nearest hex coordinates
+        int hexQ = Mathf.RoundToInt(q);
+        int hexR = Mathf.RoundToInt(r);
+    
+        return new Vector2I(hexQ, hexR);
+    }
 
     public void UpdateTileNeighbours()
     {

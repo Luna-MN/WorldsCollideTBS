@@ -5,7 +5,6 @@ using System.Collections.Generic;
 [Tool]
 public partial class Tile : Node3D
 {
-    private Node3D[] TileNodes;
     
     [Export] 
     private Node3D NodeParent;
@@ -70,6 +69,7 @@ public partial class Tile : Node3D
     {
         if (!func(this))
         {
+            GD.Print("Tile Select failed.");
             return null;
         }
         if (Selected) return this;

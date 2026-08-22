@@ -69,6 +69,7 @@ public partial class TerrainGen : Node3D
             hexInstance.RotationDegrees = new Vector3(0, 90, 0);
             hexInstance.Set(TileMaps[info.TileType], TopTileMaps[info.TileTopType], info.Position.X, info.Position.Z, info);
             hexInstance.GenerateTile();
+            info.tile = hexInstance;
         }
     }
     

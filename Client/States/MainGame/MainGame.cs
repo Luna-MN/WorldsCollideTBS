@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Packets;
 using Packets.Util;
@@ -11,6 +12,7 @@ public partial class MainGame : Node3D, ISmoothState
     public Node[] PrevObjects { get; set; }
     public bool IsSmoothState => true;
     public Node[] TransitionNodes { get; set; }
+    private List<Tile> selectedTiles = new();
     [Export] private TerrainGen TerrainGen1, MainGameTerrainGen, TerrainGen2;
 
     [Export] public Ui UI;
@@ -99,8 +101,11 @@ public partial class MainGame : Node3D, ISmoothState
                 tile.Unit.Position = tile.Unit.TileNode.GlobalPosition + new Vector3(0, tile.TileHeight, 0);
                         
             }
-
         }
+        TrafficManager.Send(new Packet()
+        {
+            StartGame = new StartGameMessage()
+        });
     }
 
     private void EndTurnClicked()
@@ -129,7 +134,7 @@ public partial class MainGame : Node3D, ISmoothState
         Globals.GM.CurrentGameData.TurnOrder = packet.IDs.IDs.Select(id => id.Id).ToArray();
     }
     
-    private void HandleTurnChange(Packet packet)
+    private void HandleTurnChange(Packet packet) // I need to delay turn change when starting up
     {
         if (!Globals.GM.CurrentGameData.TurnOrder.Contains(packet.Turn.Id))
         {
@@ -140,6 +145,32 @@ public partial class MainGame : Node3D, ISmoothState
         Globals.GM.CurrentGameData.MyTurn = Globals.GM.CurrentGameData.TurnOrder[Globals.GM.CurrentGameData.currTurnPointer] == Globals.GM.clientId;
         UI.EndTurn.Visible = Globals.GM.CurrentGameData.MyTurn;
         UI.ChangeTurn();
+        if (Globals.GM.CurrentGameData.MyTurn)
+        {
+            HighlightMyUnits();    
+        }
+        else
+        {
+            DeselectUnits();
+        }
+    }
+    private void HighlightMyUnits()
+    {
+        foreach (var unit in Globals.GM.CurrentGameData.MyUnits.Values)
+        {
+            GD.Print("Tile: " + Globals.GM.CurrentGameData.GetTileAt(Globals.GM.CurrentGameData.WorldPositionToHex(unit.Position)));
+            var t = Globals.GM.CurrentGameData.GetTileAt(Globals.GM.CurrentGameData.WorldPositionToHex(unit.Position)).tile;
+            t.Select(x => true);
+            selectedTiles.Add(t);
+        }   
+    }
+
+    private void DeselectUnits()
+    {
+        foreach (var tile in selectedTiles)
+        {
+            tile.Deselect();
+        }
     }
     
     private void HandleHexPositions(Packet packet)

@@ -56,6 +56,7 @@ type GameService struct {
 	seed               int32
 	seedsReceived      bool
 
+	clientInit            bool
 	turnManagementService *TurnManagementService
 
 	queries *db.Queries
@@ -150,6 +151,8 @@ func (g *GameService) HandleMessage(player *server.Client, msg packets.Msg) {
 		g.HandleHexPositionsMessage(pd, msg.(*packets.Packet_HexPositions))
 	case *packets.Packet_Turn:
 		g.HandleTurnMessage(pd, msg.(*packets.Packet_Turn))
+	case *packets.Packet_StartGame:
+		g.HandleStartGameMessage(pd, msg.(*packets.Packet_StartGame))
 	}
 }
 
@@ -259,12 +262,24 @@ func (g *GameService) HandleUnitPositionsMessage(pd *PlayerGameData, positions *
 	g.SendUnitPositions(g.Player2GameData)
 	g.gameState = InProgress
 	g.InitTurnManagementService()
-	g.SendToClients(packets.NewIds(g.turnManagementService.GetTurnOrder()))
-	g.SendToClients(packets.NewTurnMessage(g.turnManagementService.Turn()))
+
 }
 
 func (g *GameService) InitTurnManagementService() {
 	g.turnManagementService = NewTurnManagementService(g.Player1GameData.Player.Id(), g.Player2GameData.Player.Id())
+}
+
+func (g *GameService) HandleStartGameMessage(pd *PlayerGameData, game *packets.Packet_StartGame) {
+	if !g.clientInit {
+		g.clientInit = true
+		return
+	}
+	g.SendTurnDetails()
+}
+
+func (g *GameService) SendTurnDetails() { // wait till scene init before sending
+	g.SendToClients(packets.NewIds(g.turnManagementService.GetTurnOrder()))
+	g.SendToClients(packets.NewTurnMessage(g.turnManagementService.Turn()))
 }
 
 func (g *GameService) HandleHexPositionsMessage(pd *PlayerGameData, positions *packets.Packet_HexPositions) {

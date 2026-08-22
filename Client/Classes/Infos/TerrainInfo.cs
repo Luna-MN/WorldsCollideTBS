@@ -13,6 +13,7 @@ public class TerrainInfo
     public bool Connected;
     public TerrainInfo NextTile;
     public TerrainInfo PreviousTile;
+    public Tile tile;
     public int TileHeight;
     public IUnit Unit;
     public int MovementCost;
