@@ -244,11 +244,18 @@ public partial class InputHandler : Node3D
         if (UnitInfo.Unit != null && UnitInfo.Unit.Data.IsMine() && SelectedTile == null)
         {
             SelectedTile = UnitTile;
+            
+            SelectedTile.TerrainInfo.Unit.Used = true;
+            mainGame.UI.Select.Visible = false;
+            mainGame.UI.Use.Visible = true;
+            mainGame.UI.EndTurn.Visible = true;
+            
             GD.Print("Selected Tile: " + SelectedTile.TerrainInfo.Unit);
             mainGame.UI.unitPanel.Select(SelectedTile.TerrainInfo.Unit);
+            mainGame.DeselectUnits();
             return;
         }
-        if (mainGame.UI.unitPanel.SelectedSkill == null) // the selected tile is our unit, the new tile doesn't have a unit on it, so we can move to it
+        if (mainGame.UI.unitPanel.SelectedSkill == null && UnitInfo.Unit == null) // the selected tile is our unit, the new tile doesn't have a unit on it, so we can move to it
         {
             SelectedTile.TerrainInfo.Unit.TileNode = SelectedTile;
             HandleMovement(SelectedTile.TerrainInfo, UnitInfo, SelectedTile.TerrainInfo.Unit);

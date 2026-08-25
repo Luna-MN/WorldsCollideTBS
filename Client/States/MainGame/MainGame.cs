@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Packets;
+using Packets.Classes;
 using Packets.Util;
 
 public partial class MainGame : Node3D, ISmoothState
@@ -12,7 +13,7 @@ public partial class MainGame : Node3D, ISmoothState
     public Node[] PrevObjects { get; set; }
     public bool IsSmoothState => true;
     public Node[] TransitionNodes { get; set; }
-    private List<Tile> selectedTiles = new();
+    public List<Tile> selectedTiles = new();
     [Export] private TerrainGen TerrainGen1, MainGameTerrainGen, TerrainGen2;
 
     [Export] public Ui UI;
@@ -111,6 +112,13 @@ public partial class MainGame : Node3D, ISmoothState
     private void EndTurnClicked()
     {
         GD.Print("End Turn Clicked");
+        if (UI.Use.Visible)
+        {
+            UI.Use.Visible = false;
+            UI.End.Visible = true;
+            return;   
+        }
+        UI.End.Visible = false;
         TrafficManager.Send(PacketUtil.NewEndTurnPacket());
     }
     public void OnPacketReceived(Packet packet)
@@ -143,7 +151,6 @@ public partial class MainGame : Node3D, ISmoothState
         }
         Globals.GM.CurrentGameData.currTurnPointer = Globals.GM.CurrentGameData.TurnOrder.ToList().IndexOf(packet.Turn.Id);
         Globals.GM.CurrentGameData.MyTurn = Globals.GM.CurrentGameData.TurnOrder[Globals.GM.CurrentGameData.currTurnPointer] == Globals.GM.clientId;
-        UI.EndTurn.Visible = Globals.GM.CurrentGameData.MyTurn;
         UI.ChangeTurn();
         if (Globals.GM.CurrentGameData.MyTurn)
         {
@@ -154,23 +161,16 @@ public partial class MainGame : Node3D, ISmoothState
             DeselectUnits();
         }
     }
-    private void HighlightMyUnits()
+    public void HighlightMyUnits()
     {
-        foreach (var unit in Globals.GM.CurrentGameData.MyUnits.Values)
-        {
-            GD.Print("Tile: " + Globals.GM.CurrentGameData.GetTileAt(Globals.GM.CurrentGameData.WorldPositionToHex(unit.Position)));
-            var t = Globals.GM.CurrentGameData.GetTileAt(Globals.GM.CurrentGameData.WorldPositionToHex(unit.Position)).tile;
-            t.Select(x => true);
-            selectedTiles.Add(t);
-        }   
+        selectedTiles = Globals.GM.CurrentGameData.Tiles.Highlight(x => Globals.GM.CurrentGameData.MyUnits.Values.Contains(x.TerrainInfo.Unit) && !x.TerrainInfo.Unit.Used); // won't highlight used units
     }
 
-    private void DeselectUnits()
+    public void DeselectUnits()
     {
-        foreach (var tile in selectedTiles)
-        {
-            tile.Deselect();
-        }
+        if (Globals.GM.CurrentGameData.MyUnits.Count == 0) return;
+        selectedTiles.Deselect();
+        selectedTiles.Clear();
     }
     
     private void HandleHexPositions(Packet packet)

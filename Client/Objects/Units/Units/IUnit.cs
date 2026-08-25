@@ -8,6 +8,7 @@ public interface IUnit
     public Vector2I PositionI { get; set; }
     public UnitData Data { get; set; }
     public Node3D TileNode { get; set; }
+    public bool Used { get; set; }
     
     public void InitUnit();
     

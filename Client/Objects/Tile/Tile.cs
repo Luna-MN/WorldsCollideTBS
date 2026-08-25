@@ -69,7 +69,6 @@ public partial class Tile : Node3D
     {
         if (!func(this))
         {
-            GD.Print("Tile Select failed.");
             return null;
         }
         if (Selected) return this;

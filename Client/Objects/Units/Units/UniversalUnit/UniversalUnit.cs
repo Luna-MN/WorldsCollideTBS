@@ -19,6 +19,7 @@ public partial class UniversalUnit : Node3D, IUnit
     public Vector2I PositionI { get; set; }
     public Dictionary<int, ICombatAction> SkillBuffer { get; set; } = new(); // <skillId, ICombatAction>
     public Dictionary<int, InflictAction> Inflictions { get; set; } = new(); // <skillId, InflictAction>
+    public bool Used { get; set; } = false;
 
     #region Init
 

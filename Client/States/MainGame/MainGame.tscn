@@ -22,6 +22,9 @@
 [ext_resource type="Script" uid="uid://ce8fekstn4ulv" path="res://States/MainGame/AsteroidStuff/Asteroids.cs" id="18_hupsw"]
 [ext_resource type="Script" uid="uid://cw5qy36ivay4o" path="res://States/MainGame/AsteroidStuff/AsteroidVisability.cs" id="21_14ulb"]
 
+[sub_resource type="Resource" id="Resource_14ulb"]
+script = ExtResource("4_v43kf")
+
 [sub_resource type="Resource" id="Resource_oxfgx"]
 script = ExtResource("4_v43kf")
 
@@ -29,13 +32,13 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_eey8p"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_k7iuc")
+Medium = SubResource("Resource_oxfgx")
+Large = SubResource("Resource_14ulb")
 
 [sub_resource type="Resource" id="Resource_b2co8"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_eey8p")
-Medium = SubResource("Resource_k7iuc")
-Large = SubResource("Resource_oxfgx")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_25l26"]
 script = ExtResource("4_v43kf")
@@ -44,13 +47,13 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_4p42s"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_ysjsb")
+Medium = SubResource("Resource_25l26")
+Large = SubResource("Resource_b2co8")
 
 [sub_resource type="Resource" id="Resource_fevcq"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_4p42s")
-Medium = SubResource("Resource_ysjsb")
-Large = SubResource("Resource_25l26")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_e6thy"]
 script = ExtResource("4_v43kf")
@@ -59,24 +62,21 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_x1k1j"]
-script = ExtResource("4_v43kf")
-
-[sub_resource type="Resource" id="Resource_7cdwx"]
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_x1k1j")
-Medium = SubResource("Resource_snmgp")
-Large = SubResource("Resource_e6thy")
+Small = SubResource("Resource_snmgp")
+Medium = SubResource("Resource_e6thy")
+Large = SubResource("Resource_fevcq")
 
 [sub_resource type="Resource" id="Resource_v43kf"]
 script = ExtResource("11_14ulb")
 TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
-0: SubResource("Resource_b2co8"),
-1: SubResource("Resource_7cdwx"),
-2: SubResource("Resource_fevcq")
+0: SubResource("Resource_eey8p"),
+1: SubResource("Resource_x1k1j"),
+2: SubResource("Resource_4p42s")
 })
-None = SubResource("Resource_b2co8")
-Tree = SubResource("Resource_7cdwx")
-Stone = SubResource("Resource_fevcq")
+None = SubResource("Resource_eey8p")
+Tree = SubResource("Resource_x1k1j")
+Stone = SubResource("Resource_4p42s")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tpv42"]
@@ -88,6 +88,9 @@ sky_material = SubResource("PanoramaSkyMaterial_tpv42")
 background_mode = 1
 sky = SubResource("Sky_tpv42")
 
+[sub_resource type="Resource" id="Resource_7cdwx"]
+script = ExtResource("4_v43kf")
+
 [sub_resource type="Resource" id="Resource_txgfy"]
 script = ExtResource("4_v43kf")
 
@@ -95,13 +98,13 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_7uu1x"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_4yw43")
+Medium = SubResource("Resource_txgfy")
+Large = SubResource("Resource_7cdwx")
 
 [sub_resource type="Resource" id="Resource_8he5e"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_7uu1x")
-Medium = SubResource("Resource_4yw43")
-Large = SubResource("Resource_txgfy")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_yq3qt"]
 script = ExtResource("4_v43kf")
@@ -110,13 +113,13 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_v07hf"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_0ui2a")
+Medium = SubResource("Resource_yq3qt")
+Large = SubResource("Resource_8he5e")
 
 [sub_resource type="Resource" id="Resource_gesv8"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_v07hf")
-Medium = SubResource("Resource_0ui2a")
-Large = SubResource("Resource_yq3qt")
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_ikml0"]
 script = ExtResource("4_v43kf")
@@ -125,44 +128,44 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_i4iof"]
-script = ExtResource("4_v43kf")
-
-[sub_resource type="Resource" id="Resource_yfdlo"]
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_i4iof")
-Medium = SubResource("Resource_0kw4j")
-Large = SubResource("Resource_ikml0")
+Small = SubResource("Resource_0kw4j")
+Medium = SubResource("Resource_ikml0")
+Large = SubResource("Resource_gesv8")
 
 [sub_resource type="Resource" id="Resource_hupsw"]
 script = ExtResource("11_14ulb")
 TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
-0: SubResource("Resource_8he5e"),
-1: SubResource("Resource_yfdlo"),
-2: SubResource("Resource_gesv8")
+0: SubResource("Resource_7uu1x"),
+1: SubResource("Resource_i4iof"),
+2: SubResource("Resource_v07hf")
 })
-None = SubResource("Resource_8he5e")
-Tree = SubResource("Resource_yfdlo")
-Stone = SubResource("Resource_gesv8")
+None = SubResource("Resource_7uu1x")
+Tree = SubResource("Resource_i4iof")
+Stone = SubResource("Resource_v07hf")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
-[sub_resource type="Resource" id="Resource_nwnq7"]
+[sub_resource type="Resource" id="Resource_yfdlo"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("10_nncol")]
 
-[sub_resource type="Resource" id="Resource_1kmlu"]
+[sub_resource type="Resource" id="Resource_nwnq7"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("11_tpv42")]
 
-[sub_resource type="Resource" id="Resource_ojto5"]
+[sub_resource type="Resource" id="Resource_1kmlu"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("12_hupsw")]
 
-[sub_resource type="Resource" id="Resource_bdp2p"]
+[sub_resource type="Resource" id="Resource_ojto5"]
 resource_name = "None"
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_ojto5")
-Medium = SubResource("Resource_1kmlu")
-Large = SubResource("Resource_nwnq7")
+Small = SubResource("Resource_1kmlu")
+Medium = SubResource("Resource_nwnq7")
+Large = SubResource("Resource_yfdlo")
+
+[sub_resource type="Resource" id="Resource_bdp2p"]
+script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_qkfei"]
 script = ExtResource("4_v43kf")
@@ -171,43 +174,40 @@ script = ExtResource("4_v43kf")
 script = ExtResource("4_v43kf")
 
 [sub_resource type="Resource" id="Resource_ehu6q"]
-script = ExtResource("4_v43kf")
+script = ExtResource("7_tpv42")
+Small = SubResource("Resource_4tpu5")
+Medium = SubResource("Resource_qkfei")
+Large = SubResource("Resource_bdp2p")
 
 [sub_resource type="Resource" id="Resource_td18n"]
-script = ExtResource("7_tpv42")
-Small = SubResource("Resource_ehu6q")
-Medium = SubResource("Resource_4tpu5")
-Large = SubResource("Resource_qkfei")
-
-[sub_resource type="Resource" id="Resource_j3i4v"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("13_rp31r")]
 
-[sub_resource type="Resource" id="Resource_ruqxf"]
+[sub_resource type="Resource" id="Resource_j3i4v"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("14_t3o0p")]
 
-[sub_resource type="Resource" id="Resource_bv638"]
+[sub_resource type="Resource" id="Resource_ruqxf"]
 script = ExtResource("4_v43kf")
 _tileNode = [ExtResource("15_14ulb")]
 
-[sub_resource type="Resource" id="Resource_eh77p"]
+[sub_resource type="Resource" id="Resource_bv638"]
 resource_name = "Tree"
 script = ExtResource("7_tpv42")
-Small = SubResource("Resource_bv638")
-Medium = SubResource("Resource_ruqxf")
-Large = SubResource("Resource_j3i4v")
+Small = SubResource("Resource_ruqxf")
+Medium = SubResource("Resource_j3i4v")
+Large = SubResource("Resource_td18n")
 
 [sub_resource type="Resource" id="Resource_2gh4u"]
 script = ExtResource("11_14ulb")
 TileMaps = Dictionary[int, ExtResource("7_tpv42")]({
-0: SubResource("Resource_bdp2p"),
-1: SubResource("Resource_eh77p"),
-2: SubResource("Resource_td18n")
+0: SubResource("Resource_ojto5"),
+1: SubResource("Resource_bv638"),
+2: SubResource("Resource_ehu6q")
 })
-None = SubResource("Resource_bdp2p")
-Tree = SubResource("Resource_eh77p")
-Stone = SubResource("Resource_td18n")
+None = SubResource("Resource_ojto5")
+Tree = SubResource("Resource_bv638")
+Stone = SubResource("Resource_ehu6q")
 metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xi4mn"]
@@ -256,11 +256,14 @@ Features = 2
 noise = ExtResource("8_nncol")
 TopTileMaps = SubResource("Resource_2gh4u")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=491515222 node_paths=PackedStringArray("unitPanel", "EndTurn", "Turn")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=491515222 node_paths=PackedStringArray("unitPanel", "EndTurn", "Turn", "Select", "Use", "End")]
 script = ExtResource("15_tpv42")
 unitPanel = NodePath("Unit Panel")
 EndTurn = NodePath("EndTurn")
 Turn = NodePath("Turn/Turn Text")
+Select = NodePath("Turn/Select")
+Use = NodePath("Turn/Use")
+End = NodePath("Turn/End")
 
 [node name="Log" parent="UI" unique_id=553717686 instance=ExtResource("7_el7pk")]
 metadata/_edit_use_anchors_ = true
@@ -287,9 +290,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -125.0
-offset_top = 25.0
+offset_top = 68.155
 offset_right = 125.0
-offset_bottom = 100.0
+offset_bottom = 143.155
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
@@ -305,6 +308,79 @@ text = "Your Turn"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Select" type="Panel" parent="UI/Turn" unique_id=554148424]
+visible = false
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+offset_left = -200.0
+offset_top = -70.0
+offset_right = -50.0
+offset_bottom = -20.0
+
+[node name="Select Text" type="RichTextLabel" parent="UI/Turn/Select" unique_id=1147190508]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Use" type="Panel" parent="UI/Turn" unique_id=453032282]
+visible = false
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = -70.0
+offset_right = 75.0
+offset_bottom = -20.0
+grow_horizontal = 2
+
+[node name="Use Text" type="RichTextLabel" parent="UI/Turn/Use" unique_id=647803534]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Use"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="End" type="Panel" parent="UI/Turn" unique_id=651312779]
+visible = false
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 50.0
+offset_top = -70.0
+offset_right = 200.0
+offset_bottom = -20.0
+grow_horizontal = 0
+
+[node name="End Text" type="RichTextLabel" parent="UI/Turn/End" unique_id=792131245]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Cards"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Unit Panel" parent="UI" unique_id=725283998 instance=ExtResource("17_t3o0p")]
 
