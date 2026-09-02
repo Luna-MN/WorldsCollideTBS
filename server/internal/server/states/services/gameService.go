@@ -64,8 +64,10 @@ type GameService struct {
 }
 
 func (g *GameService) World() Skills.GameTerrainService {
-	var gst Skills.GameTerrainService = g.gameTerrainService
-	return gst
+	if g.gameTerrainService == nil {
+		return nil
+	}
+	return g.gameTerrainService
 }
 
 func NewGameService(gameId int64, queries *db.Queries, dbCtx context.Context) *GameService {
@@ -317,6 +319,8 @@ func (g *GameService) HandleHexPositionsMessage(pd *PlayerGameData, positions *p
 
 		startTile.Unit = nil
 		endTile.Unit = unit
+	} else {
+		// else send a deny to the clients
 	}
 }
 func (g *GameService) SendUnitPositions(pd *PlayerGameData) {

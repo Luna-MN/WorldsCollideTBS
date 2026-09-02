@@ -223,6 +223,7 @@ public partial class UniversalUnit : Node3D, IUnit
     public void Damage(float amount)
     {
         Data.HP -= (long)amount;
+        GD.Print("Unit Damaged");
         UpdateHPBar();
     }
     public void Heal(float amount)

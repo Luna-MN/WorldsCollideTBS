@@ -8,18 +8,22 @@ import (
 	"server/internal/server/objects/tiles"
 	"server/internal/server/objects/units/Movement"
 	"server/internal/server/objects/units/Skills"
+	"server/internal/server/objects/units/sharedInterfaces"
 	"server/internal/server/objects/units/units/util"
 	"server/pkg/packets"
 )
 
 type UniversalUnit struct {
-	data        *util.UnitData
-	pos         *objects.Vector3
-	skills      []Skills.ISkill
-	movement    Movement.IMovement
-	Tile        *tiles.TerrainInfo
-	SkillBuffer map[int32]combatDSL.CombatAction
-	Inflictions map[int32]InflictAction
+	data            *util.UnitData
+	pos             *objects.Vector3
+	skills          []Skills.ISkill
+	movement        Movement.IMovement
+	Tile            *tiles.TerrainInfo
+	SkillBuffer     map[int32]combatDSL.CombatAction
+	Inflictions     map[int32]InflictAction
+	MaxMove         int
+	TerrrainService sharedInterfaces.MoveTerrainService
+	Service         Skills.GameSkillService
 }
 
 func (u *UniversalUnit) NewTurn() {
@@ -100,6 +104,18 @@ func (u *UniversalUnit) NewUnit(data *util.UnitData, client *server.Client, enem
 		skill().Initiate(data.UnitID, client, enemyClient, service)
 		u.skills = append(u.skills, skill())
 	}
+	u.Service = service
+	u.TerrrainService = service.World()
+	MPAP := 0
+	switch data.Speed {
+	case util.Fast:
+		MPAP = 3
+	case util.Normal:
+		MPAP = 2
+	case util.Slow:
+		MPAP = 1
+	}
+	u.MaxMove = int(data.AP) * MPAP
 }
 func (u *UniversalUnit) Position() objects.Vector3 {
 	return *u.pos
@@ -127,7 +143,10 @@ func (u *UniversalUnit) Movement() *Movement.IMovement {
 }
 
 func (u *UniversalUnit) Move(path []*packets.HexPositionMessage) bool {
-	return u.movement.Move(path)
+	if u.TerrrainService == nil {
+		u.TerrrainService = u.Service.World()
+	}
+	return u.movement.Move(path, u.TerrrainService, u.MaxMove)
 }
 
 func (u *UniversalUnit) Damage(Amount int64) {

@@ -7,11 +7,10 @@ import (
 	"server/internal/server/objects"
 	noise2 "server/internal/server/objects/noise"
 	"server/internal/server/objects/rng"
-	"server/internal/server/objects/units/Movement"
 	"server/internal/server/objects/units/units/util"
-	"server/pkg/packets"
 
 	"github.com/furui/fastnoiselite-go"
+	"modernc.org/mathutil"
 )
 
 var HexNeighborOffsets = []objects.Vector2I{
@@ -43,9 +42,6 @@ type TileUnit interface {
 
 	NewTurn()
 
-	Movement() *Movement.IMovement
-	Move(path []*packets.HexPositionMessage) bool
-
 	Damage(Amount int64)
 	Heal(Amount int64)
 
@@ -61,8 +57,29 @@ func NewTerrainInfo(tileType objects.TileType) *TerrainInfo {
 	}
 }
 
-func (t *TerrainInfo) CalculateMovementCost() {
-	t.MovementCost = 1
+func (t *TerrainInfo) CalculateMovementCost(FromTile *TerrainInfo) int {
+	var movementCost int
+	// cost based on type
+	switch t.TopTileType {
+	case objects.Tree:
+		movementCost = 2
+	case objects.None:
+		movementCost = 1
+	case objects.Stone:
+		movementCost = 3
+	}
+	switch t.TileType {
+	case objects.River:
+		movementCost += 1
+	case objects.Path:
+		movementCost -= 2
+	}
+
+	// height cost
+	var dif = t.TileHeight - FromTile.TileHeight
+	dif = mathutil.Max(dif, -1)
+	movementCost += dif
+	return movementCost
 }
 
 type FeatureArgs struct {

@@ -59,9 +59,18 @@ func (g *GameTerrainService) GenerateTerrain() {
 }
 
 func (g *GameTerrainService) GetTileAt(pos objects.Vector2I) *tiles.TerrainInfo {
+	if g == nil {
+		fmt.Println("GetTileAt called on nil GameTerrainService")
+		return nil
+	}
+
+	if g.Tiles == nil {
+		fmt.Println("GetTileAt called before Tiles map was initialized")
+		return nil
+	}
+
 	return g.Tiles[pos]
 }
-
 func (g *GameTerrainService) GetTiles(positions []objects.Vector2I) []*tiles.TerrainInfo {
 	tiles := make([]*tiles.TerrainInfo, len(positions))
 	for i, pos := range positions {
