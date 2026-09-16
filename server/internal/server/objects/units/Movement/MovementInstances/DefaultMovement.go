@@ -77,6 +77,7 @@ func (d *DefaultMovement) Move(positions []*packets.HexPositionMessage, TerrainS
 	}
 
 	if moveCost > MaxMove {
+		fmt.Println("movement denied: move cost exceeds max move", moveCost, MaxMove)
 		return false
 	}
 

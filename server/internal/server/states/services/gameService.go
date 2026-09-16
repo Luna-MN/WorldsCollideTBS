@@ -155,6 +155,9 @@ func (g *GameService) HandleMessage(player *server.Client, msg packets.Msg) {
 		g.HandleTurnMessage(pd, msg.(*packets.Packet_Turn))
 	case *packets.Packet_StartGame:
 		g.HandleStartGameMessage(pd, msg.(*packets.Packet_StartGame))
+	case *packets.Packet_Skill:
+		g.HandleSkillMessage(pd, msg.(*packets.Packet_Skill))
+
 	}
 }
 
@@ -357,6 +360,11 @@ func (g *GameService) HandleTurnMessage(pd *PlayerGameData, turn *packets.Packet
 	if !g.turnManagementService.IsPlayerTurn() {
 		g.HandleNPCTurn()
 	}
+}
+
+func (g *GameService) HandleSkillMessage(pd *PlayerGameData, message *packets.Packet_Skill) {
+	// send the message to the other player
+	// send a deny or accept message to the client
 }
 
 func (g *GameService) HandleNPCTurn() {

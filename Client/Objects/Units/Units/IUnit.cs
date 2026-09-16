@@ -21,7 +21,7 @@ public interface IUnit
     void NewTurn();
 
     void AddToSkillBuffer(int skillId, ICombatAction action);
-    void RemoveFromSkillBuffer(int skillId);
+    void RemoveFromSkillBuffer(int skillId, bool reverse);
     
     void Inflict(int skillId, ICombatAction action, int Turns);
     void RemoveInflict(int skillId);

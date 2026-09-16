@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Packets;
+using Packets.Util;
 
 public partial class UniversalUnit : Node3D, IUnit
 {
@@ -192,10 +193,12 @@ public partial class UniversalUnit : Node3D, IUnit
     {
         SkillBuffer.Add(skillId, action);
     }
-
-    public void RemoveFromSkillBuffer(int skillId)
+    public void RemoveFromSkillBuffer(int skillId, bool reverse)
     {
-        SkillBuffer[skillId].Invert(skillId);
+        if (reverse)
+        {
+            SkillBuffer[skillId].Invert(skillId);
+        }
         SkillBuffer.Remove(skillId);
     }
 
@@ -223,7 +226,6 @@ public partial class UniversalUnit : Node3D, IUnit
     public void Damage(float amount)
     {
         Data.HP -= (long)amount;
-        GD.Print("Unit Damaged");
         UpdateHPBar();
     }
     public void Heal(float amount)

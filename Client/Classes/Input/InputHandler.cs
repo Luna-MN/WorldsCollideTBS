@@ -27,7 +27,7 @@ public partial class InputHandler : Node3D
     [Export(PropertyHint.GroupEnable)] private bool MainGame;
     [Export] private MainGame mainGame;
 
-    private Tile SelectedTile;
+    public Tile SelectedTile;
     public override void _Ready()
     {
         if (Camera != null)
@@ -262,14 +262,15 @@ public partial class InputHandler : Node3D
         }
         else // the selected tile is our unit, the new tile has a unit on it, so we want to attack or support that unit
         {
+            GD.Print("Skill Used");
             // Handle attack/ healing
             HandleSkill(SelectedTile.TerrainInfo.Unit, UnitInfo.PositionI);
         }
-
-        SelectedTile = null;
+        
     }
     private void HandleMovement(TerrainInfo fromPos, TerrainInfo toPos, IUnit unit)
     {
+        SelectedTile = toPos.tile;
         unit.Move(fromPos, toPos);
     }
     private void HandleSkill(IUnit me, Vector2I pos)

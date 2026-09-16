@@ -19,6 +19,7 @@ public class UniversalSkill : ISkill
         Node = node;
         Unit = unit;
         Data = data;
+        CombatString(data.CombatString);
     }
 
     public virtual void CombatString(string str)
@@ -35,6 +36,7 @@ public class UniversalSkill : ISkill
     {
         var skillId = Globals.GM.CurrentGameData.CurrentSkillID;
         CombatAction.Execute(new CombatContext(Unit, GetUnitAt(position)), skillId);
+        Unit.Data.AP -= Data.AP;
         // we need to send the skillId with the packet
         SendPacket(position, skillId);
     }

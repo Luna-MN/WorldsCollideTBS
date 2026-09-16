@@ -45,8 +45,7 @@ message UnitIDsMessage { repeated UnitIDMessage ids = 1; }
 message UnitIDMessage {int64 Id = 1; int32 unitId = 2;}
 message TurnMessage { uint64 Id = 1; }
 message SkillMessage {int32 skillId = 1; string SkillName = 2; SkillType type = 3; int32 unitId = 4; Vector2IMsg targetPos = 5; }
-message SkillDenyMessage {int32 skillId = 1; uint64 clientId = 2; string reason = 3; }
-message SkillAcceptMessage {int32 skillId = 1; uint64 clientId = 2;}
+message SkillReturnMessage {int32 skillId = 1; uint64 clientId = 2; bool result = 3; string reason = 4; }
   // more message types here
 
 
@@ -81,8 +80,7 @@ message Packet {
     UnitIDsMessage UnitIds = 24;
     TurnMessage Turn = 25;
     SkillMessage Skill = 26;
-    SkillDenyMessage SkillDeny = 27;
-    SkillAcceptMessage SkillAccept = 28;
+    SkillReturnMessage SkillReturn = 27;
     //...
   }
 }

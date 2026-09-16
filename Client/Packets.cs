@@ -79,42 +79,40 @@ namespace Packets {
             "BCKNAQoMU2tpbGxNZXNzYWdlEg8KB3NraWxsSWQYASABKAUSEQoJU2tpbGxO",
             "YW1lGAIgASgJEiAKBHR5cGUYAyABKA4yEi5wYWNrZXRzLlNraWxsVHlwZRIO",
             "CgZ1bml0SWQYBCABKAUSJwoJdGFyZ2V0UG9zGAUgASgLMhQucGFja2V0cy5W",
-            "ZWN0b3IySU1zZyJFChBTa2lsbERlbnlNZXNzYWdlEg8KB3NraWxsSWQYASAB",
-            "KAUSEAoIY2xpZW50SWQYAiABKAQSDgoGcmVhc29uGAMgASgJIjcKElNraWxs",
-            "QWNjZXB0TWVzc2FnZRIPCgdza2lsbElkGAEgASgFEhAKCGNsaWVudElkGAIg",
-            "ASgEIoEKCgZQYWNrZXQSEQoJc2VuZGVyX2lkGAEgASgEEiQKBGNoYXQYAiAB",
-            "KAsyFC5wYWNrZXRzLkNoYXRNZXNzYWdlSAASIAoCaWQYAyABKAsyEi5wYWNr",
-            "ZXRzLklkTWVzc2FnZUgAEjQKDGxvZ2luUmVxdWVzdBgEIAEoCzIcLnBhY2tl",
-            "dHMuTG9naW5SZXF1ZXN0TWVzc2FnZUgAEjoKD3JlZ2lzdGVyUmVxdWVzdBgF",
-            "IAEoCzIfLnBhY2tldHMuUmVnaXN0ZXJSZXF1ZXN0TWVzc2FnZUgAEigKAk9L",
-            "GAYgASgLMhoucGFja2V0cy5Pa1Jlc3BvbnNlTWVzc2FnZUgAEiwKBERlbnkY",
-            "ByABKAsyHC5wYWNrZXRzLkRlbnlSZXNwb25zZU1lc3NhZ2VIABIqCgdjb21t",
-            "YW5kGAggASgLMhcucGFja2V0cy5Db21tYW5kTWVzc2FnZUgAEjIKC2hleFBv",
-            "c2l0aW9uGAkgASgLMhsucGFja2V0cy5IZXhQb3NpdGlvbk1lc3NhZ2VIABI0",
-            "CgxoZXhQb3NpdGlvbnMYCiABKAsyHC5wYWNrZXRzLkhleFBvc2l0aW9uc01l",
-            "c3NhZ2VIABI2CgtzdGVhbVRpY2tldBgLIAEoCzIfLnBhY2tldHMuU3RlYW1B",
-            "dXRoVGlja2V0TWVzc2FnZUgAEjIKC2NoYW5nZVN0YXRlGAwgASgLMhsucGFj",
-            "a2V0cy5DaGFuZ2VTdGF0ZU1lc3NhZ2VIABImCgVxdWV1ZRgNIAEoCzIVLnBh",
-            "Y2tldHMuUXVldWVNZXNzYWdlSAASLAoIb3Bwb25lbnQYDiABKAsyGC5wYWNr",
-            "ZXRzLk9wcG9uZW50TWVzc2FnZUgAEi4KCXN0YXJ0R2FtZRgPIAEoCzIZLnBh",
-            "Y2tldHMuU3RhcnRHYW1lTWVzc2FnZUgAEiQKBHNlZWQYECABKAsyFC5wYWNr",
-            "ZXRzLlNlZWRNZXNzYWdlSAASIgoDSURzGBEgASgLMhMucGFja2V0cy5JRHNN",
-            "ZXNzYWdlSAASJAoEVW5pdBgSIAEoCzIULnBhY2tldHMuVW5pdE1lc3NhZ2VI",
-            "ABIsCghHYW1lRGF0YRgTIAEoCzIYLnBhY2tldHMuR2FtZURhdGFNZXNzYWdl",
-            "SAASLwoLR2FtZVZlcnNpb24YFCABKAsyGC5wYWNrZXRzLkdhbWVEYXRhVmVy",
-            "c2lvbkgAEigKBkFybXlJZBgVIAEoCzIWLnBhY2tldHMuQXJteUlETWVzc2Fn",
-            "ZUgAEjQKDFVuaXRQb3NpdGlvbhgWIAEoCzIcLnBhY2tldHMuVW5pdFBvc2l0",
-            "aW9uTWVzc2FnZUgAEjYKDVVuaXRQb3NpdGlvbnMYFyABKAsyHS5wYWNrZXRz",
-            "LlVuaXRQb3NpdGlvbnNNZXNzYWdlSAASKgoHVW5pdElkcxgYIAEoCzIXLnBh",
-            "Y2tldHMuVW5pdElEc01lc3NhZ2VIABIkCgRUdXJuGBkgASgLMhQucGFja2V0",
-            "cy5UdXJuTWVzc2FnZUgAEiYKBVNraWxsGBogASgLMhUucGFja2V0cy5Ta2ls",
-            "bE1lc3NhZ2VIABIuCglTa2lsbERlbnkYGyABKAsyGS5wYWNrZXRzLlNraWxs",
-            "RGVueU1lc3NhZ2VIABIyCgtTa2lsbEFjY2VwdBgcIAEoCzIbLnBhY2tldHMu",
-            "U2tpbGxBY2NlcHRNZXNzYWdlSABCBQoDbXNnKkIKCENoYXRUeXBlEgsKB05v",
-            "dGhpbmcQABIKCgZHbG9iYWwQARIJCgVMb2NhbBACEgkKBVBhcnR5EAMSBwoD",
-            "TWF4EAQqKAoGU3BlZWRzEgoKBk5vcm1hbBAAEggKBFNsb3cQARIICgRGYXN0",
-            "EAIqLgoJU2tpbGxUeXBlEggKBE5vbmUQABIKCgZBdHRhY2sQARILCgdTdXBw",
-            "b3J0EAJCDVoLcGtnL3BhY2tldHNiBnByb3RvMw=="));
+            "ZWN0b3IySU1zZyJXChJTa2lsbFJldHVybk1lc3NhZ2USDwoHc2tpbGxJZBgB",
+            "IAEoBRIQCghjbGllbnRJZBgCIAEoBBIOCgZyZXN1bHQYAyABKAgSDgoGcmVh",
+            "c29uGAQgASgJItEJCgZQYWNrZXQSEQoJc2VuZGVyX2lkGAEgASgEEiQKBGNo",
+            "YXQYAiABKAsyFC5wYWNrZXRzLkNoYXRNZXNzYWdlSAASIAoCaWQYAyABKAsy",
+            "Ei5wYWNrZXRzLklkTWVzc2FnZUgAEjQKDGxvZ2luUmVxdWVzdBgEIAEoCzIc",
+            "LnBhY2tldHMuTG9naW5SZXF1ZXN0TWVzc2FnZUgAEjoKD3JlZ2lzdGVyUmVx",
+            "dWVzdBgFIAEoCzIfLnBhY2tldHMuUmVnaXN0ZXJSZXF1ZXN0TWVzc2FnZUgA",
+            "EigKAk9LGAYgASgLMhoucGFja2V0cy5Pa1Jlc3BvbnNlTWVzc2FnZUgAEiwK",
+            "BERlbnkYByABKAsyHC5wYWNrZXRzLkRlbnlSZXNwb25zZU1lc3NhZ2VIABIq",
+            "Cgdjb21tYW5kGAggASgLMhcucGFja2V0cy5Db21tYW5kTWVzc2FnZUgAEjIK",
+            "C2hleFBvc2l0aW9uGAkgASgLMhsucGFja2V0cy5IZXhQb3NpdGlvbk1lc3Nh",
+            "Z2VIABI0CgxoZXhQb3NpdGlvbnMYCiABKAsyHC5wYWNrZXRzLkhleFBvc2l0",
+            "aW9uc01lc3NhZ2VIABI2CgtzdGVhbVRpY2tldBgLIAEoCzIfLnBhY2tldHMu",
+            "U3RlYW1BdXRoVGlja2V0TWVzc2FnZUgAEjIKC2NoYW5nZVN0YXRlGAwgASgL",
+            "MhsucGFja2V0cy5DaGFuZ2VTdGF0ZU1lc3NhZ2VIABImCgVxdWV1ZRgNIAEo",
+            "CzIVLnBhY2tldHMuUXVldWVNZXNzYWdlSAASLAoIb3Bwb25lbnQYDiABKAsy",
+            "GC5wYWNrZXRzLk9wcG9uZW50TWVzc2FnZUgAEi4KCXN0YXJ0R2FtZRgPIAEo",
+            "CzIZLnBhY2tldHMuU3RhcnRHYW1lTWVzc2FnZUgAEiQKBHNlZWQYECABKAsy",
+            "FC5wYWNrZXRzLlNlZWRNZXNzYWdlSAASIgoDSURzGBEgASgLMhMucGFja2V0",
+            "cy5JRHNNZXNzYWdlSAASJAoEVW5pdBgSIAEoCzIULnBhY2tldHMuVW5pdE1l",
+            "c3NhZ2VIABIsCghHYW1lRGF0YRgTIAEoCzIYLnBhY2tldHMuR2FtZURhdGFN",
+            "ZXNzYWdlSAASLwoLR2FtZVZlcnNpb24YFCABKAsyGC5wYWNrZXRzLkdhbWVE",
+            "YXRhVmVyc2lvbkgAEigKBkFybXlJZBgVIAEoCzIWLnBhY2tldHMuQXJteUlE",
+            "TWVzc2FnZUgAEjQKDFVuaXRQb3NpdGlvbhgWIAEoCzIcLnBhY2tldHMuVW5p",
+            "dFBvc2l0aW9uTWVzc2FnZUgAEjYKDVVuaXRQb3NpdGlvbnMYFyABKAsyHS5w",
+            "YWNrZXRzLlVuaXRQb3NpdGlvbnNNZXNzYWdlSAASKgoHVW5pdElkcxgYIAEo",
+            "CzIXLnBhY2tldHMuVW5pdElEc01lc3NhZ2VIABIkCgRUdXJuGBkgASgLMhQu",
+            "cGFja2V0cy5UdXJuTWVzc2FnZUgAEiYKBVNraWxsGBogASgLMhUucGFja2V0",
+            "cy5Ta2lsbE1lc3NhZ2VIABIyCgtTa2lsbFJldHVybhgbIAEoCzIbLnBhY2tl",
+            "dHMuU2tpbGxSZXR1cm5NZXNzYWdlSABCBQoDbXNnKkIKCENoYXRUeXBlEgsK",
+            "B05vdGhpbmcQABIKCgZHbG9iYWwQARIJCgVMb2NhbBACEgkKBVBhcnR5EAMS",
+            "BwoDTWF4EAQqKAoGU3BlZWRzEgoKBk5vcm1hbBAAEggKBFNsb3cQARIICgRG",
+            "YXN0EAIqLgoJU2tpbGxUeXBlEggKBE5vbmUQABIKCgZBdHRhY2sQARILCgdT",
+            "dXBwb3J0EAJCDVoLcGtnL3BhY2tldHNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Packets.ChatType), typeof(global::Packets.Speeds), typeof(global::Packets.SkillType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -153,9 +151,8 @@ namespace Packets {
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.UnitIDMessage), global::Packets.UnitIDMessage.Parser, new[]{ "Id", "UnitId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.TurnMessage), global::Packets.TurnMessage.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Packets.SkillMessage), global::Packets.SkillMessage.Parser, new[]{ "SkillId", "SkillName", "Type", "UnitId", "TargetPos" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.SkillDenyMessage), global::Packets.SkillDenyMessage.Parser, new[]{ "SkillId", "ClientId", "Reason" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.SkillAcceptMessage), global::Packets.SkillAcceptMessage.Parser, new[]{ "SkillId", "ClientId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.Packet), global::Packets.Packet.Parser, new[]{ "SenderId", "Chat", "Id", "LoginRequest", "RegisterRequest", "OK", "Deny", "Command", "HexPosition", "HexPositions", "SteamTicket", "ChangeState", "Queue", "Opponent", "StartGame", "Seed", "IDs", "Unit", "GameData", "GameVersion", "ArmyId", "UnitPosition", "UnitPositions", "UnitIds", "Turn", "Skill", "SkillDeny", "SkillAccept" }, new[]{ "Msg" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.SkillReturnMessage), global::Packets.SkillReturnMessage.Parser, new[]{ "SkillId", "ClientId", "Result", "Reason" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Packets.Packet), global::Packets.Packet.Parser, new[]{ "SenderId", "Chat", "Id", "LoginRequest", "RegisterRequest", "OK", "Deny", "Command", "HexPosition", "HexPositions", "SteamTicket", "ChangeState", "Queue", "Opponent", "StartGame", "Seed", "IDs", "Unit", "GameData", "GameVersion", "ArmyId", "UnitPosition", "UnitPositions", "UnitIds", "Turn", "Skill", "SkillReturn" }, new[]{ "Msg" }, null, null, null)
           }));
     }
     #endregion
@@ -9023,16 +9020,16 @@ namespace Packets {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class SkillDenyMessage : pb::IMessage<SkillDenyMessage>
+  public sealed partial class SkillReturnMessage : pb::IMessage<SkillReturnMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<SkillDenyMessage> _parser = new pb::MessageParser<SkillDenyMessage>(() => new SkillDenyMessage());
+    private static readonly pb::MessageParser<SkillReturnMessage> _parser = new pb::MessageParser<SkillReturnMessage>(() => new SkillReturnMessage());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<SkillDenyMessage> Parser { get { return _parser; } }
+    public static pb::MessageParser<SkillReturnMessage> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -9048,7 +9045,7 @@ namespace Packets {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SkillDenyMessage() {
+    public SkillReturnMessage() {
       OnConstruction();
     }
 
@@ -9056,17 +9053,18 @@ namespace Packets {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SkillDenyMessage(SkillDenyMessage other) : this() {
+    public SkillReturnMessage(SkillReturnMessage other) : this() {
       skillId_ = other.skillId_;
       clientId_ = other.clientId_;
+      result_ = other.result_;
       reason_ = other.reason_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SkillDenyMessage Clone() {
-      return new SkillDenyMessage(this);
+    public SkillReturnMessage Clone() {
+      return new SkillReturnMessage(this);
     }
 
     /// <summary>Field number for the "skillId" field.</summary>
@@ -9093,8 +9091,20 @@ namespace Packets {
       }
     }
 
+    /// <summary>Field number for the "result" field.</summary>
+    public const int ResultFieldNumber = 3;
+    private bool result_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Result {
+      get { return result_; }
+      set {
+        result_ = value;
+      }
+    }
+
     /// <summary>Field number for the "reason" field.</summary>
-    public const int ReasonFieldNumber = 3;
+    public const int ReasonFieldNumber = 4;
     private string reason_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -9108,12 +9118,12 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as SkillDenyMessage);
+      return Equals(other as SkillReturnMessage);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(SkillDenyMessage other) {
+    public bool Equals(SkillReturnMessage other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -9122,6 +9132,7 @@ namespace Packets {
       }
       if (SkillId != other.SkillId) return false;
       if (ClientId != other.ClientId) return false;
+      if (Result != other.Result) return false;
       if (Reason != other.Reason) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -9132,6 +9143,7 @@ namespace Packets {
       int hash = 1;
       if (SkillId != 0) hash ^= SkillId.GetHashCode();
       if (ClientId != 0UL) hash ^= ClientId.GetHashCode();
+      if (Result != false) hash ^= Result.GetHashCode();
       if (Reason.Length != 0) hash ^= Reason.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -9159,8 +9171,12 @@ namespace Packets {
         output.WriteRawTag(16);
         output.WriteUInt64(ClientId);
       }
+      if (Result != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Result);
+      }
       if (Reason.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteString(Reason);
       }
       if (_unknownFields != null) {
@@ -9181,8 +9197,12 @@ namespace Packets {
         output.WriteRawTag(16);
         output.WriteUInt64(ClientId);
       }
+      if (Result != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Result);
+      }
       if (Reason.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteString(Reason);
       }
       if (_unknownFields != null) {
@@ -9201,6 +9221,9 @@ namespace Packets {
       if (ClientId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ClientId);
       }
+      if (Result != false) {
+        size += 1 + 1;
+      }
       if (Reason.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Reason);
       }
@@ -9212,7 +9235,7 @@ namespace Packets {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(SkillDenyMessage other) {
+    public void MergeFrom(SkillReturnMessage other) {
       if (other == null) {
         return;
       }
@@ -9221,6 +9244,9 @@ namespace Packets {
       }
       if (other.ClientId != 0UL) {
         ClientId = other.ClientId;
+      }
+      if (other.Result != false) {
+        Result = other.Result;
       }
       if (other.Reason.Length != 0) {
         Reason = other.Reason;
@@ -9252,7 +9278,11 @@ namespace Packets {
             ClientId = input.ReadUInt64();
             break;
           }
-          case 26: {
+          case 24: {
+            Result = input.ReadBool();
+            break;
+          }
+          case 34: {
             Reason = input.ReadString();
             break;
           }
@@ -9283,243 +9313,12 @@ namespace Packets {
             ClientId = input.ReadUInt64();
             break;
           }
-          case 26: {
+          case 24: {
+            Result = input.ReadBool();
+            break;
+          }
+          case 34: {
             Reason = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class SkillAcceptMessage : pb::IMessage<SkillAcceptMessage>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<SkillAcceptMessage> _parser = new pb::MessageParser<SkillAcceptMessage>(() => new SkillAcceptMessage());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<SkillAcceptMessage> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[36]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SkillAcceptMessage() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SkillAcceptMessage(SkillAcceptMessage other) : this() {
-      skillId_ = other.skillId_;
-      clientId_ = other.clientId_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SkillAcceptMessage Clone() {
-      return new SkillAcceptMessage(this);
-    }
-
-    /// <summary>Field number for the "skillId" field.</summary>
-    public const int SkillIdFieldNumber = 1;
-    private int skillId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int SkillId {
-      get { return skillId_; }
-      set {
-        skillId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "clientId" field.</summary>
-    public const int ClientIdFieldNumber = 2;
-    private ulong clientId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong ClientId {
-      get { return clientId_; }
-      set {
-        clientId_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as SkillAcceptMessage);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(SkillAcceptMessage other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (SkillId != other.SkillId) return false;
-      if (ClientId != other.ClientId) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (SkillId != 0) hash ^= SkillId.GetHashCode();
-      if (ClientId != 0UL) hash ^= ClientId.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (SkillId != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(SkillId);
-      }
-      if (ClientId != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(ClientId);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SkillId != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(SkillId);
-      }
-      if (ClientId != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(ClientId);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (SkillId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SkillId);
-      }
-      if (ClientId != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ClientId);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(SkillAcceptMessage other) {
-      if (other == null) {
-        return;
-      }
-      if (other.SkillId != 0) {
-        SkillId = other.SkillId;
-      }
-      if (other.ClientId != 0UL) {
-        ClientId = other.ClientId;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            SkillId = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            ClientId = input.ReadUInt64();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 8: {
-            SkillId = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            ClientId = input.ReadUInt64();
             break;
           }
         }
@@ -9544,7 +9343,7 @@ namespace Packets {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[37]; }
+      get { return global::Packets.PacketsReflection.Descriptor.MessageTypes[36]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9641,11 +9440,8 @@ namespace Packets {
         case MsgOneofCase.Skill:
           Skill = other.Skill.Clone();
           break;
-        case MsgOneofCase.SkillDeny:
-          SkillDeny = other.SkillDeny.Clone();
-          break;
-        case MsgOneofCase.SkillAccept:
-          SkillAccept = other.SkillAccept.Clone();
+        case MsgOneofCase.SkillReturn:
+          SkillReturn = other.SkillReturn.Clone();
           break;
       }
 
@@ -9970,30 +9766,18 @@ namespace Packets {
       }
     }
 
-    /// <summary>Field number for the "SkillDeny" field.</summary>
-    public const int SkillDenyFieldNumber = 27;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Packets.SkillDenyMessage SkillDeny {
-      get { return msgCase_ == MsgOneofCase.SkillDeny ? (global::Packets.SkillDenyMessage) msg_ : null; }
-      set {
-        msg_ = value;
-        msgCase_ = value == null ? MsgOneofCase.None : MsgOneofCase.SkillDeny;
-      }
-    }
-
-    /// <summary>Field number for the "SkillAccept" field.</summary>
-    public const int SkillAcceptFieldNumber = 28;
+    /// <summary>Field number for the "SkillReturn" field.</summary>
+    public const int SkillReturnFieldNumber = 27;
     /// <summary>
     ///...
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Packets.SkillAcceptMessage SkillAccept {
-      get { return msgCase_ == MsgOneofCase.SkillAccept ? (global::Packets.SkillAcceptMessage) msg_ : null; }
+    public global::Packets.SkillReturnMessage SkillReturn {
+      get { return msgCase_ == MsgOneofCase.SkillReturn ? (global::Packets.SkillReturnMessage) msg_ : null; }
       set {
         msg_ = value;
-        msgCase_ = value == null ? MsgOneofCase.None : MsgOneofCase.SkillAccept;
+        msgCase_ = value == null ? MsgOneofCase.None : MsgOneofCase.SkillReturn;
       }
     }
 
@@ -10026,8 +9810,7 @@ namespace Packets {
       UnitIds = 24,
       Turn = 25,
       Skill = 26,
-      SkillDeny = 27,
-      SkillAccept = 28,
+      SkillReturn = 27,
     }
     private MsgOneofCase msgCase_ = MsgOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10084,8 +9867,7 @@ namespace Packets {
       if (!object.Equals(UnitIds, other.UnitIds)) return false;
       if (!object.Equals(Turn, other.Turn)) return false;
       if (!object.Equals(Skill, other.Skill)) return false;
-      if (!object.Equals(SkillDeny, other.SkillDeny)) return false;
-      if (!object.Equals(SkillAccept, other.SkillAccept)) return false;
+      if (!object.Equals(SkillReturn, other.SkillReturn)) return false;
       if (MsgCase != other.MsgCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -10120,8 +9902,7 @@ namespace Packets {
       if (msgCase_ == MsgOneofCase.UnitIds) hash ^= UnitIds.GetHashCode();
       if (msgCase_ == MsgOneofCase.Turn) hash ^= Turn.GetHashCode();
       if (msgCase_ == MsgOneofCase.Skill) hash ^= Skill.GetHashCode();
-      if (msgCase_ == MsgOneofCase.SkillDeny) hash ^= SkillDeny.GetHashCode();
-      if (msgCase_ == MsgOneofCase.SkillAccept) hash ^= SkillAccept.GetHashCode();
+      if (msgCase_ == MsgOneofCase.SkillReturn) hash ^= SkillReturn.GetHashCode();
       hash ^= (int) msgCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -10245,13 +10026,9 @@ namespace Packets {
         output.WriteRawTag(210, 1);
         output.WriteMessage(Skill);
       }
-      if (msgCase_ == MsgOneofCase.SkillDeny) {
+      if (msgCase_ == MsgOneofCase.SkillReturn) {
         output.WriteRawTag(218, 1);
-        output.WriteMessage(SkillDeny);
-      }
-      if (msgCase_ == MsgOneofCase.SkillAccept) {
-        output.WriteRawTag(226, 1);
-        output.WriteMessage(SkillAccept);
+        output.WriteMessage(SkillReturn);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -10367,13 +10144,9 @@ namespace Packets {
         output.WriteRawTag(210, 1);
         output.WriteMessage(Skill);
       }
-      if (msgCase_ == MsgOneofCase.SkillDeny) {
+      if (msgCase_ == MsgOneofCase.SkillReturn) {
         output.WriteRawTag(218, 1);
-        output.WriteMessage(SkillDeny);
-      }
-      if (msgCase_ == MsgOneofCase.SkillAccept) {
-        output.WriteRawTag(226, 1);
-        output.WriteMessage(SkillAccept);
+        output.WriteMessage(SkillReturn);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -10463,11 +10236,8 @@ namespace Packets {
       if (msgCase_ == MsgOneofCase.Skill) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(Skill);
       }
-      if (msgCase_ == MsgOneofCase.SkillDeny) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SkillDeny);
-      }
-      if (msgCase_ == MsgOneofCase.SkillAccept) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SkillAccept);
+      if (msgCase_ == MsgOneofCase.SkillReturn) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SkillReturn);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -10635,17 +10405,11 @@ namespace Packets {
           }
           Skill.MergeFrom(other.Skill);
           break;
-        case MsgOneofCase.SkillDeny:
-          if (SkillDeny == null) {
-            SkillDeny = new global::Packets.SkillDenyMessage();
+        case MsgOneofCase.SkillReturn:
+          if (SkillReturn == null) {
+            SkillReturn = new global::Packets.SkillReturnMessage();
           }
-          SkillDeny.MergeFrom(other.SkillDeny);
-          break;
-        case MsgOneofCase.SkillAccept:
-          if (SkillAccept == null) {
-            SkillAccept = new global::Packets.SkillAcceptMessage();
-          }
-          SkillAccept.MergeFrom(other.SkillAccept);
+          SkillReturn.MergeFrom(other.SkillReturn);
           break;
       }
 
@@ -10898,21 +10662,12 @@ namespace Packets {
             break;
           }
           case 218: {
-            global::Packets.SkillDenyMessage subBuilder = new global::Packets.SkillDenyMessage();
-            if (msgCase_ == MsgOneofCase.SkillDeny) {
-              subBuilder.MergeFrom(SkillDeny);
+            global::Packets.SkillReturnMessage subBuilder = new global::Packets.SkillReturnMessage();
+            if (msgCase_ == MsgOneofCase.SkillReturn) {
+              subBuilder.MergeFrom(SkillReturn);
             }
             input.ReadMessage(subBuilder);
-            SkillDeny = subBuilder;
-            break;
-          }
-          case 226: {
-            global::Packets.SkillAcceptMessage subBuilder = new global::Packets.SkillAcceptMessage();
-            if (msgCase_ == MsgOneofCase.SkillAccept) {
-              subBuilder.MergeFrom(SkillAccept);
-            }
-            input.ReadMessage(subBuilder);
-            SkillAccept = subBuilder;
+            SkillReturn = subBuilder;
             break;
           }
         }
@@ -11164,21 +10919,12 @@ namespace Packets {
             break;
           }
           case 218: {
-            global::Packets.SkillDenyMessage subBuilder = new global::Packets.SkillDenyMessage();
-            if (msgCase_ == MsgOneofCase.SkillDeny) {
-              subBuilder.MergeFrom(SkillDeny);
+            global::Packets.SkillReturnMessage subBuilder = new global::Packets.SkillReturnMessage();
+            if (msgCase_ == MsgOneofCase.SkillReturn) {
+              subBuilder.MergeFrom(SkillReturn);
             }
             input.ReadMessage(subBuilder);
-            SkillDeny = subBuilder;
-            break;
-          }
-          case 226: {
-            global::Packets.SkillAcceptMessage subBuilder = new global::Packets.SkillAcceptMessage();
-            if (msgCase_ == MsgOneofCase.SkillAccept) {
-              subBuilder.MergeFrom(SkillAccept);
-            }
-            input.ReadMessage(subBuilder);
-            SkillAccept = subBuilder;
+            SkillReturn = subBuilder;
             break;
           }
         }

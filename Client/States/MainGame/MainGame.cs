@@ -10,6 +10,8 @@ public partial class MainGame : Node3D, ISmoothState
 {
     [Export]
     public Log log { get; set; }
+
+    [Export] public InputHandler input;
     public Node[] PrevObjects { get; set; }
     public bool IsSmoothState => true;
     public Node[] TransitionNodes { get; set; }
@@ -119,6 +121,7 @@ public partial class MainGame : Node3D, ISmoothState
             return;   
         }
         UI.End.Visible = false;
+        input.SelectedTile = null;
         TrafficManager.Send(PacketUtil.NewEndTurnPacket());
     }
     public void OnPacketReceived(Packet packet)
