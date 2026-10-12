@@ -1,7 +1,7 @@
 using Godot;
 using System;
 [Tool]
-public partial class CustomTerrainInfo : Node3D
+public partial class CustomTerrainInfo : Node2D
 {
     [ExportToolButton("Generate Terrain")]
     private Callable GenerateTerrainButton => Callable.From(GenerateTerrain);
@@ -49,8 +49,7 @@ public partial class CustomTerrainInfo : Node3D
         AddChild(hexInstance);
         hexInstance.Owner = GetTree().EditedSceneRoot;
         hexInstance.Position = TerrainInfo.Position;
-        hexInstance.RotationDegrees = new Vector3(0, 90, 0);
-        hexInstance.Set(TileMaps[TerrainInfo.TileType], TopTileMaps[TerrainInfo.TileTopType], TerrainInfo.Position.X, TerrainInfo.Position.Z, TerrainInfo);
+        hexInstance.Set(TileMaps[TerrainInfo.TileType], TopTileMaps[TerrainInfo.TileTopType], TerrainInfo.Position.X, TerrainInfo.Position.Y, TerrainInfo);
         hexInstance.GenerateTile();
     }
 

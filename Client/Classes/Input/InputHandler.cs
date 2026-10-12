@@ -1,9 +1,9 @@
 using Godot;
 using Util;
 
-public partial class InputHandler : Node3D
+public partial class InputHandler : Node2D
 {
-    private Vector3 MousePosition
+    private Vector2 MousePosition
     {
         get
         {
@@ -13,7 +13,7 @@ public partial class InputHandler : Node3D
         set => mousePosition = value;
     }
 
-    private Vector3 mousePosition;
+    private Vector2 mousePosition;
     public Tile CurrentMouseNode;
     [Export] private bool StoreNode, CamMove;
     [Export] private Camera Camera;
@@ -35,7 +35,7 @@ public partial class InputHandler : Node3D
             Camera.ResetPos = Camera.Position;
             Camera.ResetScale = Camera.Size;
         }
-        RayCast.Set(GetTree(), GetViewport(), GetWorld3D());
+        RayCast.Set(GetTree());
     }
 
     public override void _Process(double delta)
@@ -47,11 +47,11 @@ public partial class InputHandler : Node3D
     }
     private void MousePos()
     {
-        mousePosition = RayCast.CastPosition();
+        mousePosition = GetGlobalMousePosition();
     }
     private void MouseHover()
     {
-        var mouseObj = RayCast.CastObject<Node3D>();
+        var mouseObj = RayCast.CastObject<Node2D>();
         if (mouseObj?.GetParent().GetParent().GetParent() is Asteroid || mouseObj?.GetParent() is Asteroid)
         {
             return;
@@ -63,22 +63,22 @@ public partial class InputHandler : Node3D
             if (!StoreNode)
             {
                 if (CurrentMouseNode == null) return;
-                CurrentMouseNode.Position = new Vector3(CurrentMouseNode.Position.X, 0, CurrentMouseNode.Position.Z);
+                CurrentMouseNode.Position = new Vector2(CurrentMouseNode.Position.X, CurrentMouseNode.Position.Y);
                 CurrentMouseNode = null;
                 return;
             }
             if (CurrentMouseNode != null)
             {
-                CurrentMouseNode.Position = new Vector3(CurrentMouseNode.Position.X, 0, CurrentMouseNode.Position.Z);
+                CurrentMouseNode.Position = new Vector2(CurrentMouseNode.Position.X, CurrentMouseNode.Position.Y);
             }
             return;
         }
         if (obj == CurrentMouseNode) return;
         CurrentMouseNode ??= obj;
 
-        CurrentMouseNode.Position = new Vector3(CurrentMouseNode.Position.X, 0, CurrentMouseNode.Position.Z);
+        CurrentMouseNode.Position = new Vector2(CurrentMouseNode.Position.X, CurrentMouseNode.Position.Y);
         CurrentMouseNode = obj;
-        CurrentMouseNode.Position = new Vector3(CurrentMouseNode.Position.X, 0.25f, CurrentMouseNode.Position.Z);
+        CurrentMouseNode.Position = new Vector2(CurrentMouseNode.Position.X, CurrentMouseNode.Position.Y);
     }
 
     private void CameraInputHandling()
@@ -188,7 +188,7 @@ public partial class InputHandler : Node3D
         }
 
         unit.TileNode = CurrentMouseNode;
-        unit.Position = new Vector3(moveToNode.Position.X * 1.25f, moveToNode.TileHeight*1.25f, moveToNode.Position.Z * 1.25f);
+        unit.Position = new Vector2(moveToNode.Position.X * 1.25f, moveToNode.Position.Y * 1.25f);
         unit.PositionI = moveToNode.PositionI;
         currNode.Unit = null;
         moveToNode.Unit = unit;

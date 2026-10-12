@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 [Tool]
 [GlobalClass]
-public partial class TerrainGen : Node3D
+public partial class TerrainGen : Node2D
 {
     [Export]
     private PackedScene TerrainScene;
@@ -66,8 +66,7 @@ public partial class TerrainGen : Node3D
             var hexInstance = TerrainScene.Instantiate<Tile>();
             AddChild(hexInstance);
             hexInstance.Position = info.Position;
-            hexInstance.RotationDegrees = new Vector3(0, 90, 0);
-            hexInstance.Set(TileMaps[info.TileType], TopTileMaps[info.TileTopType], info.Position.X, info.Position.Z, info);
+            hexInstance.Set(TileMaps[info.TileType], TopTileMaps[info.TileTopType], info.Position.X, info.Position.Y, info);
             hexInstance.GenerateTile();
             info.tile = hexInstance;
         }
@@ -82,12 +81,12 @@ public partial class TerrainGen : Node3D
         
         return new Vector3(x, 0, z);
     }
-    public Vector2I WorldPositionToHex(Vector3 worldPos)
+    public Vector2I WorldPositionToHex(Vector2 worldPos)
     {
         float hexSize = 1.15f;
     
         float x = worldPos.X / hexSize;
-        float z = worldPos.Z / hexSize;
+        float z = worldPos.Y / hexSize;
     
         float q = (2.0f / 3.0f) * x;
         float r = (-1.0f / 3.0f) * x + (Mathf.Sqrt(3.0f) / 3.0f) * z;
@@ -98,7 +97,7 @@ public partial class TerrainGen : Node3D
     
         return new Vector2I(hexQ, hexR);
     }
-    public TerrainInfo GetTileAt(Vector3 pos)
+    public TerrainInfo GetTileAt(Vector2 pos)
     {
         var pos2i = WorldPositionToHex(pos);
         return worldInfo.TerrainInfo[pos2i];

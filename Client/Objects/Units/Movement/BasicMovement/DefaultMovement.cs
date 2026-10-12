@@ -6,9 +6,9 @@ using Packets.Util;
 public class DefaultMovement : IMovement
 {
     public IUnit Unit { get; set; }
-    public Node3D Node { get; set; }
+    public Node2D Node { get; set; }
     public HexPositionsMessage PrevMove { get; set; }
-    public void InitMovement(IUnit unit, Node3D node)
+    public void InitMovement(IUnit unit, Node2D node)
     {
         Unit = unit;
         Node = node;
@@ -28,11 +28,11 @@ public class DefaultMovement : IMovement
             }
             //move to it, wait till move
             var tween = Node.CreateTween();
-            Vector3 midpoint = Node.Position.Lerp(tile.Position, 0.5f);
-            tween.TweenProperty(Node, "position", new Vector3(midpoint.X, tile.TileHeight + 1, midpoint.Z), 0.2f).SetTrans(Tween.TransitionType.Linear).SetEase(Tween.EaseType.Out);
+            Vector2 midpoint = Node.Position.Lerp(tile.Position, 0.5f);
+            tween.TweenProperty(Node, "position", new Vector2(midpoint.X, midpoint.Y), 0.2f).SetTrans(Tween.TransitionType.Linear).SetEase(Tween.EaseType.Out);
             await tween.ToSignal(tween, Tween.SignalName.Finished);
             var tween2 = Node.CreateTween();
-            tween2.TweenProperty(Node, "position", new Vector3(tile.Position.X, tile.TileHeight, tile.Position.Z), 0.2f).SetTrans(Tween.TransitionType.Linear).SetEase(Tween.EaseType.In);
+            tween2.TweenProperty(Node, "position", new Vector2(tile.Position.X, tile.Position.Y), 0.2f).SetTrans(Tween.TransitionType.Linear).SetEase(Tween.EaseType.In);
             await tween2.ToSignal(tween2, Tween.SignalName.Finished);
         }
 

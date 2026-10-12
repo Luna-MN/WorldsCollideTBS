@@ -5,13 +5,13 @@ using System.Linq;
 using Packets;
 using Packets.Util;
 
-public partial class StartGame : Node3D, IState
+public partial class StartGame : Node2D, IState
 {
     [Export]
     public Log log { get; set; }
     [Export]
     private PackedScene unitScene, terrainScene;
-    [Export] private HNode3d unitTerrainNodes;
+    [Export] private HNode2d unitTerrainNodes;
     public bool IsSmoothState => false;
     public Node[] TransitionNodes { get; set; }
     public int selectedSeed;
@@ -105,12 +105,12 @@ public partial class StartGame : Node3D, IState
                 Globals.GM.CurrentGameData.EnemyUnits[unit.UnitId].PositionI = new Vector2I(unit.Position.X, unit.Position.Y);
             }
             log.info("Units received");
-            selectedGen.Scale = new Vector3(1, 1, 1);
+            selectedGen.Scale = new Vector2(1, 1);
             foreach (var tile in selectedGen.worldInfo.TerrainInfo.Values)
             {
                 if (tile.Unit != null)
                 {
-                    tile.Unit.Position = tile.Unit.TileNode.Position + new Vector3(0, tile.TileHeight, 0);
+                    tile.Unit.Position = tile.Unit.TileNode.Position + new Vector2(0, tile.TileHeight);
                         
                 }
 
@@ -160,7 +160,7 @@ public partial class StartGame : Node3D, IState
                 unitsMessages.Add(message);
             }
 
-            var n = new Node3D();
+            var n = new Node2D();
             AddChild(n);
             TransitionNodes = [n];
             selectedGen.GetParent().RemoveChild(selectedGen);
@@ -168,9 +168,9 @@ public partial class StartGame : Node3D, IState
             selectedGen.Name = "TerrainGen";
             foreach (var unit in Globals.GM.CurrentGameData.MyUnits.Values)
             {
-                (unit as Node3D).GetParent().RemoveChild(unit as Node3D);
-                n.CallDeferred("add_child", unit as Node3D);
-                (unit as Node3D).Name = unit.Data.UnitName + " " + unit.Data.UnitId;
+                (unit as Node2D).GetParent().RemoveChild(unit as Node2D);
+                n.CallDeferred("add_child", unit as Node2D);
+                (unit as Node2D).Name = unit.Data.UnitName + " " + unit.Data.UnitId;
             }
             log.info("Sending unit positions");
             TrafficManager.Send(PacketUtil.NewUnitPositionsPacket(unitsMessages));
@@ -197,7 +197,7 @@ public partial class StartGame : Node3D, IState
             unit.Data = unitData;
             AddChild(unit);
             var terrain = terrainList[unitIndex];
-            unit.Position = new Vector3(terrain.GlobalPosition.X, terrain.TerrainInfo.TileHeight, terrain.GlobalPosition.Z);
+            unit.Position = new Vector2(terrain.GlobalPosition.X, terrain.GlobalPosition.Y);
             Globals.GM.CurrentGameData.MyUnits.Add(unit.Data.UnitId, unit);
             terrain.TerrainInfo.Unit = unit;
         }

@@ -3,6 +3,6 @@
 [ext_resource type="Script" uid="uid://clmx0t3jjybt5" path="res://Objects/Units/Units/UniversalUnit/UniversalUnit.cs" id="1_7aepl"]
 [ext_resource type="PackedScene" uid="uid://byvv1roqwvxwe" path="res://Objects/Units/Mesh/DefaultUnit.tscn" id="3_cg75n"]
 
-[node name="UniversalUnit" type="Node3D" unique_id=272241028]
+[node name="UniversalUnit" type="Node2D" unique_id=327657892]
 script = ExtResource("1_7aepl")
 DefaultMeshScene = ExtResource("3_cg75n")

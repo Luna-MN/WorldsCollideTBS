@@ -4,10 +4,10 @@ using Godot;
 public interface IUnit
 {
 
-    public Vector3 Position { get; set; }
+    public Vector2 Position { get; set; }
     public Vector2I PositionI { get; set; }
     public UnitData Data { get; set; }
-    public Node3D TileNode { get; set; }
+    public Node2D TileNode { get; set; }
     public bool Used { get; set; }
     
     public void InitUnit();

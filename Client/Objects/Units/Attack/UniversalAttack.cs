@@ -9,7 +9,7 @@ public class UniversalAttack : UniversalSkill
         return Data.Name;
     }
     
-    public override void Init(IUnit unit, Node3D node, SkillDataJSON data)
+    public override void Init(IUnit unit, Node2D node, SkillDataJSON data)
     {
         base.Init(unit, node, data);
         Data = data;

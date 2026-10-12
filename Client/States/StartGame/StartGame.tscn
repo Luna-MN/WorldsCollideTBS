@@ -5,20 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://dpj6k736hcvn3" path="res://Objects/TerrainGen/terrain_gen.tscn" id="2_8ltj8"]
 [ext_resource type="PackedScene" uid="uid://cnon35carkjsy" path="res://Objects/Units/Units/UniversalUnit/UniversalUnit.tscn" id="2_ine34"]
 [ext_resource type="Script" uid="uid://cdmsp2jh00nj4" path="res://Classes/Input/InputHandler.cs" id="4_m5vh7"]
-[ext_resource type="FastNoiseLite" uid="uid://ba5qt6qlj6qqf" path="res://player.tres" id="5_v8l31"]
 [ext_resource type="PackedScene" uid="uid://cu3o8617lux7i" path="res://Objects/Camera/Camera.tscn" id="6_wq6jh"]
-[ext_resource type="PackedScene" uid="uid://c0xwnx7lwkvf6" path="res://Classes/HNode3D/HNode3D.tscn" id="7_w43px"]
+[ext_resource type="PackedScene" path="res://Classes/HNode3D/HNode3D.tscn" id="7_w43px"]
 [ext_resource type="PackedScene" uid="uid://bkus0sc0dnr6" path="res://Objects/CustomTerrainInfo/CustomTerrainInfo.tscn" id="8_ine34"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wq6jh"]
-seed = 207
-frequency = 0.693
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_s6kuv"]
-seed = 178
-frequency = 0.693
-
-[node name="StartGame" type="Node3D" unique_id=341148836 node_paths=PackedStringArray("log", "unitTerrainNodes", "terrainGen1", "terrainGen2", "terrainGen3", "LeftSide", "RightSide", "inputHandler", "confirm")]
+[node name="StartGame" type="Node2D" unique_id=1382653912 node_paths=PackedStringArray("log", "unitTerrainNodes", "terrainGen1", "terrainGen2", "terrainGen3", "LeftSide", "RightSide", "inputHandler", "confirm")]
 script = ExtResource("1_8ltj8")
 log = NodePath("CanvasLayer/Log")
 unitScene = ExtResource("2_ine34")
@@ -29,7 +20,7 @@ terrainGen2 = NodePath("TerrainGen2")
 terrainGen3 = NodePath("TerrainGen3")
 LeftSide = NodePath("LeftSide")
 RightSide = NodePath("RightSide")
-inputHandler = NodePath("Input")
+inputHandler = NodePath("")
 confirm = NodePath("CanvasLayer/Confirm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=991551011]
@@ -51,47 +42,42 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Confirm"
 
-[node name="Input" type="Node3D" parent="." unique_id=994854221]
+[node name="Input" type="Node2D" parent="." unique_id=363015838]
 script = ExtResource("4_m5vh7")
 
 [node name="TerrainGen" parent="." unique_id=116907696 instance=ExtResource("2_8ltj8")]
-Radius = 2
-noise = SubResource("FastNoiseLite_wq6jh")
-DefaultTile = 3
 
 [node name="TerrainGen2" parent="." unique_id=20943194 instance=ExtResource("2_8ltj8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.031076, 0, 0)
-Radius = 2
-noise = SubResource("FastNoiseLite_s6kuv")
-DefaultTile = 3
+position = Vector2(-13.031076, 0)
 
 [node name="TerrainGen3" parent="." unique_id=765626791 instance=ExtResource("2_8ltj8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.031, 0, 0)
-Radius = 2
-noise = ExtResource("5_v8l31")
-DefaultTile = 3
+position = Vector2(13.031, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1650520879]
 transform = Transform3D(1, 0, 0, 0, 0.7425576, 0.6697823, 0, -0.6697823, 0.7425576, 0, 14.22217, 8.484977)
 
 [node name="Camera" parent="." unique_id=1675463847 instance=ExtResource("6_wq6jh")]
 transform = Transform3D(1, 0, 0, 0, 0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, 0, 18, 6.5)
+current = true
 
 [node name="Input" parent="Camera" index="0" unique_id=1912598540 node_paths=PackedStringArray("startGame")]
 StoreNode = false
-MainGame = false
 StartGame = true
-startGame = NodePath("../..")
+startGame = NodePath("")
+MainGame = false
 
 [node name="HNode3D" parent="." unique_id=1432245861 instance=ExtResource("7_w43px")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.9528837)
+script = null
 
 [node name="RightSide" parent="." unique_id=1388308053 instance=ExtResource("8_ine34")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -13.031, 0, 0)
 visible = false
+script = null
 
 [node name="LeftSide" parent="." unique_id=1693387099 instance=ExtResource("8_ine34")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 13.031, 0, 0)
 visible = false
+script = null
 
 [editable path="Camera"]

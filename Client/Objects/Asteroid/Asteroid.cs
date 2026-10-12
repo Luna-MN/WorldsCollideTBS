@@ -1,18 +1,18 @@
 using Godot;
 using System;
 
-public partial class Asteroid : Node3D
+public partial class Asteroid : Node2D
 {
     [Export]
     private CustomTerrainInfo TerrainInfo;
     [Export]
     private float speed;
     [Export]
-    private Area3D Area;
+    private Area2D Area;
     public int DestroyTimerTime;
     private Timer DestroyTimer;
-    private Vector3 StartPos;
-    private Vector3 StopPos;
+    private Vector2 StartPos;
+    private Vector2 StopPos;
     public override void _Ready()
     {
         DestroyTimer = new Timer()
@@ -24,7 +24,7 @@ public partial class Asteroid : Node3D
         DestroyTimer.Timeout += async () =>
         {
             var tw = CreateTween();
-            tw.TweenProperty(this, "scale", new Vector3(0.001f, 0.001f, 0.001f), 1f).SetTrans(Tween.TransitionType.Bounce).SetEase(Tween.EaseType.Out);
+            tw.TweenProperty(this, "scale", new Vector2(0.001f, 0.001f), 1f).SetTrans(Tween.TransitionType.Bounce).SetEase(Tween.EaseType.Out);
             await tw.ToSignal(tw, Tween.SignalName.Finished);
             QueueFree();
         };
@@ -33,14 +33,14 @@ public partial class Asteroid : Node3D
         var dir = rng.RandiRange(0, 3);
         Position = dir switch
         {
-            0 => new Vector3(rng.RandfRange(-30, 30), 0, rng.RandfRange(-30, -25)),
-            1 => new Vector3(rng.RandfRange(25, 30), 0, rng.RandfRange(-30, 30)),
-            2 => new Vector3(rng.RandfRange(-30, 30), 0, rng.RandfRange(25, 30)),
-            3 => new Vector3(rng.RandfRange(-30, -25), 0, rng.RandfRange(-30, 30)),
+            0 => new Vector2(rng.RandfRange(-30, 30), rng.RandfRange(-30, -25)),
+            1 => new Vector2(rng.RandfRange(25, 30), rng.RandfRange(-30, 30)),
+            2 => new Vector2(rng.RandfRange(-30, 30), rng.RandfRange(25, 30)),
+            3 => new Vector2(rng.RandfRange(-30, -25), rng.RandfRange(-30, 30)),
             _ => Position
         };
         StartPos = Position;
-        StopPos = new Vector3(rng.RandfRange(-30, 30), 0, rng.RandfRange(-30, 30));
+        StopPos = new Vector2(rng.RandfRange(-30, 30), rng.RandfRange(-30, 30));
     }
     
 

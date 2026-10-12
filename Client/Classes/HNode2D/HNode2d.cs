@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 [Tool]
 [GlobalClass]
-public partial class HNode3d : Node3D
+public partial class HNode2d : Node2D
 {
     [ExportToolButton("Generate Children")]
     private Callable GenerateChildrenCallable => Callable.From(GenerateChildren);
@@ -18,8 +18,8 @@ public partial class HNode3d : Node3D
     [Export] public Direction Dir;
     [Export] public float FullSize;
 
-    private readonly List<Node3D> Children = [];
-    private Vector3 D;
+    private readonly List<Node2D> Children = [];
+    private Vector2 D;
 
     public override void _EnterTree()
     {
@@ -36,11 +36,11 @@ public partial class HNode3d : Node3D
 
     private void OnChildEnteredTree(Node child)
     {
-        if (child is not Node3D node3D)
+        if (child is not Node2D node2D)
             return;
 
-        if (!Children.Contains(node3D))
-            Children.Add(node3D);
+        if (!Children.Contains(node2D))
+            Children.Add(node2D);
 
         GenerateChildren();
     }
@@ -51,8 +51,8 @@ public partial class HNode3d : Node3D
 
         foreach (Node child in GetChildren())
         {
-            if (child is Node3D node3D)
-                Children.Add(node3D);
+            if (child is Node2D node2D)
+                Children.Add(node2D);
         }
     }
 
@@ -60,24 +60,23 @@ public partial class HNode3d : Node3D
     {
         D = Dir switch
         {
-            Direction.X => new Vector3(1, 0, 0),
-            Direction.Y => new Vector3(0, 1, 0),
-            Direction.Z => new Vector3(0, 0, 1),
-            _ => Vector3.Zero
+            Direction.X => new Vector2(1, 0),
+            Direction.Y => new Vector2(0, 1),
+            _ => Vector2.Zero
         };
 
         int childCount = Children.Count;
 
         for (int i = 0; i < childCount; i++)
         {
-            Node3D child = Children[i];
+            Node2D child = Children[i];
 
             if (!IsInstanceValid(child))
                 continue;
 
             if (childCount == 1)
             {
-                child.Position = Vector3.Zero;
+                child.Position = Vector2.Zero;
             }
             else
             {

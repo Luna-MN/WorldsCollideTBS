@@ -8,7 +8,7 @@ public partial class AsteroidVisability : Area3D
         AreaEntered += (async body =>
         {
             var tw = CreateTween();
-            tw.TweenProperty(body.GetParent<Node3D>(), "scale", new Vector3(0.001f, 0.001f, 0.001f), 1f).SetTrans(Tween.TransitionType.Bounce).SetEase(Tween.EaseType.Out);
+            tw.TweenProperty(body.GetParent<Node2D>(), "scale", new Vector2(0.001f, 0.001f), 1f).SetTrans(Tween.TransitionType.Bounce).SetEase(Tween.EaseType.Out);
             await tw.ToSignal(tw, Tween.SignalName.Finished);
             body.Visible = false;
         });
@@ -16,7 +16,7 @@ public partial class AsteroidVisability : Area3D
         {
             var tw = CreateTween();
             body.Visible = true;
-            tw.TweenProperty(body.GetParent<Node3D>(), "scale", new Vector3(1f, 1f, 1f), 1f).SetTrans(Tween.TransitionType.Bounce).SetEase(Tween.EaseType.Out);
+            tw.TweenProperty(body.GetParent<Node2D>(), "scale", new Vector2(1f, 1f), 1f).SetTrans(Tween.TransitionType.Bounce).SetEase(Tween.EaseType.Out);
         });
     }
 }

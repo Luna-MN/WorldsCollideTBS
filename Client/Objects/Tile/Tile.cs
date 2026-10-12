@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 
 [Tool]
-public partial class Tile : Node3D
+public partial class Tile : Node2D
 {
     
     [Export] 
-    private Node3D NodeParent;
+    private Node2D NodeParent;
     [Export]
-    public StaticBody3D StaticBody;
+    public StaticBody2D StaticBody;
     [Export]
     private Material SelectMaterial;
     private Material ActualMaterial;
@@ -18,7 +18,7 @@ public partial class Tile : Node3D
     public TerrainInfo TerrainInfo;
     private float X;
     private float Z;
-    private List<Node3D> Nodes = new();
+    private List<Node2D> Nodes = new();
     private bool Selected;
     
     public Tile() { }
@@ -41,28 +41,26 @@ public partial class Tile : Node3D
     }
     public void GenerateTile()
     {
-        Position = new Vector3(X, 0, Z);
+        Position = new Vector2(X, Z);
         PackedScene PS = null;
         for (int i = 0; i <= TerrainInfo.TileHeight; i++)
         {
             PS = TileMap[TerrainInfo, i].TileNode;
             
-            Nodes.Add(PS.Instantiate<Node3D>());
+            Nodes.Add(PS.Instantiate<Node2D>());
             ActualMaterial = Nodes[i].GetChild<MeshInstance3D>(0).GetSurfaceOverrideMaterial(0);
             NodeParent.AddChild(Nodes[i]);
             Nodes[i].Owner = GetTree().EditedSceneRoot;
-            Nodes[i].Position = new Vector3(0, i, 0);
-            Nodes[i].RotationDegrees = new Vector3(0, TileUtil.GetTileRotation(TerrainInfo, TileUtil.GetState(TerrainInfo, i)), 0);
+            Nodes[i].Position = new Vector2(0, i);
+            Nodes[i].RotationDegrees = TileUtil.GetTileRotation(TerrainInfo, TileUtil.GetState(TerrainInfo, i));
         }
         if (TerrainInfo.TileTopType != TileUtil.TileTopType.None && TerrainInfo.TileType == TileUtil.TileType.Grass)
         {
             var TPS = TopTileMap[TerrainInfo.TopTileState].TileNode;
-            var topNode = TPS.Instantiate<Node3D>();
+            var topNode = TPS.Instantiate<Node2D>();
             AddChild(topNode);
             topNode.Owner = GetTree().EditedSceneRoot;
-            topNode.Position = new Vector3(0, TerrainInfo.TileHeight, 0);
         }
-        StaticBody.Position = new Vector3(0, TerrainInfo.TileHeight, 0);
     }
 
     public Tile Select(Func<Tile, bool> func)
@@ -73,7 +71,7 @@ public partial class Tile : Node3D
         }
         if (Selected) return this;
         
-        foreach (Node3D node in Nodes)
+        foreach (Node2D node in Nodes)
         {
             var mesh = node.GetChild<MeshInstance3D>(0);
             mesh.SetSurfaceOverrideMaterial(0, SelectMaterial);
@@ -84,7 +82,7 @@ public partial class Tile : Node3D
 
     public void Deselect()
     {
-        foreach (Node3D node in Nodes)
+        foreach (Node2D node in Nodes)
         {
             var mesh = node.GetChild<MeshInstance3D>(0);
             mesh.SetSurfaceOverrideMaterial(0, ActualMaterial);

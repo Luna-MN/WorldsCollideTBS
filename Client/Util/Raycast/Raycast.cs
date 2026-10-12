@@ -5,57 +5,37 @@ namespace Util;
 
 public static class RayCast
 {
-    public static Viewport port;
     public static SceneTree tree;
-    public static World3D world;
 
-    public static void Set(SceneTree tree, Viewport viewport, World3D world)
+    public static void Set(SceneTree tree)
     {
         RayCast.tree = tree;
-        RayCast.port = viewport;
-        RayCast.world = world;
     }
 
-    public static Vector3 CastPosition()
+    public static Vector2 CastPosition()
     {
         Dictionary result = Cast();
-        if (result == null) return Vector3.Zero;
+        if (result == null) return Vector2.Zero;
         if (result.TryGetValue("position", out var positionVariant))
-            return (Vector3)positionVariant;
-        return Vector3.Zero;
+            return (Vector2)positionVariant;
+        return Vector2.Zero;
     }
 
     public static Dictionary Cast()
     {
-        if (world == null || port == null || tree == null)
+         var query = new PhysicsPointQueryParameters2D()
+
         {
-            GD.Print(port, world, tree);
-            return null;
-        }
 
-        Camera3D cam = tree.Root.GetCamera3D();
-        if (cam == null)
-        {
-            // No active camera yet (or current camera is not in the root viewport).
-            return null;
-        }
+        Position = tree.Root.GetViewport().GetMousePosition(),
 
-        PhysicsDirectSpaceState3D spaceState = world.DirectSpaceState;
-        Vector2 mousePos = port.GetMousePosition();
+        CollideWithAreas = true
 
-        var rayO = cam.ProjectRayOrigin(mousePos);
-        var rayE = rayO + cam.ProjectRayNormal(mousePos) * 2000f;
+        };
 
-        var query = PhysicsRayQueryParameters3D.Create(rayO, rayE);
-        query.CollideWithAreas = true;
-        query.CollideWithBodies = true;
-        query.SetCollisionMask(1);
-
-        Dictionary result = spaceState.IntersectRay(query);
-        
-        return result;
+        return tree.Root.GetWorld2D().DirectSpaceState.IntersectPoint(query)[0]; 
     }
-    public static T CastObject<T>() where T : Node3D
+    public static T CastObject<T>() where T : Node2D
     {
         Dictionary result = Cast();
         if (result == null) return null;

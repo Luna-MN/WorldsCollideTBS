@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Asteroids : Node3D
+public partial class Asteroids : Node2D
 {
     [Export] public int CreationTimerTime;
     [Export] public int AsteroidCount;

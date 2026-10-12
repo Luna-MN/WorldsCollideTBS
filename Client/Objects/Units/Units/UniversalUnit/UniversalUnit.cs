@@ -6,12 +6,12 @@ using System.Reflection;
 using Packets;
 using Packets.Util;
 
-public partial class UniversalUnit : Node3D, IUnit
+public partial class UniversalUnit : Node2D, IUnit
 {
     private const string MeshFolderPath = "res://Objects/Units/Mesh";
 
     public UnitData Data { get; set; }
-    public Node3D TileNode { get; set; }
+    public Node2D TileNode { get; set; }
     [Export] public PackedScene MeshScene, DefaultMeshScene;
     public DefaultUnit Mesh;
     public Color Color;

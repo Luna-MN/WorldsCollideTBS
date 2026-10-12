@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c0xwnx7lwkvf6"]
+
+[ext_resource type="Script" uid="uid://y2om5qvnx4os" path="res://Classes/HNode2D/HNode2d.cs" id="1_5rjgo"]
+
+[node name="HNode2D" type="Node2D" unique_id=677277185]
+script = ExtResource("1_5rjgo")
+metadata/_custom_type_script = "uid://y2om5qvnx4os"

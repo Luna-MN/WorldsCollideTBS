@@ -47,7 +47,7 @@ public class WorldInfo
                 tileInfo.PositionI = new Vector2I(q, r);
                 Vector2I hexCoord = new Vector2I(q, r);
                 
-                var v = noise.GetNoise2D(tileInfo.Position.X, tileInfo.Position.Z) + 1;
+                var v = noise.GetNoise2D(tileInfo.Position.X, tileInfo.Position.Y) + 1;
                 float scaledValue = v * Amplitude;
                 int val = (int)Math.Round(scaledValue * 2) / 2;
                 tileInfo.TileHeight = val;
@@ -149,14 +149,14 @@ public class WorldInfo
         var neighbors = GetHexNeighborCoords(q, r);
         return neighbors.Count < 6;
     }
-    private Vector3 HexToWorldPosition(int q, int r)
+    private Vector2 HexToWorldPosition(int q, int r)
     {
         float hexSize = 1.15f;
         
         float x = hexSize * (3.0f / 2.0f * q);
         float z = hexSize * (Mathf.Sqrt(3.0f) / 2.0f * q + Mathf.Sqrt(3.0f) * r);
         
-        return new Vector3(x, 0, z);
+        return new Vector2(x, z);
     }
     public IFeature GetRandomFeature()
     {

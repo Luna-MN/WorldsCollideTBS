@@ -1,32 +1,21 @@
 [gd_scene format=3 uid="uid://dwesn8b3yi8wa"]
 
-[ext_resource type="Script" uid="uid://cc68a6xx4w38q" path="res://Objects/Tile/Tile.cs" id="1_rltd0"]
-[ext_resource type="Texture2D" uid="uid://syjmjdqa6mg7" path="res://KayKit Medieval Hexagon Pack 1.0.1/Textures/hexagons_medieval_Winter.png" id="2_wbcmx"]
+[node name="Tile" type="Node2D" unique_id=1815114462]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdd56"]
-albedo_texture = ExtResource("2_wbcmx")
+[node name="Collision" type="StaticBody2D" parent="." unique_id=1269402439]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
-size = Vector3(1.1643311, 0.8927002, 1.9956055)
+[node name="CollisionShape3D" type="CollisionShape2D" parent="Collision" unique_id=1339953952]
+position = Vector2(0, -0.5)
+scale = Vector2(0.8660253, 0.99999994)
 
-[node name="Tile" type="Node3D" unique_id=405162964 node_paths=PackedStringArray("NodeParent", "StaticBody")]
-script = ExtResource("1_rltd0")
-NodeParent = NodePath("Tiles")
-StaticBody = NodePath("Collision")
-SelectMaterial = SubResource("StandardMaterial3D_jdd56")
+[node name="CollisionShape3D2" type="CollisionShape2D" parent="Collision" unique_id=1599237135]
+position = Vector2(-0.0023671035, -0.5)
+rotation = 3.1415927
+scale = Vector2(4.3711385e-08, -0.99999994)
 
-[node name="Collision" type="StaticBody3D" parent="." unique_id=1080447204]
+[node name="CollisionShape3D3" type="CollisionShape2D" parent="Collision" unique_id=1392805233]
+position = Vector2(0, -0.5)
+rotation = 3.1415927
+scale = Vector2(0.8660253, -0.9999999)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=28048712]
-transform = Transform3D(0.8660253, 0, -0.49999997, 0, 0.99999994, 0, 0.49999997, 0, 0.8660253, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_a0tk4")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=2049618266]
-transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 0.99999994, 0, 0.9999999, 0, -4.3711385e-08, -0.0023671035, -0.5, 0.018946487)
-shape = SubResource("BoxShape3D_a0tk4")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Collision" unique_id=1896475019]
-transform = Transform3D(-0.8660253, 0, -0.5, 0, 0.9999999, 0, 0.5, 0, -0.8660253, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_a0tk4")
-
-[node name="Tiles" type="Node3D" parent="." unique_id=1719346823]
+[node name="Tiles" type="Node2D" parent="." unique_id=599909791]

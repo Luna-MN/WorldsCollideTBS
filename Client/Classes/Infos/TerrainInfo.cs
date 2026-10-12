@@ -6,7 +6,7 @@ public class TerrainInfo
     public TileUtil.TileType TileType;
     public TileUtil.TileTopType TileTopType = TileUtil.TileTopType.None;
     public TileUtil.TileTopState TopTileState = TileUtil.TileTopState.Small;
-    public Vector3 Position;
+    public Vector2 Position;
     public Vector2I PositionI;
     public Vector2I PositionL;
     public TerrainInfo[] Neighbours;

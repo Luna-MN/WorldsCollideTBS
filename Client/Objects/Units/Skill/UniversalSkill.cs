@@ -13,8 +13,8 @@ public class UniversalSkill : ISkill
         return "UniversalSkill";
     }
 
-    public Node3D Node { get; set; }
-    public virtual void Init(IUnit unit, Node3D node, SkillDataJSON data)
+    public Node2D Node { get; set; }
+    public virtual void Init(IUnit unit, Node2D node, SkillDataJSON data)
     {
         Node = node;
         Unit = unit;
