@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldsCollideTBS", "WorldsCollideTBS.csproj", "{56E5860E-9085-4BCF-822D-2372C4315FB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldsCollideTBS", "WorldsCollideTBS.csproj", "{63C2535D-3866-4011-B9DB-3E170A4CC159}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{56E5860E-9085-4BCF-822D-2372C4315FB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56E5860E-9085-4BCF-822D-2372C4315FB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56E5860E-9085-4BCF-822D-2372C4315FB2}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{56E5860E-9085-4BCF-822D-2372C4315FB2}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{56E5860E-9085-4BCF-822D-2372C4315FB2}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{56E5860E-9085-4BCF-822D-2372C4315FB2}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{63C2535D-3866-4011-B9DB-3E170A4CC159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63C2535D-3866-4011-B9DB-3E170A4CC159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63C2535D-3866-4011-B9DB-3E170A4CC159}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{63C2535D-3866-4011-B9DB-3E170A4CC159}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{63C2535D-3866-4011-B9DB-3E170A4CC159}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{63C2535D-3866-4011-B9DB-3E170A4CC159}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

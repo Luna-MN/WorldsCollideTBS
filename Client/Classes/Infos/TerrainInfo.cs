@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Godot;
 [Tool]
 public class TerrainInfo
@@ -9,7 +10,9 @@ public class TerrainInfo
     public Vector2 Position;
     public Vector2I PositionI;
     public Vector2I PositionL;
+    public int z;
     public TerrainInfo[] Neighbours;
+    public Dictionary< TerrainInfo, TileUtil.TileConnection> Connections;
     public bool Connected;
     public TerrainInfo NextTile;
     public TerrainInfo PreviousTile;
@@ -30,15 +33,6 @@ public class TerrainInfo
                 break;
             case TileUtil.TileTopType.Stone:
                 MovementCost = 3;
-                break;
-        }
-        switch (TileType)
-        {
-            case TileUtil.TileType.River:
-                MovementCost += 1;
-                break;
-            case TileUtil.TileType.Path:
-                MovementCost -= 2;
                 break;
         }
         

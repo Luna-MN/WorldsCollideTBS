@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dpj6k736hcvn3" path="res://Objects/TerrainGen/terrain_gen.tscn" id="1_1okw7"]
 [ext_resource type="Script" uid="uid://s66m5lx16fx5" path="res://States/MainGame/MainGame.cs" id="1_bg3qp"]
+[ext_resource type="Script" uid="uid://cc68a6xx4w38q" path="res://Objects/Tile/Tile.cs" id="4_hc3n2"]
+[ext_resource type="PackedScene" uid="uid://vda8hjhwh5w8" path="res://Scenes/Tiles/BasicTile.tscn" id="5_v43kf"]
+[ext_resource type="PackedScene" uid="uid://sobe36aafjk1" path="res://Scenes/Tiles/Height.tscn" id="6_8kttb"]
 [ext_resource type="PackedScene" uid="uid://ceul7nhtxbjd7" path="res://Classes/Log/log.tscn" id="7_el7pk"]
-[ext_resource type="PackedScene" uid="uid://bs4kl2fhqfucl" path="res://Objects/Asteroid/Asteroid.tscn" id="8_hupsw"]
 [ext_resource type="PackedScene" uid="uid://cu3o8617lux7i" path="res://Objects/Camera/Camera.tscn" id="8_tpv42"]
 [ext_resource type="Script" uid="uid://c1wgyu68ppngp" path="res://States/MainGame/Ui.cs" id="15_tpv42"]
 [ext_resource type="PackedScene" uid="uid://baxipibyd5q0r" path="res://Objects/UnitPanel/UnitPanel.tscn" id="17_t3o0p"]
 [ext_resource type="PackedScene" uid="uid://c0gwboyvfmmbd" path="res://Classes/Menu/menu.tscn" id="18_14ulb"]
-[ext_resource type="Script" uid="uid://ce8fekstn4ulv" path="res://States/MainGame/AsteroidStuff/Asteroids.cs" id="18_hupsw"]
-[ext_resource type="Script" uid="uid://cw5qy36ivay4o" path="res://States/MainGame/AsteroidStuff/AsteroidVisability.cs" id="21_14ulb"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tpv42"]
 
@@ -29,23 +29,474 @@ TerrainGen2 = NodePath("TerrainGen2")
 UI = NodePath("UI")
 
 [node name="TerrainGen1" parent="." unique_id=314974575 instance=ExtResource("1_1okw7")]
-position = Vector2(-13.8, 0)
+z_index = 15
+position = Vector2(559.35, 543)
+Radius = 2
+ZNeg = -2
 
 [node name="Camera" parent="." unique_id=1675463847 instance=ExtResource("8_tpv42")]
-position = Vector2(0, 18)
+position = Vector2(960, 541)
 scale = Vector2(1, 0.34202015)
 
-[node name="Input" parent="Camera" index="0" unique_id=256524759 node_paths=PackedStringArray("mainGame")]
+[node name="Input" parent="Camera" index="0" unique_id=256524759]
 StoreNode = false
-mainGame = NodePath("")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Camera" unique_id=1163095000]
 environment = SubResource("Environment_xi4mn")
 
 [node name="TerrainGen2" parent="." unique_id=283917659 instance=ExtResource("1_1okw7")]
-position = Vector2(13.8, 0)
+z_index = 5
+position = Vector2(1363.335, 543.1)
+Radius = 2
 
 [node name="MainTerrainGen" parent="." unique_id=116907696 instance=ExtResource("1_1okw7")]
+z_index = 7
+position = Vector2(961.335, 543.055)
+Zbonus = 3
+
+[node name="@Node2D@21057" parent="MainTerrainGen" index="0" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 3
+position = Vector2(-200.99701, -72.04465)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21057" index="2" unique_id=1800176544 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21058" parent="MainTerrainGen" index="1" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 4
+position = Vector2(-200.99701, -24.014881)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21058" index="2" unique_id=1057691476 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21059" type="Node2D" parent="MainTerrainGen/@Node2D@21058" index="3" unique_id=124236703 instance=ExtResource("6_8kttb")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21060" parent="MainTerrainGen" index="2" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 5
+position = Vector2(-200.99701, 24.014885)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21060" index="2" unique_id=609859778 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21061" type="Node2D" parent="MainTerrainGen/@Node2D@21060" index="3" unique_id=1466293158 instance=ExtResource("6_8kttb")]
+z_index = 102
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21062" parent="MainTerrainGen" index="3" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 6
+position = Vector2(-200.99701, 72.04465)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21062" index="2" unique_id=1533343384 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21063" parent="MainTerrainGen" index="4" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 2
+position = Vector2(-133.998, -96.05953)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21063" index="2" unique_id=1650029116 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21064" type="Node2D" parent="MainTerrainGen/@Node2D@21063" index="3" unique_id=432484690 instance=ExtResource("6_8kttb")]
+z_index = 99
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21065" parent="MainTerrainGen" index="5" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 3
+position = Vector2(-133.998, -48.029766)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21065" index="2" unique_id=1625734104 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21066" type="Node2D" parent="MainTerrainGen/@Node2D@21065" index="3" unique_id=2024411664 instance=ExtResource("6_8kttb")]
+z_index = 100
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21067" parent="MainTerrainGen" index="6" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 4
+position = Vector2(-133.998, 0)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21067" index="2" unique_id=870719833 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21068" type="Node2D" parent="MainTerrainGen/@Node2D@21067" index="3" unique_id=1968689423 instance=ExtResource("6_8kttb")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21069" parent="MainTerrainGen" index="7" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 5
+position = Vector2(-133.998, 48.029766)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21069" index="2" unique_id=1201541049 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21070" type="Node2D" parent="MainTerrainGen/@Node2D@21069" index="3" unique_id=2025017544 instance=ExtResource("6_8kttb")]
+z_index = 102
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21071" parent="MainTerrainGen" index="8" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 6
+position = Vector2(-133.998, 96.059525)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21071" index="2" unique_id=1839444495 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21072" type="Node2D" parent="MainTerrainGen/@Node2D@21071" index="3" unique_id=1239212461 instance=ExtResource("6_8kttb")]
+z_index = 103
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21073" parent="MainTerrainGen" index="9" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 1
+position = Vector2(-66.999, -120.07441)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21073" index="2" unique_id=851505376 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21074" type="Node2D" parent="MainTerrainGen/@Node2D@21073" index="3" unique_id=1105830404 instance=ExtResource("6_8kttb")]
+z_index = 98
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21075" parent="MainTerrainGen" index="10" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 2
+position = Vector2(-66.999, -72.04465)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21075" index="2" unique_id=1506290262 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21076" type="Node2D" parent="MainTerrainGen/@Node2D@21075" index="3" unique_id=1157717154 instance=ExtResource("6_8kttb")]
+z_index = 99
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21077" parent="MainTerrainGen" index="11" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 3
+position = Vector2(-66.999, -24.014883)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21077" index="2" unique_id=426345948 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21078" type="Node2D" parent="MainTerrainGen/@Node2D@21077" index="3" unique_id=1338701029 instance=ExtResource("6_8kttb")]
+z_index = 100
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21079" parent="MainTerrainGen" index="12" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 4
+position = Vector2(-66.999, 24.014883)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21079" index="2" unique_id=1373373478 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21080" type="Node2D" parent="MainTerrainGen/@Node2D@21079" index="3" unique_id=698648357 instance=ExtResource("6_8kttb")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21081" parent="MainTerrainGen" index="13" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 5
+position = Vector2(-66.999, 72.04465)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21081" index="2" unique_id=765183168 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21082" parent="MainTerrainGen" index="14" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 6
+position = Vector2(-66.999, 120.07441)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21082" index="2" unique_id=1572281083 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21083" parent="MainTerrainGen" index="15" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+position = Vector2(0, -144.0893)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21083" index="2" unique_id=135362325 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21084" type="Node2D" parent="MainTerrainGen/@Node2D@21083" index="3" unique_id=1887889863 instance=ExtResource("6_8kttb")]
+z_index = 97
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21085" parent="MainTerrainGen" index="16" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 1
+position = Vector2(0, -96.05953)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21085" index="2" unique_id=1447906644 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21086" type="Node2D" parent="MainTerrainGen/@Node2D@21085" index="3" unique_id=453886165 instance=ExtResource("6_8kttb")]
+z_index = 98
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21087" parent="MainTerrainGen" index="17" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 2
+position = Vector2(0, -48.029766)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21087" index="2" unique_id=1461396542 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21088" parent="MainTerrainGen" index="18" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 3
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21088" index="2" unique_id=1818236182 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21089" type="Node2D" parent="MainTerrainGen/@Node2D@21088" index="3" unique_id=81306617 instance=ExtResource("6_8kttb")]
+z_index = 100
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21090" parent="MainTerrainGen" index="19" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 4
+position = Vector2(0, 48.029766)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21090" index="2" unique_id=538550693 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21091" type="Node2D" parent="MainTerrainGen/@Node2D@21090" index="3" unique_id=140543746 instance=ExtResource("6_8kttb")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21092" parent="MainTerrainGen" index="20" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 5
+position = Vector2(0, 96.05953)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21092" index="2" unique_id=1797346078 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21093" type="Node2D" parent="MainTerrainGen/@Node2D@21092" index="3" unique_id=1255028120 instance=ExtResource("6_8kttb")]
+z_index = 102
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21094" parent="MainTerrainGen" index="21" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 6
+position = Vector2(0, 144.0893)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21094" index="2" unique_id=746877405 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21095" type="Node2D" parent="MainTerrainGen/@Node2D@21094" index="3" unique_id=1062646266 instance=ExtResource("6_8kttb")]
+z_index = 103
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21096" parent="MainTerrainGen" index="22" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+position = Vector2(66.999, -120.07441)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21096" index="2" unique_id=982957143 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21097" type="Node2D" parent="MainTerrainGen/@Node2D@21096" index="3" unique_id=1885346760 instance=ExtResource("6_8kttb")]
+z_index = 97
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21098" parent="MainTerrainGen" index="23" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 1
+position = Vector2(66.999, -72.04465)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21098" index="2" unique_id=1670552854 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21099" type="Node2D" parent="MainTerrainGen/@Node2D@21098" index="3" unique_id=1509628057 instance=ExtResource("6_8kttb")]
+z_index = 98
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21100" parent="MainTerrainGen" index="24" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 2
+position = Vector2(66.999, -24.014883)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21100" index="2" unique_id=1971743785 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21101" type="Node2D" parent="MainTerrainGen/@Node2D@21100" index="3" unique_id=570662380 instance=ExtResource("6_8kttb")]
+z_index = 99
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21102" parent="MainTerrainGen" index="25" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 3
+position = Vector2(66.999, 24.014883)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21102" index="2" unique_id=818031965 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21103" type="Node2D" parent="MainTerrainGen/@Node2D@21102" index="3" unique_id=1411919981 instance=ExtResource("6_8kttb")]
+z_index = 100
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21104" parent="MainTerrainGen" index="26" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 4
+position = Vector2(66.999, 72.04465)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21104" index="2" unique_id=935484626 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21105" type="Node2D" parent="MainTerrainGen/@Node2D@21104" index="3" unique_id=1279502983 instance=ExtResource("6_8kttb")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21106" parent="MainTerrainGen" index="27" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 5
+position = Vector2(66.999, 120.07441)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21106" index="2" unique_id=1878910219 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21107" parent="MainTerrainGen" index="28" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+position = Vector2(133.998, -96.059525)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21107" index="2" unique_id=1417370927 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21108" type="Node2D" parent="MainTerrainGen/@Node2D@21107" index="3" unique_id=1717555908 instance=ExtResource("6_8kttb")]
+z_index = 97
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21109" parent="MainTerrainGen" index="29" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 1
+position = Vector2(133.998, -48.029766)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21109" index="2" unique_id=1288793255 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21110" parent="MainTerrainGen" index="30" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 2
+position = Vector2(133.998, 0)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21110" index="2" unique_id=2079987982 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21111" type="Node2D" parent="MainTerrainGen/@Node2D@21110" index="3" unique_id=622592381 instance=ExtResource("6_8kttb")]
+z_index = 99
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21112" parent="MainTerrainGen" index="31" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 3
+position = Vector2(133.998, 48.029766)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21112" index="2" unique_id=1038736855 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21113" type="Node2D" parent="MainTerrainGen/@Node2D@21112" index="3" unique_id=1580333060 instance=ExtResource("6_8kttb")]
+z_index = 100
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21114" parent="MainTerrainGen" index="32" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 4
+position = Vector2(133.998, 96.05953)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21114" index="2" unique_id=303655807 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21115" type="Node2D" parent="MainTerrainGen/@Node2D@21114" index="3" unique_id=1936551447 instance=ExtResource("6_8kttb")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21116" parent="MainTerrainGen" index="33" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+position = Vector2(200.99701, -72.04465)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21116" index="2" unique_id=579405079 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21117" type="Node2D" parent="MainTerrainGen/@Node2D@21116" index="3" unique_id=2056008694 instance=ExtResource("6_8kttb")]
+z_index = 97
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21118" parent="MainTerrainGen" index="34" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 1
+position = Vector2(200.99701, -24.014885)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21118" index="2" unique_id=700679499 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21119" type="Node2D" parent="MainTerrainGen/@Node2D@21118" index="3" unique_id=410717462 instance=ExtResource("6_8kttb")]
+z_index = 98
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@21120" parent="MainTerrainGen" index="35" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 2
+position = Vector2(200.99701, 24.014881)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21120" index="2" unique_id=529037828 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21121" parent="MainTerrainGen" index="36" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+z_index = 3
+position = Vector2(200.99701, 72.04465)
+script = ExtResource("4_hc3n2")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="MainTerrainGen/@Node2D@21121" index="2" unique_id=1006025225 instance=ExtResource("5_v43kf")]
+
+[node name="@Node2D@21122" type="Node2D" parent="MainTerrainGen/@Node2D@21121" index="3" unique_id=1198417821 instance=ExtResource("6_8kttb")]
+z_index = 100
+position = Vector2(0, -24.5)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=491515222 node_paths=PackedStringArray("unitPanel", "EndTurn", "Turn", "Select", "Use", "End")]
 script = ExtResource("15_tpv42")
@@ -178,26 +629,5 @@ vertical_alignment = 1
 [node name="Menu" parent="UI" unique_id=757771309 instance=ExtResource("18_14ulb")]
 visible = false
 
-[node name="Asteroids" type="Node2D" parent="." unique_id=939539246]
-script = ExtResource("18_hupsw")
-CreationTimerTime = 60
-AsteroidCount = 10
-AsteroidScene = ExtResource("8_hupsw")
-
-[node name="Area3D" type="Area2D" parent="Asteroids" unique_id=1348029148]
-collision_layer = 8
-collision_mask = 8
-script = ExtResource("21_14ulb")
-
-[node name="CollisionShape3D" type="CollisionShape2D" parent="Asteroids/Area3D" unique_id=1066741360]
-debug_color = Color(1, 1, 1, 0.03529412)
-
-[node name="CollisionShape3D2" type="CollisionShape2D" parent="Asteroids/Area3D" unique_id=414014061]
-position = Vector2(13.600437, 0)
-debug_color = Color(1, 1, 1, 0.03529412)
-
-[node name="CollisionShape3D3" type="CollisionShape2D" parent="Asteroids/Area3D" unique_id=200591110]
-position = Vector2(-12.729843, 0)
-debug_color = Color(1, 1, 1, 0.03529412)
-
 [editable path="Camera"]
+[editable path="MainTerrainGen"]

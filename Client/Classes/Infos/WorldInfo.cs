@@ -13,6 +13,8 @@ public class WorldInfo
     public int Radius;
     public int Amplitude;
     public int Features;
+    public float hexSizeX;
+    public float hexSizeY;
     public List<string> FeaturesArray = [];
     public List<IFeature> FeaturesList = [];
     private static SplitMix64 random;
@@ -45,6 +47,9 @@ public class WorldInfo
                 };
                 tileInfo.Position = HexToWorldPosition(q, r);
                 tileInfo.PositionI = new Vector2I(q, r);
+                int row = q + Radius;
+
+                tileInfo.z = tileInfo.PositionI.Y;
                 Vector2I hexCoord = new Vector2I(q, r);
                 
                 var v = noise.GetNoise2D(tileInfo.Position.X, tileInfo.Position.Y) + 1;
@@ -61,6 +66,14 @@ public class WorldInfo
             
             var neighbors = GetHexNeighbors(coord.X, coord.Y);
             terrainInfo.Neighbours = neighbors.ToArray();
+            terrainInfo.Connections = new Dictionary<TerrainInfo,TileUtil.TileConnection >();
+            foreach (var neighbor in neighbors)
+            {
+                if (neighbor != null)
+                {
+                    terrainInfo.Connections.Add(neighbor, TileUtil.TileConnection.defaultConnection);
+                }
+            }
         }
         EdgeTiles = GetAllEdgeTiles().ToArray();
         for (int i = 1; i <= Features; i++)
@@ -151,10 +164,9 @@ public class WorldInfo
     }
     private Vector2 HexToWorldPosition(int q, int r)
     {
-        float hexSize = 1.15f;
         
-        float x = hexSize * (3.0f / 2.0f * q);
-        float z = hexSize * (Mathf.Sqrt(3.0f) / 2.0f * q + Mathf.Sqrt(3.0f) * r);
+        float x = hexSizeX * (3.0f / 2.0f * q);
+        float z = hexSizeY * (Mathf.Sqrt(3.0f) / 2.0f * q + Mathf.Sqrt(3.0f) * r);
         
         return new Vector2(x, z);
     }

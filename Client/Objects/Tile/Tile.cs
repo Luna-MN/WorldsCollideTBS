@@ -16,8 +16,12 @@ public partial class Tile : Node2D
     private TileMap TileMap;
     private TopTileMap TopTileMap;
     public TerrainInfo TerrainInfo;
+    public float OrgHeightOffset;
+    public float HeightOffset;
+    private float Adjust = 0.5f;
     private float X;
     private float Z;
+    public int ZNeg;
     private List<Node2D> Nodes = new();
     private bool Selected;
     
@@ -45,14 +49,32 @@ public partial class Tile : Node2D
         PackedScene PS = null;
         for (int i = 0; i <= TerrainInfo.TileHeight; i++)
         {
-            PS = TileMap[TerrainInfo, i].TileNode;
-            
+            var heightOffset = i - 1 == 0 ? OrgHeightOffset : HeightOffset;
+            var line = i;
+            if (i != 0 && heightOffset == HeightOffset)
+            {
+                line = i - 1;
+            }
+            heightOffset *= line;
+            if(heightOffset != 0 && heightOffset % HeightOffset == 0)
+            {
+                heightOffset += OrgHeightOffset;
+            }
+            var y  = heightOffset;
+            PS = TileMap[TerrainInfo, y, i].TileNode;
             Nodes.Add(PS.Instantiate<Node2D>());
-            ActualMaterial = Nodes[i].GetChild<MeshInstance3D>(0).GetSurfaceOverrideMaterial(0);
             NodeParent.AddChild(Nodes[i]);
             Nodes[i].Owner = GetTree().EditedSceneRoot;
-            Nodes[i].Position = new Vector2(0, i);
-            Nodes[i].RotationDegrees = TileUtil.GetTileRotation(TerrainInfo, TileUtil.GetState(TerrainInfo, i));
+            Nodes[i].Position -= new Vector2(0, y);
+            if (y != 0)
+            {
+                Nodes[i].ZIndex = (TerrainInfo.z) + 100 * i;
+            }
+            else
+            {
+                Nodes[i].ZIndex = ZNeg;
+            }
+            Nodes[i].RotationDegrees = TileUtil.GetTileRotation(TerrainInfo, TileUtil.GetState(TerrainInfo, y, i));
         }
         if (TerrainInfo.TileTopType != TileUtil.TileTopType.None && TerrainInfo.TileType == TileUtil.TileType.Grass)
         {

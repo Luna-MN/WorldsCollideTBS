@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="TileInfoSaveState" format=3 uid="uid://dhxo5fstyxp0s"]
 
 [ext_resource type="Script" uid="uid://n6mju7ayan2c" path="res://Classes/GDScriptWorldSaveStates/TileInfoSaveState.gd" id="1_fsyp4"]
+[ext_resource type="PackedScene" uid="uid://vda8hjhwh5w8" path="res://Scenes/Tiles/BasicTile.tscn" id="1_mc533"]
 
 [resource]
 script = ExtResource("1_fsyp4")
+_tileNode = Array[PackedScene]([ExtResource("1_mc533")])
 metadata/_custom_type_script = "uid://n6mju7ayan2c"

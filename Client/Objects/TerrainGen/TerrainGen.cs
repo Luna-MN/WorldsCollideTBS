@@ -27,7 +27,12 @@ public partial class TerrainGen : Node2D
     public WorldInfo worldInfo;
     [ExportToolButton("Generate Terrain")] private Callable GenerateTerrainButton => Callable.From(_Ready);
     public int seed;
-
+    [Export] public float HexSizeX;
+    [Export] public float HexSizeY;
+    [Export] public float OrgHeightOffset;
+    [Export] public float HeightOffset;
+    [Export] public int Zbonus;
+    [Export] public int ZNeg;
     public override void _Ready()
     {
         TileMaps.GDBackup();
@@ -50,7 +55,9 @@ public partial class TerrainGen : Node2D
             Amplitude = Amplitude,
             Features = Features,
             DefaultTile = DefaultTile,
-            FeatureArgs = FeatureArgs
+            FeatureArgs = FeatureArgs,
+            hexSizeX = HexSizeX,
+            hexSizeY = HexSizeY
         };
         worldInfo.GenerateTerrainInfo(noise, seed);
         GenerateTerrain(worldInfo);
@@ -66,6 +73,11 @@ public partial class TerrainGen : Node2D
             var hexInstance = TerrainScene.Instantiate<Tile>();
             AddChild(hexInstance);
             hexInstance.Position = info.Position;
+            hexInstance.ZIndex = info.z + Zbonus;
+            hexInstance.ZNeg = ZNeg;
+            hexInstance.OrgHeightOffset = OrgHeightOffset;
+            hexInstance.HeightOffset = HeightOffset;
+            hexInstance.Owner = this;
             hexInstance.Set(TileMaps[info.TileType], TopTileMaps[info.TileTopType], info.Position.X, info.Position.Y, info);
             hexInstance.GenerateTile();
             info.tile = hexInstance;
@@ -74,10 +86,9 @@ public partial class TerrainGen : Node2D
     
     public Vector3 HexToWorldPosition(int q, int r)
     {
-        float hexSize = 1.15f;
         
-        float x = hexSize * (3.0f / 2.0f * q);
-        float z = hexSize * (Mathf.Sqrt(3.0f) / 2.0f * q + Mathf.Sqrt(3.0f) * r);
+        float x = HexSizeX * (3.0f / 2.0f * q);
+        float z = HexSizeY * (Mathf.Sqrt(3.0f) / 2.0f * q + Mathf.Sqrt(3.0f) * r);
         
         return new Vector3(x, 0, z);
     }

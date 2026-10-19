@@ -1,3 +1,684 @@
 [gd_scene format=3 uid="uid://dpj6k736hcvn3"]
 
+[ext_resource type="Script" uid="uid://c43wsiqg2ly6q" path="res://Objects/TerrainGen/TerrainGen.cs" id="1_wcbns"]
+[ext_resource type="PackedScene" uid="uid://dwesn8b3yi8wa" path="res://Objects/Tile/Tile.tscn" id="2_kmmgj"]
+[ext_resource type="Script" uid="uid://cb7iss74ifst" path="res://Classes/Tiles/TileInfo/TileInfo.cs" id="3_kmmgj"]
+[ext_resource type="Script" uid="uid://cog33uck4g1wq" path="res://Classes/Tiles/TileMap/TileMap.cs" id="4_yphj0"]
+[ext_resource type="PackedScene" uid="uid://vda8hjhwh5w8" path="res://Scenes/Tiles/BasicTile.tscn" id="5_lmfrd"]
+[ext_resource type="Script" uid="uid://dbq8cwnoth0eh" path="res://Classes/Tiles/TileMapController/TileMapController.cs" id="5_p40e5"]
+[ext_resource type="PackedScene" uid="uid://sobe36aafjk1" path="res://Scenes/Tiles/Height.tscn" id="6_2c735"]
+[ext_resource type="Script" uid="uid://2d2qt08pm7aw" path="res://Classes/Features/FeatureArgs.cs" id="6_eqor0"]
+[ext_resource type="PackedScene" uid="uid://ds3pfqkrq68o5" path="res://Scenes/Tiles/HeightAdd.tscn" id="7_hbp3e"]
+[ext_resource type="Script" uid="uid://f0vo74h3lkq6" path="res://Classes/Tiles/TopTile/TopTileInfo/TopTileInfo.cs" id="7_lmfrd"]
+[ext_resource type="Script" uid="uid://dq0poljwdwgt7" path="res://Classes/Tiles/TopTile/TopTileMap/TopTileMap.cs" id="8_mu40u"]
+[ext_resource type="PackedScene" uid="uid://cq1puy0l1j4ts" path="res://Scenes/TopTiles/Tree.tscn" id="9_2c735"]
+[ext_resource type="Script" uid="uid://blrspcfrv1tjd" path="res://Classes/Tiles/TopTile/TopTileMapController/TopTileMapController.cs" id="10_hbp3e"]
+[ext_resource type="Script" uid="uid://cc68a6xx4w38q" path="res://Objects/Tile/Tile.cs" id="12_mu40u"]
+
+[sub_resource type="Resource" id="Resource_f83lp"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_7jnah"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_e7rpu"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_y5204"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_j2cn8"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_fbu53"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_dpkrs"]
+script = ExtResource("4_yphj0")
+floor = SubResource("Resource_y5204")
+height = SubResource("Resource_j2cn8")
+heightAdd = SubResource("Resource_fbu53")
+connection1 = SubResource("Resource_f83lp")
+connection2 = SubResource("Resource_7jnah")
+connection3 = SubResource("Resource_e7rpu")
+
+[sub_resource type="Resource" id="Resource_ogald"]
+script = ExtResource("3_kmmgj")
+_tileNode = [ExtResource("5_lmfrd")]
+
+[sub_resource type="Resource" id="Resource_6w6uv"]
+resource_name = "Default"
+script = ExtResource("3_kmmgj")
+_tileNode = [ExtResource("5_lmfrd")]
+
+[sub_resource type="Resource" id="Resource_6v3rv"]
+script = ExtResource("3_kmmgj")
+_tileNode = [ExtResource("5_lmfrd")]
+
+[sub_resource type="Resource" id="Resource_0fqob"]
+script = ExtResource("3_kmmgj")
+_tileNode = [ExtResource("5_lmfrd")]
+
+[sub_resource type="Resource" id="Resource_3l8uh"]
+script = ExtResource("3_kmmgj")
+_tileNode = [ExtResource("6_2c735")]
+
+[sub_resource type="Resource" id="Resource_43vai"]
+script = ExtResource("3_kmmgj")
+_tileNode = [ExtResource("7_hbp3e")]
+
+[sub_resource type="Resource" id="Resource_iq6ls"]
+resource_name = "Default"
+script = ExtResource("4_yphj0")
+floor = SubResource("Resource_0fqob")
+height = SubResource("Resource_3l8uh")
+heightAdd = SubResource("Resource_43vai")
+connection1 = SubResource("Resource_ogald")
+connection2 = SubResource("Resource_6w6uv")
+connection3 = SubResource("Resource_6v3rv")
+
+[sub_resource type="Resource" id="Resource_efw0p"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_2swrc"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_wuatr"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_d1s88"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_ho1og"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_n14k7"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_ibj88"]
+script = ExtResource("4_yphj0")
+floor = SubResource("Resource_d1s88")
+height = SubResource("Resource_ho1og")
+heightAdd = SubResource("Resource_n14k7")
+connection1 = SubResource("Resource_efw0p")
+connection2 = SubResource("Resource_2swrc")
+connection3 = SubResource("Resource_wuatr")
+
+[sub_resource type="Resource" id="Resource_e4cgg"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_cxvi4"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_rvlvt"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_mvhcd"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_k2ble"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_085nx"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_v34k1"]
+script = ExtResource("4_yphj0")
+floor = SubResource("Resource_mvhcd")
+height = SubResource("Resource_k2ble")
+heightAdd = SubResource("Resource_085nx")
+connection1 = SubResource("Resource_e4cgg")
+connection2 = SubResource("Resource_cxvi4")
+connection3 = SubResource("Resource_rvlvt")
+
+[sub_resource type="Resource" id="Resource_h7hx8"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_65pt0"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_6ls33"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_h6a74"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_443it"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_ma3xe"]
+script = ExtResource("3_kmmgj")
+
+[sub_resource type="Resource" id="Resource_hmn0t"]
+script = ExtResource("4_yphj0")
+floor = SubResource("Resource_h6a74")
+height = SubResource("Resource_443it")
+heightAdd = SubResource("Resource_ma3xe")
+connection1 = SubResource("Resource_h7hx8")
+connection2 = SubResource("Resource_65pt0")
+connection3 = SubResource("Resource_6ls33")
+
+[sub_resource type="Resource" id="Resource_dyhpa"]
+script = ExtResource("5_p40e5")
+TileMaps = Dictionary[int, ExtResource("4_yphj0")]({
+0: SubResource("Resource_iq6ls"),
+1: SubResource("Resource_hmn0t"),
+2: SubResource("Resource_v34k1"),
+3: SubResource("Resource_dpkrs"),
+4: SubResource("Resource_ibj88")
+})
+Grass = SubResource("Resource_iq6ls")
+River = SubResource("Resource_hmn0t")
+Path = SubResource("Resource_v34k1")
+Fall = SubResource("Resource_dpkrs")
+Gray = SubResource("Resource_ibj88")
+metadata/_custom_type_script = "uid://dbq8cwnoth0eh"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yphj0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t76vk"]
+
+[sub_resource type="Resource" id="Resource_p40e5"]
+script = ExtResource("6_eqor0")
+ForestNoise = SubResource("FastNoiseLite_t76vk")
+Threshold = 1.0
+metadata/_custom_type_script = "uid://2d2qt08pm7aw"
+
+[sub_resource type="Resource" id="Resource_qetj6"]
+script = ExtResource("7_lmfrd")
+
+[sub_resource type="Resource" id="Resource_chfun"]
+script = ExtResource("7_lmfrd")
+
+[sub_resource type="Resource" id="Resource_ol7ue"]
+script = ExtResource("7_lmfrd")
+
+[sub_resource type="Resource" id="Resource_k4bd3"]
+script = ExtResource("8_mu40u")
+Small = SubResource("Resource_ol7ue")
+Medium = SubResource("Resource_chfun")
+Large = SubResource("Resource_qetj6")
+metadata/_custom_type_script = "uid://dq0poljwdwgt7"
+
+[sub_resource type="Resource" id="Resource_t874i"]
+script = ExtResource("7_lmfrd")
+_tileNode = [ExtResource("9_2c735")]
+
+[sub_resource type="Resource" id="Resource_suw0k"]
+script = ExtResource("7_lmfrd")
+_tileNode = [ExtResource("9_2c735")]
+
+[sub_resource type="Resource" id="Resource_trqsp"]
+script = ExtResource("7_lmfrd")
+_tileNode = [ExtResource("9_2c735")]
+
+[sub_resource type="Resource" id="Resource_8vcm8"]
+script = ExtResource("8_mu40u")
+Small = SubResource("Resource_trqsp")
+Medium = SubResource("Resource_suw0k")
+Large = SubResource("Resource_t874i")
+
+[sub_resource type="Resource" id="Resource_hbp3e"]
+script = ExtResource("10_hbp3e")
+TileMaps = Dictionary[int, ExtResource("8_mu40u")]({
+0: SubResource("Resource_k4bd3"),
+1: SubResource("Resource_8vcm8")
+})
+None = SubResource("Resource_k4bd3")
+Tree = SubResource("Resource_8vcm8")
+metadata/_custom_type_script = "uid://blrspcfrv1tjd"
+
 [node name="TerrainGen" type="Node2D" unique_id=1990680629]
+script = ExtResource("1_wcbns")
+TerrainScene = ExtResource("2_kmmgj")
+Radius = 3
+Amplitude = 1
+TileMaps = SubResource("Resource_dyhpa")
+noise = SubResource("FastNoiseLite_yphj0")
+FeatureArgs = SubResource("Resource_p40e5")
+TopTileMaps = SubResource("Resource_hbp3e")
+HexSizeX = 44.666
+HexSizeY = 27.73
+OrgHeightOffset = 24.5
+HeightOffset = 8.0
+
+[node name="Tile" type="Node2D" parent="." unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+position = Vector2(-200.99701, -72.04465)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="Tile" unique_id=1800176544 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23109" type="Node2D" parent="." unique_id=1618111106 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 1
+position = Vector2(-200.99701, -24.014881)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23109" unique_id=840973784 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23110" type="Node2D" parent="@Node2D@23109" unique_id=124236703 instance=ExtResource("6_2c735")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23111" type="Node2D" parent="." unique_id=276143682 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 2
+position = Vector2(-200.99701, 24.014885)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23111" unique_id=432769058 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23112" type="Node2D" parent="@Node2D@23111" unique_id=280933217 instance=ExtResource("6_2c735")]
+z_index = 102
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23113" type="Node2D" parent="." unique_id=1127683320 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 3
+position = Vector2(-200.99701, 72.04465)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23113" unique_id=160328238 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23114" type="Node2D" parent="." unique_id=2123533666 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -1
+position = Vector2(-133.998, -96.05953)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23114" unique_id=1496064296 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23115" type="Node2D" parent="@Node2D@23114" unique_id=1189959319 instance=ExtResource("6_2c735")]
+z_index = 99
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23116" type="Node2D" parent="." unique_id=1185947496 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+position = Vector2(-133.998, -48.029766)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23116" unique_id=1629313584 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23117" type="Node2D" parent="@Node2D@23116" unique_id=1400056287 instance=ExtResource("6_2c735")]
+z_index = 100
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23118" type="Node2D" parent="." unique_id=1063876791 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 1
+position = Vector2(-133.998, 0)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23118" unique_id=25872780 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23119" type="Node2D" parent="@Node2D@23118" unique_id=161085587 instance=ExtResource("6_2c735")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23120" type="Node2D" parent="." unique_id=636740400 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 2
+position = Vector2(-133.998, 48.029766)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23120" unique_id=1005118475 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23121" type="Node2D" parent="@Node2D@23120" unique_id=1564950706 instance=ExtResource("6_2c735")]
+z_index = 102
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23122" type="Node2D" parent="." unique_id=568947983 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 3
+position = Vector2(-133.998, 96.059525)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23122" unique_id=133350280 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23123" type="Node2D" parent="@Node2D@23122" unique_id=2141344441 instance=ExtResource("6_2c735")]
+z_index = 103
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23124" type="Node2D" parent="." unique_id=431999241 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -2
+position = Vector2(-66.999, -120.07441)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23124" unique_id=1171834642 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23125" type="Node2D" parent="@Node2D@23124" unique_id=1202724740 instance=ExtResource("6_2c735")]
+z_index = 98
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23126" type="Node2D" parent="." unique_id=871680652 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -1
+position = Vector2(-66.999, -72.04465)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23126" unique_id=41263714 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23127" type="Node2D" parent="@Node2D@23126" unique_id=961605957 instance=ExtResource("6_2c735")]
+z_index = 99
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23128" type="Node2D" parent="." unique_id=493687268 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+position = Vector2(-66.999, -24.014883)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23128" unique_id=782666135 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23129" type="Node2D" parent="@Node2D@23128" unique_id=483625994 instance=ExtResource("6_2c735")]
+z_index = 100
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23130" type="Node2D" parent="." unique_id=1807134090 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 1
+position = Vector2(-66.999, 24.014883)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23130" unique_id=1760452824 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23131" type="Node2D" parent="@Node2D@23130" unique_id=259225875 instance=ExtResource("6_2c735")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23132" type="Node2D" parent="." unique_id=1492083788 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 2
+position = Vector2(-66.999, 72.04465)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23132" unique_id=181100681 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23133" type="Node2D" parent="." unique_id=822435400 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 3
+position = Vector2(-66.999, 120.07441)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23133" unique_id=1976034595 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23134" type="Node2D" parent="." unique_id=1547870988 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -3
+position = Vector2(0, -144.0893)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23134" unique_id=674953565 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23135" type="Node2D" parent="@Node2D@23134" unique_id=1294473951 instance=ExtResource("6_2c735")]
+z_index = 97
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23136" type="Node2D" parent="." unique_id=261373469 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -2
+position = Vector2(0, -96.05953)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23136" unique_id=407438867 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23137" type="Node2D" parent="@Node2D@23136" unique_id=352834820 instance=ExtResource("6_2c735")]
+z_index = 98
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23138" type="Node2D" parent="." unique_id=1821479149 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -1
+position = Vector2(0, -48.029766)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23138" unique_id=405898515 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23139" type="Node2D" parent="." unique_id=188682457 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23139" unique_id=1663641546 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23140" type="Node2D" parent="@Node2D@23139" unique_id=740427140 instance=ExtResource("6_2c735")]
+z_index = 100
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23141" type="Node2D" parent="." unique_id=1922156601 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 1
+position = Vector2(0, 48.029766)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23141" unique_id=1907212692 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23142" type="Node2D" parent="@Node2D@23141" unique_id=1735877587 instance=ExtResource("6_2c735")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23143" type="Node2D" parent="." unique_id=104192013 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 2
+position = Vector2(0, 96.05953)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23143" unique_id=318396902 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23144" type="Node2D" parent="@Node2D@23143" unique_id=866006020 instance=ExtResource("6_2c735")]
+z_index = 102
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23145" type="Node2D" parent="." unique_id=1264719386 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 3
+position = Vector2(0, 144.0893)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23145" unique_id=2037169199 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23146" type="Node2D" parent="@Node2D@23145" unique_id=1321450283 instance=ExtResource("6_2c735")]
+z_index = 103
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23147" type="Node2D" parent="." unique_id=410452931 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -3
+position = Vector2(66.999, -120.07441)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23147" unique_id=1725034016 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23148" type="Node2D" parent="@Node2D@23147" unique_id=265754860 instance=ExtResource("6_2c735")]
+z_index = 97
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23149" type="Node2D" parent="." unique_id=923795799 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -2
+position = Vector2(66.999, -72.04465)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23149" unique_id=684243493 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23150" type="Node2D" parent="@Node2D@23149" unique_id=833390305 instance=ExtResource("6_2c735")]
+z_index = 98
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23151" type="Node2D" parent="." unique_id=96021418 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -1
+position = Vector2(66.999, -24.014883)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23151" unique_id=957129658 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23152" type="Node2D" parent="@Node2D@23151" unique_id=1613114432 instance=ExtResource("6_2c735")]
+z_index = 99
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23153" type="Node2D" parent="." unique_id=1262841716 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+position = Vector2(66.999, 24.014883)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23153" unique_id=520704556 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23154" type="Node2D" parent="@Node2D@23153" unique_id=1274392202 instance=ExtResource("6_2c735")]
+z_index = 100
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23155" type="Node2D" parent="." unique_id=1808209740 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 1
+position = Vector2(66.999, 72.04465)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23155" unique_id=1871345731 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23156" type="Node2D" parent="@Node2D@23155" unique_id=1158046366 instance=ExtResource("6_2c735")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23157" type="Node2D" parent="." unique_id=2134216922 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 2
+position = Vector2(66.999, 120.07441)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23157" unique_id=920245097 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23158" type="Node2D" parent="." unique_id=1276439121 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -3
+position = Vector2(133.998, -96.059525)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23158" unique_id=11946213 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23159" type="Node2D" parent="@Node2D@23158" unique_id=1392879941 instance=ExtResource("6_2c735")]
+z_index = 97
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23160" type="Node2D" parent="." unique_id=655449791 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -2
+position = Vector2(133.998, -48.029766)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23160" unique_id=743446275 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23161" type="Node2D" parent="." unique_id=812929976 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -1
+position = Vector2(133.998, 0)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23161" unique_id=369627496 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23162" type="Node2D" parent="@Node2D@23161" unique_id=278150493 instance=ExtResource("6_2c735")]
+z_index = 99
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23163" type="Node2D" parent="." unique_id=356094488 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+position = Vector2(133.998, 48.029766)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23163" unique_id=1867201402 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23164" type="Node2D" parent="@Node2D@23163" unique_id=478012712 instance=ExtResource("6_2c735")]
+z_index = 100
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23165" type="Node2D" parent="." unique_id=977961944 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = 1
+position = Vector2(133.998, 96.05953)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23165" unique_id=1852380876 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23166" type="Node2D" parent="@Node2D@23165" unique_id=895322846 instance=ExtResource("6_2c735")]
+z_index = 101
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23167" type="Node2D" parent="." unique_id=477847467 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -3
+position = Vector2(200.99701, -72.04465)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23167" unique_id=1199271293 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23168" type="Node2D" parent="@Node2D@23167" unique_id=1788053883 instance=ExtResource("6_2c735")]
+z_index = 97
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23169" type="Node2D" parent="." unique_id=39621242 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -2
+position = Vector2(200.99701, -24.014885)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23169" unique_id=1305167431 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23170" type="Node2D" parent="@Node2D@23169" unique_id=1998362410 instance=ExtResource("6_2c735")]
+z_index = 98
+position = Vector2(0, -24.5)
+
+[node name="@Node2D@23171" type="Node2D" parent="." unique_id=1814813830 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+z_index = -1
+position = Vector2(200.99701, 24.014881)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23171" unique_id=668179018 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23172" type="Node2D" parent="." unique_id=162475288 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+position = Vector2(200.99701, 72.04465)
+script = ExtResource("12_mu40u")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
+
+[node name="Node2D" type="Node2D" parent="@Node2D@23172" unique_id=1227942710 instance=ExtResource("5_lmfrd")]
+
+[node name="@Node2D@23173" type="Node2D" parent="@Node2D@23172" unique_id=2092115275 instance=ExtResource("6_2c735")]
+z_index = 100
+position = Vector2(0, -24.5)

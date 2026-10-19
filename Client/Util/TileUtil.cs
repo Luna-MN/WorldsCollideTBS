@@ -1,5 +1,6 @@
 ﻿using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public static class TileUtil
@@ -7,16 +8,21 @@ public static class TileUtil
     public enum TileState
     {
         floor,
-        underground,
+        height,
+        heightAdd,
         connection1,
         connection2,
         connection3,
     }
 
+    public enum TileConnection
+    {
+        defaultConnection,
+        River
+    }
     public enum TileType
     {
         Grass,
-        River,
         Path,
         Fall,
         Gray
@@ -37,11 +43,12 @@ public static class TileUtil
     }
 
     #region Tile
-        public static TileState GetState(TerrainInfo terrainInfo, int y)
+        public static TileState GetState(TerrainInfo terrainInfo, float y, int idx)
         {
-            if (terrainInfo.TileHeight != y)
+            if (y != 0)
             {
-                return TileState.underground;
+                GD.Print(idx);
+                return idx == 1 ? TileState.height : TileState.heightAdd;
             }
 
             if (terrainInfo.Connected)
@@ -86,11 +93,6 @@ public static class TileUtil
             {
                 GD.Print("Tile Not Connected");
                 return TileState.connection3;
-            }
-
-            if (terrainInfo.TileType == TileType.River)
-            {
-                GD.Print(terrainInfo.NextTile?.Position + " " + terrainInfo.PreviousTile?.Position + " " + terrainInfo.Connected);
             }
             return TileState.floor;
         }
@@ -185,4 +187,24 @@ public static class TileUtil
     #region Top Tile
     
     #endregion
+}
+
+public class TileConnection
+{
+    public TerrainInfo terrainInfoMain, terrainInfoConnection, terrainInfoPrevConnection;
+    public TileUtil.TileConnection terrainConnection;
+    
+}
+
+public static class TileConectionExtentions
+{
+    public static bool Contains(this List<TileConnection> connections, TerrainInfo terrainInfo)
+    {
+        foreach (var connectionType in connections)
+        {
+            if(terrainInfo == connectionType.terrainInfoMain || terrainInfo == connectionType.terrainInfoConnection)
+                return true;
+        }
+        return false;
+    }
 }

@@ -1,21 +1,18 @@
 [gd_scene format=3 uid="uid://dwesn8b3yi8wa"]
 
-[node name="Tile" type="Node2D" unique_id=1815114462]
+[ext_resource type="Script" uid="uid://cc68a6xx4w38q" path="res://Objects/Tile/Tile.cs" id="1_rltd0"]
+
+[node name="Tile" type="Node2D" unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody")]
+script = ExtResource("1_rltd0")
+NodeParent = NodePath(".")
+StaticBody = NodePath("Collision")
 
 [node name="Collision" type="StaticBody2D" parent="." unique_id=1269402439]
+position = Vector2(3.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape2D" parent="Collision" unique_id=1339953952]
-position = Vector2(0, -0.5)
-scale = Vector2(0.8660253, 0.99999994)
-
-[node name="CollisionShape3D2" type="CollisionShape2D" parent="Collision" unique_id=1599237135]
-position = Vector2(-0.0023671035, -0.5)
-rotation = 3.1415927
-scale = Vector2(4.3711385e-08, -0.99999994)
-
-[node name="CollisionShape3D3" type="CollisionShape2D" parent="Collision" unique_id=1392805233]
-position = Vector2(0, -0.5)
-rotation = 3.1415927
-scale = Vector2(0.8660253, -0.9999999)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision" unique_id=2097877410]
+modulate = Color(1, 1, 1, 0)
+z_index = -1244
+polygon = PackedVector2Array(17, 2, 41, -20, 41, -24, 18, -46, -24, -47, -47, -24, -47, -20, -22, 2)
 
 [node name="Tiles" type="Node2D" parent="." unique_id=599909791]
