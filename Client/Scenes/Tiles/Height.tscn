@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://sobe36aafjk1"]
+
+[ext_resource type="Texture2D" uid="uid://c5fcstkcdshd2" path="res://Sprites/Height.png" id="1_no3gb"]
+
+[node name="Node2D" type="Node2D" unique_id=124236703]
+
+[node name="Height" type="Sprite2D" parent="." unique_id=1239001303]
+texture_filter = 1
+position = Vector2(0.5, 0)
+texture = ExtResource("1_no3gb")

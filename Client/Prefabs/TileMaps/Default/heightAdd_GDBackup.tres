@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TileInfoSaveState" format=3 uid="uid://rgd0dw1g72a8"]
+
+[ext_resource type="PackedScene" uid="uid://ds3pfqkrq68o5" path="res://Scenes/Tiles/HeightAdd.tscn" id="1_uocr2"]
+[ext_resource type="Script" uid="uid://n6mju7ayan2c" path="res://Classes/GDScriptWorldSaveStates/TileInfoSaveState.gd" id="2_f727k"]
+
+[resource]
+script = ExtResource("2_f727k")
+_tileNode = Array[PackedScene]([ExtResource("1_uocr2")])
+metadata/_custom_type_script = "uid://n6mju7ayan2c"
