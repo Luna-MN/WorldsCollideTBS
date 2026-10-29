@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Packets.Classes.Features;
+using Packets.Classes.Tiles;
 
 [Tool]
 [GlobalClass]
@@ -24,6 +26,8 @@ public partial class TerrainGen : Node2D
     public FeatureArgs FeatureArgs;
     [Export]
     public TopTileMapController TopTileMaps;
+    [Export]
+    public ConnectionMapController ConnectionMaps;
     public WorldInfo worldInfo;
     [ExportToolButton("Generate Terrain")] private Callable GenerateTerrainButton => Callable.From(_Ready);
     public int seed;
@@ -82,8 +86,56 @@ public partial class TerrainGen : Node2D
             hexInstance.GenerateTile();
             info.tile = hexInstance;
         }
+
+        foreach (IFeature feature in worldInfo.FeaturesList)
+        {
+            if(feature.FeatureType != FeatureType.Connection)
+            {
+                continue;
+            }
+            var conFeature = (IConnectionFeature)feature;
+            for (int i = 0; i < conFeature.tiles.Count; i++)
+            {
+                var connection = conFeature.tiles[i];
+                GD.Print(connection.terrainConnection);
+                var map = ConnectionMaps[connection.terrainConnection];
+                var prevConn = default(CornerInfo);
+                if (i - 1 >= 0)
+                {
+                     prevConn = conFeature.tiles[i-1];
+                }
+                var nextConn = default(CornerInfo);
+                if (i + 1 < conFeature.tiles.Count)
+                {
+                    nextConn = conFeature.tiles[i+1];
+                }
+                var state = connection.GetConnectionState([prevConn, nextConn]);
+                var ps = map[state];
+                var node = ps.TileNode.Instantiate<Node2D>();
+                node.Position = connection.Position - new Vector2(0, GetTopHeightOffset(connection));
+                AddChild(node);
+                node.ZIndex = 1000;
+            }
+
+        }
     }
-    
+    private float GetTopHeightOffset(CornerInfo corner)
+    {
+        int height = 0;
+        foreach (var tile in corner.Tiles)
+            height = Math.Max(height, tile.TileHeight);
+        return height == 0 ? 0 : OrgHeightOffset + HeightOffset * (height - 1);
+    }
+
+    public Vector2 ClosestPoint(List<Vector2> points)
+    {
+        var calc = new Vector2();
+        foreach (Vector2 point in points)
+        {
+            calc += point;
+        }
+        return calc / points.Count;
+    }
     public Vector3 HexToWorldPosition(int q, int r)
     {
         

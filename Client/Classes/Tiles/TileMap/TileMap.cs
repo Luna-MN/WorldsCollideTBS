@@ -11,6 +11,7 @@ public partial class TileMap : Resource
     public TileInfo this[TileUtil.TileState i] => TileInfo[(int)i];
     public TileInfo this[TerrainInfo i, float y, int idx] => this[TileUtil.GetState(i, y, idx)];    
     public TileMapController TileMapController;
+    [Export]
     public Dictionary<int, TileInfo> TileInfo
     {
         get;

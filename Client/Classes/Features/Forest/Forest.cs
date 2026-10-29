@@ -9,6 +9,7 @@ public partial class Forest : Resource, IFeature
     private FeatureArgs args;
     private FastNoiseLite noise;
     private float threshold;
+    public FeatureType FeatureType => FeatureType.TopTile;
     private List<TerrainInfo> tiles = [];
     public void Set(WorldInfo worldInfo, FeatureArgs args)
     {

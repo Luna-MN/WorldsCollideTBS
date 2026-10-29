@@ -12,7 +12,7 @@ public class TerrainInfo
     public Vector2I PositionL;
     public int z;
     public TerrainInfo[] Neighbours;
-    public Dictionary< TerrainInfo, TileUtil.TileConnection> Connections;
+    public CornerInfo[] Corners = new CornerInfo[6];
     public bool Connected;
     public TerrainInfo NextTile;
     public TerrainInfo PreviousTile;

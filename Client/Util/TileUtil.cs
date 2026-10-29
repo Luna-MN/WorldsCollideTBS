@@ -20,6 +20,15 @@ public static class TileUtil
         defaultConnection,
         River
     }
+    public enum ConnectionState
+    {
+        Connection1,
+        Connection2,
+        Connection3,
+        Connection4,
+        Connection5,
+        Connection6,
+    }
     public enum TileType
     {
         Grass,
@@ -183,28 +192,8 @@ public static class TileUtil
                     return 0;
             }
         }
-    #endregion
-    #region Top Tile
-    
-    #endregion
-}
+        
 
-public class TileConnection
-{
-    public TerrainInfo terrainInfoMain, terrainInfoConnection, terrainInfoPrevConnection;
-    public TileUtil.TileConnection terrainConnection;
-    
-}
 
-public static class TileConectionExtentions
-{
-    public static bool Contains(this List<TileConnection> connections, TerrainInfo terrainInfo)
-    {
-        foreach (var connectionType in connections)
-        {
-            if(terrainInfo == connectionType.terrainInfoMain || terrainInfo == connectionType.terrainInfoConnection)
-                return true;
-        }
-        return false;
-    }
+    #endregion
 }

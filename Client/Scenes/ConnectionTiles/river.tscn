@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ebakbtfjh44w"]
+
+[ext_resource type="Texture2D" uid="uid://vs7rvcrxb4gb" path="res://Sprites/River.png" id="1_47qti"]
+
+[node name="Node2D" type="Node2D" unique_id=1099240816]
+
+[node name="River" type="Sprite2D" parent="." unique_id=1822006911]
+texture_filter = 1
+position = Vector2(4.5, -6)
+texture = ExtResource("1_47qti")

@@ -17,6 +17,7 @@ public class WorldInfo
     public float hexSizeY;
     public List<string> FeaturesArray = [];
     public List<IFeature> FeaturesList = [];
+    public Dictionary<Vector2I, CornerInfo> Corners = new Dictionary<Vector2I, CornerInfo>();
     private static SplitMix64 random;
     public WorldInfo()
     {
@@ -66,16 +67,9 @@ public class WorldInfo
             
             var neighbors = GetHexNeighbors(coord.X, coord.Y);
             terrainInfo.Neighbours = neighbors.ToArray();
-            terrainInfo.Connections = new Dictionary<TerrainInfo,TileUtil.TileConnection >();
-            foreach (var neighbor in neighbors)
-            {
-                if (neighbor != null)
-                {
-                    terrainInfo.Connections.Add(neighbor, TileUtil.TileConnection.defaultConnection);
-                }
-            }
         }
         EdgeTiles = GetAllEdgeTiles().ToArray();
+        GenerateCorners();
         for (int i = 1; i <= Features; i++)
         {
             var feature = GetRandomFeature();
@@ -114,6 +108,61 @@ public class WorldInfo
             
             hex.Neighbours = neighbors.ToArray();
         }
+    }
+    private void GenerateCorners()
+    {
+        Corners.Clear();
+        foreach (var terrainInfo in TerrainInfo.Values)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                Vector2I id = terrainInfo.PositionI * 3
+                              + HexNeighborOffsets[i]
+                              + HexNeighborOffsets[(i + 1) % 6];
+
+                if (!Corners.TryGetValue(id, out var corner))
+                {
+                    float angle = Mathf.DegToRad(-60f * i);
+                    corner = new CornerInfo
+                    {
+                        Id = id,
+                        Position = terrainInfo.Position +
+                                   new Vector2(hexSizeX * Mathf.Cos(angle), hexSizeY * Mathf.Sin(angle))
+                    };
+                    Corners[id] = corner;
+                }
+
+                corner.Tiles.Add(terrainInfo);
+                terrainInfo.Corners[i] = corner;
+            }
+        }
+    }
+    // All tiles that share at least one corner with this tile (excluding itself)
+    public List<TerrainInfo> GetTilesSharingCorner(TerrainInfo tile)
+    {
+        var result = new List<TerrainInfo>();
+        foreach (var corner in tile.Corners)
+        foreach (var other in corner.Tiles)
+            if (other != tile)
+                result.Add(other);
+        return result;
+    }
+
+    // Corners two tiles have in common (2 if neighbours, otherwise 0)
+    public List<CornerInfo> GetSharedCorners(TerrainInfo a, TerrainInfo b)
+    {
+        return a.Corners.Where(c => c.Tiles.Contains(b)).ToList();
+    }
+
+    public CornerInfo GetCorner(List<TerrainInfo> tiles)
+    {
+        foreach (var corner in Corners)
+        {
+            if (corner.Value.Tiles.Count == tiles.Count && corner.Value.Tiles.All(tiles.Contains))
+                return corner.Value;
+        }
+        GD.Print("No corner found for tiles");
+        return null;
     }
     public List<Vector2I> GetHexNeighborCoords(int q, int r)
     {
