@@ -15,8 +15,14 @@
 [ext_resource type="Script" uid="uid://cc68a6xx4w38q" path="res://Objects/Tile/Tile.cs" id="12_mu40u"]
 [ext_resource type="Script" uid="uid://c1q4ssuwsfpo3" path="res://Classes/Tiles/ConnectionMap/ConnectionInfo.cs" id="13_7jnah"]
 [ext_resource type="PackedScene" uid="uid://ebakbtfjh44w" path="res://Scenes/ConnectionTiles/river.tscn" id="13_e7rpu"]
+[ext_resource type="PackedScene" uid="uid://c1t850h3f4qdh" path="res://Scenes/ConnectionTiles/River/RiverConnection1.tscn" id="13_y5204"]
 [ext_resource type="Script" uid="uid://3axalqqgr68r" path="res://Classes/Tiles/ConnectionMap/ConnectionMap.cs" id="14_e7rpu"]
+[ext_resource type="PackedScene" uid="uid://ba7pnc8i5snfu" path="res://Scenes/ConnectionTiles/River/RiverConnection2.tscn" id="15_j2cn8"]
 [ext_resource type="Script" uid="uid://6nx0ehk0jo7b" path="res://Classes/Tiles/ConnectionMap/ConnectionMapController.cs" id="15_y5204"]
+[ext_resource type="PackedScene" uid="uid://dv1wdm1xjb7y4" path="res://Scenes/ConnectionTiles/River/RiverConnection3.tscn" id="16_fbu53"]
+[ext_resource type="PackedScene" uid="uid://dc16qr7mnaig6" path="res://Scenes/ConnectionTiles/River/RiverConnection4.tscn" id="17_6w6uv"]
+[ext_resource type="PackedScene" uid="uid://bo1eyglprg2a6" path="res://Scenes/ConnectionTiles/River/RiverConnection5.tscn" id="18_6v3rv"]
+[ext_resource type="PackedScene" uid="uid://b3ndvv7ndgpo3" path="res://Scenes/ConnectionTiles/River/RiverConnection6.tscn" id="19_0fqob"]
 
 [sub_resource type="Resource" id="Resource_e7rpu"]
 script = ExtResource("3_kmmgj")
@@ -270,25 +276,80 @@ metadata/_custom_type_script = "uid://blrspcfrv1tjd"
 
 [sub_resource type="Resource" id="Resource_lcjit"]
 script = ExtResource("13_7jnah")
-_tileNode = [ExtResource("13_e7rpu")]
+_tileNode = [ExtResource("13_y5204")]
+
+[sub_resource type="Resource" id="Resource_cpjk2"]
+script = ExtResource("13_7jnah")
+_tileNode = [ExtResource("15_j2cn8")]
+
+[sub_resource type="Resource" id="Resource_sqxum"]
+script = ExtResource("13_7jnah")
+_tileNode = [ExtResource("16_fbu53")]
+
+[sub_resource type="Resource" id="Resource_npia7"]
+script = ExtResource("13_7jnah")
+_tileNode = [ExtResource("17_6w6uv")]
+
+[sub_resource type="Resource" id="Resource_6ai37"]
+script = ExtResource("13_7jnah")
+_tileNode = [ExtResource("18_6v3rv")]
+
+[sub_resource type="Resource" id="Resource_m8yf5"]
+script = ExtResource("13_7jnah")
+_tileNode = [ExtResource("19_0fqob")]
 
 [sub_resource type="Resource" id="Resource_21h7p"]
 script = ExtResource("14_e7rpu")
 ConnectionInfo = Dictionary[int, ExtResource("13_7jnah")]({
-0: SubResource("Resource_lcjit")
+0: SubResource("Resource_lcjit"),
+1: SubResource("Resource_cpjk2"),
+2: SubResource("Resource_sqxum"),
+3: SubResource("Resource_npia7"),
+4: SubResource("Resource_6ai37"),
+5: SubResource("Resource_m8yf5")
 })
 Connection1 = SubResource("Resource_lcjit")
+Connection2 = SubResource("Resource_cpjk2")
+Connection3 = SubResource("Resource_sqxum")
+Connection4 = SubResource("Resource_npia7")
+Connection5 = SubResource("Resource_6ai37")
+Connection6 = SubResource("Resource_m8yf5")
 
-[sub_resource type="Resource" id="Resource_cpjk2"]
+[sub_resource type="Resource" id="Resource_bmeb4"]
 script = ExtResource("13_7jnah")
 _tileNode = [ExtResource("13_e7rpu")]
+
+[sub_resource type="Resource" id="Resource_ebwq0"]
+script = ExtResource("13_7jnah")
+
+[sub_resource type="Resource" id="Resource_gj0yq"]
+script = ExtResource("13_7jnah")
+
+[sub_resource type="Resource" id="Resource_k0j13"]
+script = ExtResource("13_7jnah")
+
+[sub_resource type="Resource" id="Resource_wqw7y"]
+script = ExtResource("13_7jnah")
+
+[sub_resource type="Resource" id="Resource_emgri"]
+script = ExtResource("13_7jnah")
 
 [sub_resource type="Resource" id="Resource_sayh0"]
 script = ExtResource("14_e7rpu")
 ConnectionInfo = Dictionary[int, ExtResource("13_7jnah")]({
-0: SubResource("Resource_cpjk2")
+0: SubResource("Resource_bmeb4"),
+1: SubResource("Resource_ebwq0"),
+2: SubResource("Resource_gj0yq"),
+3: SubResource("Resource_k0j13"),
+4: SubResource("Resource_wqw7y"),
+5: SubResource("Resource_emgri")
 })
-Connection1 = SubResource("Resource_cpjk2")
+Connection1 = SubResource("Resource_bmeb4")
+Connection2 = SubResource("Resource_ebwq0")
+Connection3 = SubResource("Resource_gj0yq")
+Connection4 = SubResource("Resource_k0j13")
+Connection5 = SubResource("Resource_wqw7y")
+Connection6 = SubResource("Resource_emgri")
 
 [sub_resource type="Resource" id="Resource_c70wr"]
 script = ExtResource("15_y5204")
@@ -316,443 +377,443 @@ HexSizeY = 27.73
 OrgHeightOffset = 24.5
 HeightOffset = 8.0
 
-[node name="@Node2D@22080" type="Node2D" parent="." unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="Tile" type="Node2D" parent="." unique_id=1815114462 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 position = Vector2(-200.99701, -72.04465)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22080" unique_id=1800176544 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="Tile" unique_id=1800176544 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22081" type="Node2D" parent="." unique_id=305214627 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21748" type="Node2D" parent="." unique_id=34344818 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 1
 position = Vector2(-200.99701, -24.014881)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22081" unique_id=1434246656 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21748" unique_id=1043424355 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22082" type="Node2D" parent="@Node2D@22081" unique_id=124236703 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21749" type="Node2D" parent="@Node2D@21748" unique_id=124236703 instance=ExtResource("6_2c735")]
 z_index = 101
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22083" type="Node2D" parent="." unique_id=853155223 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21750" type="Node2D" parent="." unique_id=154508745 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 2
 position = Vector2(-200.99701, 24.014885)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22083" unique_id=1678527237 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21750" unique_id=26225972 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22084" type="Node2D" parent="@Node2D@22083" unique_id=1749754147 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21751" type="Node2D" parent="@Node2D@21750" unique_id=61707497 instance=ExtResource("6_2c735")]
 z_index = 102
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22085" type="Node2D" parent="." unique_id=697928560 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21752" type="Node2D" parent="." unique_id=1323959970 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 3
 position = Vector2(-200.99701, 72.04465)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22085" unique_id=1281339285 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21752" unique_id=1235453069 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22086" type="Node2D" parent="." unique_id=1266782623 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21753" type="Node2D" parent="." unique_id=1597037251 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -1
 position = Vector2(-133.998, -96.05953)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22086" unique_id=1509627883 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21753" unique_id=323581225 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22087" type="Node2D" parent="@Node2D@22086" unique_id=1979602973 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21754" type="Node2D" parent="@Node2D@21753" unique_id=1921772833 instance=ExtResource("6_2c735")]
 z_index = 99
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22088" type="Node2D" parent="." unique_id=1765014582 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21755" type="Node2D" parent="." unique_id=1638676621 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 position = Vector2(-133.998, -48.029766)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22088" unique_id=1112716982 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21755" unique_id=1890789432 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22089" type="Node2D" parent="@Node2D@22088" unique_id=1506883517 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21756" type="Node2D" parent="@Node2D@21755" unique_id=1879884380 instance=ExtResource("6_2c735")]
 z_index = 100
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22090" type="Node2D" parent="." unique_id=1915599624 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21757" type="Node2D" parent="." unique_id=1901193497 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 1
 position = Vector2(-133.998, 0)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22090" unique_id=168827872 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21757" unique_id=1175540892 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22091" type="Node2D" parent="@Node2D@22090" unique_id=455317032 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21758" type="Node2D" parent="@Node2D@21757" unique_id=1613960349 instance=ExtResource("6_2c735")]
 z_index = 101
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22092" type="Node2D" parent="." unique_id=1278214817 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21759" type="Node2D" parent="." unique_id=541161794 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 2
 position = Vector2(-133.998, 48.029766)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22092" unique_id=501518647 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21759" unique_id=2020633439 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22093" type="Node2D" parent="@Node2D@22092" unique_id=831913923 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21760" type="Node2D" parent="@Node2D@21759" unique_id=1996278597 instance=ExtResource("6_2c735")]
 z_index = 102
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22094" type="Node2D" parent="." unique_id=1908956617 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21761" type="Node2D" parent="." unique_id=135094748 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 3
 position = Vector2(-133.998, 96.059525)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22094" unique_id=1730339515 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21761" unique_id=1221298754 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22095" type="Node2D" parent="@Node2D@22094" unique_id=27843143 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21762" type="Node2D" parent="@Node2D@21761" unique_id=1813220303 instance=ExtResource("6_2c735")]
 z_index = 103
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22096" type="Node2D" parent="." unique_id=820182185 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21763" type="Node2D" parent="." unique_id=2006650683 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -2
 position = Vector2(-66.999, -120.07441)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22096" unique_id=1812535874 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21763" unique_id=1213555315 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22097" type="Node2D" parent="@Node2D@22096" unique_id=632981845 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21764" type="Node2D" parent="@Node2D@21763" unique_id=1841824973 instance=ExtResource("6_2c735")]
 z_index = 98
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22098" type="Node2D" parent="." unique_id=443561449 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21765" type="Node2D" parent="." unique_id=1151369890 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -1
 position = Vector2(-66.999, -72.04465)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22098" unique_id=485167341 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21765" unique_id=1980923717 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22099" type="Node2D" parent="@Node2D@22098" unique_id=108779746 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21766" type="Node2D" parent="@Node2D@21765" unique_id=1997737881 instance=ExtResource("6_2c735")]
 z_index = 99
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22100" type="Node2D" parent="." unique_id=659110770 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21767" type="Node2D" parent="." unique_id=1477852056 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 position = Vector2(-66.999, -24.014883)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22100" unique_id=838053073 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21767" unique_id=1567143628 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22101" type="Node2D" parent="@Node2D@22100" unique_id=296429367 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21768" type="Node2D" parent="@Node2D@21767" unique_id=985931132 instance=ExtResource("6_2c735")]
 z_index = 100
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22102" type="Node2D" parent="." unique_id=50611263 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21769" type="Node2D" parent="." unique_id=1040262192 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 1
 position = Vector2(-66.999, 24.014883)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22102" unique_id=1159952857 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21769" unique_id=1965994510 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22103" type="Node2D" parent="@Node2D@22102" unique_id=396074317 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21770" type="Node2D" parent="@Node2D@21769" unique_id=123197732 instance=ExtResource("6_2c735")]
 z_index = 101
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22104" type="Node2D" parent="." unique_id=1637178113 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21771" type="Node2D" parent="." unique_id=1818612097 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 2
 position = Vector2(-66.999, 72.04465)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22104" unique_id=479062543 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21771" unique_id=1155078885 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22105" type="Node2D" parent="." unique_id=81674013 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21772" type="Node2D" parent="." unique_id=176889164 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 3
 position = Vector2(-66.999, 120.07441)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22105" unique_id=1034983361 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21772" unique_id=1850589126 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22106" type="Node2D" parent="." unique_id=2051619710 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21773" type="Node2D" parent="." unique_id=1287956652 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -3
 position = Vector2(0, -144.0893)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22106" unique_id=2111664223 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21773" unique_id=1058383801 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22107" type="Node2D" parent="@Node2D@22106" unique_id=792333970 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21774" type="Node2D" parent="@Node2D@21773" unique_id=146691817 instance=ExtResource("6_2c735")]
 z_index = 97
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22108" type="Node2D" parent="." unique_id=2012057196 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21775" type="Node2D" parent="." unique_id=719546885 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -2
 position = Vector2(0, -96.05953)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22108" unique_id=1236127769 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21775" unique_id=2120314812 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22109" type="Node2D" parent="@Node2D@22108" unique_id=1081908234 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21776" type="Node2D" parent="@Node2D@21775" unique_id=588739932 instance=ExtResource("6_2c735")]
 z_index = 98
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22110" type="Node2D" parent="." unique_id=326822944 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21777" type="Node2D" parent="." unique_id=597356846 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -1
 position = Vector2(0, -48.029766)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22110" unique_id=622892523 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21777" unique_id=1582837424 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22111" type="Node2D" parent="." unique_id=456419514 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21778" type="Node2D" parent="." unique_id=1645790481 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22111" unique_id=1669333114 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21778" unique_id=1201425803 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22112" type="Node2D" parent="@Node2D@22111" unique_id=49278895 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21779" type="Node2D" parent="@Node2D@21778" unique_id=495938688 instance=ExtResource("6_2c735")]
 z_index = 100
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22113" type="Node2D" parent="." unique_id=534376835 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21780" type="Node2D" parent="." unique_id=1072507803 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 1
 position = Vector2(0, 48.029766)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22113" unique_id=1173263388 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21780" unique_id=326086441 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22114" type="Node2D" parent="@Node2D@22113" unique_id=905294290 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21781" type="Node2D" parent="@Node2D@21780" unique_id=765018401 instance=ExtResource("6_2c735")]
 z_index = 101
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22115" type="Node2D" parent="." unique_id=46858080 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21782" type="Node2D" parent="." unique_id=174957359 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 2
 position = Vector2(0, 96.05953)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22115" unique_id=1678470046 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21782" unique_id=1604345915 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22116" type="Node2D" parent="@Node2D@22115" unique_id=469408633 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21783" type="Node2D" parent="@Node2D@21782" unique_id=138361032 instance=ExtResource("6_2c735")]
 z_index = 102
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22117" type="Node2D" parent="." unique_id=757894520 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21784" type="Node2D" parent="." unique_id=1197216848 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 3
 position = Vector2(0, 144.0893)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22117" unique_id=1831860118 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21784" unique_id=260387530 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22118" type="Node2D" parent="@Node2D@22117" unique_id=136393348 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21785" type="Node2D" parent="@Node2D@21784" unique_id=2090764177 instance=ExtResource("6_2c735")]
 z_index = 103
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22119" type="Node2D" parent="." unique_id=1723627029 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21786" type="Node2D" parent="." unique_id=1111552524 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -3
 position = Vector2(66.999, -120.07441)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22119" unique_id=436125906 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21786" unique_id=1505528143 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22120" type="Node2D" parent="@Node2D@22119" unique_id=1678424641 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21787" type="Node2D" parent="@Node2D@21786" unique_id=965272966 instance=ExtResource("6_2c735")]
 z_index = 97
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22121" type="Node2D" parent="." unique_id=317637575 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21788" type="Node2D" parent="." unique_id=544210654 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -2
 position = Vector2(66.999, -72.04465)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22121" unique_id=23381582 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21788" unique_id=1259061746 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22122" type="Node2D" parent="@Node2D@22121" unique_id=1932914763 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21789" type="Node2D" parent="@Node2D@21788" unique_id=1395048129 instance=ExtResource("6_2c735")]
 z_index = 98
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22123" type="Node2D" parent="." unique_id=730445088 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21790" type="Node2D" parent="." unique_id=1714484298 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -1
 position = Vector2(66.999, -24.014883)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22123" unique_id=111935691 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21790" unique_id=1904074207 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22124" type="Node2D" parent="@Node2D@22123" unique_id=91528409 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21791" type="Node2D" parent="@Node2D@21790" unique_id=417113449 instance=ExtResource("6_2c735")]
 z_index = 99
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22125" type="Node2D" parent="." unique_id=1205416185 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21792" type="Node2D" parent="." unique_id=1423700439 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 position = Vector2(66.999, 24.014883)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22125" unique_id=1917450696 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21792" unique_id=1623272337 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22126" type="Node2D" parent="@Node2D@22125" unique_id=1918854138 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21793" type="Node2D" parent="@Node2D@21792" unique_id=1138111382 instance=ExtResource("6_2c735")]
 z_index = 100
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22127" type="Node2D" parent="." unique_id=305168739 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21794" type="Node2D" parent="." unique_id=179938959 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 1
 position = Vector2(66.999, 72.04465)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22127" unique_id=1408008364 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21794" unique_id=536432109 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22128" type="Node2D" parent="@Node2D@22127" unique_id=1754562214 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21795" type="Node2D" parent="@Node2D@21794" unique_id=371412240 instance=ExtResource("6_2c735")]
 z_index = 101
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22129" type="Node2D" parent="." unique_id=2096669395 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21796" type="Node2D" parent="." unique_id=1016984902 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 2
 position = Vector2(66.999, 120.07441)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22129" unique_id=1496628657 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21796" unique_id=776670608 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22130" type="Node2D" parent="." unique_id=1365822779 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21797" type="Node2D" parent="." unique_id=611049770 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -3
 position = Vector2(133.998, -96.059525)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22130" unique_id=1482034160 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21797" unique_id=883745849 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22131" type="Node2D" parent="@Node2D@22130" unique_id=317117493 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21798" type="Node2D" parent="@Node2D@21797" unique_id=728327112 instance=ExtResource("6_2c735")]
 z_index = 97
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22132" type="Node2D" parent="." unique_id=1893267736 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21799" type="Node2D" parent="." unique_id=1355182482 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -2
 position = Vector2(133.998, -48.029766)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22132" unique_id=1928548690 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21799" unique_id=1395390314 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22133" type="Node2D" parent="." unique_id=1910454541 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21800" type="Node2D" parent="." unique_id=1627345344 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -1
 position = Vector2(133.998, 0)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22133" unique_id=76650740 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21800" unique_id=346381970 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22134" type="Node2D" parent="@Node2D@22133" unique_id=1419270917 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21801" type="Node2D" parent="@Node2D@21800" unique_id=1358242180 instance=ExtResource("6_2c735")]
 z_index = 99
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22135" type="Node2D" parent="." unique_id=1424095655 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21802" type="Node2D" parent="." unique_id=180731597 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 position = Vector2(133.998, 48.029766)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22135" unique_id=735774960 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21802" unique_id=396183145 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22136" type="Node2D" parent="@Node2D@22135" unique_id=1890822887 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21803" type="Node2D" parent="@Node2D@21802" unique_id=1709972643 instance=ExtResource("6_2c735")]
 z_index = 100
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22137" type="Node2D" parent="." unique_id=21611135 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21804" type="Node2D" parent="." unique_id=1475691559 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = 1
 position = Vector2(133.998, 96.05953)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22137" unique_id=1529510276 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21804" unique_id=1899324684 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22138" type="Node2D" parent="@Node2D@22137" unique_id=975752082 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21805" type="Node2D" parent="@Node2D@21804" unique_id=1620257014 instance=ExtResource("6_2c735")]
 z_index = 101
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22139" type="Node2D" parent="." unique_id=870625564 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21806" type="Node2D" parent="." unique_id=438866694 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -3
 position = Vector2(200.99701, -72.04465)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22139" unique_id=1519054198 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21806" unique_id=1879952358 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22140" type="Node2D" parent="@Node2D@22139" unique_id=1658736384 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21807" type="Node2D" parent="@Node2D@21806" unique_id=1307004809 instance=ExtResource("6_2c735")]
 z_index = 97
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22141" type="Node2D" parent="." unique_id=74314727 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21808" type="Node2D" parent="." unique_id=1183271381 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -2
 position = Vector2(200.99701, -24.014885)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22141" unique_id=1561018988 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21808" unique_id=2060986313 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22142" type="Node2D" parent="@Node2D@22141" unique_id=846379535 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21809" type="Node2D" parent="@Node2D@21808" unique_id=2017967054 instance=ExtResource("6_2c735")]
 z_index = 98
 position = Vector2(0, -24.5)
 
-[node name="@Node2D@22143" type="Node2D" parent="." unique_id=900630031 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21810" type="Node2D" parent="." unique_id=1479150742 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 z_index = -1
 position = Vector2(200.99701, 24.014881)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22143" unique_id=1566522164 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21810" unique_id=1051892008 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22144" type="Node2D" parent="." unique_id=1254823843 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
+[node name="@Node2D@21811" type="Node2D" parent="." unique_id=999701198 node_paths=PackedStringArray("NodeParent", "StaticBody") instance=ExtResource("2_kmmgj")]
 position = Vector2(200.99701, 72.04465)
 script = ExtResource("12_mu40u")
 NodeParent = NodePath(".")
 StaticBody = NodePath("Collision")
 
-[node name="Node2D" type="Node2D" parent="@Node2D@22144" unique_id=383245503 instance=ExtResource("5_lmfrd")]
+[node name="Node2D" type="Node2D" parent="@Node2D@21811" unique_id=1594769537 instance=ExtResource("5_lmfrd")]
 
-[node name="@Node2D@22145" type="Node2D" parent="@Node2D@22144" unique_id=1068452135 instance=ExtResource("6_2c735")]
+[node name="@Node2D@21812" type="Node2D" parent="@Node2D@21811" unique_id=78715759 instance=ExtResource("6_2c735")]
 z_index = 100
 position = Vector2(0, -24.5)

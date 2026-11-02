@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c1t850h3f4qdh"]
+
+[ext_resource type="Texture2D" uid="uid://bwhgrbvh61err" path="res://Sprites/RiverTiles.png" id="1_uhhqh"]
+
+[node name="Node2D" type="Node2D" unique_id=1006158571]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1009794528]
+texture_filter = 1
+texture = ExtResource("1_uhhqh")
+region_enabled = true
+region_rect = Rect2(0, 10.532503, 59.559116, 28.29701)
