@@ -18,6 +18,7 @@ public partial class Tile : Node2D
     public TerrainInfo TerrainInfo;
     public float OrgHeightOffset;
     public float HeightOffset;
+    private float heightOffset;
     private float Adjust = 0.5f;
     private float X;
     private float Z;
@@ -49,7 +50,7 @@ public partial class Tile : Node2D
         PackedScene PS = null;
         for (int i = 0; i <= TerrainInfo.TileHeight; i++)
         {
-            var heightOffset = i - 1 == 0 ? OrgHeightOffset : HeightOffset;
+            heightOffset = i - 1 == 0 ? OrgHeightOffset : HeightOffset;
             var line = i;
             if (i != 0 && heightOffset == HeightOffset)
             {
@@ -81,6 +82,8 @@ public partial class Tile : Node2D
             var TPS = TopTileMap[TerrainInfo.TopTileState].TileNode;
             var topNode = TPS.Instantiate<Node2D>();
             AddChild(topNode);
+            topNode.Position -= new Vector2(0, heightOffset);
+            topNode.ZIndex = Nodes[^1].ZIndex + 1;
             topNode.Owner = GetTree().EditedSceneRoot;
         }
     }

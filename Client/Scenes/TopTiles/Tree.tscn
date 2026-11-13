@@ -5,4 +5,6 @@
 [node name="Node2D" type="Node2D" unique_id=1061270594]
 
 [node name="Trees" type="Sprite2D" parent="." unique_id=1879963816]
+texture_filter = 1
+position = Vector2(0, -34)
 texture = ExtResource("1_3r7qq")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TileInfoSaveState" format=3 uid="uid://bwne2k76f5ag5"]
+
+[ext_resource type="PackedScene" uid="uid://ebakbtfjh44w" path="res://Scenes/ConnectionTiles/river.tscn" id="1_ray5a"]
+[ext_resource type="Script" uid="uid://n6mju7ayan2c" path="res://Classes/GDScriptWorldSaveStates/TileInfoSaveState.gd" id="2_ewoyo"]
+
+[resource]
+script = ExtResource("2_ewoyo")
+_tileNode = [ExtResource("1_ray5a")]
+metadata/_custom_type_script = "uid://n6mju7ayan2c"
