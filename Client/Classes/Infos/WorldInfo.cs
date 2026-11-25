@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Godot;
+using Packets.Classes.Features;
+
 [Tool]
 public class WorldInfo
 {
@@ -70,12 +72,29 @@ public class WorldInfo
         }
         EdgeTiles = GetAllEdgeTiles().ToArray();
         GenerateCorners();
+        var features = new List<IFeature>();
         for (int i = 1; i <= Features; i++)
         {
             var feature = GetRandomFeature();
+            features.Add(feature);
+        }
+        var conFeatures = features.Where(f => f is IConnectionFeature).ToList();
+        if (conFeatures.Count > 0)
+        {
+            foreach (var con in conFeatures.ToList())
+            {
+                con.Set(this, FeatureArgs);
+                con.Generate(seed);
+                FeaturesList.Add(con);
+                features.Remove(con);
+            }
+        }
+        foreach (var feature in features.ToList())
+        {
             feature.Set(this, FeatureArgs);
             feature.Generate(seed);
             FeaturesList.Add(feature);
+            features.Remove(feature);
         }
     }
     private List<TerrainInfo> GetHexNeighbors(int q, int r)

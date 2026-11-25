@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Packets.Classes.Features;
 using Packets.Classes.Tiles;
 
@@ -68,17 +69,62 @@ public partial class TerrainGen : Node2D
     }
     private void GenerateTerrain(WorldInfo worldInfo)
     {
+        YSortEnabled = true;
         foreach (Node child in GetChildren())
         {
             child.QueueFree();
         }
+
+        int maxTileHeight = 0;
         foreach (TerrainInfo info in worldInfo.TerrainInfo.Values)
         {
+            maxTileHeight = Math.Max(maxTileHeight, info.TileHeight);
+        }
+
+        int tileStride = maxTileHeight + 1;
+
+        var sortedTerrain = worldInfo.TerrainInfo.Values
+            .OrderBy(info => info.Position.Y)
+            .ToList();
+
+        Dictionary<float, int> rowIndexes = new();
+        int nextRowIndex = 0;
+
+        foreach (TerrainInfo info in sortedTerrain)
+        {
+            float rowKey = Mathf.Round(info.Position.Y);
+
+            if (!rowIndexes.ContainsKey(rowKey))
+            {
+                rowIndexes[rowKey] = nextRowIndex;
+                nextRowIndex++;
+            }
+        }
+
+        int rowCount = nextRowIndex;
+
+        int tileBandStart = ZNeg;
+        int connectorBandStart = tileBandStart + rowCount * tileStride;
+        int topTileBandStart = connectorBandStart + rowCount;
+
+        foreach (TerrainInfo info in sortedTerrain)
+        {
+            float rowKey = Mathf.Round(info.Position.Y);
+            int rowIndex = rowIndexes[rowKey];
+
             var hexInstance = TerrainScene.Instantiate<Tile>();
             AddChild(hexInstance);
             hexInstance.Position = info.Position;
-            hexInstance.ZIndex = info.z + Zbonus;
             hexInstance.ZNeg = ZNeg;
+
+            // Z bands:
+            // tiles      -> tileBandStart
+            // connectors -> connectorBandStart
+            // top tiles  -> topTileBandStart
+            hexInstance.BaseZIndex = tileBandStart + rowIndex * tileStride;
+            hexInstance.ConnectorZIndex = connectorBandStart + rowIndex;
+            hexInstance.TopTileZIndex = topTileBandStart + rowIndex;
+
             hexInstance.OrgHeightOffset = OrgHeightOffset;
             hexInstance.HeightOffset = HeightOffset;
             hexInstance.Owner = this;
@@ -89,7 +135,7 @@ public partial class TerrainGen : Node2D
 
         foreach (IFeature feature in worldInfo.FeaturesList)
         {
-            if(feature.FeatureType != FeatureType.Connection)
+            if (feature.FeatureType != FeatureType.Connection)
             {
                 continue;
             }
@@ -97,28 +143,48 @@ public partial class TerrainGen : Node2D
             for (int i = 0; i < conFeature.tiles.Count; i++)
             {
                 var connection = conFeature.tiles[i];
-                GD.Print(connection.terrainConnection);
                 var map = ConnectionMaps[connection.terrainConnection];
-                var prevConn = default(CornerInfo);
-                if (i - 1 >= 0)
-                {
-                     prevConn = conFeature.tiles[i-1];
-                }
-                var nextConn = default(CornerInfo);
-                if (i + 1 < conFeature.tiles.Count)
-                {
-                    nextConn = conFeature.tiles[i+1];
-                }
+                var prevConn = i > 0 ? conFeature.tiles[i - 1] : default;
+                var nextConn = i + 1 < conFeature.tiles.Count ? conFeature.tiles[i + 1] : default;
                 var state = connection.GetConnectionState([prevConn, nextConn]);
-                var ps = map[state];
-                var node = ps.TileNode.Instantiate<Node2D>();
-                node.Position = connection.Position - new Vector2(0, GetTopHeightOffset(connection));
-                AddChild(node);
-                node.ZIndex = 1000;
-            }
+                var node = map[state].TileNode.Instantiate<Node2D>();
 
+                int connectorZIndex = int.MinValue;
+                float sortY = float.MinValue;
+
+                foreach (var t in connection.Tiles)
+                {
+                    if (t.tile == null)
+                    {
+                        continue;
+                    }
+
+                    connectorZIndex = Math.Max(connectorZIndex, t.tile.ConnectorZIndex);
+                    sortY = Math.Max(sortY, t.Position.Y);
+                }
+
+                if (connectorZIndex == int.MinValue)
+                {
+                    connectorZIndex = connectorBandStart;
+                    sortY = connection.Position.Y;
+                }
+
+                var holder = new Node2D
+                {
+                    Position = new Vector2(connection.Position.X, sortY + 0.01f),
+                    ZIndex = connectorZIndex
+                };
+                AddChild(holder);
+                holder.AddChild(node);
+
+                node.Position = new Vector2(0, connection.Position.Y - holder.Position.Y - GetTopHeightOffset(connection));
+                GD.Print($"[{i}] state={state} corner={connection.Position} offset={GetTopHeightOffset(connection)} " +
+                         $"tiles=[{string.Join(", ", connection.Tiles.Select(t => $"{t.PositionI}@h{t.TileHeight}"))}] " +
+                         $"global={node.GlobalPosition}");
+            }
         }
     }
+
     private float GetTopHeightOffset(CornerInfo corner)
     {
         int height = 0;

@@ -24,6 +24,10 @@ public partial class Forest : Resource, IFeature
         noise.SetSeed(seed);
         foreach (var tile in worldInfo.TerrainInfo.Values)
         {
+            if (tile.ContainsCorner(TileUtil.TileConnection.River))
+            {
+                continue;
+            }
             var v = noise.GetNoise2D(tile.PositionI.X, tile.PositionI.Y);
             if (v > threshold)
             {

@@ -43,4 +43,15 @@ public class TerrainInfo
         
         return MovementCost;
     }
+    public bool ContainsCorner(TileUtil.TileConnection connection)
+    {
+        foreach (var corner in Corners)
+        {
+            if (corner.terrainConnection == connection)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -23,8 +23,13 @@ public partial class Tile : Node2D
     private float X;
     private float Z;
     public int ZNeg;
+    public int BaseZIndex;
+    public int ConnectorZIndex;
+    public int TopTileZIndex;
     private List<Node2D> Nodes = new();
     private bool Selected;
+
+    public int HeightZIndex => BaseZIndex + TerrainInfo.TileHeight;
     
     public Tile() { }
     public Tile(TileMap tileMap, TopTileMap topTileMap, float x, float z, TerrainInfo TI = null)
@@ -47,43 +52,33 @@ public partial class Tile : Node2D
     public void GenerateTile()
     {
         Position = new Vector2(X, Z);
+        YSortEnabled = true;
+        NodeParent.YSortEnabled = true;
         PackedScene PS = null;
+
         for (int i = 0; i <= TerrainInfo.TileHeight; i++)
         {
-            heightOffset = i - 1 == 0 ? OrgHeightOffset : HeightOffset;
-            var line = i;
-            if (i != 0 && heightOffset == HeightOffset)
-            {
-                line = i - 1;
-            }
-            heightOffset *= line;
-            if(heightOffset != 0 && heightOffset % HeightOffset == 0)
-            {
-                heightOffset += OrgHeightOffset;
-            }
-            var y  = heightOffset;
+            var y = i == 0
+                ? 0
+                : OrgHeightOffset + (i - 1) * HeightOffset;
+
             PS = TileMap[TerrainInfo, y, i].TileNode;
             Nodes.Add(PS.Instantiate<Node2D>());
             NodeParent.AddChild(Nodes[i]);
             Nodes[i].Owner = GetTree().EditedSceneRoot;
             Nodes[i].Position -= new Vector2(0, y);
-            if (y != 0)
-            {
-                Nodes[i].ZIndex = (TerrainInfo.z) + 100 * i;
-            }
-            else
-            {
-                Nodes[i].ZIndex = ZNeg;
-            }
+
+            Nodes[i].ZIndex = BaseZIndex + i;
             Nodes[i].RotationDegrees = TileUtil.GetTileRotation(TerrainInfo, TileUtil.GetState(TerrainInfo, y, i));
         }
+
         if (TerrainInfo.TileTopType != TileUtil.TileTopType.None && TerrainInfo.TileType == TileUtil.TileType.Grass)
         {
             var TPS = TopTileMap[TerrainInfo.TopTileState].TileNode;
             var topNode = TPS.Instantiate<Node2D>();
             AddChild(topNode);
             topNode.Position -= new Vector2(0, heightOffset);
-            topNode.ZIndex = Nodes[^1].ZIndex + 1;
+            topNode.ZIndex = TopTileZIndex;
             topNode.Owner = GetTree().EditedSceneRoot;
         }
     }

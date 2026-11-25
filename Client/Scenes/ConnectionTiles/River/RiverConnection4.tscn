@@ -6,7 +6,7 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=57881975]
 texture_filter = 1
-position = Vector2(2, -1.9)
+position = Vector2(1.6, -2.01)
 texture = ExtResource("1_wrvr6")
 region_enabled = true
 region_rect = Rect2(0, 59.086853, 49.46492, 17.972504)
